@@ -1,16 +1,36 @@
+import { useState } from "react";
+
 export default ListGroup;
 
-function ListGroup() {
-  const items = ["new york", "san francisco"];
+interface IProps {
+  items: string[];
+  heading: string;
+}
+
+function ListGroup({ items, heading }: IProps) {
+  // hook
+  const [selectedItem, setSelectedItem] = useState(-1);
 
   return (
     <>
-      <h1>List Group</h1>
+      <h1>{heading}</h1>
       {items.length === 0 && <p>No items found</p>}
       <ul className="list-group">
         {/* convert items to a different type */}
-        {items.map((item) => (
-          <li key={item}>{item}</li>
+        {items.map((item, index) => (
+          <li
+            key={item}
+            className={
+              selectedItem === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            onClick={() => {
+              setSelectedItem(index);
+            }}
+          >
+            {item}
+          </li>
         ))}
       </ul>
     </>
