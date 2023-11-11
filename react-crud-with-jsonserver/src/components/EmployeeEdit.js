@@ -1,18 +1,37 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-const EmployeeCreate = () => {
+const EmployeeEdit = () => {
+  const { empId } = useParams();
+
+  useEffect(() => {
+    fetch("http://localhost:30001/employee/" + empId)
+      .then((res) => {
+        return res.json();
+      })
+      .then((response) => {
+        setId(response.id);
+        setName(response.name);
+        setEmail(response.email);
+        setActive(response.active)
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
+
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [active, setActive] = useState(true);
-  const [validation, setValidation] = useState(false)  
+  const [validation, setValidation] = useState(false);
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { name, email, active };
-    fetch("http://localhost:30001/employee", {
-      method: "POST",
+    const data = {id, name, email, active };
+    fetch("http://localhost:30001/employee/" + empId, {
+      method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
     })
@@ -32,7 +51,7 @@ const EmployeeCreate = () => {
           <form className="container" onSubmit={handleSubmit}>
             <div className="card" style={{ textAlign: "left" }}>
               <div className="card-title">
-                <h2>Create Employee</h2>
+                <h2>Edit Employee</h2>
               </div>
               <div className="card-body">
                 <div className="row">
@@ -54,11 +73,13 @@ const EmployeeCreate = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         className="form-control"
-                        onMouseDown={e=>setValidation(true)}
+                        onMouseDown={(e) => setValidation(true)}
                       ></input>
-                      {name.length == 0 && validation && <span className="text-danger">Name required</span>}
+                      {name.length == 0 && validation && (
+                        <span className="text-danger">Name required</span>
+                      )}
                     </div>
-                  </div> 
+                  </div>
                   <div className="col-lg-12">
                     <div className="form-group">
                       <label>Email</label>
@@ -99,4 +120,5 @@ const EmployeeCreate = () => {
     </div>
   );
 };
-export default EmployeeCreate;
+
+export default EmployeeEdit;
