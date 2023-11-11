@@ -7,7 +7,7 @@ import EmployeeCreate from "./components/EmployeeCreate";
 function App() {
   return (
     <div className="App">
-      <hi>React Crud operation</hi>
+      <h1>React Crud operation</h1>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<EmployeeListing />} />
