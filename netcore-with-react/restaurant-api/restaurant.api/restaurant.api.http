@@ -1,0 +1,5 @@
+﻿@restaurant.api_HostAddress = http://localhost:5064
+
+GET {{restaurant.api_HostAddress}}/api/ordermasters
+
+###

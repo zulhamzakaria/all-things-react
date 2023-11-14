@@ -1,108 +1,68 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using restaurant.api.models;
 
-namespace restaurant.api.controllers;
-
-public class OrderMastersController : Controller
+namespace restaurant.api.controllers
 {
-    private readonly RestaurantDbContext _context;
-
-    public OrderMastersController(RestaurantDbContext context)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class OrderMastersController : ControllerBase
     {
-        _context = context;
-    }
+        private readonly RestaurantDbContext _context;
 
-    // GET: OrderMasters
-    public async Task<IActionResult> Index()
-    {
-        var restaurantDbContext = _context.OrderMasters.Include(o => o.Customer);
-        return View(await restaurantDbContext.ToListAsync());
-    }
-
-    // GET: OrderMasters/Details/5
-    public async Task<IActionResult> Details(long? id)
-    {
-        if (id == null || _context.OrderMasters == null)
+        public OrderMastersController(RestaurantDbContext context)
         {
-            return NotFound();
+            _context = context;
         }
 
-        var orderMaster = await _context.OrderMasters
-            .Include(o => o.Customer)
-            .FirstOrDefaultAsync(m => m.OrderMasterId == id);
-        if (orderMaster == null)
+        // GET: api/OrderMasters
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<OrderMaster>>> GetOrderMasters()
         {
-            return NotFound();
+            if (_context.OrderMasters == null)
+            {
+                return NotFound();
+            }
+            return await _context.OrderMasters.ToListAsync();
         }
 
-        return View(orderMaster);
-    }
-
-    // GET: OrderMasters/Create
-    public IActionResult Create()
-    {
-        ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
-        return View();
-    }
-
-    // POST: OrderMasters/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("OrderMasterId,OrderNumber,CustomerId,PaymentMethod,GrandTotal")] OrderMaster orderMaster)
-    {
-        if (ModelState.IsValid)
+        // GET: api/OrderMasters/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<OrderMaster>> GetOrderMaster(long id)
         {
-            _context.Add(orderMaster);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", orderMaster.CustomerId);
-        return View(orderMaster);
-    }
+            if (_context.OrderMasters == null)
+            {
+                return NotFound();
+            }
+            var orderMaster = await _context.OrderMasters.FindAsync(id);
 
-    // GET: OrderMasters/Edit/5
-    public async Task<IActionResult> Edit(long? id)
-    {
-        if (id == null || _context.OrderMasters == null)
-        {
-            return NotFound();
+            if (orderMaster == null)
+            {
+                return NotFound();
+            }
+
+            return orderMaster;
         }
 
-        var orderMaster = await _context.OrderMasters.FindAsync(id);
-        if (orderMaster == null)
+        // PUT: api/OrderMasters/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutOrderMaster(long id, OrderMaster orderMaster)
         {
-            return NotFound();
-        }
-        ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", orderMaster.CustomerId);
-        return View(orderMaster);
-    }
+            if (id != orderMaster.OrderMasterId)
+            {
+                return BadRequest();
+            }
 
-    // POST: OrderMasters/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(long id, [Bind("OrderMasterId,OrderNumber,CustomerId,PaymentMethod,GrandTotal")] OrderMaster orderMaster)
-    {
-        if (id != orderMaster.OrderMasterId)
-        {
-            return NotFound();
-        }
+            _context.Entry(orderMaster).State = EntityState.Modified;
 
-        if (ModelState.IsValid)
-        {
             try
             {
-                _context.Update(orderMaster);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrderMasterExists(orderMaster.OrderMasterId))
+                if (!OrderMasterExists(id))
                 {
                     return NotFound();
                 }
@@ -111,52 +71,48 @@ public class OrderMastersController : Controller
                     throw;
                 }
             }
-            return RedirectToAction(nameof(Index));
-        }
-        ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", orderMaster.CustomerId);
-        return View(orderMaster);
-    }
 
-    // GET: OrderMasters/Delete/5
-    public async Task<IActionResult> Delete(long? id)
-    {
-        if (id == null || _context.OrderMasters == null)
-        {
-            return NotFound();
+            return NoContent();
         }
 
-        var orderMaster = await _context.OrderMasters
-            .Include(o => o.Customer)
-            .FirstOrDefaultAsync(m => m.OrderMasterId == id);
-        if (orderMaster == null)
+        // POST: api/OrderMasters
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<OrderMaster>> PostOrderMaster(OrderMaster orderMaster)
         {
-            return NotFound();
+            if (_context.OrderMasters == null)
+            {
+                return Problem("Entity set 'RestaurantDbContext.OrderMasters'  is null.");
+            }
+            _context.OrderMasters.Add(orderMaster);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetOrderMaster", new { id = orderMaster.OrderMasterId }, orderMaster);
         }
 
-        return View(orderMaster);
-    }
+        // DELETE: api/OrderMasters/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOrderMaster(long id)
+        {
+            if (_context.OrderMasters == null)
+            {
+                return NotFound();
+            }
+            var orderMaster = await _context.OrderMasters.FindAsync(id);
+            if (orderMaster == null)
+            {
+                return NotFound();
+            }
 
-    // POST: OrderMasters/Delete/5
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(long id)
-    {
-        if (_context.OrderMasters == null)
-        {
-            return Problem("Entity set 'RestaurantDbContext.OrderMasters'  is null.");
-        }
-        var orderMaster = await _context.OrderMasters.FindAsync(id);
-        if (orderMaster != null)
-        {
             _context.OrderMasters.Remove(orderMaster);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
-        await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
-    }
-
-    private bool OrderMasterExists(long id)
-    {
-        return (_context.OrderMasters?.Any(e => e.OrderMasterId == id)).GetValueOrDefault();
+        private bool OrderMasterExists(long id)
+        {
+            return (_context.OrderMasters?.Any(e => e.OrderMasterId == id)).GetValueOrDefault();
+        }
     }
 }
