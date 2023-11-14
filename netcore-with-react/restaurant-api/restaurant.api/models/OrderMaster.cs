@@ -14,4 +14,5 @@ public class OrderMaster
     [Column(TypeName ="nvarchar(75)")]
     public string? PaymentMethod { get; set; }
     public decimal GrandTotal { get; set; }
+    public List<OrderDetails>? OrderDetails { get; set; }
 }
