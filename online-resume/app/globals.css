@@ -168,3 +168,7 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+.navbar {
+  @apply py-5 px-8 border-b border-nav-border gap-4;
+}
