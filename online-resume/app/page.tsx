@@ -2,7 +2,9 @@
 import React from "react";
 
 const Home = () => {
-  return <div>Home</div>;
+  return <section className="flex-start flex-col paddings mb-16">
+    
+  </section>;
 };
 
 export default Home;
