@@ -11,8 +11,8 @@ const Nav = () => {
           <Image
             src="https://media.tenor.com/d13jPFfU24YAAAAi/maxwell-christmas.gif"
             alt="logo"
-            width={30}
-            height={20}
+            width={50}
+            height={40}
           />
         </Link>
       </div>

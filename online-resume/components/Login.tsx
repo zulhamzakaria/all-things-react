@@ -1,22 +1,30 @@
 import { AccountCircle } from "@mui/icons-material";
-import { IconButton, Menu, MenuItem, TextField } from "@mui/material";
-import React from "react";
+import {
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  Paper,
+  TextField,
+} from "@mui/material";
+import { useState } from "react";
 
 const Login = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  //   const [Open, setOpen] = useState(false);
   const handleClose = () => {
     setAnchorEl(null);
   };
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  //   const handleClickOpen = () => {
+  //     setOpen(true);
+  //   };
   return (
     <div>
-      {/* <form noValidate>
-        <TextField label="Email" name="email" variant="outlined" />
-      </form> */}
       <IconButton
-        size="large"
+        size="medium"
         aria-label="account of current user"
         aria-controls="menu-appbar"
         aria-haspopup="true"
@@ -40,7 +48,32 @@ const Login = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Login</MenuItem>
+        <MenuItem className="flex flex-col">
+          <span className="py-2 px-0">Login</span>
+          <form noValidate className="flex flex-col">
+            <TextField
+              label="Email"
+              name="email"
+              variant="outlined"
+              fullWidth
+            />
+            <TextField
+              label="Password"
+              name="password"
+              variant="outlined"
+              fullWidth
+              className="mt-1"
+            />
+          </form>
+          <div className="mt-2">
+            <Button variant="text" color="success">
+              Login
+            </Button>
+            <Button variant="text" onClick={handleClose} color="error">
+              Cancel
+            </Button>
+          </div>
+        </MenuItem>
       </Menu>
     </div>
   );
