@@ -65,11 +65,21 @@ const Login = () => {
               className="mt-1"
             />
           </form>
-          <div className="mt-2">
-            <Button variant="text" color="success">
+          <div className="mt-2 flex">
+            <Button
+              variant="outlined"
+              color="success"
+              className="mr-2"
+              fullWidth
+            >
               Login
             </Button>
-            <Button variant="text" onClick={handleClose} color="error">
+            <Button
+              variant="outlined"
+              onClick={handleClose}
+              color="error"
+              fullWidth
+            >
               Cancel
             </Button>
           </div>
