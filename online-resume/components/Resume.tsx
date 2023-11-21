@@ -34,7 +34,10 @@ const Resume = () => {
           </div>
           <div className="container mt-2">
             <ul className="mt-2 ml-5 list-inside list-disc">
-              <li className="text-sm">cock</li>
+              <li className="text-sm text-justify">
+                Experienced Senior Application Developer wanting to learn more
+                about System Design and Architecture{" "}
+              </li>
             </ul>
           </div>
         </div>
