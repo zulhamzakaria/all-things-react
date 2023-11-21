@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import Login from "./Login";
+import Login from "./LoginMenu";
 
 const Nav = () => {
   return (
