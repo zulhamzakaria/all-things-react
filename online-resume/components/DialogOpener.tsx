@@ -6,17 +6,19 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import LoginForm from "./Forms/LoginForm";
-import { format } from "path/posix";
 
-const DialogOpener = ({ open, handleClose, form }: any) => {
+interface DialogOpenerProps {
+  open: boolean;
+  handleClose: () => {};
+  form: string;
+}
+
+const DialogOpener = ({ open, handleClose, form }: DialogOpenerProps) => {
   return (
     <React.Fragment>
       <Dialog open={open}>
         <DialogTitle>This is a generic dialog</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            <form />
-          </DialogContentText>
           <LoginForm />
         </DialogContent>
       </Dialog>
