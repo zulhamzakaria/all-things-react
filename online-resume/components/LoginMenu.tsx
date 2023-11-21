@@ -13,12 +13,19 @@ import { useState } from "react";
 import DialogOpener from "./DialogOpener";
 
 const LoginMenu = () => {
+  const [dialogOpener, setDialogOpener] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClose = () => {
     setAnchorEl(null);
   };
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+  };
+  const handleOpenDialog = () => {
+    setDialogOpener(true);
+  };
+  const handleCloseDialog = () => {
+    setDialogOpener(false);
   };
   return (
     <div>
@@ -47,12 +54,16 @@ const LoginMenu = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem className="pl-5 pr-5">
+        <MenuItem className="pl-5 pr-5" onClick={handleOpenDialog}>
           <ListItemIcon>
             <Login fontSize="small" />
           </ListItemIcon>
           <ListItemText>Login</ListItemText>
-          <DialogOpener />
+          <DialogOpener
+            open={dialogOpener}
+            handleClose={handleCloseDialog}
+            form="LoginForm"
+          />
         </MenuItem>
       </Menu>
     </div>
