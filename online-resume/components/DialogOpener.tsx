@@ -9,7 +9,7 @@ import LoginForm from "./Forms/LoginForm";
 
 interface DialogOpenerProps {
   open: boolean;
-  handleClose: () => {};
+  handleClose: () => void;
   form: string;
 }
 
