@@ -6,9 +6,22 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 
-import React from "react";
+import React, { useState } from "react";
 
 const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleLogin = () => {
+    if (
+      username === process.env.NEXT_PUBLIC_REACT_APP_USERNAME &&
+      password === process.env.NEXT_PUBLIC_REACT_APP_PASSWORD
+    ) {
+      setIsLoggedIn(true);
+    } else {
+      alert("Invalid credentials");
+    }
+  };
   return (
     <Box
       sx={{
@@ -35,6 +48,9 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
             variant="standard"
             className="mt-5"
             fullWidth
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
             id="standard-basic"
@@ -43,11 +59,16 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
             variant="standard"
             className="mt-5"
             fullWidth
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="pt-12 mb-7">
           <ButtonGroup variant="outlined" fullWidth>
-            <Button className="text-white bg-green-600">Sign In</Button>
+            <Button className="text-white bg-green-600" onClick={handleLogin}>
+              Sign In
+            </Button>
             <Button onClick={closeDialog}>Cancel</Button>
           </ButtonGroup>
         </div>
