@@ -28,7 +28,9 @@ const DialogOpener = ({
   return (
     <React.Fragment>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle className="text-center">{title}</DialogTitle>
+        <DialogTitle className="text-center  font-semibold pt-10 text-slate-900">
+          {title}
+        </DialogTitle>
         <DialogContent>{FormComponent && <FormComponent />}</DialogContent>
       </Dialog>
     </React.Fragment>
