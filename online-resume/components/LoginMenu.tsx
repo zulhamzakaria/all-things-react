@@ -58,11 +58,12 @@ const LoginMenu = () => {
           <ListItemIcon>
             <Login fontSize="small" />
           </ListItemIcon>
-          <ListItemText>Login</ListItemText>
+          <ListItemText>Sign In</ListItemText>
           <DialogOpener
             open={dialogOpener}
             handleClose={handleCloseDialog}
             form="LoginForm"
+            title="Sign In"
           />
         </MenuItem>
       </Menu>

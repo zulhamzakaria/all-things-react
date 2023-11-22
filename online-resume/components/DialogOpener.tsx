@@ -11,18 +11,24 @@ interface DialogOpenerProps {
   open: boolean;
   handleClose: () => void;
   form: string;
+  title?: string;
 }
 
 const formComponents: Record<string, ComponentType<any>> = {
   LoginForm: LoginForm,
 };
 
-const DialogOpener = ({ open, handleClose, form }: DialogOpenerProps) => {
+const DialogOpener = ({
+  open,
+  handleClose,
+  form,
+  title,
+}: DialogOpenerProps) => {
   const FormComponent = formComponents[form] || null;
   return (
     <React.Fragment>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>This is a generic dialog</DialogTitle>
+        <DialogTitle className="text-center">{title}</DialogTitle>
         <DialogContent>{FormComponent && <FormComponent />}</DialogContent>
       </Dialog>
     </React.Fragment>
