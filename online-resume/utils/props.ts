@@ -1,3 +1,3 @@
-export interface CloseDialogProps{
+export interface CloseChildDialogProps{
     closeDialog: () => void
 }

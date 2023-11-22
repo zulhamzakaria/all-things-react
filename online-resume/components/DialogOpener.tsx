@@ -11,13 +11,19 @@ interface DialogOpenerProps {
   open: boolean;
   form: string;
   title?: string;
+  onCloseDialog: () => void;
 }
 
 const formComponents: Record<string, ComponentType<any>> = {
   LoginForm: LoginForm,
 };
 
-const DialogOpener = ({ open, form, title }: DialogOpenerProps) => {
+const DialogOpener = ({
+  open,
+  form,
+  title,
+  onCloseDialog,
+}: DialogOpenerProps) => {
   const FormComponent = formComponents[form] || null;
 
   return (
@@ -26,7 +32,9 @@ const DialogOpener = ({ open, form, title }: DialogOpenerProps) => {
         <DialogTitle className="text-center  font-semibold pt-10 text-slate-900">
           {title}
         </DialogTitle>
-        <DialogContent>{FormComponent && <FormComponent />}</DialogContent>
+        <DialogContent>
+          {FormComponent && <FormComponent closeDialog={onCloseDialog} />}
+        </DialogContent>
       </Dialog>
     </React.Fragment>
   );
