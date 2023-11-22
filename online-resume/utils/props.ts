@@ -1,3 +1,3 @@
 export interface CloseChildDialogProps{
-    closeDialog: () => void
+    closeDialog: (event:React.MouseEvent) => void
 }

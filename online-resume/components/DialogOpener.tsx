@@ -11,7 +11,7 @@ interface DialogOpenerProps {
   open: boolean;
   form: string;
   title?: string;
-  onCloseDialog: () => void;
+  onCloseDialog: (event: React.MouseEvent) => void;
 }
 
 const formComponents: Record<string, ComponentType<any>> = {
@@ -29,10 +29,10 @@ const DialogOpener = ({
   return (
     <React.Fragment>
       <Dialog open={open}>
-        <DialogTitle className="text-center  font-semibold pt-10 text-slate-900">
+        <DialogTitle className="text-center font-semibold pt-10 text-slate-900">
           {title}
         </DialogTitle>
-        <DialogContent>
+        <DialogContent className="rounded-t-lg">
           {FormComponent && <FormComponent closeDialog={onCloseDialog} />}
         </DialogContent>
       </Dialog>

@@ -14,6 +14,7 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
       sx={{
         display: "flex",
         flexWrap: "wrap",
+        background: "transparent",
         "& > :not(style)": {
           width: 250,
         },
@@ -25,7 +26,7 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
         },
       }}
     >
-      <Paper className="mr-2 ml-2 rounded-md" elevation={0}>
+      <Paper className="rounded-md bg-transparent" elevation={0}>
         <div className="flex items-center flex-col">
           <AccountCircle fontSize="large" />
           <TextField
