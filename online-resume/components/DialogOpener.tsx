@@ -6,6 +6,7 @@ import {
 } from "@mui/material";
 import React, { ComponentType, useState } from "react";
 import LoginForm from "./Forms/LoginForm";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 interface DialogOpenerProps {
   open: boolean;
@@ -29,7 +30,13 @@ const DialogOpener = ({
   return (
     <React.Fragment>
       <Dialog open={open}>
-        <DialogTitle className="text-center font-semibold pt-10 text-slate-900">
+        <div className="text-end mt-1 mr-1">
+          <CloseOutlinedIcon
+            onClick={onCloseDialog}
+            sx={{ color: "crimson" }}
+          />
+        </div>
+        <DialogTitle className="text-center font-semibold pt-7 text-slate-900">
           {title}
         </DialogTitle>
         <DialogContent className="rounded-t-lg">

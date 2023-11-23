@@ -31,7 +31,7 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
         "& > :not(style)": {
           width: 250,
         },
-        ".MuiButtonGroup-grouped:not(:last-of-type):hover": {
+        ".MuiButtonGroup-grouped:hover": {
           // class selector
           borderColor: "green",
           color: "white",
@@ -48,7 +48,7 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
             variant="standard"
             className="mt-5"
             fullWidth
-            required
+            required={true}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -57,7 +57,7 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
             type="password"
             label="Password"
             variant="standard"
-            className="mt-5"
+            className="mt-2"
             fullWidth
             required
             value={password}
@@ -66,10 +66,13 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
         </div>
         <div className="pt-12 mb-7">
           <ButtonGroup variant="outlined" fullWidth>
-            <Button className="text-white bg-green-600" onClick={handleLogin}>
+            <Button
+              className="text-white bg-green-600"
+              fullWidth
+              onClick={handleLogin}
+            >
               Sign In
             </Button>
-            <Button onClick={closeDialog}>Cancel</Button>
           </ButtonGroup>
         </div>
       </Paper>
