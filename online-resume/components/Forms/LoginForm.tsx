@@ -12,16 +12,19 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const handleLogin = () => {
+
+  const handleLogin = (event: React.MouseEvent) => {
     if (
       username === process.env.NEXT_PUBLIC_REACT_APP_USERNAME &&
       password === process.env.NEXT_PUBLIC_REACT_APP_PASSWORD
     ) {
       setIsLoggedIn(true);
+      closeDialog(event);
     } else {
       alert("Invalid credentials");
     }
   };
+
   return (
     <Box
       sx={{
@@ -48,7 +51,7 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
             variant="standard"
             className="mt-5"
             fullWidth
-            required={true}
+            required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -57,14 +60,14 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
             type="password"
             label="Password"
             variant="standard"
-            className="mt-2"
+            className="mt-5"
             fullWidth
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className="pt-12 mb-7">
+        <div className="pt-10 mb-7">
           <ButtonGroup variant="outlined" fullWidth>
             <Button
               className="text-white bg-green-600"
