@@ -1,8 +1,12 @@
 "use client";
+import useAuthStore from "@/stores/authstore";
+import { Edit } from "@mui/icons-material";
 import { Box, Grid, Paper } from "@mui/material";
-import { styled } from "@mui/material/styles";
 
 const Resume = () => {
+  const isAuthenticated = useAuthStore((state) => {
+    return state.isAuthenticated;
+  });
   return (
     <div>
       <Paper
@@ -19,9 +23,11 @@ const Resume = () => {
               Malaysian
             </h2>
           </div>
+
           <div className="mt-7 font-arial text-black text-left font-semibold">
             SUMMARY
           </div>
+
           <div className="flex justify-center items-center">
             <Box
               sx={{
@@ -32,6 +38,13 @@ const Resume = () => {
               }}
             />
           </div>
+
+          {isAuthenticated && (
+            <div className="w-full text-right">
+              <Edit sx={{ height: 15, width: 15 }} className="mr-1 mb-1" />
+            </div>
+          )}
+
           <div className="container mt-2">
             <ul className="mt-2 ml-5 list-inside list-disc">
               <li className="text-sm text-justify">
