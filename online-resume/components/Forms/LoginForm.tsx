@@ -14,12 +14,14 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
   const [password, setPassword] = useState("");
 
   const login = useAuthStore((state) => state.login);
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const isAuthenticated = useAuthStore((state) => {
+    return state.isAuthenticated;
+  });
   const handleLogin = (event: React.MouseEvent) => {
     login(username, password);
-    if (isAuthenticated) {
-      closeDialog(event);
-    }
+    // if (isAuthenticated) {
+    //   closeDialog(event);
+    // }
   };
 
   return (

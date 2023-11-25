@@ -13,7 +13,8 @@ const Resume = () => {
   const handleOpenDialog = () => {
     setDialogOpener(true);
   };
-  const handleCloseDialog = () => {
+  const handleCloseDialog = (event: React.MouseEvent) => {
+    event.stopPropagation();
     setDialogOpener(false);
   };
   return (
