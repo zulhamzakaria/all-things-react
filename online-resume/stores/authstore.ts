@@ -1,6 +1,6 @@
 // authStore.ts
 import { AuthActions, AuthState } from '@/utils/props';
-import create from 'zustand';
+import {create} from 'zustand';
 
 const useAuthStore = create<AuthState & AuthActions>((set) => ({
   isAuthenticated: false,

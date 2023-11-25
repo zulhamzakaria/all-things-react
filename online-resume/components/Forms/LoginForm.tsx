@@ -7,7 +7,7 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import useAuthStore from "@/stores/authstore";
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
   const [username, setUsername] = useState("");
@@ -17,8 +17,6 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const handleLogin = (event: React.MouseEvent) => {
     login(username, password);
-    alert(isAuthenticated);
-    closeDialog(event);
   };
 
   return (

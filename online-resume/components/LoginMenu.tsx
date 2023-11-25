@@ -6,8 +6,6 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  Paper,
-  TextField,
 } from "@mui/material";
 import { useState } from "react";
 import DialogOpener from "./DialogOpener";
