@@ -1,12 +1,21 @@
 "use client";
 import useAuthStore from "@/stores/authstore";
-import { Edit } from "@mui/icons-material";
-import { Box, Grid, Paper } from "@mui/material";
+import { EditOutlined } from "@mui/icons-material";
+import { Box, Paper } from "@mui/material";
+import { useState } from "react";
+import DialogOpener from "./DialogOpener";
 
 const Resume = () => {
   const isAuthenticated = useAuthStore((state) => {
     return state.isAuthenticated;
   });
+  const [dialogOpener, setDialogOpener] = useState(false);
+  const handleOpenDialog = () => {
+    setDialogOpener(true);
+  };
+  const handleCloseDialog = () => {
+    setDialogOpener(false);
+  };
   return (
     <div>
       <Paper
@@ -40,8 +49,17 @@ const Resume = () => {
           </div>
 
           {isAuthenticated && (
-            <div className="w-full text-right">
-              <Edit sx={{ height: 15, width: 15 }} className="mr-1 mb-1" />
+            <div className="w-full text-right" onClick={handleOpenDialog}>
+              <EditOutlined
+                sx={{ height: 15, width: 15 }}
+                className="mr-1 mb-1"
+              />
+              <DialogOpener
+                open={dialogOpener}
+                onCloseDialog={handleCloseDialog}
+                form="SummaryForm"
+                title="Summary"
+              />
             </div>
           )}
 

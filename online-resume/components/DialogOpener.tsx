@@ -7,6 +7,7 @@ import {
 import React, { ComponentType, useState } from "react";
 import LoginForm from "./Forms/LoginForm";
 import CloseIcon from "@mui/icons-material/CloseOutlined";
+import SummaryForm from "./Forms/SummaryForm";
 
 interface DialogOpenerProps {
   open: boolean;
@@ -17,6 +18,7 @@ interface DialogOpenerProps {
 
 const formComponents: Record<string, ComponentType<any>> = {
   LoginForm: LoginForm,
+  SummaryForm: SummaryForm,
 };
 
 const DialogOpener = ({
