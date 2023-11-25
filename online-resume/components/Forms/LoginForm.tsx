@@ -5,24 +5,20 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
+import useAuthStore from "@/stores/authstore";
 
 import React, { useState } from "react";
 
 const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const login = useAuthStore((state) => state.login);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const handleLogin = (event: React.MouseEvent) => {
-    if (
-      username === process.env.NEXT_PUBLIC_REACT_APP_USERNAME &&
-      password === process.env.NEXT_PUBLIC_REACT_APP_PASSWORD
-    ) {
-      setIsLoggedIn(true);
-      closeDialog(event);
-    } else {
-      alert("Invalid credentials");
-    }
+    login(username, password);
+    alert(isAuthenticated);
+    closeDialog(event);
   };
 
   return (
