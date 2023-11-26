@@ -1,7 +1,8 @@
 import React from "react";
+import TextEditor from "../TextEditor";
 
 const SummaryForm = () => {
-  return <div>SummaryForm</div>;
+  return <div></div>;
 };
 
 export default SummaryForm;

@@ -12,8 +12,11 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@headlessui/react": "^1.7.17",
+    "@hookform/resolvers": "^3.3.2",
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toggle": "^1.0.3",
     "@tiptap/pm": "^2.1.12",
     "@tiptap/react": "^2.1.12",
@@ -28,6 +31,7 @@
     "react-hook-form": "^7.48.2",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.22.4",
     "zustand": "^4.4.6"
   },
   "devDependencies": {
