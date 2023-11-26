@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     domains: ["media.tenor.com"],
+    // remotePatterns: ["media.tenor.com"],
   },
 };
 
