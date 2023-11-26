@@ -11,3 +11,8 @@ export interface AuthActions {
   login: (username: string, password: string) => void;
   logout: () => void;
 }
+
+export interface TextEditorProps {
+  description: string;
+  onChange: (richtext: string) => void;
+}
