@@ -3,6 +3,7 @@
 import { TextEditorProps } from "@/utils/props";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import ToolBar from "./ToolBar";
 
 const TextEditor = ({ description, onChange }: TextEditorProps) => {
   const editor = useEditor({
@@ -20,6 +21,7 @@ const TextEditor = ({ description, onChange }: TextEditorProps) => {
   });
   return (
     <div className="flex flex-col justify-stretch min-h-[250px]">
+      <ToolBar editor={editor} />
       <EditorContent editor={editor} />
     </div>
   );
