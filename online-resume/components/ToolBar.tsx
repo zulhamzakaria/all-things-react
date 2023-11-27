@@ -35,6 +35,7 @@ const ToolBar = () => {
               {/* Add more controls of your choosing here */}
             </MenuControlsContainer>
           )}
+          className="h-72 p-2"
         />
         <Button onClick={() => console.log(rteRef.current?.editor?.getHTML())}>
           Log HTML

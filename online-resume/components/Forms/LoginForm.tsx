@@ -43,7 +43,6 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
     >
       <Paper className="rounded-md bg-transparent" elevation={0}>
         <div className="flex items-center flex-col">
-          <AccountCircle fontSize="large" />
           <TextField
             id="standard-basic"
             label="Email"

@@ -35,7 +35,7 @@ const DialogOpener = ({
         <div className="text-end mt-1 mr-1">
           <CloseIcon onClick={onCloseDialog} />
         </div>
-        <DialogTitle className="text-center font-semibold pt-7 text-slate-900">
+        <DialogTitle className="text-left font-semibold pt-7 text-slate-900">
           {title}
         </DialogTitle>
         <DialogContent className="rounded-t-lg">
