@@ -10,13 +10,36 @@ import {
   RichTextEditor,
   type RichTextEditorRef,
 } from "mui-tiptap";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import StarterKit from "@tiptap/starter-kit";
-import { Box, Button } from "@mui/material";
+import { Box, Button, useTheme } from "@mui/material";
 
 const ToolBar = () => {
-  const rteRef = useRef<RichTextEditorRef>(null);
+  const handleClickSave = () => {
+    saveToDatabase();
+  };
 
+  const saveToDatabase = async () => {
+    try {
+      const content = rteRef.current?.editor?.getHTML();
+      const response = await fetch("", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content }),
+      });
+      if (response.ok) {
+        console.log("Content saved");
+      } else {
+        console.log("Failed to save content");
+      }
+    } catch (error) {
+      console.log("Error saving content", error);
+    }
+  };
+
+  const rteRef = useRef<RichTextEditorRef>(null);
   return (
     <Box
       sx={{
@@ -57,9 +80,10 @@ const ToolBar = () => {
           <Button
             className="mt-6 bg-green-600 text-white btn"
             fullWidth
-            onClick={() => console.log(rteRef.current?.editor?.getHTML())}
+            // onClick={() => console.log(rteRef.current?.editor?.getHTML())}
+            onClick={handleClickSave}
           >
-            Log HTML
+            Save
           </Button>
         </div>
       </div>
