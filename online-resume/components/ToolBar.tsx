@@ -3,6 +3,15 @@
 import { Editor } from "@tiptap/react";
 import { Bold, List, Strikethrough, ListOrdered, Heading2 } from "lucide-react";
 import { Toggle } from "./ui/toggle";
+import {
+  MenuButtonBold,
+  MenuButtonItalic,
+  MenuControlsContainer,
+  MenuDivider,
+  MenuSelectHeading,
+  RichTextEditor,
+  type RichTextEditorRef,
+} from "mui-tiptap";
 
 type Props = {
   editor: Editor | null;
@@ -44,7 +53,7 @@ const ToolBar = ({ editor }: Props) => {
 
       <Toggle
         size="sm"
-        pressed={editor.isActive("bulletList")}
+        // pressed={editor.isActive("bulletList")}
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={editor.isActive("bulletList") ? "is-active" : ""}
       >
