@@ -1,6 +1,6 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { Button } from "./ui/button";
+import ToolBar from "./ToolBar";
 
 const TipTapEditor = () => {
   const editor = useEditor({
@@ -8,16 +8,9 @@ const TipTapEditor = () => {
     content: "<p>tiptap</p>",
   });
   return (
-    <div>
-      <div>
-        <Button
-          onClick={() => {
-            editor?.chain().focus().toggleBold().run();
-          }}
-        >
-          Bold
-        </Button>
-      </div>
+    <div className="flex flex-col justify-stretch min-h-[250px]">
+      <ToolBar editor={editor} />
+      <EditorContent editor={editor} />
     </div>
   );
 };

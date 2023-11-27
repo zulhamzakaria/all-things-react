@@ -5,7 +5,6 @@ import TipTapEditor from "../TipTapEditor";
 const SummaryForm = () => {
   return (
     <div>
-      <TextField label="Add summary..." multiline rows={5} variant="outlined" />
       <TipTapEditor />
     </div>
   );

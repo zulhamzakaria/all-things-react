@@ -45,12 +45,12 @@ const ToolBar = ({ editor }: Props) => {
       <Toggle
         size="sm"
         pressed={editor.isActive("bulletList")}
-        onPressedChange={() => {
-          editor.chain().focus().toggleBulletList().run();
-        }}
+        onClick={() => editor.chain().focus().toggleBulletList().run()}
+        className={editor.isActive("bulletList") ? "is-active" : ""}
       >
         <List className="h-4 w-4" />
       </Toggle>
+
       <Toggle
         size="sm"
         pressed={editor.isActive("orderedList")}
