@@ -21,7 +21,7 @@ const TextEditor = ({ description, onChange }: TextEditorProps) => {
   });
   return (
     <div className="flex flex-col justify-stretch min-h-[250px]">
-      <ToolBar editor={editor} />
+      <ToolBar />
       <EditorContent editor={editor} />
     </div>
   );

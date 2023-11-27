@@ -1,74 +1,45 @@
 "use client";
 
-import { Editor } from "@tiptap/react";
-import { Bold, List, Strikethrough, ListOrdered, Heading2 } from "lucide-react";
-import { Toggle } from "./ui/toggle";
 import {
   MenuButtonBold,
   MenuButtonItalic,
+  MenuButtonBulletedList,
   MenuControlsContainer,
   MenuDivider,
   MenuSelectHeading,
   RichTextEditor,
   type RichTextEditorRef,
 } from "mui-tiptap";
+import { useRef } from "react";
+import StarterKit from "@tiptap/starter-kit";
+import { Button } from "@mui/material";
 
-type Props = {
-  editor: Editor | null;
-};
+const ToolBar = () => {
+  const rteRef = useRef<RichTextEditorRef>(null);
 
-const ToolBar = ({ editor }: Props) => {
-  if (!editor) {
-    return null;
-  }
   return (
     <div className="border border-input bg-transparent">
-      <Toggle
-        size="sm"
-        pressed={editor.isActive("heading")}
-        onPressedChange={() =>
-          editor.chain().focus().toggleHeading({ level: 2 }).run()
-        }
-      >
-        <Heading2 className="h-4 w-4" />
-      </Toggle>
-      <Toggle
-        size="sm"
-        pressed={editor.isActive("bold")}
-        onPressedChange={() => {
-          editor.chain().focus().toggleBold().run();
-        }}
-      >
-        <Bold className="h-4 w-4" />
-      </Toggle>
-      <Toggle
-        size="sm"
-        pressed={editor.isActive("strike")}
-        onPressedChange={() => {
-          editor.chain().focus().toggleStrike().run();
-        }}
-      >
-        <Strikethrough className="h-4 w-4" />
-      </Toggle>
-
-      <Toggle
-        size="sm"
-        // pressed={editor.isActive("bulletList")}
-        onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={editor.isActive("bulletList") ? "is-active" : ""}
-      >
-        <List className="h-4 w-4" />
-      </Toggle>
-
-      <Toggle
-        size="sm"
-        pressed={editor.isActive("orderedList")}
-        onPressedChange={() => {
-          editor.chain().focus().toggleOrderedList().run();
-        }}
-      >
-        <ListOrdered className="h-4 w-4" />
-      </Toggle>
+      <div>
+        <RichTextEditor
+          ref={rteRef}
+          extensions={[StarterKit]} // Or any Tiptap extensions you wish!
+          content="Add summary here..." // Initial content for the editor
+          // Optionally include `renderControls` for a menu-bar atop the editor:
+          renderControls={() => (
+            <MenuControlsContainer>
+              <MenuSelectHeading />
+              <MenuDivider />
+              <MenuButtonBold />
+              <MenuButtonItalic />
+              <MenuButtonBulletedList />
+              {/* Add more controls of your choosing here */}
+            </MenuControlsContainer>
+          )}
+        />
+        <Button onClick={() => console.log(rteRef.current?.editor?.getHTML())}>
+          Log HTML
+        </Button>
+      </div>
     </div>
   );
 };

@@ -9,8 +9,8 @@ const TipTapEditor = () => {
   });
   return (
     <div className="flex flex-col justify-stretch min-h-[250px]">
-      <ToolBar editor={editor} />
-      <EditorContent editor={editor} />
+      <ToolBar />
+      {/* <EditorContent editor={editor} /> */}
     </div>
   );
 };
