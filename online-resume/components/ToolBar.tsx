@@ -22,13 +22,16 @@ const ToolBar = () => {
   const saveToDatabase = async () => {
     try {
       const content = rteRef.current?.editor?.getHTML();
-      const response = await fetch("", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ content }),
-      });
+      const response = await fetch(
+        "https://online-resume-with-minimal-api.azurewebsites.net/api/summaries",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ content }),
+        }
+      );
       if (response.ok) {
         console.log("Content saved");
       } else {
@@ -63,7 +66,7 @@ const ToolBar = () => {
           <RichTextEditor
             ref={rteRef}
             extensions={[StarterKit]} // Or any Tiptap extensions you wish!
-            content="Add summary here..." // Initial content for the editor
+            content={"Add summary here..."} // Initial content for the editor
             // Optionally include `renderControls` for a menu-bar atop the editor:
             renderControls={() => (
               <MenuControlsContainer>

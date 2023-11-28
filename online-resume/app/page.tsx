@@ -1,5 +1,4 @@
 // app start page
-import Nav from "@/components/Nav";
 import Resume from "@/components/Resume";
 import React from "react";
 
