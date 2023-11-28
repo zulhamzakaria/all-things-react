@@ -22,6 +22,7 @@ const ToolBar = () => {
   const saveToDatabase = async () => {
     try {
       const content = rteRef.current?.editor?.getHTML();
+      console.log(content);
       const response = await fetch(
         "https://online-resume-with-minimal-api.azurewebsites.net/api/summaries",
         {
@@ -29,7 +30,7 @@ const ToolBar = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ content }),
+          body: JSON.stringify({ description: content }),
         }
       );
       if (response.ok) {
