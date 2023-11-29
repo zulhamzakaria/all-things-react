@@ -4,6 +4,7 @@ import { EditOutlined } from "@mui/icons-material";
 import { Box, Paper } from "@mui/material";
 import { useState } from "react";
 import DialogOpener from "./DialogOpener";
+import Summary from "./Summary";
 
 const Resume = () => {
   const isAuthenticated = useAuthStore((state) => {
@@ -70,6 +71,9 @@ const Resume = () => {
                 about System Design and Architecture{" "}
               </li>
             </ul>
+          </div>
+          <div>
+            <Summary />
           </div>
         </div>
       </Paper>

@@ -11,12 +11,11 @@ const fetcher = async () => {
 };
 
 const Summary: React.FC = () => {
-  const { data, error, isLoading } = useSWR(
+  const { data, error } = useSWR(
     "https://online-resume-with-minimal-api.azurewebsites.net/api/summaries",
     fetcher
   );
   if (error) return <div>Failed to get data... (`${error.message}`)</div>;
-  if (isLoading) return <div>Loading...</div>;
   return <div>{data?.description}</div>;
 };
 
