@@ -64,14 +64,14 @@ const Resume = () => {
             </div>
           )}
 
-          <div className="mt-2 ">
+          {/* <div className="mt-2 ">
             <ul className="mt-2 ml-5 list-inside list-disc">
               <li className="text-sm text-left w-full">
                 Experienced Senior Application Developer wanting to learn more
                 about System Design and Architecture{" "}
               </li>
             </ul>
-          </div>
+          </div> */}
           <div>
             <Summary />
           </div>
