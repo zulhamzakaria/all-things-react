@@ -19,11 +19,10 @@ const Summary: React.FC = () => {
   const sanitizedHtml = data
     ? DOMPurify.sanitize(data.description)
     : "Error getting data...";
-
   if (error) return <div>Failed to get data... (`${error.message}`)</div>;
   return (
     <div
-      className="text-sm text-left w-full"
+      className="pl-5 text-sm text-justify w-full"
       dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
     />
   );
