@@ -42,8 +42,7 @@ const Resume = () => {
             <Box
               sx={{
                 width: "100%",
-                height: 3,
-                borderRadius: 1,
+                height: 5,
                 bgcolor: "error.main",
               }}
             />
