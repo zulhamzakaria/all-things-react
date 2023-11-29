@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import * as DOMPurify from 'dompurify'; 
 
 const fetcher = async () => {
   const response = await fetch(
