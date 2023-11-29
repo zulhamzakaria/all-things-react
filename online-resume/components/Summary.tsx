@@ -16,10 +16,17 @@ const Summary: React.FC = () => {
     "https://online-resume-with-minimal-api.azurewebsites.net/api/summaries",
     fetcher
   );
-  const sanitizedHtml = DOMPurify.sanitize(data?.description);
+  const sanitizedHtml = data
+    ? DOMPurify.sanitize(data.description)
+    : "Error getting data...";
 
   if (error) return <div>Failed to get data... (`${error.message}`)</div>;
-  return <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
+  return (
+    <div
+      className="text-sm text-left w-full"
+      dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
+    />
+  );
 };
 
 export default Summary;
