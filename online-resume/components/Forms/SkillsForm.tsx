@@ -4,7 +4,7 @@ import TipTapEditor from "../TipTapEditor";
 const SkillsForm = () => {
   return (
     <div>
-      <TipTapEditor />
+      <TipTapEditor endpoint="skills" />
     </div>
   );
 };

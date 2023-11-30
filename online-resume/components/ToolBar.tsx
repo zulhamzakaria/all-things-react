@@ -14,7 +14,7 @@ import { useEffect, useRef } from "react";
 import StarterKit from "@tiptap/starter-kit";
 import { Box, Button, useTheme } from "@mui/material";
 
-const ToolBar = () => {
+const ToolBar: React.FC<{ endpoint: string }> = ({ endpoint }) => {
   const handleClickSave = () => {
     saveToDatabase();
   };
@@ -24,7 +24,7 @@ const ToolBar = () => {
       const content = rteRef.current?.editor?.getHTML();
       console.log(content);
       const response = await fetch(
-        "https://online-resume-with-minimal-api.azurewebsites.net/api/summaries",
+        `https://online-resume-with-minimal-api.azurewebsites.net/api/${endpoint}`,
         {
           method: "POST",
           headers: {

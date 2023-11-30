@@ -4,7 +4,7 @@ import TipTapEditor from "../TipTapEditor";
 const SummaryForm = () => {
   return (
     <div>
-      <TipTapEditor />
+      <TipTapEditor endpoint="summaries" />
     </div>
   );
 };
