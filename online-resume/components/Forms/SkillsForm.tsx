@@ -1,7 +1,7 @@
 import React from "react";
 import TipTapEditor from "../TipTapEditor";
 
-const SummaryForm = () => {
+const SkillsForm = () => {
   return (
     <div>
       <TipTapEditor />
@@ -9,4 +9,4 @@ const SummaryForm = () => {
   );
 };
 
-export default SummaryForm;
+export default SkillsForm;

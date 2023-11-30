@@ -5,6 +5,7 @@ import { Box, Paper } from "@mui/material";
 import { useState } from "react";
 import DialogOpener from "./DialogOpener";
 import Summary from "./Summary";
+import Skills from "./Skills";
 
 const Resume = () => {
   const isAuthenticated = useAuthStore((state) => {
@@ -66,6 +67,33 @@ const Resume = () => {
 
           <div>
             <Summary />
+          </div>
+
+          <div className="flex justify-center items-center">
+            <Box
+              sx={{
+                width: "100%",
+                height: 5,
+                bgcolor: "error.main",
+              }}
+            />
+          </div>
+          {isAuthenticated && (
+            <div className="w-full text-right" onClick={handleOpenDialog}>
+              <EditOutlined
+                sx={{ height: 15, width: 15 }}
+                className="mr-1 mb-1"
+              />
+              <DialogOpener
+                open={dialogOpener}
+                onCloseDialog={handleCloseDialog}
+                form="SkillsForm"
+                title="Skills"
+              />
+            </div>
+          )}
+          <div>
+            <Skills />
           </div>
         </div>
       </Paper>

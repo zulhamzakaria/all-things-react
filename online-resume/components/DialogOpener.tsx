@@ -1,13 +1,9 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from "@mui/material";
-import React, { ComponentType, useState } from "react";
+import { Dialog, DialogContent, DialogTitle } from "@mui/material";
+import React, { ComponentType } from "react";
 import LoginForm from "./Forms/LoginForm";
 import CloseIcon from "@mui/icons-material/CloseOutlined";
 import SummaryForm from "./Forms/SummaryForm";
+import SkillsForm from "./Forms/SkillsForm";
 
 interface DialogOpenerProps {
   open: boolean;
@@ -19,6 +15,7 @@ interface DialogOpenerProps {
 const formComponents: Record<string, ComponentType<any>> = {
   LoginForm: LoginForm,
   SummaryForm: SummaryForm,
+  SkillsForm: SkillsForm,
 };
 
 const DialogOpener = ({
