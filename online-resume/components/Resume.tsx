@@ -6,6 +6,7 @@ import { useState } from "react";
 import DialogOpener from "./DialogOpener";
 import Summary from "./Summary";
 import Skills from "./Skills";
+import Experiences from "./Experiences";
 
 const Resume = () => {
   const isAuthenticated = useAuthStore((state) => {
@@ -39,7 +40,6 @@ const Resume = () => {
           <div className="mt-7 ml-1 font-arial text-black text-left font-semibold">
             SUMMARY
           </div>
-
           <div className="flex justify-center items-center">
             <Box
               sx={{
@@ -49,7 +49,6 @@ const Resume = () => {
               }}
             />
           </div>
-
           {isAuthenticated && (
             <div className="w-full text-right" onClick={handleOpenDialog}>
               <EditOutlined
@@ -64,7 +63,6 @@ const Resume = () => {
               />
             </div>
           )}
-
           <div>
             <Summary />
           </div>
@@ -72,7 +70,6 @@ const Resume = () => {
           <div className="mt-5 ml-1 font-arial text-black text-left font-semibold">
             KEY SKILLS
           </div>
-
           <div className="flex justify-center items-center">
             <Box
               sx={{
@@ -98,6 +95,36 @@ const Resume = () => {
           )}
           <div>
             <Skills />
+          </div>
+
+          <div className="mt-5 ml-1 font-arial text-black text-left font-semibold">
+            EXPERIENCES
+          </div>
+          <div className="flex justify-center items-center">
+            <Box
+              sx={{
+                width: "100%",
+                height: 5,
+                bgcolor: "error.main",
+              }}
+            />
+          </div>
+          {isAuthenticated && (
+            <div className="w-full text-right" onClick={handleOpenDialog}>
+              <EditOutlined
+                sx={{ height: 15, width: 15 }}
+                className="mr-1 mb-1"
+              />
+              <DialogOpener
+                open={dialogOpener}
+                onCloseDialog={handleCloseDialog}
+                form="ExperiencesForm"
+                title="Experiences"
+              />
+            </div>
+          )}
+          <div>
+            <Experiences />
           </div>
         </div>
       </Paper>
