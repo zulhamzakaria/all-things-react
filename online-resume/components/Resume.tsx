@@ -36,7 +36,7 @@ const Resume = () => {
             </h2>
           </div>
 
-          <div className="mt-7 font-arial text-black text-left font-semibold">
+          <div className="mt-7 ml-1 font-arial text-black text-left font-semibold">
             SUMMARY
           </div>
 
@@ -67,6 +67,10 @@ const Resume = () => {
 
           <div>
             <Summary />
+          </div>
+
+          <div className="mt-5 ml-1 font-arial text-black text-left font-semibold">
+            KEY SKILLS
           </div>
 
           <div className="flex justify-center items-center">

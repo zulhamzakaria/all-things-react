@@ -15,15 +15,8 @@ const Skills = () => {
   }, [isLoading, data]);
 
   if (error) return <div>Failed to get data... (`${error.message}`)</div>;
-  if (isLoading) return <div>Loading data...</div>;
-  return (
-    <div className="pl-5 pt-1 text-sm text-justify w-full">
-      {/* {skills.map((skill, index) => (
-        <div key={index}>{skill}</div>
-      ))} */}
-      {skills.join(",")}
-    </div>
-  );
+  if (isLoading) return <div>loading data...</div>;
+  return <div className="pl-5 pt-1 text-sm text-justify w-full">{skills}</div>;
 };
 
 export default Skills;
