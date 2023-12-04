@@ -1,11 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import TipTapEditor from "../TipTapEditor";
+import { Paper, TextField } from "@mui/material";
 
 const ExperiencesForm = () => {
+  const [companyName, setCompanyName] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [period, setPeriod] = useState("");
   return (
-    <div>
-      <TipTapEditor endpoint="experiences" />
-    </div>
+    <Paper elevation={0}>
+      <div className="flex items-center flex-col">
+        <TextField
+          id="standard-basic"
+          label="Company Name"
+          variant="standard"
+          className="mt-5"
+          fullWidth
+          required
+          value={companyName}
+          onChange={(e) => setCompanyName(e.target.value)}
+        />
+      </div>
+      <div className="mb-10" style={{ display: "flex", gap: "10px" }}>
+        <TextField
+          id="standard-basic"
+          label="Job Title"
+          variant="standard"
+          className="mt-5 flex-grow"
+          required
+          value={jobTitle}
+          onChange={(e) => setJobTitle(e.target.value)}
+        />
+        <TextField
+          id="standard-basic"
+          label="Period"
+          variant="standard"
+          className="mt-5 flex-grow"
+          required
+          value={period}
+          onChange={(e) => setPeriod(e.target.value)}
+        />
+      </div>
+      <div>
+        <TipTapEditor endpoint="experiences" />
+      </div>
+    </Paper>
   );
 };
 

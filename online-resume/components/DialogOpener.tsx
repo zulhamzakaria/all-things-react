@@ -17,7 +17,7 @@ const formComponents: Record<string, ComponentType<any>> = {
   LoginForm: LoginForm,
   SummaryForm: SummaryForm,
   SkillsForm: SkillsForm,
-  // ExperiencesForm: ExperiencesForm,
+  ExperiencesForm: ExperiencesForm,
 };
 
 const DialogOpener = ({

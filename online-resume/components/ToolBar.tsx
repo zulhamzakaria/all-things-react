@@ -10,7 +10,7 @@ import {
   RichTextEditor,
   type RichTextEditorRef,
 } from "mui-tiptap";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import StarterKit from "@tiptap/starter-kit";
 import { Box, Button, useTheme } from "@mui/material";
 
