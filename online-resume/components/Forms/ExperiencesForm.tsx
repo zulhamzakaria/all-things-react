@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import TipTapEditor from "../TipTapEditor";
 
 const ExperiencesForm = () => {
   return (
-    <div>ExperiencesForm</div>
-  )
-}
+    <div>
+      <TipTapEditor endpoint="experiences" />
+    </div>
+  );
+};
 
-export default ExperiencesForm
+export default ExperiencesForm;
