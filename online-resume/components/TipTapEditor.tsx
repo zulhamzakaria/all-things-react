@@ -8,7 +8,7 @@ const TipTapEditor: React.FC<{ endpoint: string }> = ({ endpoint }) => {
     content: "<p>tiptap</p>",
   });
   return (
-    <div className="flex flex-col justify-stretch min-h-[250px]">
+    <div className="flex flex-col justify-stretch min-h-[250px] pt-5">
       <ToolBar endpoint={endpoint} />
     </div>
   );

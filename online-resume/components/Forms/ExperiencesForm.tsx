@@ -7,7 +7,7 @@ const ExperiencesForm = () => {
   const [jobTitle, setJobTitle] = useState("");
   const [period, setPeriod] = useState("");
   return (
-    <Paper elevation={0}>
+    <Paper elevation={0} className="bg-transparent">
       <div className="flex items-center flex-col">
         <TextField
           id="standard-basic"
@@ -20,7 +20,7 @@ const ExperiencesForm = () => {
           onChange={(e) => setCompanyName(e.target.value)}
         />
       </div>
-      <div className="mb-5" style={{ display: "flex", gap: "10px" }}>
+      <div style={{ display: "flex", gap: "10px" }}>
         <TextField
           id="standard-basic"
           label="Job Title"

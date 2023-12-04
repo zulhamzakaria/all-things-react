@@ -29,14 +29,14 @@ const DialogOpener = ({
   const FormComponent = formComponents[form] || null;
   return (
     <React.Fragment>
-      <Dialog open={open}>
-        <div className="text-end mt-1 mr-1">
-          <CloseIcon onClick={onCloseDialog} />
+      <Dialog open={open} className="opacity-100">
+        <div className="text-end pt-1 pr-1 bg-red-900">
+          <CloseIcon onClick={onCloseDialog} className="text-white" />
         </div>
-        <DialogTitle className="text-left font-semibold pt-7 text-slate-900">
+        <DialogTitle className="text-center font-semibold pt-7 text-white bg-red-900">
           {title}
         </DialogTitle>
-        <DialogContent className="rounded-t-lg">
+        <DialogContent className="rounded-t-lg ">
           {FormComponent && <FormComponent closeDialog={onCloseDialog} />}
         </DialogContent>
       </Dialog>

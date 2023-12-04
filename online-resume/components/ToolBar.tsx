@@ -60,7 +60,7 @@ const ToolBar: React.FC<{ endpoint: string }> = ({ endpoint }) => {
       }}
     >
       <div className="border border-input bg-transparent">
-        <div>
+        <div className="bg-transparent">
           <RichTextEditor
             ref={rteRef}
             extensions={[StarterKit]} // Or any Tiptap extensions you wish!
