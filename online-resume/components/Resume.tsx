@@ -34,7 +34,17 @@ const Resume = () => {
   return (
     <div>
       <Paper
-        sx={{ width: 595, height: 842, maxHeight: "100%", maxWidth: "100%" }}
+        sx={{
+          width: 595,
+          height: 842,
+          maxHeight: "100%",
+          maxWidth: "100%",
+          ".btn:hover": {
+            borderColor: "green",
+            color: "white",
+            background: "green",
+          },
+        }}
         className="mt-2"
       >
         <div className="mt-2 mr-8 ml-8">
@@ -153,7 +163,11 @@ const Resume = () => {
               className="w-full mt-5"
               onClick={() => handleOpenDialog("experiences")}
             >
-              <Button variant="contained" fullWidth className="bg-green-600">
+              <Button
+                variant="contained"
+                fullWidth
+                className="bg-green-600 btn"
+              >
                 Add Experience
               </Button>
               <DialogOpener

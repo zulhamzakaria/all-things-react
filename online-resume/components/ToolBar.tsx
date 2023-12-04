@@ -59,7 +59,6 @@ const ToolBar: React.FC<{ endpoint: string }> = ({ endpoint }) => {
         },
       }}
     >
-      {" "}
       <div className="border border-input bg-transparent">
         <div>
           <RichTextEditor
