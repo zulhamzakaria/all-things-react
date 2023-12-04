@@ -12,13 +12,24 @@ const Resume = () => {
   const isAuthenticated = useAuthStore((state) => {
     return state.isAuthenticated;
   });
-  const [dialogOpener, setDialogOpener] = useState(false);
-  const handleOpenDialog = () => {
-    setDialogOpener(true);
+
+  const [dialogOpener, setDialogOpener] = useState({
+    summary: false,
+    skills: false,
+    experiences: false,
+  });
+  const handleOpenDialog = (dialogType: string) => {
+    setDialogOpener((prev) => ({
+      ...prev,
+      [dialogType]: true,
+    }));
   };
-  const handleCloseDialog = (event: React.MouseEvent) => {
+  const handleCloseDialog = (event: React.MouseEvent, dialogType: string) => {
     event.stopPropagation();
-    setDialogOpener(false);
+    setDialogOpener((prev) => ({
+      ...prev,
+      [dialogType]: false,
+    }));
   };
   return (
     <div>
@@ -50,14 +61,17 @@ const Resume = () => {
             />
           </div>
           {isAuthenticated && (
-            <div className="w-full text-right" onClick={handleOpenDialog}>
+            <div
+              className="w-full text-right"
+              onClick={() => handleOpenDialog("summary")}
+            >
               <EditOutlined
                 sx={{ height: 15, width: 15 }}
                 className="mr-1 mb-1"
               />
               <DialogOpener
-                open={dialogOpener}
-                onCloseDialog={handleCloseDialog}
+                open={dialogOpener.summary}
+                onCloseDialog={(event) => handleCloseDialog(event, "summary")}
                 form="SummaryForm"
                 title="Summary"
               />
@@ -80,14 +94,17 @@ const Resume = () => {
             />
           </div>
           {isAuthenticated && (
-            <div className="w-full text-right" onClick={handleOpenDialog}>
+            <div
+              className="w-full text-right"
+              onClick={() => handleOpenDialog("skills")}
+            >
               <EditOutlined
                 sx={{ height: 15, width: 15 }}
                 className="mr-1 mb-1"
               />
               <DialogOpener
-                open={dialogOpener}
-                onCloseDialog={handleCloseDialog}
+                open={dialogOpener.skills}
+                onCloseDialog={(event) => handleCloseDialog(event, "skills")}
                 form="SkillsForm"
                 title="Skills"
               />
@@ -109,7 +126,7 @@ const Resume = () => {
               }}
             />
           </div>
-          {isAuthenticated && (
+          {/* {isAuthenticated && (
             <div className="w-full text-right" onClick={handleOpenDialog}>
               <EditOutlined
                 sx={{ height: 15, width: 15 }}
@@ -122,11 +139,11 @@ const Resume = () => {
                 title="Experiences"
               />
             </div>
-          )}
+          )} */}
           <div>
             <Experiences />
           </div>
-          {isAuthenticated && (
+          {/* {isAuthenticated && (
             <div className="w-full mt-5" onClick={handleOpenDialog}>
               <Button variant="contained" fullWidth className="bg-green-600">
                 Add Experience
@@ -138,7 +155,7 @@ const Resume = () => {
                 title="Experiences"
               />
             </div>
-          )}
+          )} */}
         </div>
       </Paper>
     </div>
