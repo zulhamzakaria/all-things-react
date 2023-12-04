@@ -1,7 +1,7 @@
 "use client";
 import useAuthStore from "@/stores/authstore";
 import { EditOutlined } from "@mui/icons-material";
-import { Box, Paper } from "@mui/material";
+import { Box, Button, Paper } from "@mui/material";
 import { useState } from "react";
 import DialogOpener from "./DialogOpener";
 import Summary from "./Summary";
@@ -126,6 +126,19 @@ const Resume = () => {
           <div>
             <Experiences />
           </div>
+          {isAuthenticated && (
+            <div className="w-full mt-5" onClick={handleOpenDialog}>
+              <Button variant="contained" fullWidth className="bg-green-600">
+                Add Experience
+              </Button>
+              <DialogOpener
+                open={dialogOpener}
+                onCloseDialog={handleCloseDialog}
+                form="ExperiencesForm"
+                title="Experiences"
+              />
+            </div>
+          )}
         </div>
       </Paper>
     </div>
