@@ -12,7 +12,7 @@ const ExperiencesForm = () => {
         <TextField
           id="standard-basic"
           label="Company Name"
-          variant="standard"
+          variant="outlined"
           className="mt-5"
           fullWidth
           required
@@ -20,11 +20,11 @@ const ExperiencesForm = () => {
           onChange={(e) => setCompanyName(e.target.value)}
         />
       </div>
-      <div className="mb-10" style={{ display: "flex", gap: "10px" }}>
+      <div className="mb-5" style={{ display: "flex", gap: "10px" }}>
         <TextField
           id="standard-basic"
           label="Job Title"
-          variant="standard"
+          variant="outlined"
           className="mt-5 flex-grow"
           required
           value={jobTitle}
@@ -33,7 +33,7 @@ const ExperiencesForm = () => {
         <TextField
           id="standard-basic"
           label="Period"
-          variant="standard"
+          variant="outlined"
           className="mt-5 flex-grow"
           required
           value={period}
