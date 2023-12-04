@@ -39,7 +39,7 @@ const Resume = () => {
       >
         <div className="mt-2 mr-8 ml-8">
           <div className="text-center pt-5">
-            <h1 className="mt-10 font-inter text-black text-lg font-bold">
+            <h1 className="mt-7 font-inter text-black text-lg font-bold">
               MOHD ZULHAM BIN ZAKARIA
             </h1>
             <h2 className="mt-2 mb-2 text-gray text-xs font-thin">
@@ -48,7 +48,7 @@ const Resume = () => {
             </h2>
           </div>
 
-          <div className="mt-7 ml-1 font-arial text-black text-left font-semibold">
+          <div className="mt-5 ml-1 font-arial text-black text-left font-semibold">
             SUMMARY
           </div>
           <div className="flex justify-center items-center">
@@ -126,36 +126,46 @@ const Resume = () => {
               }}
             />
           </div>
-          {/* {isAuthenticated && (
-            <div className="w-full text-right" onClick={handleOpenDialog}>
+          {isAuthenticated && (
+            <div
+              className="w-full text-right"
+              onClick={() => handleOpenDialog("experiences")}
+            >
               <EditOutlined
                 sx={{ height: 15, width: 15 }}
                 className="mr-1 mb-1"
               />
               <DialogOpener
-                open={dialogOpener}
-                onCloseDialog={handleCloseDialog}
+                open={dialogOpener.experiences}
+                onCloseDialog={(event) =>
+                  handleCloseDialog(event, "experiences")
+                }
                 form="ExperiencesForm"
                 title="Experiences"
               />
             </div>
-          )} */}
+          )}
           <div>
             <Experiences />
           </div>
-          {/* {isAuthenticated && (
-            <div className="w-full mt-5" onClick={handleOpenDialog}>
+          {isAuthenticated && (
+            <div
+              className="w-full mt-5"
+              onClick={() => handleOpenDialog("experiences")}
+            >
               <Button variant="contained" fullWidth className="bg-green-600">
                 Add Experience
               </Button>
               <DialogOpener
-                open={dialogOpener}
-                onCloseDialog={handleCloseDialog}
+                open={dialogOpener.experiences}
+                onCloseDialog={(event) =>
+                  handleCloseDialog(event, "experiences")
+                }
                 form="ExperiencesForm"
                 title="Experiences"
               />
             </div>
-          )} */}
+          )}
         </div>
       </Paper>
     </div>

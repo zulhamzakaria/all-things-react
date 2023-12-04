@@ -16,7 +16,7 @@ interface DialogOpenerProps {
 const formComponents: Record<string, ComponentType<any>> = {
   LoginForm: LoginForm,
   SummaryForm: SummaryForm,
-  // SkillsForm: SkillsForm,
+  SkillsForm: SkillsForm,
   // ExperiencesForm: ExperiencesForm,
 };
 
@@ -27,7 +27,6 @@ const DialogOpener = ({
   onCloseDialog,
 }: DialogOpenerProps) => {
   const FormComponent = formComponents[form] || null;
-  console.log(form);
   return (
     <React.Fragment>
       <Dialog open={open}>

@@ -18,7 +18,6 @@ const ToolBar: React.FC<{ endpoint: string }> = ({ endpoint }) => {
   const handleClickSave = () => {
     saveToDatabase();
   };
-
   const saveToDatabase = async () => {
     try {
       const content = rteRef.current?.editor?.getHTML();
