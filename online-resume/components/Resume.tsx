@@ -61,12 +61,19 @@ const Resume = () => {
           <div className="mt-5 ml-1 font-arial text-black text-left font-semibold">
             SUMMARY
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex flex-col justify-center items-center">
             <Box
               sx={{
                 width: "100%",
                 height: 5,
-                bgcolor: "error.main",
+                bgcolor: "darkred",
+              }}
+            />
+            <Box
+              sx={{
+                width: "100%",
+                height: 1.1,
+                bgcolor: "darkgrey",
               }}
             />
           </div>
@@ -94,12 +101,19 @@ const Resume = () => {
           <div className="mt-5 ml-1 font-arial text-black text-left font-semibold">
             KEY SKILLS
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex flex-col justify-center items-center">
             <Box
               sx={{
                 width: "100%",
                 height: 5,
-                bgcolor: "error.main",
+                bgcolor: "darkred",
+              }}
+            />
+            <Box
+              sx={{
+                width: "100%",
+                height: 1.1,
+                bgcolor: "darkgrey",
               }}
             />
           </div>
@@ -127,12 +141,19 @@ const Resume = () => {
           <div className="mt-5 ml-1 font-arial text-black text-left font-semibold">
             EXPERIENCES
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex flex-col justify-center items-center">
             <Box
               sx={{
                 width: "100%",
                 height: 5,
-                bgcolor: "error.main",
+                bgcolor: "darkred",
+              }}
+            />
+            <Box
+              sx={{
+                width: "100%",
+                height: 1.1,
+                bgcolor: "darkgrey",
               }}
             />
           </div>
