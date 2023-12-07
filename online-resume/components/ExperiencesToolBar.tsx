@@ -33,7 +33,12 @@ const ExperiencesToolBar: React.FC<{
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ description: content }),
+          body: JSON.stringify({
+            companyname: companyName,
+            jobtitle: jobTitle,
+            period: period,
+            responsibility: content,
+          }),
         }
       );
       if (response.ok) {
