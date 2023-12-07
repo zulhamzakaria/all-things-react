@@ -16,3 +16,9 @@ export interface TextEditorProps {
   description: string;
   onChange: (richtext: string) => void;
 }
+
+export interface ExperiencesProps{
+  companyName: string ;
+  jobTitle: string;
+  period: string;
+}
