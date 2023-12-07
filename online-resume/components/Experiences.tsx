@@ -20,9 +20,11 @@ const Experiences = () => {
     <div className="pl-5 pt-1 text-sm text-justify w-full">
       {experiences.map((experience) => (
         <div key={experience["id"]}>
-          <p>{experience["companyname"]}</p>
-          <p>{experience["responsibility"]}</p>
           <p>{experience["id"]}</p>
+          <p>{experience["companyName"]}</p>
+          <p>{experience["jobTitle"]}</p>
+          <p>{experience["period"]}</p>
+          <p>{experience["responsibility"]}</p>
         </div>
       ))}
     </div>
