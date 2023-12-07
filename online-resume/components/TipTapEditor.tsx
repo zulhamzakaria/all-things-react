@@ -10,11 +10,7 @@ const TipTapEditor: React.FC<{ endpoint: string }> = ({ endpoint }) => {
   });
   return (
     <div className="flex flex-col justify-stretch min-h-[250px] pt-5">
-      {endpoint === "experiences" ? (
-        <ExperiencesToolBar endpoint={endpoint} />
-      ) : (
-        <ToolBar endpoint={endpoint} />
-      )}
+      <ToolBar endpoint={endpoint} />
     </div>
   );
 };

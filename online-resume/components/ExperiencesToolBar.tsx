@@ -14,7 +14,12 @@ import { useRef } from "react";
 import StarterKit from "@tiptap/starter-kit";
 import { Box, Button, useTheme } from "@mui/material";
 
-const ExperiencesToolBar: React.FC<{ endpoint: string }> = ({ endpoint }) => {
+const ExperiencesToolBar: React.FC<{
+  endpoint: string;
+  companyName: string;
+  jobTitle: string;
+  period: string;
+}> = ({ endpoint, companyName, jobTitle, period }) => {
   const handleClickSave = () => {
     saveToDatabase();
   };

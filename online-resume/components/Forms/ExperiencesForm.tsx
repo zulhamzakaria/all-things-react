@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TipTapEditor from "../TipTapEditor";
 import { Paper, TextField } from "@mui/material";
+import ExperiencesTipTapEditor from "../ExperiencesTipTapEditor";
 
 const ExperiencesForm = () => {
   const [companyName, setCompanyName] = useState("");
@@ -41,7 +42,12 @@ const ExperiencesForm = () => {
         />
       </div>
       <div>
-        <TipTapEditor endpoint="experiences" />
+        <ExperiencesTipTapEditor
+          endpoint="experiences"
+          companyName={companyName}
+          jobTitle={jobTitle}
+          period={period}
+        />
       </div>
     </Paper>
   );
