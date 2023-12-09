@@ -49,7 +49,7 @@ const Resume = () => {
       >
         <div className="mt-2 mr-8 ml-8">
           <div className="text-center pt-5">
-            <h1 className="mt-7 font-inter text-black text-xl font-extrabold">
+            <h1 className="mt-7 font-satoshi text-black text-xl font-extrabold">
               MOHD ZULHAM BIN ZAKARIA
             </h1>
             <h2 className="mt-1 mb-2 text-gray font-mono font-semibold text-xs">
@@ -57,7 +57,7 @@ const Resume = () => {
             </h2>
           </div>
 
-          <div className="mt-5 ml-1 font-inter text-black text-left font-extrabold">
+          <div className="mt-5 ml-1 font-satoshi text-black text-left font-extrabold">
             SUMMARY
           </div>
           <div className="flex flex-col justify-center items-center">
