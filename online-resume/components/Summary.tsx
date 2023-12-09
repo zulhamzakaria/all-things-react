@@ -1,7 +1,7 @@
 import useSWR from "swr";
-import * as DOMPurify from "dompurify";
 import * as cheerio from "cheerio";
 import { useEffect, useState } from "react";
+import { sanitize } from "dompurify";
 
 const Summary = () => {
   const [sanitizedHtml, setSanitizedHtml] = useState("loading summaries...");
@@ -13,7 +13,7 @@ const Summary = () => {
 
   useEffect(() => {
     if (!isLoading && data) {
-      const result = processHtml(DOMPurify.sanitize(data.description));
+      const result = processHtml(sanitize(data.description));
       setSanitizedHtml(result);
     }
   }, [isLoading, data]);
