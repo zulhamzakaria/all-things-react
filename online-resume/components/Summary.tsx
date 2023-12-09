@@ -27,7 +27,7 @@ const Summary = () => {
   if (error) return <div>Failed to get data... (`${error.message}`)</div>;
   return (
     <div
-      className="pl-5 pt-1 text-sm text-justify w-full"
+      className="pl-5 pt-1 text-xs font-extrabold font-mono text-justify w-full"
       dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
     />
   );

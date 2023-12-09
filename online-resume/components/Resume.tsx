@@ -58,7 +58,7 @@ const Resume = () => {
             </h2>
           </div>
 
-          <div className="mt-5 ml-1 font-arial text-black text-left font-semibold">
+          <div className="mt-5 ml-1 font-inter text-black text-left font-extrabold">
             SUMMARY
           </div>
           <div className="flex flex-col justify-center items-center">
