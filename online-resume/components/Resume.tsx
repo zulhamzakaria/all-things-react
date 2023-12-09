@@ -49,12 +49,11 @@ const Resume = () => {
       >
         <div className="mt-2 mr-8 ml-8">
           <div className="text-center pt-5">
-            <h1 className="mt-7 font-inter text-black text-lg font-bold">
+            <h1 className="mt-7 font-inter text-black text-xl font-extrabold">
               MOHD ZULHAM BIN ZAKARIA
             </h1>
-            <h2 className="mt-2 mb-2 text-gray text-xs font-thin">
-              +60109185300 | m.zulham.zakaria@gmail.com | .NET Developer |
-              Malaysian
+            <h2 className="mt-1 mb-2 text-gray font-mono font-semibold text-xs">
+              +60109185300 | m.zulham.zakaria@gmail.com | Malaysian
             </h2>
           </div>
 
