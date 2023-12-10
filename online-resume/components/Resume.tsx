@@ -65,14 +65,14 @@ const Resume = () => {
               sx={{
                 width: "100%",
                 height: 5,
-                bgcolor: "error.main",
+                bgcolor: "crimson",
               }}
             />
             <Box
               sx={{
                 width: "100%",
-                height: 2,
-                bgcolor: "darkblue",
+                height: 1.5,
+                bgcolor: "navy",
               }}
             />
           </div>

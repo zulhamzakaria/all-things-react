@@ -4,6 +4,9 @@ const nextConfig = {
     domains: ["media.tenor.com"],
     // remotePatterns: ["media.tenor.com"],
   },
+  experimenttal: {
+    serverActions: true,
+  },
   async headers() {
     return [
       {
