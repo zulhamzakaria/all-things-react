@@ -171,14 +171,14 @@ const Resume = () => {
                 sx={{ height: 15, width: 15 }}
                 className="mr-1 mb-1"
               />
-              <DialogOpener
+              {/* <DialogOpener
                 open={dialogOpener.experience}
                 onCloseDialog={(event) =>
                   handleCloseDialog(event, "experience")
                 }
-                form="ExperiencesForm"
+                form="UpdateExperienceForm"
                 title="Experience"
-              />
+              /> */}
             </div>
           )}
           <div>

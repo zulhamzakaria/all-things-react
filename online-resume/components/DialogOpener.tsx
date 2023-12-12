@@ -5,6 +5,7 @@ import CloseIcon from "@mui/icons-material/CloseOutlined";
 import SummaryForm from "./Forms/SummaryForm";
 import SkillsForm from "./Forms/SkillsForm";
 import ExperiencesForm from "./Forms/ExperiencesForm";
+import UpdateExperience from "@/app/experiences/[id]/page";
 
 interface DialogOpenerProps {
   open: boolean;
@@ -18,6 +19,7 @@ const formComponents: Record<string, ComponentType<any>> = {
   SummaryForm: SummaryForm,
   SkillsForm: SkillsForm,
   ExperiencesForm: ExperiencesForm,
+  UpdateExperienceForm: UpdateExperience
 };
 
 const DialogOpener = ({
