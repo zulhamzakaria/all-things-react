@@ -7,22 +7,28 @@ import DialogOpener from "./DialogOpener";
 import Summary from "./Summary";
 import Skills from "./Skills";
 import Experiences from "./Experiences";
+import { useRouter } from "next/navigation";
 
 const Resume = () => {
   const isAuthenticated = useAuthStore((state) => {
     return state.isAuthenticated;
   });
-
+  const router = useRouter();
   const [dialogOpener, setDialogOpener] = useState({
     summary: false,
     skills: false,
     experiences: false,
+    experience: false,
   });
   const handleOpenDialog = (dialogType: string) => {
     setDialogOpener((prev) => ({
       ...prev,
       [dialogType]: true,
     }));
+  };
+
+  const handleOpenExperienceDialog = (id: number) => {
+    router.push(`/experiences/${id}`);
   };
   const handleCloseDialog = (event: React.MouseEvent, dialogType: string) => {
     event.stopPropagation();
@@ -159,19 +165,19 @@ const Resume = () => {
           {isAuthenticated && (
             <div
               className="w-full text-right"
-              onClick={() => handleOpenDialog("experiences")}
+              onClick={() => handleOpenExperienceDialog(1)}
             >
               <EditOutlined
                 sx={{ height: 15, width: 15 }}
                 className="mr-1 mb-1"
               />
               <DialogOpener
-                open={dialogOpener.experiences}
+                open={dialogOpener.experience}
                 onCloseDialog={(event) =>
-                  handleCloseDialog(event, "experiences")
+                  handleCloseDialog(event, "experience")
                 }
                 form="ExperiencesForm"
-                title="Experiences"
+                title="Experience"
               />
             </div>
           )}
