@@ -1,3 +1,4 @@
+"use client";
 import { ExperienceProps } from "@/utils/props";
 import { FC, useEffect, useState } from "react";
 import useSWR from "swr";
@@ -24,7 +25,12 @@ const page: FC<pageProps> = ({ params }) => {
   if (isLoading) {
     return <div>Loading data...</div>;
   }
-  return <div>page: {experience?.companyName}</div>;
+  return (
+    <div>
+      <div>id: {experience?.id}</div>
+      <div>Company Name: {experience?.companyName}</div>
+    </div>
+  );
 };
 
 export default page;
