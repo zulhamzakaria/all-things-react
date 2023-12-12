@@ -1,3 +1,4 @@
+import { ExperienceProps } from "@/utils/props";
 import { FC, useEffect, useState } from "react";
 import useSWR from "swr";
 
@@ -6,8 +7,8 @@ interface pageProps {
 }
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const page: FC<pageProps> = ({ params }) => {
-  const [experience, setExperience] = useState("");
-  const { data, error, isLoading } = useSWR(
+  const [experience, setExperience] = useState<ExperienceProps | null>(null);
+  const { data, error, isLoading } = useSWR<ExperienceProps>(
     `https://online-resume-with-minimal-api.azurewebsites.net/api/experiences/${params.id}`,
     fetcher
   );
@@ -20,9 +21,10 @@ const page: FC<pageProps> = ({ params }) => {
   if (error) {
     return <div>Error loading data... (`${error.message}`)</div>;
   }
-if(isLoading){return <div>Loading data...</div>}
-  return <div>page: {}</div>;
-  
+  if (isLoading) {
+    return <div>Loading data...</div>;
+  }
+  return <div>page: {experience?.companyName}</div>;
 };
 
 export default page;
