@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TipTapEditor from "../TipTapEditor";
 import { Paper, TextField } from "@mui/material";
 import ExperiencesTipTapEditor from "../ExperiencesTipTapEditor";
 
