@@ -30,10 +30,10 @@ const DialogOpener = ({
   return (
     <React.Fragment>
       <Dialog open={open} className="opacity-100">
-        <div className="text-end pt-1 pr-1 bg-gradient-to-t from-red-900 to-red-950">
+        <div className="text-end pt-1 pr-1 bg-blue-900">
           <CloseIcon onClick={onCloseDialog} className="text-white" />
         </div>
-        <DialogTitle className="text-center font-bold text-3xl text-white bg-gradient-to-b from-red-900 to-red-950">
+        <DialogTitle className="text-center font-bold text-3xl text-white bg-gradient-to-b from-blue-900 to-blue-950">
           {title?.toUpperCase()}
         </DialogTitle>
         <DialogContent className="rounded-t-lg">

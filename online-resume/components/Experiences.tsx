@@ -11,11 +11,10 @@ const Experiences = () => {
   useEffect(() => {
     if (!isLoading && data) {
       setExperiences(data);
-      console.log(experiences);
     }
   }, [isLoading, data]);
   if (error) return <div>Failed to get data... (`${error.message}`)</div>;
-  if (isLoading) return <div>loading data...</div>;
+  if (isLoading) return <div>Loading data...</div>;
   return (
     <div className="pl-5 pt-1 text-sm text-justify w-full">
       {experiences.map((experience) => (
