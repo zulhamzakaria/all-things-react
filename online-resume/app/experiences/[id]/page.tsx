@@ -22,6 +22,7 @@ const page: FC<pageProps> = ({ params }) => {
   }
 if(isLoading){return <div>Loading data...</div>}
   return <div>page: {}</div>;
+  
 };
 
 export default page;

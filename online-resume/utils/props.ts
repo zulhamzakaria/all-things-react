@@ -22,3 +22,11 @@ export interface ExperiencesProps{
   jobTitle: string;
   period: string;
 }
+
+export interface ExperienceProps{
+  id: number
+  companyName: string
+  period: string
+  jobTitle: string
+  responsibility: string
+}
