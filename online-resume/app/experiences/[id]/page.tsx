@@ -125,8 +125,8 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
             <Button
               className="mt-1 mb-1 bg-green-600 text-white btn"
               fullWidth
-              // onClick={() => console.log(rteRef.current?.editor?.getHTML())}
-              onClick={() => {}}
+              onClick={() => console.log(rteRef.current?.editor?.getHTML())}
+              //onClick={() => {}}
             >
               Save
             </Button>
