@@ -120,7 +120,7 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
               />
             </Box>
             <Button
-              className="mt-3 mb-1 bg-green-600 text-white btn"
+              className="mt-1 mb-1 bg-green-600 text-white btn"
               fullWidth
               // onClick={() => console.log(rteRef.current?.editor?.getHTML())}
               onClick={() => {}}
