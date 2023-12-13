@@ -19,7 +19,10 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
   );
   useEffect(() => {
     if (!isLoading && data) {
-      setExperience(data);
+      // setExperience(data);
+      setCompanyName(data.companyName ?? "Missing company's name...");
+      setJobTitle(data.jobTitle ?? "Missing job title...");
+      setPeriod(data.period ?? "Missing period...");
     }
   }, [isLoading, data]);
 
@@ -38,7 +41,7 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
         <div className="text-center pb-6 font-bold text-3xl text-white bg-gradient-to-b from-blue-900 to-blue-950">
           EXPERIENCE
         </div>
-        <div className="mr-1 ml-1">
+        <div className="mr-1 ml-1 mt-5">
           <div className="flex items-center flex-col">
             <TextField
               id="standard-basic"
