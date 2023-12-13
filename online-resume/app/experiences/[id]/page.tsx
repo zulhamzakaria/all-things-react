@@ -85,6 +85,8 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
               value={period}
               onChange={(e) => setPeriod(e.target.value)}
             />
+          </div>
+          <div className="flex flex-col items-center gap-10 bg-slate-50">
             <RichTextEditor
               ref={rteRef}
               extensions={[StarterKit]} // Or any Tiptap extensions you wish!
@@ -100,10 +102,10 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
                   {/* Add more controls of your choosing here */}
                 </MenuControlsContainer>
               )}
-              className="h-72 p-2"
+              className="h-72 p-2 mt-2"
             />
             <Button
-              className="mt-6 bg-green-600 text-white btn"
+              className="mt-6 mb-1 bg-green-600 text-white btn"
               fullWidth
               // onClick={() => console.log(rteRef.current?.editor?.getHTML())}
               onClick={() => {}}
