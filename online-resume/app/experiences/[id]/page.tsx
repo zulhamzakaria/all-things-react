@@ -1,7 +1,7 @@
 "use client";
 import { ExperienceProps } from "@/utils/props";
-import { Box, Button, Paper, TextField } from "@mui/material";
-import { Editor } from "@tiptap/react";
+import { Box, Button, Paper, TextField, useEventCallback } from "@mui/material";
+import { Editor, useEditor } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
 import {
   MenuButtonBold,
@@ -106,7 +106,8 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
               <RichTextEditor
                 ref={rteRef}
                 extensions={[StarterKit]} // Or any Tiptap extensions you wish!
-                content={content.valueOf} // Initial content for the editor
+                content={content} // Initial content for the editor
+                key={content}
                 // Optionally include `renderControls` for a menu-bar atop the editor:
                 renderControls={() => (
                   <MenuControlsContainer>
