@@ -1,6 +1,6 @@
 "use client";
 import { ExperienceProps } from "@/utils/props";
-import { Button, Paper, TextField } from "@mui/material";
+import { Box, Button, Paper, TextField } from "@mui/material";
 import StarterKit from "@tiptap/starter-kit";
 import {
   MenuButtonBold,
@@ -47,13 +47,11 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
   return (
     <div>
       <Paper elevation={10} className="mt-2">
-        {/* <div>id: {experience?.id}</div>
-        <div>Company Name: {experience?.companyName}</div> */}
         <div className="text-end pt-10 bg-blue-900"></div>
         <div className="text-center pb-6 font-bold text-3xl text-white bg-gradient-to-b from-blue-900 to-blue-950">
           EXPERIENCE
         </div>
-        <div className="mr-1 ml-1 mt-5">
+        <div className="mr-1 ml-1 mt-5 ">
           <div className="flex items-center flex-col">
             <TextField
               id="standard-basic"
@@ -86,26 +84,43 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
               onChange={(e) => setPeriod(e.target.value)}
             />
           </div>
-          <div className="flex flex-col items-center gap-10 bg-slate-50">
-            <RichTextEditor
-              ref={rteRef}
-              extensions={[StarterKit]} // Or any Tiptap extensions you wish!
-              content={"Add summary here..."} // Initial content for the editor
-              // Optionally include `renderControls` for a menu-bar atop the editor:
-              renderControls={() => (
-                <MenuControlsContainer>
-                  <MenuSelectHeading />
-                  <MenuDivider />
-                  <MenuButtonBold />
-                  <MenuButtonItalic />
-                  <MenuButtonBulletedList />
-                  {/* Add more controls of your choosing here */}
-                </MenuControlsContainer>
-              )}
-              className="h-72 p-2 mt-2"
-            />
+          <div className="flex flex-col items-center mt-3">
+            <Box
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                background: "transparent",
+                "& > :not(style)": {
+                  width: 800,
+                },
+                ".btn:hover": {
+                  // class selector
+                  borderColor: "green",
+                  color: "white",
+                  background: "green",
+                },
+              }}
+            >
+              <RichTextEditor
+                ref={rteRef}
+                extensions={[StarterKit]} // Or any Tiptap extensions you wish!
+                content={"Add summary here..."} // Initial content for the editor
+                // Optionally include `renderControls` for a menu-bar atop the editor:
+                renderControls={() => (
+                  <MenuControlsContainer>
+                    <MenuSelectHeading />
+                    <MenuDivider />
+                    <MenuButtonBold />
+                    <MenuButtonItalic />
+                    <MenuButtonBulletedList />
+                    {/* Add more controls of your choosing here */}
+                  </MenuControlsContainer>
+                )}
+                className="p-2 mt-2 h-96"
+              />
+            </Box>
             <Button
-              className="mt-6 mb-1 bg-green-600 text-white btn"
+              className="mt-3 mb-1 bg-green-600 text-white btn"
               fullWidth
               // onClick={() => console.log(rteRef.current?.editor?.getHTML())}
               onClick={() => {}}
