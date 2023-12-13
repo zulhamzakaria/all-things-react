@@ -1,7 +1,18 @@
 "use client";
 import { ExperienceProps } from "@/utils/props";
-import { Paper, TextField } from "@mui/material";
-import { FC, useEffect, useState } from "react";
+import { Button, Paper, TextField } from "@mui/material";
+import StarterKit from "@tiptap/starter-kit";
+import {
+  MenuButtonBold,
+  MenuButtonBulletedList,
+  MenuButtonItalic,
+  MenuControlsContainer,
+  MenuDivider,
+  MenuSelectHeading,
+  RichTextEditor,
+  RichTextEditorRef,
+} from "mui-tiptap";
+import { FC, useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 
 interface pageProps {
@@ -12,6 +23,7 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
   const [companyName, setCompanyName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [period, setPeriod] = useState("");
+  const rteRef = useRef<RichTextEditorRef>(null);
   const [experience, setExperience] = useState<ExperienceProps | null>(null);
   const { data, error, isLoading } = useSWR<ExperienceProps>(
     `https://online-resume-with-minimal-api.azurewebsites.net/api/experiences/${params.id}`,
@@ -34,7 +46,7 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
   }
   return (
     <div>
-      <Paper elevation={0} className="mt-2">
+      <Paper elevation={10} className="mt-2">
         {/* <div>id: {experience?.id}</div>
         <div>Company Name: {experience?.companyName}</div> */}
         <div className="text-end pt-10 bg-blue-900"></div>
@@ -68,11 +80,36 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
               id="standard-basic"
               label="Period"
               variant="outlined"
-              className="mt-5 flex-grow mb-1"
+              className="mt-5 flex-grow"
               required
               value={period}
               onChange={(e) => setPeriod(e.target.value)}
             />
+            <RichTextEditor
+              ref={rteRef}
+              extensions={[StarterKit]} // Or any Tiptap extensions you wish!
+              content={"Add summary here..."} // Initial content for the editor
+              // Optionally include `renderControls` for a menu-bar atop the editor:
+              renderControls={() => (
+                <MenuControlsContainer>
+                  <MenuSelectHeading />
+                  <MenuDivider />
+                  <MenuButtonBold />
+                  <MenuButtonItalic />
+                  <MenuButtonBulletedList />
+                  {/* Add more controls of your choosing here */}
+                </MenuControlsContainer>
+              )}
+              className="h-72 p-2"
+            />
+            <Button
+              className="mt-6 bg-green-600 text-white btn"
+              fullWidth
+              // onClick={() => console.log(rteRef.current?.editor?.getHTML())}
+              onClick={() => {}}
+            >
+              Save
+            </Button>
           </div>
         </div>
       </Paper>
