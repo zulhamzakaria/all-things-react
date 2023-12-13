@@ -1,7 +1,8 @@
 "use client";
 import { ExperienceProps } from "@/utils/props";
 import { Box, Button, Paper, TextField } from "@mui/material";
-import StarterKit from "@tiptap/starter-kit";
+import { Editor } from "@tiptap/react";
+import { StarterKit } from "@tiptap/starter-kit";
 import {
   MenuButtonBold,
   MenuButtonBulletedList,
@@ -23,18 +24,19 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
   const [companyName, setCompanyName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [period, setPeriod] = useState("");
+  const [content, setContent] = useState("");
   const rteRef = useRef<RichTextEditorRef>(null);
-  const [experience, setExperience] = useState<ExperienceProps | null>(null);
+
   const { data, error, isLoading } = useSWR<ExperienceProps>(
     `https://online-resume-with-minimal-api.azurewebsites.net/api/experiences/${params.id}`,
     fetcher
   );
   useEffect(() => {
     if (!isLoading && data) {
-      // setExperience(data);
       setCompanyName(data.companyName ?? "Missing company's name...");
       setJobTitle(data.jobTitle ?? "Missing job title...");
       setPeriod(data.period ?? "Missing period...");
+      setContent(data.responsibility ?? "Missing responsibility...");
     }
   }, [isLoading, data]);
 
@@ -104,7 +106,7 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
               <RichTextEditor
                 ref={rteRef}
                 extensions={[StarterKit]} // Or any Tiptap extensions you wish!
-                content={"Add summary here..."} // Initial content for the editor
+                content={content.valueOf} // Initial content for the editor
                 // Optionally include `renderControls` for a menu-bar atop the editor:
                 renderControls={() => (
                   <MenuControlsContainer>
