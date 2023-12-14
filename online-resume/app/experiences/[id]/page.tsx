@@ -49,8 +49,8 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
   return (
     <div>
       <Paper elevation={10} className="mt-2">
-        <div className="text-end pt-10 bg-blue-900"></div>
-        <div className="text-center pb-6 font-bold text-3xl text-white bg-gradient-to-b from-blue-900 to-blue-950">
+        <div className="text-end pt-7 bg-blue-900"></div>
+        <div className="text-center pb-7 font-bold text-3xl text-white bg-gradient-to-b from-blue-900 to-blue-950">
           EXPERIENCE
         </div>
         <div className="mr-1 ml-1 mt-5 ">
@@ -125,7 +125,7 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
             <Button
               className="mt-1 mb-1 bg-green-600 text-white btn"
               fullWidth
-              onClick={() => console.log(rteRef.current?.editor?.getHTML())}
+              onClick={() => console.log(companyName)}
               //onClick={() => {}}
             >
               Save
