@@ -40,6 +40,34 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
     }
   }, [isLoading, data]);
 
+  const handleClickSave = async () => {
+    try {
+      const responsibility = rteRef.current?.editor?.getHTML();
+      const response = await fetch(
+        `https://online-resume-with-minimal-api.azurewebsites.net/api/${params.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            companyname: companyName,
+            jobtitle: jobTitle,
+            period: period,
+            responsibility: responsibility,
+          }),
+        }
+      );
+      if (response.ok) {
+        console.log("Content saved");
+      } else {
+        console.log("Failed to save content");
+      }
+    } catch (error) {
+      console.log("Error saving data...");
+    }
+  };
+
   if (error) {
     return <div>Error loading data... (`${error.message}`)</div>;
   }
@@ -125,8 +153,8 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
             <Button
               className="mt-1 mb-1 bg-green-600 text-white btn"
               fullWidth
-              onClick={() => console.log(companyName)}
-              //onClick={() => {}}
+              //onClick={() => console.log(companyName)}
+              onClick={handleClickSave}
             >
               Save
             </Button>
