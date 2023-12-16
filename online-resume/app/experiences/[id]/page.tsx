@@ -44,7 +44,7 @@ const UpdateExperience: FC<pageProps> = ({ params }) => {
     try {
       const responsibility = rteRef.current?.editor?.getHTML();
       const response = await fetch(
-        `https://online-resume-with-minimal-api.azurewebsites.net/api/${params.id}`,
+        `https://online-resume-with-minimal-api.azurewebsites.net/api/experiences/${params.id}`,
         {
           method: "PUT",
           headers: {
