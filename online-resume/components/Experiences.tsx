@@ -1,8 +1,12 @@
+import useAuthStore from "@/stores/authstore";
 import { EditOutlined } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
 const Experiences = () => {
+  const isAuthenticated = useAuthStore((state) => {
+    return state.isAuthenticated;
+  });
   const [experiences, setExperiences] = useState([]);
   const fetcher = (url: any) => fetch(url).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
@@ -20,13 +24,15 @@ const Experiences = () => {
     <div className="pl-5 pt-1 text-sm text-justify w-full">
       {experiences.map((experience) => (
         <div key={experience["id"]}>
-          <div className=" w-full text-right">
-            <EditOutlined
-              sx={{ height: 15, width: 15 }}
-              className="mr-1 mb-1"
-            />
-          </div>
-          <p>{experience["id"]}</p>
+          {isAuthenticated && (
+            <div className=" w-full text-right">
+              <EditOutlined
+                sx={{ height: 15, width: 15 }}
+                className="mr-1 mb-1"
+              />
+            </div>
+          )}
+          {/* <p>{experience["id"]}</p> */}
           <p>{experience["companyName"]}</p>
           <p>{experience["jobTitle"]}</p>
           <p>{experience["period"]}</p>
