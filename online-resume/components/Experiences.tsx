@@ -20,7 +20,7 @@ const Experiences = () => {
     <div className="pl-5 pt-1 text-sm text-justify w-full">
       {experiences.map((experience) => (
         <div key={experience["id"]}>
-          <div className="w-max bg-red-50">
+          <div className=" w-full text-right">
             <EditOutlined
               sx={{ height: 15, width: 15 }}
               className="mr-1 mb-1"
