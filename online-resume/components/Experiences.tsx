@@ -7,6 +7,7 @@ const Experiences = () => {
   const isAuthenticated = useAuthStore((state) => {
     return state.isAuthenticated;
   });
+  const handleUpdateExperience = (id: number) => {};
   const [experiences, setExperiences] = useState([]);
   const fetcher = (url: any) => fetch(url).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
@@ -25,7 +26,7 @@ const Experiences = () => {
       {experiences.map((experience) => (
         <div key={experience["id"]}>
           {isAuthenticated && (
-            <div className=" w-full text-right">
+            <div className=" w-full text-right" onClick={() => {}}>
               <EditOutlined
                 sx={{ height: 15, width: 15 }}
                 className="mr-1 mb-1"
