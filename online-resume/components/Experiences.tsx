@@ -1,13 +1,17 @@
 import useAuthStore from "@/stores/authstore";
 import { EditOutlined } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
 const Experiences = () => {
+  const router = useRouter();
   const isAuthenticated = useAuthStore((state) => {
     return state.isAuthenticated;
   });
-  const handleUpdateExperience = (id: number) => {};
+  const handleUpdateExperience = (id: number) => {
+    router.push(`/experiences/${id}`);
+  };
   const [experiences, setExperiences] = useState([]);
   const fetcher = (url: any) => fetch(url).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
@@ -26,7 +30,10 @@ const Experiences = () => {
       {experiences.map((experience) => (
         <div key={experience["id"]}>
           {isAuthenticated && (
-            <div className=" w-full text-right" onClick={() => {}}>
+            <div
+              className=" w-full text-right"
+              onClick={() => handleUpdateExperience(experience["id"])}
+            >
               <EditOutlined
                 sx={{ height: 15, width: 15 }}
                 className="mr-1 mb-1"
