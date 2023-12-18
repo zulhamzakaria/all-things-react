@@ -7,8 +7,9 @@ import * as cheerio from "cheerio";
 import { sanitize } from "dompurify";
 
 const Experiences = () => {
-  const [sanitizedResponsibilities, setSanitizedResponsibilities] =
-    useState("");
+  const [sanitizedResponsibilities, setSanitizedResponsibilities] = useState(
+    "Missing responsibilities..."
+  );
   const router = useRouter();
   const isAuthenticated = useAuthStore((state) => {
     return state.isAuthenticated;
