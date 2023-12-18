@@ -3,8 +3,12 @@ import { EditOutlined } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
+import * as cheerio from "cheerio";
+import { sanitize } from "dompurify";
 
 const Experiences = () => {
+  const [sanitizedResponsibilities, setSanitizedResponsibilities] =
+    useState("");
   const router = useRouter();
   const isAuthenticated = useAuthStore((state) => {
     return state.isAuthenticated;
@@ -21,8 +25,16 @@ const Experiences = () => {
   useEffect(() => {
     if (!isLoading && data) {
       setExperiences(data);
+      const html = processHTML(sanitize(data.responsibility));
+      setSanitizedResponsibilities(html);
     }
   }, [isLoading, data]);
+  const processHTML = (html: string) => {
+    const $ = cheerio.load(html);
+    $("ul").contents().unwrap();
+    return $.html();
+  };
+
   if (error) return <div>Failed to get data... (`${error.message}`)</div>;
   if (isLoading) return <div>Loading data...</div>;
   return (
@@ -47,6 +59,9 @@ const Experiences = () => {
             </p>
           </div>
           <p>{experience["responsibility"] ?? "Missing responsibilities..."}</p>
+          <div
+            dangerouslySetInnerHTML={{ __html: sanitizedResponsibilities }}
+          />
         </div>
       ))}
     </div>

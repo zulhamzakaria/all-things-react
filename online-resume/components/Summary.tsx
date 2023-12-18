@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { sanitize } from "dompurify";
 
 const Summary = () => {
-  const [sanitizedHtml, setSanitizedHtml] = useState("loading summaries...");
+  const [sanitizedHtml, setSanitizedHtml] = useState("Loading summaries...");
   const fetcher = (url: any) => fetch(url).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
     "https://online-resume-with-minimal-api.azurewebsites.net/api/summaries",
