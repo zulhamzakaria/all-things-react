@@ -28,7 +28,7 @@ const Experiences = () => {
   return (
     <div className="pl-5 pt-1 text-sm text-justify w-full">
       {experiences.map((experience) => (
-        <div key={experience["id"]}>
+        <div key={experience["id"]} className="pb-2">
           {isAuthenticated && (
             <div
               className=" w-full text-right"
