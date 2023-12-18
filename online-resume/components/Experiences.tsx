@@ -26,7 +26,7 @@ const Experiences = () => {
   if (error) return <div>Failed to get data... (`${error.message}`)</div>;
   if (isLoading) return <div>Loading data...</div>;
   return (
-    <div className="pl-5 pt-1 text-sm text-justify w-full">
+    <div className="pl-2 pt-1 text-sm text-justify w-full">
       {experiences.map((experience) => (
         <div key={experience["id"]} className="pb-2">
           {isAuthenticated && (
@@ -40,11 +40,13 @@ const Experiences = () => {
               />
             </div>
           )}
-          {/* <p>{experience["id"]}</p> */}
-          <p>{experience["companyName"]}</p>
-          <p>{experience["jobTitle"]}</p>
-          <p>{experience["period"]}</p>
-          <p>{experience["responsibility"]}</p>
+          <div className="flex">
+            <p className="font-mono font-bold text-sm">
+              {experience["companyName"]} | {experience["jobTitle"]} |{" "}
+              {experience["period"]}
+            </p>
+          </div>
+          <p>{experience["responsibility"] ?? "Missing responsibilities..."}</p>
         </div>
       ))}
     </div>
