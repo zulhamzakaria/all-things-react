@@ -59,8 +59,11 @@ const Experiences = () => {
               {experience["period"]}
             </p>
           </div>
-          <p>{experience["responsibility"] ?? "Missing responsibilities..."}</p>
+          <p className="pt-1 text-xs font-extrabold font-mono text-justify w-full">
+            {experience["responsibility"] ?? "Missing responsibilities..."}
+          </p>
           <div
+            className="pl-5 pt-1 text-xs font-extrabold font-mono text-justify w-full"
             dangerouslySetInnerHTML={{ __html: sanitizedResponsibilities }}
           />
         </div>
