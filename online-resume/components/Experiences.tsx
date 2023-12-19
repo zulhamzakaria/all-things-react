@@ -7,9 +7,6 @@ import * as cheerio from "cheerio";
 import { sanitize } from "dompurify";
 
 const Experiences = () => {
-  const [sanitizedResponsibilities, setSanitizedResponsibilities] = useState(
-    "Missing responsibilities..."
-  );
   const router = useRouter();
   const isAuthenticated = useAuthStore((state) => {
     return state.isAuthenticated;
@@ -25,10 +22,6 @@ const Experiences = () => {
   );
   useEffect(() => {
     if (!isLoading && data) {
-      // setExperiences(data);
-      // const html = processHTML(sanitize(data.responsibility));
-      // setSanitizedResponsibilities(html);
-
       const sanitizedData = data.map((item: any) => {
         const html = processHTML(sanitize(item.responsibility));
         return { ...item, sanitizedResponsibilities: html };
