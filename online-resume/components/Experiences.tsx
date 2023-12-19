@@ -61,8 +61,8 @@ const Experiences = () => {
             </div>
           )}
           <div className="flex">
-            <p className="font-mono font-bold text-sm">
-              {experience["companyName"]} | {experience["jobTitle"]} |{" "}
+            <p className="font-mono font-bold text-sm uppercase">
+              {experience["companyName"]} / {experience["jobTitle"]} /{" "}
               {experience["period"]}
             </p>
           </div>
