@@ -25,10 +25,15 @@ const Experiences = () => {
   );
   useEffect(() => {
     if (!isLoading && data) {
-      setExperiences(data);
-      const html = processHTML(sanitize(data.responsibility));
-      console.log(html);
-      setSanitizedResponsibilities(html);
+      // setExperiences(data);
+      // const html = processHTML(sanitize(data.responsibility));
+      // setSanitizedResponsibilities(html);
+
+      const sanitizedData = data.map((item: any) => {
+        const html = processHTML(sanitize(item.responsibility));
+        return { ...item, sanitizedResponsibilities: html };
+      });
+      setExperiences(sanitizedData);
     }
   }, [isLoading, data]);
 
@@ -43,7 +48,7 @@ const Experiences = () => {
   return (
     <div className="pl-2 pt-1 text-sm text-justify w-full">
       {experiences.map((experience) => (
-        <div key={experience["id"]} className="pb-2">
+        <div key={experience["id"]} className="pb-5">
           {isAuthenticated && (
             <div
               className=" w-full text-right"
@@ -61,12 +66,11 @@ const Experiences = () => {
               {experience["period"]}
             </p>
           </div>
-          <p className="pt-1 text-xs font-extrabold font-mono text-justify w-full">
-            {experience["responsibility"] ?? "Missing responsibilities..."}
-          </p>
           <div
             className="pl-5 pt-1 text-xs font-extrabold font-mono text-justify w-full"
-            dangerouslySetInnerHTML={{ __html: sanitizedResponsibilities }}
+            dangerouslySetInnerHTML={{
+              __html: experience["sanitizedResponsibilities"],
+            }}
           />
         </div>
       ))}
