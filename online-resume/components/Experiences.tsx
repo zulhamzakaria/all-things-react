@@ -27,10 +27,12 @@ const Experiences = () => {
     if (!isLoading && data) {
       setExperiences(data);
       const html = processHTML(sanitize(data.responsibility));
+      console.log(html);
       setSanitizedResponsibilities(html);
     }
   }, [isLoading, data]);
-  const processHTML = (html: string) => {
+
+  const processHTML = (html: string): string => {
     const $ = cheerio.load(html);
     $("ul").contents().unwrap();
     return $.html();
