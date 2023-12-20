@@ -21,7 +21,7 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
   const handleLogin = (event: React.MouseEvent) => {
     login(username, password);
     if (isAuthenticated) {
-      router.push("/");
+      router.push("/experiences/1");
     }
   };
 
