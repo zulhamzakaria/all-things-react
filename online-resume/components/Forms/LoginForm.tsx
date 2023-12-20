@@ -5,7 +5,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import useAuthStore from "@/stores/authstore";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
 
@@ -29,7 +29,7 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
     if (isAuthenticated) {
       router.push("/");
     }
-  }, []);
+  }, [router]);
 
   return (
     <Box
