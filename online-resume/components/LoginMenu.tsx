@@ -1,4 +1,4 @@
-import { AccountCircle, Login } from "@mui/icons-material";
+import { AccountCircle, Login, Logout } from "@mui/icons-material";
 import {
   Button,
   IconButton,
@@ -59,7 +59,14 @@ const LoginMenu = () => {
         onClose={handleClose}
       >
         {isAuthenticated ? (
-          <div>signed in</div>
+          <div>
+            <MenuItem className="pl-5 pr-5" onClick={() => {}}>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Sign Out</ListItemText>
+            </MenuItem>
+          </div>
         ) : (
           <div>
             <MenuItem className="pl-5 pr-5" onClick={handleOpenDialog}>
