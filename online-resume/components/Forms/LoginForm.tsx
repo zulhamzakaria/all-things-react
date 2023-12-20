@@ -27,9 +27,10 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
 
   useEffect(() => {
     if (isAuthenticated) {
+      console.log("cock");
       router.push("/");
     }
-  }, [router]);
+  }, [isAuthenticated, router]);
 
   return (
     <Box
