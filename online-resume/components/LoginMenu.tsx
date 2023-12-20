@@ -58,7 +58,25 @@ const LoginMenu = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {!isAuthenticated && (
+        {isAuthenticated ? (
+          <div>signed in</div>
+        ) : (
+          <div>
+            <MenuItem className="pl-5 pr-5" onClick={handleOpenDialog}>
+              <ListItemIcon>
+                <Login fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Sign In</ListItemText>
+              <DialogOpener
+                open={dialogOpener}
+                onCloseDialog={handleCloseDialog}
+                form="LoginForm"
+                title="Sign In"
+              />
+            </MenuItem>
+          </div>
+        )}
+        {/* {!isAuthenticated && (
           <MenuItem className="pl-5 pr-5" onClick={handleOpenDialog}>
             <ListItemIcon>
               <Login fontSize="small" />
@@ -71,7 +89,7 @@ const LoginMenu = () => {
               title="Sign In"
             />
           </MenuItem>
-        )}
+        )} */}
       </Menu>
     </div>
   );
