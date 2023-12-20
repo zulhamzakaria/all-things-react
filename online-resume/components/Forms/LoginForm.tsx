@@ -23,8 +23,6 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
     // }
   };
 
-  useEffect(() => {}, []);
-
   return (
     <Box
       sx={{
