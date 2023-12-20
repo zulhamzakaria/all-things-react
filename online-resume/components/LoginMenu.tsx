@@ -9,10 +9,14 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import DialogOpener from "./DialogOpener";
+import useAuthStore from "@/stores/authstore";
 
 const LoginMenu = () => {
   const [dialogOpener, setDialogOpener] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const isAuthenticated = useAuthStore((state) => {
+    return state.isAuthenticated;
+  });
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -54,18 +58,20 @@ const LoginMenu = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem className="pl-5 pr-5" onClick={handleOpenDialog}>
-          <ListItemIcon>
-            <Login fontSize="small" />
-          </ListItemIcon>
-          <ListItemText>Sign In</ListItemText>
-          <DialogOpener
-            open={dialogOpener}
-            onCloseDialog={handleCloseDialog}
-            form="LoginForm"
-            title="Sign In"
-          />
-        </MenuItem>
+        {!isAuthenticated && (
+          <MenuItem className="pl-5 pr-5" onClick={handleOpenDialog}>
+            <ListItemIcon>
+              <Login fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>Sign In</ListItemText>
+            <DialogOpener
+              open={dialogOpener}
+              onCloseDialog={handleCloseDialog}
+              form="LoginForm"
+              title="Sign In"
+            />
+          </MenuItem>
+        )}
       </Menu>
     </div>
   );
