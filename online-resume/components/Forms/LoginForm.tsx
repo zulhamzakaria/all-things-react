@@ -5,14 +5,12 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import useAuthStore from "@/stores/authstore";
-import { useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
 
 const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
 
   const login = useAuthStore((state) => state.login);
   const isAuthenticated = useAuthStore((state) => {
@@ -20,16 +18,12 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
   });
   const handleLogin = (event: React.MouseEvent) => {
     login(username, password);
-    if (isAuthenticated) {
-      router.push("/experiences/1");
-    }
+    // if (isAuthenticated) {
+    //   closeDialog(event);
+    // }
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.push("/");
-    }
-  }, [isAuthenticated, router]);
+  useEffect(() => {}, []);
 
   return (
     <Box
