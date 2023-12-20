@@ -37,7 +37,12 @@ const Experiences = () => {
   };
 
   if (error) return <div>Failed to get data... (`${error.message}`)</div>;
-  if (isLoading) return <div>Loading data...</div>;
+  if (isLoading)
+    return (
+      <div className="pl-5 pt-1 text-xs font-extrabold font-mono text-justify w-full">
+        Loading experiences...
+      </div>
+    );
   return (
     <div className="pl-2 pt-1 text-sm text-justify w-full">
       {experiences.map((experience) => (

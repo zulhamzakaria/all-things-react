@@ -15,7 +15,12 @@ const Skills = () => {
   }, [isLoading, data]);
 
   if (error) return <div>Failed to get data... (`${error.message}`)</div>;
-  if (isLoading) return <div>loading data...</div>;
+  if (isLoading)
+    return (
+      <div className="pl-5 pt-1 text-xs font-extrabold font-mono text-justify w-full">
+        Loading skills...
+      </div>
+    );
   return (
     <div className="pt-1 text-xs font-extrabold font-mono text-justify w-full">
       {skills}
