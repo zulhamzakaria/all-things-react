@@ -1,17 +1,18 @@
 import { CloseChildDialogProps } from "@/utils/props";
-import { AccountCircle } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import useAuthStore from "@/stores/authstore";
+import { useRouter } from "next/router";
 
 import { useEffect, useState } from "react";
 
 const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const login = useAuthStore((state) => state.login);
   const isAuthenticated = useAuthStore((state) => {
@@ -23,6 +24,12 @@ const LoginForm: React.FC<CloseChildDialogProps> = ({ closeDialog }) => {
     //   closeDialog(event);
     // }
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/");
+    }
+  }, []);
 
   return (
     <Box
