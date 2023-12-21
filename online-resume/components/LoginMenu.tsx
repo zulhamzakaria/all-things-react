@@ -25,6 +25,7 @@ const LoginMenu = () => {
   };
   const handleOpenDialog = (event: React.MouseEvent) => {
     setDialogOpener(true);
+    handleClose();
   };
   const handleCloseDialog = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -83,20 +84,6 @@ const LoginMenu = () => {
             </MenuItem>
           </div>
         )}
-        {/* {!isAuthenticated && (
-          <MenuItem className="pl-5 pr-5" onClick={handleOpenDialog}>
-            <ListItemIcon>
-              <Login fontSize="small" />
-            </ListItemIcon>
-            <ListItemText>Sign In</ListItemText>
-            <DialogOpener
-              open={dialogOpener}
-              onCloseDialog={handleCloseDialog}
-              form="LoginForm"
-              title="Sign In"
-            />
-          </MenuItem>
-        )} */}
       </Menu>
     </div>
   );
