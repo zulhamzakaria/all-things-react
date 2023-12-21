@@ -12,8 +12,9 @@ import DialogOpener from "./DialogOpener";
 import useAuthStore from "@/stores/authstore";
 
 const LoginMenu = () => {
-  const {logout} = useAuthStore();
+  const { logout } = useAuthStore();
   const [dialogOpener, setDialogOpener] = useState(false);
+  const [signedOut, setsignedOut] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isAuthenticated = useAuthStore((state) => {
     return state.isAuthenticated;
@@ -23,6 +24,8 @@ const LoginMenu = () => {
   };
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+    alert(anchorEl);
+    setsignedOut(false);
   };
   const handleOpenDialog = (event: React.MouseEvent) => {
     setDialogOpener(true);
@@ -32,6 +35,11 @@ const LoginMenu = () => {
     event.stopPropagation();
     setDialogOpener(false);
     handleClose();
+  };
+  const handleSigningOut = () => {
+    logout();
+    handleClose();
+    setsignedOut(true);
   };
   return (
     <div>
@@ -62,7 +70,7 @@ const LoginMenu = () => {
       >
         {isAuthenticated ? (
           <div>
-            <MenuItem className="pl-5 pr-5" onClick={() => logout()}>
+            <MenuItem className="pl-5 pr-5" onClick={handleSigningOut}>
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
@@ -71,18 +79,20 @@ const LoginMenu = () => {
           </div>
         ) : (
           <div>
-            <MenuItem className="pl-5 pr-5" onClick={handleOpenDialog}>
-              <ListItemIcon>
-                <Login fontSize="small" />
-              </ListItemIcon>
-              <ListItemText>Sign In</ListItemText>
-              <DialogOpener
-                open={dialogOpener}
-                onCloseDialog={handleCloseDialog}
-                form="LoginForm"
-                title="Sign In"
-              />
-            </MenuItem>
+            {!signedOut && (
+              <MenuItem className="pl-5 pr-5" onClick={handleOpenDialog}>
+                <ListItemIcon>
+                  <Login fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>Sign In</ListItemText>
+                <DialogOpener
+                  open={dialogOpener}
+                  onCloseDialog={handleCloseDialog}
+                  form="LoginForm"
+                  title="Sign In"
+                />
+              </MenuItem>
+            )}
           </div>
         )}
       </Menu>
