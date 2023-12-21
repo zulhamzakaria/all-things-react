@@ -24,7 +24,6 @@ const LoginMenu = () => {
   };
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
-    alert(anchorEl);
     setsignedOut(false);
   };
   const handleOpenDialog = (event: React.MouseEvent) => {
