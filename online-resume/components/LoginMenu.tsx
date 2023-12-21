@@ -12,6 +12,7 @@ import DialogOpener from "./DialogOpener";
 import useAuthStore from "@/stores/authstore";
 
 const LoginMenu = () => {
+  const {logout} = useAuthStore();
   const [dialogOpener, setDialogOpener] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isAuthenticated = useAuthStore((state) => {
@@ -61,7 +62,7 @@ const LoginMenu = () => {
       >
         {isAuthenticated ? (
           <div>
-            <MenuItem className="pl-5 pr-5" onClick={() => {}}>
+            <MenuItem className="pl-5 pr-5" onClick={() => logout()}>
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
