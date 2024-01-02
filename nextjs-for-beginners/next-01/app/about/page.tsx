@@ -1,6 +1,7 @@
+import { error } from "console";
 import Link from "next/link";
 
-export default function Abouth1() {
+export default function About() {
   return (
     <>
       <h1>About</h1>
