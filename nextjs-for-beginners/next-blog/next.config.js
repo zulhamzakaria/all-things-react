@@ -1,4 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    // domains: ["media.tenor.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "media.tenor.com",
+      },
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
