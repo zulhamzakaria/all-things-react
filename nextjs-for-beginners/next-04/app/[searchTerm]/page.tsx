@@ -1,6 +1,7 @@
 import getWikiResults from "@/lib/getWikiResults";
 import { Metadata } from "next";
 import React from "react";
+import Item from "./components/Item";
 
 type Props = {
   params: {
@@ -35,7 +36,7 @@ export default async function page({ params: { searchTerm } }: Props) {
       {/*  wiki returns large object as resuklt */}
       {results ? (
         Object.values(results).map((result) => {
-          return <p>{JSON.stringify(result)}</p>;
+          return <Item key={result.pageid} result={result} />;
         })
       ) : (
         <h2 className="p-2 text-xl">{`${searchTerm} not found...`}</h2>
