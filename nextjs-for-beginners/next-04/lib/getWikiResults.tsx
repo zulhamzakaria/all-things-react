@@ -19,5 +19,5 @@ export default async function getWikiResults(searchTerm: string) {
     `https://en.wikipedia.org/w/api.php?${searchParams}`
   );
 
-  return response.json;
+  return response.json();
 }

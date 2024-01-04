@@ -9,7 +9,7 @@ type Result = {
     }
 }
 
-type searchResult = {
+type SearchResult = {
     query?:{
         pages?:Result[]
     }
