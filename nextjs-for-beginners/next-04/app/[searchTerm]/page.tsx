@@ -1,4 +1,5 @@
 import getWikiResults from "@/lib/getWikiResults";
+import { Metadata } from "next";
 import React from "react";
 
 type Props = {
@@ -6,6 +7,23 @@ type Props = {
     searchTerm: string;
   };
 };
+
+export async function generateMetadata({ params: { searchTerm } }: Props) {
+  const wikiData: Promise<SearchResult> = getWikiResults(searchTerm);
+  const data = await wikiData;
+  const displayTerm = searchTerm.replaceAll("%20", " ");
+
+  if (!data?.query?.pages) {
+    return {
+      title: `${displayTerm} not found...`,
+    };
+  }
+
+  return {
+    title: displayTerm,
+    description: `Search result for ${displayTerm}`,
+  };
+}
 
 export default async function page({ params: { searchTerm } }: Props) {
   const wikiData: Promise<SearchResult> = getWikiResults(searchTerm);
