@@ -7,3 +7,10 @@ const About = () => {
 };
 
 export default About;
+
+export const generateMetadata = () => {
+  return {
+    title: "about page",
+    description: "all about about",
+  };
+};
