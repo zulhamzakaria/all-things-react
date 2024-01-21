@@ -5,6 +5,11 @@ interface PageProps {
   children: ReactNode;
 }
 
+export const metadata = {
+  title: "logins",
+  description: "Main Login, Admin's and User's",
+};
+
 const layout: FC<PageProps> = (params) => {
   return (
     <div>
