@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
-// export function GET() {
-//   return NextResponse.json({ result: "hello" });
-// }
+export function GET() {
+  return NextResponse.json({ result: "hello" });
+}
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
   const { name, age, email } = req.body;
