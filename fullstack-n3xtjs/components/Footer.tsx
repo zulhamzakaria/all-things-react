@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flexBetween footer_copyright">
-        <p>@2024 galeria. All rights reserved.</p>
+        <p>@2024 Galeria. All rights reserved.</p>
         <p className="text-gray">
           <span className="text-black font-semibold">9999+</span> projects
           submitted
