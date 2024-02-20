@@ -6,8 +6,32 @@ import interactionPlugin, {
   Draggable,
   DropArg,
 } from "@fullcalendar/interaction";
+import { useState } from "react";
+
+interface Event {
+  title: string;
+  start: Date | string;
+  allDay: boolean;
+  id: number;
+}
 
 export default function Home() {
+  const [events, setEvents] = useState([
+    { title: "event 1", id: 1 },
+    { title: "event 2", id: 2 },
+    { title: "event 3", id: 3 },
+    { title: "event 4", id: 4 },
+    { title: "event 5", id: 5 },
+  ]);
+
+  const [allEvents, setAllEvents] = useState<Event[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [idToDelete, setIdToDelete] = useState<number | null>(null);
+  const [newEvent, setNewEvent] = useState<Event>({
+    title:'',start:'', allDay:false, id:0
+  });
+
   return (
     <>
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
