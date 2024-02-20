@@ -48,7 +48,17 @@ export default function Home() {
         },
       });
     }
-  },[]);
+  }, []);
+
+  function handleDateClick(arg: { date: Date; allDay: boolean }) {
+    setNewEvent({
+      ...newEvent,
+      start: arg.date,
+      allDay: arg.allDay,
+      id: new Date().getTime(),
+    });
+    setShowModal(true);
+  }
 
   return (
     <>
@@ -70,7 +80,7 @@ export default function Home() {
             droppable={true}
             selectable={true}
             selectMirror={true}
-            // dateClick={{}}
+            dateClick={handleDateClick}
             // drop={}
             // eventClick={}
           />
