@@ -60,6 +60,22 @@ export default function Home() {
     setShowModal(true);
   }
 
+  function addEvent(data: DropArg) {
+    const event = {
+      ...newEvent,
+      start: data.date.toISOString(),
+      title: data.draggedEl.innerText,
+      allDay: data.allDay,
+      id: new Date().getTime(),
+    };
+    setAllEvents([...allEvents, event]);
+  }
+
+  function handleDeleteModal(data: { event: { id: string } }) {
+    setShowDeleteModal(true);
+    setIdToDelete(Number(data.event.id));
+  }
+
   return (
     <>
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
@@ -81,8 +97,8 @@ export default function Home() {
             selectable={true}
             selectMirror={true}
             dateClick={handleDateClick}
-            // drop={}
-            // eventClick={}
+            drop={(data) => addEvent(data)}
+            eventClick={(data) => handleDeleteModal(data)}
           />
         </div>
         <div
