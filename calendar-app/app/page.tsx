@@ -6,7 +6,7 @@ import interactionPlugin, {
   Draggable,
   DropArg,
 } from "@fullcalendar/interaction";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Event {
   title: string;
@@ -29,8 +29,26 @@ export default function Home() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [idToDelete, setIdToDelete] = useState<number | null>(null);
   const [newEvent, setNewEvent] = useState<Event>({
-    title:'',start:'', allDay:false, id:0
+    title: "",
+    start: "",
+    allDay: false,
+    id: 0,
   });
+
+  useEffect(() => {
+    let draggableElement = document.getElementById("draggable-element");
+    if (draggableElement) {
+      new Draggable(draggableElement, {
+        itemSelector: ".fc-event",
+        eventData: function (eventElement) {
+          let title = eventElement.getAttribute("title");
+          let id = eventElement.getAttribute("data");
+          let start = eventElement.getAttribute("start");
+          return { title, id, start };
+        },
+      });
+    }
+  },[]);
 
   return (
     <>
@@ -46,7 +64,7 @@ export default function Home() {
               center: "title",
               right: "resourceTimelineWook, dayGridMonth, timeGridWeek",
             }}
-            events={{}}
+            events={allEvents}
             nowIndicator={true}
             editable={true}
             droppable={true}
