@@ -162,7 +162,28 @@ export default function Home() {
                         >
                           Delete Event
                         </Dialog.Title>
+                        <div className="mt-2">
+                          <p className="text-sm text-gray-500">
+                            Are you sure you want to delete this event?
+                          </p>
+                        </div>
                       </div>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-3 sm:flex sm-flex-rrow-reverse sm:px-6">
+                      <button
+                        type="button"
+                        className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto text-sm"
+                        onClick={handleDelete}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        type="button"
+                        className="mt-3 py-2 inline-flex w-full justify-center rounded-md font-semibold text-gray-900 bg-white px-3 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                        onClick={handleCloseModal}
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </Dialog.Panel>
                 </Transition.Child>
