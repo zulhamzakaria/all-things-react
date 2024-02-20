@@ -78,6 +78,26 @@ export default function Home() {
     setIdToDelete(Number(data.event.id));
   }
 
+  function handleDelete() {
+    setAllEvents(
+      allEvents.filter((event) => Number(event.id) !== Number(idToDelete))
+    );
+    setShowDeleteModal(false);
+    setIdToDelete(null);
+  }
+
+  function handleCloseModal() {
+    setShowModal(false);
+    setNewEvent({
+      title: "",
+      start: "",
+      allDay: false,
+      id: 0,
+    });
+    setShowDeleteModal(false);
+    setIdToDelete(null);
+  }
+
   return (
     <>
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
