@@ -6,10 +6,9 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 const Calendar = () => {
   return (
     <div>
-      <h1>Calendar Commponent</h1>
       <div>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateCalendar />
+          <DateCalendar className="bg-white text-red-900" />
         </LocalizationProvider>
       </div>
     </div>
