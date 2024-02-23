@@ -2,7 +2,6 @@
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import  ContributionCalendar  from "react-github-calendar";
 
 const Calendar = () => {
   return (
@@ -15,9 +14,6 @@ const Calendar = () => {
             fixedWeekNumber={10}
           />
         </LocalizationProvider>
-      </div>
-      <div>
-        <ContributionCalendar />
       </div>
     </div>
   );
