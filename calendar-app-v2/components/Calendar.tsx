@@ -8,7 +8,11 @@ const Calendar = () => {
     <div>
       <div>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateCalendar className="bg-white text-red-900" />
+          <DateCalendar
+            className="bg-white text-red-900"
+            openTo="month"
+            monthsPerRow={3}
+          />
         </LocalizationProvider>
       </div>
     </div>

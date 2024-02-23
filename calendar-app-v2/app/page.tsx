@@ -1,4 +1,6 @@
+"use client";
 import Calendar from "@/components/Calendar";
+import { DateCalendar } from "@mui/x-date-pickers";
 
 export default function Home() {
   return (
