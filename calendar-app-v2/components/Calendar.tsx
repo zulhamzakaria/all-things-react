@@ -9,17 +9,10 @@ const Calendar = () => {
     <div>
       <div>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          {/* <DateCalendar
+          <DateCalendar
             className="bg-white text-red-900"
             views={["day"]}
             fixedWeekNumber={10}
-          /> */}
-          <DatePicker
-            className="text-white"
-            views={["day"]}
-            fixedWeekNumber={10}
-            showDaysOutsideCurrentMonth
-            sx={{ width: 600, height: 400 }}
           />
         </LocalizationProvider>
       </div>
