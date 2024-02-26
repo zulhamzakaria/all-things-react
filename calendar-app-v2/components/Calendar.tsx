@@ -12,24 +12,28 @@ const Calendar = () => {
   };
   return (
     <>
-      <div>
-        <div>
-          {selectedDate && (
-            <p>Selected Date: {new Date(selectedDate).toLocaleDateString()}</p>
-          )}
+      <div style={{ display: "flex" }}>
+        <div style={{ flex: 1 }}>
+          <div>
+            {selectedDate && (
+              <p>
+                Selected Date: {new Date(selectedDate).toLocaleDateString()}
+              </p>
+            )}
+          </div>
+          <div>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateCalendar
+                className="bg-white text-red-900"
+                showDaysOutsideCurrentMonth
+                onChange={handleDateChange}
+              />
+            </LocalizationProvider>
+          </div>
         </div>
-        <div>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateCalendar
-              className="bg-white text-red-900"
-              showDaysOutsideCurrentMonth
-              onChange={handleDateChange}
-            />
-          </LocalizationProvider>
+        <div style={{ flex: 1 }}>
+          <ToDo />
         </div>
-      </div>
-      <div>
-        <ToDo />
       </div>
     </>
   );
