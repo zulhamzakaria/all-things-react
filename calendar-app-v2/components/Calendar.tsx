@@ -11,18 +11,15 @@ const Calendar = () => {
     setSelectedDate(date);
   };
   return (
-    <>
-      <div className="bg-red-900">
+    <div>
+      <div className="bg-red-900" style={{ marginBottom: "10px" }}>
         {selectedDate && (
-          <p style={{ textAlign: "center" }}>
+          <p style={{ textAlign: "center", margin: "0" }}>
             Selected Date: {new Date(selectedDate).toLocaleDateString()}
           </p>
         )}
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {/* {selectedDate && (
-          <p>Selected Date: {new Date(selectedDate).toLocaleDateString()}</p>
-        )} */}
         <div style={{ flex: 1 }}>
           <div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -38,7 +35,7 @@ const Calendar = () => {
           <ToDo />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
