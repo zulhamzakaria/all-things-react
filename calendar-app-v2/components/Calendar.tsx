@@ -12,15 +12,14 @@ const Calendar = () => {
   return (
     <div className="flex flex-col">
       <div>
-        {selectedDate && (
-          <p>Selected Date: {selectedDate.toLocaleDateString()}</p>
-        )}
+        {selectedDate && <p>Selected Date: {}</p>}
       </div>
       <div>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateCalendar
             className="bg-white text-red-900"
             showDaysOutsideCurrentMonth
+            onChange={handleDateChange}
           />
         </LocalizationProvider>
       </div>
