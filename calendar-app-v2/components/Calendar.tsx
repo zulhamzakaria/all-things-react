@@ -12,10 +12,17 @@ const Calendar = () => {
   };
   return (
     <>
-      <div style={{ display: "flex" }}>
+      <div className="bg-red-900">
         {selectedDate && (
-          <p>Selected Date: {new Date(selectedDate).toLocaleDateString()}</p>
+          <p style={{ textAlign: "center" }}>
+            Selected Date: {new Date(selectedDate).toLocaleDateString()}
+          </p>
         )}
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        {/* {selectedDate && (
+          <p>Selected Date: {new Date(selectedDate).toLocaleDateString()}</p>
+        )} */}
         <div style={{ flex: 1 }}>
           <div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
