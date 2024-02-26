@@ -5,15 +5,13 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { useState } from "react";
 
 const Calendar = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const handleDateChange = (date: Date | null) => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const handleDateChange = (date: Date) => {
     setSelectedDate(date);
   };
   return (
     <div className="flex flex-col">
-      <div>
-        {selectedDate && <p>Selected Date: {}</p>}
-      </div>
+      <div>{selectedDate && <p>Selected Date: {}</p>}</div>
       <div>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateCalendar
