@@ -7,16 +7,13 @@ import { useState } from "react";
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const handleDateChange = (date: Date) => {
-    alert(date);
     setSelectedDate(date);
   };
   return (
     <div className="flex flex-col">
       <div>
-        {selectedDate ? (
+        {selectedDate && (
           <p>Selected Date: {new Date(selectedDate).toLocaleDateString()}</p>
-        ) : (
-          "huh"
         )}
       </div>
       <div>
