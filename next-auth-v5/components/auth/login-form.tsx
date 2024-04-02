@@ -14,6 +14,7 @@ import { LoginSchema } from "@/schemas";
 import CardWrapper from "./card-wrapper";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { FormError } from "../form-error";
 
 export const LoginForm = () => {
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -69,6 +70,7 @@ export const LoginForm = () => {
               )}
             />
           </div>
+          <FormError message="Invalid credentials!" />
           <Button type="submit" className="w-full">
             Login
           </Button>
