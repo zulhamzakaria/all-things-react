@@ -10,6 +10,9 @@ export const {
   signOut,
 } = NextAuth({
   callbacks: {
+    async session({ token, session }) {
+      return session;
+    },
     async jwt({ token }) {
       console.log(token);
       return token;
