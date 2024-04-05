@@ -7,7 +7,9 @@ const ErrorCard = () => {
       backButtonHref="/auth/login"
       backButtonLabel="Back to login"
     >
-      <ExclamationTriangleIcon />
+      <div className="w-full flex justify-center items-center">
+        <ExclamationTriangleIcon className="text-destructive" />
+      </div>
     </CardWrapper>
   );
 };
