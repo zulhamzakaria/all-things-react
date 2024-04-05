@@ -23,6 +23,7 @@ export const {
 } = NextAuth({
   callbacks: {
     async signIn({ user }) {
+      // why need to include undefined?
       const existingUser = await getUserById(user.id);
 
       if (!existingUser || !existingUser.emailVerified) {
