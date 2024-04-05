@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { getUserById } from "./data/user";
 import NextAuth, { type DefaultSession } from "next-auth";
+import { UserRole } from "@prisma/client";
 
 declare module "next-auth" {
   interface Session {
@@ -11,7 +12,7 @@ declare module "next-auth" {
 }
 
 type ExtendedUser = DefaultSession["user"] & {
-  role: "ADMIN" | "USER";
+  role: UserRole;
 };
 
 export const {
@@ -27,7 +28,7 @@ export const {
       }
 
       if (token.role && session.user) {
-        session.user.role = token.role as "ADMIN" | "USER";
+        session.user.role = token.role as UserRole;
       }
 
       return session;
