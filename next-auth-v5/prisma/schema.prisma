@@ -57,5 +57,5 @@ model VerificationToken{
   token String @unique
   expires_at DateTime
 
-@@unique([email,token])
+  @@unique([email,token])
 }
