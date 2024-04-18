@@ -1,5 +1,5 @@
 import CardWrapper from "./card-wrapper";
-
+import {BeatLoader} from "react-spinners"
 const NewVerificationForm = () => {
   return (
     <CardWrapper
