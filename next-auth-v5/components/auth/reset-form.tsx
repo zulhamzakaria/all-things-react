@@ -16,7 +16,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
-import { login } from "@/actions/login";
+import { reset } from "@/actions/reset";
 import { useTransition, useState } from "react";
 
 export const ResetForm = () => {
@@ -33,13 +33,13 @@ export const ResetForm = () => {
   const onSubmit = (values: z.infer<typeof ResetSchema>) => {
     setError("");
     setSuccess("");
-    
-    // startTransition(() => {
-    //   login(values).then((data) => {
-    //     setError(data?.error);
-    //     setSuccess(data?.success);
-    //   });
-    // });
+
+    startTransition(() => {
+      reset(values).then((data) => {
+        setError(data?.error);
+        setSuccess(data?.success);
+      });
+    });
   };
 
   return (
