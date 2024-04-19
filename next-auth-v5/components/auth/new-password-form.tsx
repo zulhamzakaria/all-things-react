@@ -11,15 +11,18 @@ import {
 } from "@/components/ui/form";
 import * as z from "zod";
 import { NewPasswordSchema } from "@/schemas";
+import { useSearchParams } from "next/navigation";
 import CardWrapper from "./card-wrapper";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
-import { reset } from "@/actions/reset";
 import { useTransition, useState } from "react";
 
 export const NewPasswordForm = () => {
+  const searchParams = useSearchParams();
+  const toke = searchParams.get("token");
+
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
