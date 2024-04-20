@@ -1,3 +1,5 @@
+import Navbar from "./_components/navbar";
+
 interface ProtectedInterfaceProps {
   children: React.ReactNode;
 }
