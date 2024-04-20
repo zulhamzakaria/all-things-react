@@ -1,7 +1,5 @@
-import React from "react";
+"use client";
 
-const Navbar = () => {
-  return <div>Navbar</div>;
+export const Navbar = () => {
+  return <div>Navbar component</div>;
 };
-
-export default Navbar;
