@@ -6,14 +6,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { UserRole } from "@prisma/client";
 import React from "react";
+import { toast } from "sonner";
 
 const AdminPage = () => {
   const onApiRouteClick = () => {
     fetch("/api/admin").then((response) => {
       if (response.ok) {
-        console.log("Ok");
+        toast.success("Allowed API Route");
       } else {
-        console.error("Forbidden");
+        toast.success("Forbidden API Route");
       }
     });
   };
