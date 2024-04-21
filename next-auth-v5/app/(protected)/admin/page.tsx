@@ -8,6 +8,16 @@ import { UserRole } from "@prisma/client";
 import React from "react";
 
 const AdminPage = () => {
+  const onApiRouteClick = () => {
+    fetch("/api/admin").then((response) => {
+      if (response.ok) {
+        console.log("Ok");
+      } else {
+        console.error("Forbidden");
+      }
+    });
+  };
+
   return (
     <Card className="w-[600px]">
       <CardHeader>
@@ -19,7 +29,7 @@ const AdminPage = () => {
         </RoleGate>
         <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">
           <p className="text-sm font-medium ">Admin-only API route.</p>
-          <Button>Click to test.</Button>
+          <Button onClick={onApiRouteClick}>Click to test.</Button>
         </div>
         <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">
           <p className="text-sm font-medium ">Admin-only Server Action.</p>
