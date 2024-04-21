@@ -1,7 +1,9 @@
+import { auth } from "@/auth";
 import React from "react";
 
-const ServerPage = () => {
-  return <div>Server Page</div>;
+const ServerPage = async () => {
+  const session = await auth();
+  return <div>{JSON.stringify(session)}</div>;
 };
 
 export default ServerPage;
