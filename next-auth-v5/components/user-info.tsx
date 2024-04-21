@@ -40,7 +40,7 @@ const UserInfoPage = ({ user, label }: UserInfoProps) => {
         <div className="flex flex-row items-center justify-between rounded-ld border p-3 shadow-sm">
           <p className="text-sm font-medium">Two-Factor Auntentication (2FA)</p>
           <p className="truncate text-xs max-w-[180px] font-mono p-1 bg-slate-100 rounded-md">
-            OFF 
+            {user?.isTwoFactorEnabled ? "ON" : "OFF"}
           </p>
         </div>
       </CardContent>
