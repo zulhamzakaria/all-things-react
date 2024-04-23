@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { useTransition, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Form,
@@ -25,11 +26,12 @@ const SettingsPage = () => {
   const [success, setSuccess] = useState<string | undefined>();
   const { update } = useSession();
   const [isPending, startTransition] = useTransition();
+  const user = useCurrentUser();
 
   const form = useForm<z.infer<typeof SettingsSchema>>({
     resolver: zodResolver(SettingsSchema),
     defaultValues: {
-      name: "defaultName",
+      name: user?.name || undefined,
     },
   });
 
