@@ -5,6 +5,7 @@ import { getUserById } from "./data/user";
 import NextAuth, { type DefaultSession } from "next-auth";
 import { UserRole } from "@prisma/client";
 import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation";
+import { getAccountByUserId } from "./data/account";
 
 declare module "next-auth" {
   interface Session {
@@ -15,6 +16,7 @@ declare module "next-auth" {
 type ExtendedUser = DefaultSession["user"] & {
   role: UserRole;
   isTwoFactorEnabled: boolean;
+  isOAuth: boolean;
 };
 
 export const {
@@ -71,6 +73,7 @@ export const {
       if (session.user) {
         session.user.name = token.name;
         session.user.email = token.email as string;
+        session.user.isOAuth = !!token.isOAuth;
       }
 
       return session;
@@ -85,6 +88,10 @@ export const {
 
       if (!existingUser) return token;
 
+      const account = getAccountByUserId(existingUser.id);
+
+      // !! turns account to boolean
+      token.isOAuth = !!account;
       //assign name manually after updating it
       token.name = existingUser.name;
       token.email = existingUser.email;
