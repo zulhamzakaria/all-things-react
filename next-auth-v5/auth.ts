@@ -68,6 +68,11 @@ export const {
         session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
       }
 
+      if (session.user) {
+        session.user.name = token.name;
+        session.user.email = token.email as string;
+      }
+
       return session;
     },
     async jwt({ token }) {
