@@ -80,6 +80,9 @@ export const {
 
       if (!existingUser) return token;
 
+      //assign name manually after updating it
+      token.name = existingUser.name;
+      token.email = existingUser.email;
       token.role = existingUser.role;
       token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
 
