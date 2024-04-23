@@ -5,7 +5,6 @@ import { db } from "@/lib/db";
 import { currentUser } from "@/lib/auth";
 import { getUserById } from "@/data/user";
 import { SettingsSchema } from "@/schemas";
-import { FormSuccess } from "@/components/form-success";
 
 export const settings = async (values: z.infer<typeof SettingsSchema>) => {
   const user = await currentUser();
