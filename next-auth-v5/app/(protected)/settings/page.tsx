@@ -8,7 +8,9 @@ import { settings } from "@/actions/settings";
 import { Input } from "@/components/ui/input";
 import { useTransition, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { FormError } from "@/components/form-error";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FormSuccess } from "@/components/form-success";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
@@ -78,7 +80,11 @@ const SettingsPage = () => {
                 )}
               />
             </div>
-            <Button type="submit">Save</Button>
+            <FormError message={error} />
+            <FormSuccess message={success} />
+            <Button disabled={isPending} type="submit">
+              Save
+            </Button>
           </form>
         </Form>
       </CardContent>
