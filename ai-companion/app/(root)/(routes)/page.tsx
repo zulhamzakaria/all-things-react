@@ -4,7 +4,7 @@ import React from "react";
 const RootPage = () => {
   return (
     <div>
-      <UserButton />
+      <UserButton afterSignOutUrl="/" />
     </div>
   );
 };
