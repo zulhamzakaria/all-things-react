@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 
 const SearchInput = () => {
   return <div>Search Input</div>;
