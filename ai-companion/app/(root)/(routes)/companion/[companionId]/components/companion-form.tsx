@@ -27,6 +27,8 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Axis3DIcon, Wand2 } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 const PREAMBLE =
   "You're a fictional entreprenuer called Elon. You're ruthless in your way in dealing with other humans";
@@ -61,6 +63,8 @@ const formSchema = z.object({
 });
 
 const CompanionForm = ({ initialData, categories }: CompanionFormProps) => {
+  const { toast } = useToast();
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
@@ -82,8 +86,16 @@ const CompanionForm = ({ initialData, categories }: CompanionFormProps) => {
       } else {
         await axios.post("/api/companion", values);
       }
+      toast({
+        description: "success.",
+      });
+      router.refresh();
+      router.push("/");
     } catch (error) {
-      console.error("somn wrong", error);
+      toast({
+        variant: "destructive",
+        description: "somn wrong",
+      });
     }
   };
 
