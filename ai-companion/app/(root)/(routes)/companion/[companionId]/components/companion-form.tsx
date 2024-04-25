@@ -1,6 +1,7 @@
 "use client";
 
 import * as z from "zod";
+import axios from "axios";
 import { Category, Companion } from "@prisma/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,7 +26,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Wand2 } from "lucide-react";
+import { Axis3DIcon, Wand2 } from "lucide-react";
 
 const PREAMBLE =
   "You're a fictional entreprenuer called Elon. You're ruthless in your way in dealing with other humans";
@@ -75,7 +76,15 @@ const CompanionForm = ({ initialData, categories }: CompanionFormProps) => {
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    try {
+      if (initialData) {
+        await axios.patch(`api/companion/${initialData.id}`, values);
+      } else {
+        await axios.post("/api/companion", values);
+      }
+    } catch (error) {
+      console.error("somn wrong", error);
+    }
   };
 
   return (
