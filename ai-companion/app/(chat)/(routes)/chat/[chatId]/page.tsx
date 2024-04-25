@@ -7,6 +7,7 @@ interface ChatIdPageProps {
 import prismaDb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import ChatClient from "./components/client";
 
 const ChatIdPage = async ({ params }: ChatIdPageProps) => {
   const { userId } = auth();
@@ -38,7 +39,11 @@ const ChatIdPage = async ({ params }: ChatIdPageProps) => {
     return redirect("/");
   }
 
-  return <div>ChatClient component, companion=companion</div>;
+  return (
+    <div>
+      <ChatClient companion={companion} />
+    </div>
+  );
 };
 
 export default ChatIdPage;
