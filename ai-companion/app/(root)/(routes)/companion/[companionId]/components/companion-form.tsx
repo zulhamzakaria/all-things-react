@@ -82,7 +82,7 @@ const CompanionForm = ({ initialData, categories }: CompanionFormProps) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       if (initialData) {
-        await axios.patch(`api/companion/${initialData.id}`, values);
+        await axios.patch(`/api/companion/${initialData.id}`, values);
       } else {
         await axios.post("/api/companion", values);
       }
