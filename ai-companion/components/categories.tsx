@@ -6,6 +6,6 @@ interface CategoriesProps {
   data: Category[];
 }
 
-export const Categories = (category: CategoriesProps) => {
+export const Categories = ({ data }: CategoriesProps) => {
   return <div>Categories!</div>;
 };
