@@ -1,4 +1,5 @@
 import prismaDb from "@/lib/prismadb";
+import CompanionForm from "./components/companion-form";
 
 interface CompanionIdProps {
   params: {
@@ -13,7 +14,11 @@ const CompanionPage = async ({ params }: CompanionIdProps) => {
 
   const categories = await prismaDb.category.findMany();
 
-  return <div>Companion Form here</div>;
+  return (
+    <div>
+      <CompanionForm />
+    </div>
+  );
 };
 
 export default CompanionPage;
