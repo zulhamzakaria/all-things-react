@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { useToast } from "./ui/use-toast";
 import { cn } from "@/lib/utils";
 import BotAvatar from "./bot-avatar";
-import { Controller } from "react-hook-form";
+import { BeatLoader } from "react-spinners";
 
 export interface ChatMessageProps {
   role: "system" | "user";
@@ -42,7 +42,11 @@ export const ChatMessage = ({
     >
       {role !== "user" && src && <BotAvatar src={src} />}
       <div className="rounded-md px-4 py-2 max-w-sm text-sm bg-primary/10">
-        {isLoading ? "is loading..." : content}
+        {isLoading ? (
+          <BeatLoader size={5} color={theme === "light" ? "black" : "white"} />
+        ) : (
+          content
+        )}
       </div>
     </div>
   );
