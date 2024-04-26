@@ -16,7 +16,11 @@ export const ChatMessages = ({
 }: ChatMessagesProps) => {
   return (
     <div className="flex-1 overflow-y-auto pr-4">
-      <ChatMessage />
+      <ChatMessage
+        src={companion.src}
+        role="system"
+        content={`Hellow, i am ${companion.name}, ${companion.description}`}
+      />
     </div>
   );
 };
