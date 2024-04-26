@@ -21,6 +21,11 @@ export const ChatMessages = ({
         role="system"
         content={`Hellow, i am ${companion.name}, ${companion.description}`}
       />
+      <ChatMessage
+        src={companion.src}
+        role="user"
+        content={`Hellow, i am ${companion.name}, ${companion.description}`}
+      />
     </div>
   );
 };
