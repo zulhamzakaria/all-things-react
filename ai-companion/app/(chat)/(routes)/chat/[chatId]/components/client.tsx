@@ -5,6 +5,7 @@ import { Companion, Message } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { useCompletion } from "ai/react";
+import { ChatForm } from "@/components/chat-form";
 
 interface ChatClientProps {
   companion: Companion & {
@@ -48,6 +49,12 @@ const ChatClient = ({ companion }: ChatClientProps) => {
     <div className="flex flex-col h-full space-y-2">
       <ChatHeader companion={companion} />
       <div>Messages TODO</div>
+      <ChatForm
+        isLoading={isLoading}
+        input={input}
+        handleInputChange={handleInputChange}
+        onSubmit={onSubmit}
+      />
     </div>
   );
 };
