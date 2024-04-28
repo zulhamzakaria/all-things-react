@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 export default function Home() {
-  return <div>Main app page</div>;
+  return <Button variant={"success"}>Click me?</Button>;
 }
