@@ -1,7 +1,11 @@
 import React from "react";
 
 const Sidebar = () => {
-  return <div>this Sidebar resides inside dashboard</div>;
+  return (
+    <aside className="fixed z-[1] left-0 bg-blue-950 h-full w-[60px] flex p-3 flex-col gap-y-4">
+      this Sidebar resides inside dashboard
+    </aside>
+  );
 };
 
 export default Sidebar;
