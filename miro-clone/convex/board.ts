@@ -1,4 +1,3 @@
-import { title } from "process";
 import { mutation } from "./_generated/server";
 import { v } from "convex/values";
 
@@ -39,3 +38,4 @@ export const create = mutation({
     return board;
   },
 });
+
