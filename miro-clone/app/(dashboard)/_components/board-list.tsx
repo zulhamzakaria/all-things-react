@@ -1,5 +1,7 @@
 "use client";
 
+import { EmptySearch } from "./empty-search";
+
 interface BoardListProps {
   orgId: string;
   query: {
@@ -12,7 +14,7 @@ const BoardList = ({ orgId, query }: BoardListProps) => {
   const data = [];
 
   if (!data?.length && query.search) {
-    return <div>Try searching for somn else</div>;
+    return <EmptySearch />;
   }
 
   if (!data?.length && query.favorites) {
