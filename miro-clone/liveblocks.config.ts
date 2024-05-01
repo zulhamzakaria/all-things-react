@@ -70,6 +70,11 @@ type Storage = {
 type UserMeta = {
   // id?: string,  // Accessible through `user.id`
   // info?: Json,  // Accessible through `user.info`
+  id?: string;
+  info?: {
+    name?: string;
+    picture?: string;
+  };
 };
 
 // Optionally, the type of custom events broadcast and listened to in this
