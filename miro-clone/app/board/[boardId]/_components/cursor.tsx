@@ -19,6 +19,8 @@ export const Cursor = memo(({ connectionId }: CursorProps) => {
     return null;
   }
 
+  const { x, y } = cursor;
+
   return <p>Cursor!</p>;
 });
 
