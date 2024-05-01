@@ -3,6 +3,7 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { useOthers, useSelf } from "@/liveblocks.config";
 import { UserAvatar } from "./user-avatar";
+import { connectionIdToColor } from "@/lib/utils";
 
 const MAX_SHOWN_USERS = 2;
 
@@ -17,6 +18,7 @@ export const Participants = () => {
         {users.slice(0, MAX_SHOWN_USERS).map(({ connectionId, info }) => {
           return (
             <UserAvatar
+              borderColor={connectionIdToColor(connectionId)}
               key={connectionId}
               src={info?.picture}
               name={info?.name}
@@ -26,6 +28,7 @@ export const Participants = () => {
         })}
         {currentUsr && (
           <UserAvatar
+            borderColor={connectionIdToColor(currentUsr.connectionId)}
             src={currentUsr?.info?.picture}
             name={`${currentUsr.info?.name} (You)`}
             fallback={currentUsr.info?.name?.[0]}
