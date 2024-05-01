@@ -15,6 +15,7 @@ import {
 
 import { useSelf } from "@/liveblocks.config";
 import { CursorsPresence } from "./cursors-presence";
+import { pointerEventToCanvasPoint } from "@/lib/utils";
 
 interface CanvasProps {
   boardId: string;
@@ -34,14 +35,14 @@ export const Canvas = ({ boardId }: CanvasProps) => {
   const onWheel = useCallback((e: React.WheelEvent) => {
     setCamera((cam) => ({
       x: cam.x - e.deltaX,
-      y: camera.y - e.deltaY,
+      y: cam.y - e.deltaY,
     }));
   }, []);
 
   const onPointerMove = useMutation(
     ({ setMyPresence }, e: React.PointerEvent) => {
       e.preventDefault();
-      const current = { x: 0, y: 0 };
+      const current = pointerEventToCanvasPoint(e, camera);
       setMyPresence({ cursor: current });
     },
     []
