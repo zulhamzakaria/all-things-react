@@ -9,7 +9,7 @@ import {
   Undo2,
 } from "lucide-react";
 import { ToolButton } from "./tool-button";
-import { CanvasState } from "@/types/canvas";
+import { CanvasMode, CanvasState } from "@/types/canvas";
 interface ToolbarProps {
   canvasState: CanvasState;
   setCanvasState: (newState: CanvasState) => void;
@@ -33,8 +33,8 @@ export const Toolbar = ({
         <ToolButton
           label="Select"
           icon={MousePointer2}
-          onClick={() => {}}
-          isActive={false}
+          onClick={() => setCanvasState({ mode: CanvasMode.None })}
+          isActive={canvasState.mode === CanvasMode.None}
         />
         <ToolButton
           label="Text"
@@ -71,14 +71,14 @@ export const Toolbar = ({
         <ToolButton
           label="Undo"
           icon={Undo2}
-          onClick={() => {}}
-          isActive={false}
+          onClick={undo}
+          isActive={!canUndo}
         />
         <ToolButton
           label="Redo"
           icon={Redo2}
-          onClick={() => {}}
-          isActive={false}
+          onClick={redo}
+          isActive={!canRedo}
         />
       </div>
     </div>
