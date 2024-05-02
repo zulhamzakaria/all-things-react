@@ -1,5 +1,6 @@
 "use client";
 
+import { UseSelectionBounds } from "@/hooks/use-selection-bounds";
 import { useSelf, useStorage } from "@/liveblocks.config";
 import { LayerType, Side, XYWH } from "@/types/canvas";
 import { memo } from "react";
@@ -21,9 +22,24 @@ export const SelectionBox = memo(
         soleLayerId && root.layers.get(soleLayerId)?.type !== LayerType.Path
     );
 
-    
+    const bounds = UseSelectionBounds();
 
-    return <div></div>;
+    if (!bounds) {
+      return null;
+    }
+
+    return (
+      <>
+        <rect
+          className=" fill-transparent stroke-blue-500 stroke-1 pointer-events-none"
+          style={{ transform: `translate(${bounds.x}px, ${bounds.y}px)` }}
+          x={0}
+          y={0}
+          width={bounds.width}
+          height={bounds.height}
+        />
+      </>
+    );
   }
 );
 
