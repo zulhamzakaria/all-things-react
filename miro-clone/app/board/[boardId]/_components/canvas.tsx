@@ -146,7 +146,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
               key={layerId}
               id={layerId}
               onLayerPointerDown={() => {}}
-              selectionColor={null}
+              selectionColor={"#000"}
             />
           ))}
           <CursorsPresence />
