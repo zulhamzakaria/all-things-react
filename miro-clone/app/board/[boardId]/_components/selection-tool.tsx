@@ -1,5 +1,7 @@
 "use client";
 
+import { UseSelectionBounds } from "@/hooks/use-selection-bounds";
+import { useSelf } from "@/liveblocks.config";
 import { Camera, Color } from "@/types/canvas";
 import { memo } from "react";
 
@@ -10,7 +12,22 @@ interface SelectionToolProps {
 
 export const SelectionTool = memo(
   ({ camera, setLastUsedColor }: SelectionToolProps) => {
-    return <div>Selection Tool</div>;
+    const selection = useSelf((me) => me.presence.selection);
+    const selectionBounds = UseSelectionBounds();
+
+    if (!selectionBounds) {
+      return;
+    }
+
+    const x = selectionBounds.width / 2 + selectionBounds.x + camera.x;
+    const y = selectionBounds.y + camera.y;
+
+    return (
+      <div className="absolute p-3 rounded-xl bg-white shadow-sm border flex select-none"
+      style={{transform:`translate(calc(${x}px-50%), calc(${y-16}px-100%))`}}>
+        Selection Tool
+      </div>
+    );
   }
 );
 
