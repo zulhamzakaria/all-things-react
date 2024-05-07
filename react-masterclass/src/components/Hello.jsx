@@ -1,19 +1,19 @@
-const person = "Toni";
+// const person = "Toni";
 
-function displayMessage(person) {
-  return `${person} Zambroni`;
-}
+// function displayMessage(person) {
+//   return `${person} Zambroni`;
+// }
 
-function Hello(prop) {
-  let { name, message } = prop;
+function Hello(props) {
+  //   let { name, message, seatNumbers } = props;
 
-  name = "new guy";
+  //   name = "new guy";
   //   prop.name = "jubo"; not allowed
   return (
     <>
       {/* <h1>Hello from {displayMessage(person)}</h1> */}
       <h1>
-        {message} {name}
+        {props.person.message} {props.person.name} {props.person.seatNumbers}
       </h1>
     </>
   );
