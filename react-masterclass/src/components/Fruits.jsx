@@ -1,3 +1,5 @@
+import Fruit from "./Fruit";
+
 export default function Fruits() {
   const fruits = ["Apple", "Orange", "Pear"];
   const fruitsObject = [
@@ -8,7 +10,10 @@ export default function Fruits() {
     <div>
       <ul>
         {fruitsObject.map((fruit) => (
-          <li key={fruit.id}>{fruit.name}</li>
+          <>
+            <li key={fruit.id}>{fruit.name}</li>
+            <Fruit key={fruit.id} id={fruit.id} name={fruit.name} />
+          </>
         ))}
       </ul>
     </div>
