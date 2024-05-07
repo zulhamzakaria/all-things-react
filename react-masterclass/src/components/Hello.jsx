@@ -5,11 +5,12 @@ function displayMessage(person) {
 }
 
 function Hello(prop) {
+  const { name, message } = prop;
   return (
     <>
       {/* <h1>Hello from {displayMessage(person)}</h1> */}
       <h1>
-        {prop.message} {prop.name}
+        {message} {name}
       </h1>
     </>
   );
