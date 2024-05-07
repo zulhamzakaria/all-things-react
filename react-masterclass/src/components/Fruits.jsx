@@ -1,10 +1,14 @@
 export default function Fruits() {
   const fruits = ["Apple", "Orange", "Pear"];
+  const fruitsObject = [
+    { id: 1, name: "Apple" },
+    { id: 2, name: "Lemon" },
+  ];
   return (
     <div>
       <ul>
-        {fruits.map((fruit) => (
-          <li key={fruit}>{fruit}</li>
+        {fruitsObject.map((fruit) => (
+          <li key={fruit.id}>{fruit.name}</li>
         ))}
       </ul>
     </div>
