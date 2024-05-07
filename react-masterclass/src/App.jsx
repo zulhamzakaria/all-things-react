@@ -1,6 +1,7 @@
 import ConditionalComponent from "./components/ConditionalComponent";
 import Fruits from "./components/Fruits";
 import Hello from "./components/Hello";
+import Message from "./components/Message";
 
 function App() {
   const numArray = [11, 2, 3, 4];
@@ -14,7 +15,8 @@ function App() {
       <div className=" App">
         {/* <Hello person={Person} /> */}
         {/* <Fruits /> */}
-        <ConditionalComponent />
+        {/* <ConditionalComponent /> */}
+        <Message />
       </div>
     </>
   );
