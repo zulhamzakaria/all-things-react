@@ -10,10 +10,10 @@ export default function Fruits() {
     <div>
       <ul>
         {fruitsObject.map((fruit) => (
-          <>
-            <li key={fruit.id}>{fruit.name}</li>
+          <div>
+            {/* <li key={fruit.id}>{fruit.name}</li> */}
             <Fruit key={fruit.id} id={fruit.id} name={fruit.name} />
-          </>
+          </div>
         ))}
       </ul>
     </div>
