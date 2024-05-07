@@ -6,6 +6,7 @@ import Hello from "./components/Hello";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
-    <Hello />
+    <Hello name={"Cockburn"} message="Hello from prop by " />
+    <Hello name={"Pierce"} message="Hello from prop by " />
   </React.StrictMode>
 );
