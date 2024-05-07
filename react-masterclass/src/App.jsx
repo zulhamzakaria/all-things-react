@@ -1,3 +1,4 @@
+import ConditionalComponent from "./components/ConditionalComponent";
 import Fruits from "./components/Fruits";
 import Hello from "./components/Hello";
 
@@ -12,7 +13,8 @@ function App() {
     <>
       <div className=" App">
         {/* <Hello person={Person} /> */}
-        <Fruits />
+        {/* <Fruits /> */}
+        <ConditionalComponent />
       </div>
     </>
   );
