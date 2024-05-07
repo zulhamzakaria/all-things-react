@@ -1,3 +1,4 @@
+import Fruits from "./components/Fruits";
 import Hello from "./components/Hello";
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
   return (
     <>
       <div className=" App">
-        <Hello person={Person} />
+        {/* <Hello person={Person} /> */}
+        <Fruits />
       </div>
     </>
   );
