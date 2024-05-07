@@ -5,7 +5,10 @@ function displayMessage(person) {
 }
 
 function Hello(prop) {
-  const { name, message } = prop;
+  let { name, message } = prop;
+
+  name = "new guy";
+  //   prop.name = "jubo"; not allowed
   return (
     <>
       {/* <h1>Hello from {displayMessage(person)}</h1> */}
