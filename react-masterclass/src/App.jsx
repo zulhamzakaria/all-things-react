@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import Fruits from "./components/Fruits";
 import Hello from "./components/Hello";
 import Message from "./components/Message";
+import ToDo from "./components/Todo";
 
 function App() {
   const numArray = [11, 2, 3, 4];
@@ -15,13 +16,13 @@ function App() {
   return (
     <>
       <div className=" App">
-        App
         {/* <Hello person={Person} /> */}
         {/* <Fruits /> */}
         {/* <ConditionalComponent /> */}
         {/* <Message /> */}
         {/* <Counter /> */}
         {/* <Form /> */}
+        <ToDo />
       </div>
     </>
   );
