@@ -12,6 +12,7 @@ import "./app.css";
 import Search from "./components/Search";
 import { useState } from "react";
 import FoodList from "./components/FoodList";
+import Navbar from "./components/Navbar";
 
 function App() {
   const numArray = [11, 2, 3, 4];
@@ -33,6 +34,7 @@ function App() {
         {/* <ToDo /> */}
         {/* <Inline />
         <Outline /> */}
+        <Navbar />
         <Search foodData={foodData} setFoodData={setFoodData} />
         <FoodList foodData={foodData} />
       </div>
