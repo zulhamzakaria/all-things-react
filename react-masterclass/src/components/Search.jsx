@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function Search({ foodData, setFoodData }) {
-  const [query, setQuery] = useState("pizza");
+  const [query, setQuery] = useState("chicken soup");
 
   useEffect(() => {
     // if (query === "") return;
