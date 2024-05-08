@@ -9,6 +9,7 @@ import Message from "./components/Message";
 import Outline from "./components/Outline";
 import ToDo from "./components/Todo";
 import "./app.css";
+import Search from "./components/Search";
 
 function App() {
   const numArray = [11, 2, 3, 4];
@@ -29,6 +30,7 @@ function App() {
         {/* <ToDo /> */}
         {/* <Inline />
         <Outline /> */}
+        <Search />
       </div>
     </>
   );
