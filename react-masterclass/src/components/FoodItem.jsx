@@ -1,14 +1,19 @@
+import styles from "./fooditem.module.css";
+
 export default function FoodItem({ food }) {
   return (
-    <div>
+    <div className={styles.item_container}>
       <img
         src="http://thetasteedit.com/wp-content/uploads/2016/09/italian-chicken-soup-DSC02170.jpg"
         alt="food-image"
-        width={100}
-        height={150}
+        className={styles.item_image}
       />
-      <h1>{food.display}</h1>
-      <button>View recipe</button>
+      <div className={styles.item_content}>
+        <p className={styles.item_name}>{food.display}</p>
+      </div>
+      <div className={styles.button_container}>
+        <button className={styles.item_button}>View recipe</button>
+      </div>
     </div>
   );
 }
