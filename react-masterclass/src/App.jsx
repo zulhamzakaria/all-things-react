@@ -11,6 +11,7 @@ import ToDo from "./components/Todo";
 import "./app.css";
 import Search from "./components/Search";
 import { useState } from "react";
+import FoodList from "./components/FoodList";
 
 function App() {
   const numArray = [11, 2, 3, 4];
@@ -33,9 +34,7 @@ function App() {
         {/* <Inline />
         <Outline /> */}
         <Search foodData={foodData} setFoodData={setFoodData} />
-        {foodData.map((food) => (
-          <h1>{food.display}</h1>
-        ))}
+        <FoodList foodData={foodData} />
       </div>
     </>
   );
