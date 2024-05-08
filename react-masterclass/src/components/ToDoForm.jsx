@@ -2,23 +2,24 @@ import { useState } from "react";
 import styles from "./todoform.module.css";
 
 export default function ToDoForm({ todos, setTodos }) {
-  const [todo, setTodo] = useState("");
+  //   const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState({ name: "", done: false });
   const handleClick = (e) => {
     e.preventDefault();
     if (todo === "") {
       return;
     }
     setTodos([...todos, todo]);
-    setTodo("");
+    setTodo({ name: "", done: false });
   };
   return (
     <form className={styles.todoform}>
       <div className={styles.input_container}>
         <input
           className={styles.modern_input}
-          onChange={(e) => setTodo(e.target.value)}
+          onChange={(e) => setTodo({ name: e.target.value, done: false })}
           type="text"
-          value={todo}
+          value={todo.name}
           placeholder="whatchu wanna do?"
         />
         <button
