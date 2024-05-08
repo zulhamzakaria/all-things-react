@@ -9,7 +9,7 @@ export default function TodoList({ todos, setTodos }) {
   function toggleDone(name) {
     setTodos(
       todos.map((todo) => {
-        todo.name === name ? { ...todo, done: !todo.done } : todo;
+        return todo.name === name ? { ...todo, done: !todo.done } : todo;
       })
     );
   }
@@ -18,7 +18,12 @@ export default function TodoList({ todos, setTodos }) {
       {todos.map((todo) => (
         <div className={styles.item}>
           <div key={todo.name} className={styles.item_name}>
-            <span onClick={() => toggleDone(todo.name)}>{todo.name}</span>
+            <span
+              className={todo.done ? styles.completed : ""}
+              onClick={() => toggleDone(todo.name)}
+            >
+              {todo.name}
+            </span>
             <span>
               <button
                 onClick={() => handleDelete(todo.name)}
