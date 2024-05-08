@@ -26,7 +26,7 @@ function App() {
         {/* <Message /> */}
         {/* <Counter /> */}
         {/* <Form /> */}
-        <ToDo />
+        {/* <ToDo /> */}
         {/* <Inline />
         <Outline /> */}
       </div>
