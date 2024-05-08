@@ -9,7 +9,7 @@
 }
 
 .modern_input {
-  width: 100%;
+  width: 80%;
   border-style: solid;
   display: block;
   color: black;
@@ -27,6 +27,7 @@
   border-radius: 4px;
   background-color: skyblue;
   padding: 12px;
+  width: 20%;
   color: white;
   cursor: pointer;
 }
