@@ -9,7 +9,7 @@ export default function ToDo() {
     <div>
       <Header />
       <ToDoForm todos={todos} setTodos={setTodos} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 }
