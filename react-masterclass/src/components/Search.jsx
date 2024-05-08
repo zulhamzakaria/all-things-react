@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export default function Search() {
-  const [query, setQuery] = useState("");
+export default function Search({ foodData, setFoodData }) {
+  const [query, setQuery] = useState("pizza");
 
   useEffect(() => {
     // if (query === "") return;
@@ -17,8 +17,9 @@ export default function Search() {
       };
       try {
         const response = await fetch(url, options);
-        const result = await response.text();
-        console.log(result);
+        // const result = await response.text();
+        const data = await response.json();
+        setFoodData(data.results);
       } catch (error) {
         console.error("somn wrong", error);
       }

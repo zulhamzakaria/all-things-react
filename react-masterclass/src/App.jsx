@@ -10,6 +10,7 @@ import Outline from "./components/Outline";
 import ToDo from "./components/Todo";
 import "./app.css";
 import Search from "./components/Search";
+import { useState } from "react";
 
 function App() {
   const numArray = [11, 2, 3, 4];
@@ -18,6 +19,7 @@ function App() {
     message: "Hello from ",
     seatNumbers: numArray,
   };
+  const [foodData, setFoodData] = useState([]);
   return (
     <>
       <div className="app">
@@ -30,7 +32,10 @@ function App() {
         {/* <ToDo /> */}
         {/* <Inline />
         <Outline /> */}
-        <Search />
+        <Search foodData={foodData} setFoodData={setFoodData} />
+        {foodData.map((food) => (
+          <h1>{food.display}</h1>
+        ))}
       </div>
     </>
   );
