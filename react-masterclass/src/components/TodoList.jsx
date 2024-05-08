@@ -7,6 +7,9 @@ export default function TodoList({ todos }) {
         <div className={styles.item}>
           <div key={todo} className={styles.item_name}>
             {todo}
+            <span>
+              <button className={styles.delete_button}>❌</button>
+            </span>
           </div>
           <hr className={styles.hr} />
         </div>

@@ -20,3 +20,10 @@
 .hr {
   border: 1px solid #f4f4f4;
 }
+.delete_button {
+  float: right;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: -5px;
+}
