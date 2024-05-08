@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TodoList from "./TodoList";
+import Header from "./Header";
 
 export default function ToDo() {
   const [todo, setTodo] = useState("");
@@ -11,6 +12,7 @@ export default function ToDo() {
   };
   return (
     <div>
+      <Header />
       <form>
         <input
           onChange={(e) => setTodo(e.target.value)}

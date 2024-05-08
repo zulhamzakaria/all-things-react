@@ -8,6 +8,7 @@ import InlineComponent from "./components/Inline";
 import Message from "./components/Message";
 import Outline from "./components/Outline";
 import ToDo from "./components/Todo";
+import "./app.css";
 
 function App() {
   const numArray = [11, 2, 3, 4];
@@ -18,16 +19,16 @@ function App() {
   };
   return (
     <>
-      <div className=" App">
+      <div className="app">
         {/* <Hello person={Person} /> */}
         {/* <Fruits /> */}
         {/* <ConditionalComponent /> */}
         {/* <Message /> */}
         {/* <Counter /> */}
         {/* <Form /> */}
-        {/* <ToDo /> */}
-        <Inline />
-        <Outline />
+        <ToDo />
+        {/* <Inline />
+        <Outline /> */}
       </div>
     </>
   );
