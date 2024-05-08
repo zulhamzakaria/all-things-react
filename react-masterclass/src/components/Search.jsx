@@ -5,6 +5,25 @@ export default function Search() {
 
   useEffect(() => {
     // if (query === "") return;
+    async function fetchRecipe() {
+      const url = `https://tasty.p.rapidapi.com/recipes/auto-complete?prefix=${query}`;
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "a1734c0813msh054d720e014136bp163309jsn5a9a1fe8d968",
+          "X-RapidAPI-Host": "tasty.p.rapidapi.com",
+        },
+      };
+      try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        console.log(result);
+      } catch (error) {
+        console.error("somn wrong", error);
+      }
+    }
+    fetchRecipe();
   }, [query]);
 
   return (
