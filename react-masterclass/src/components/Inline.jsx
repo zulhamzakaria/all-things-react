@@ -1,9 +1,9 @@
-export default function InlineComponent() {
+import "../css/style.css";
+
+export default function Inline() {
   return (
     <div>
-      <h1 style={{ color: "blueviolet", fontFamily: "cursive" }}>
-        Inline stylings
-      </h1>
+      <h1 className="header">Inline stylings</h1>
     </div>
   );
 }

@@ -3,6 +3,8 @@ import Counter from "./components/Counter";
 import Form from "./components/Form";
 import Fruits from "./components/Fruits";
 import Hello from "./components/Hello";
+import Inline from "./components/Inline";
+import InlineComponent from "./components/Inline";
 import Message from "./components/Message";
 import ToDo from "./components/Todo";
 
@@ -22,7 +24,8 @@ function App() {
         {/* <Message /> */}
         {/* <Counter /> */}
         {/* <Form /> */}
-        <ToDo />
+        {/* <ToDo /> */}
+        <Inline />
       </div>
     </>
   );
