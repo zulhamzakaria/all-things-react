@@ -6,7 +6,7 @@ export default function ToDoForm({ todos, setTodos }) {
   const [todo, setTodo] = useState({ name: "", done: false });
   const handleClick = (e) => {
     e.preventDefault();
-    if (todo === "") {
+    if (todo.name === "") {
       return;
     }
     setTodos([...todos, todo]);
