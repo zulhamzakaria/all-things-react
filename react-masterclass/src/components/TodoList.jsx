@@ -1,9 +1,16 @@
+import styles from "./todolist.module.css";
+
 export default function TodoList({ todos }) {
   return (
-    <ul>
+    <div className={styles.list}>
       {todos.map((todo) => (
-        <li key={todo}>{todo}</li>
+        <div className={styles.item}>
+          <div key={todo} className={styles.item_name}>
+            {todo}
+          </div>
+          <hr className={styles.hr} />
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }

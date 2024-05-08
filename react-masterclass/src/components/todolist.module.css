@@ -1,0 +1,22 @@
+.list {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.item {
+  color: #353935;
+  width: 500px;
+  font-size: 20px;
+  margin: 0 auto;
+}
+.item_name {
+  font-weight: bold;
+  padding: 20px;
+}
+.hr {
+  border: 1px solid #f4f4f4;
+}
