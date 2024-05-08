@@ -6,6 +6,7 @@ import Hello from "./components/Hello";
 import Inline from "./components/Inline";
 import InlineComponent from "./components/Inline";
 import Message from "./components/Message";
+import Outline from "./components/Outline";
 import ToDo from "./components/Todo";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         {/* <Form /> */}
         {/* <ToDo /> */}
         <Inline />
+        <Outline />
       </div>
     </>
   );
