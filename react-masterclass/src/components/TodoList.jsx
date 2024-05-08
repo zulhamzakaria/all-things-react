@@ -1,3 +1,9 @@
-export default function TodoList({ todo }) {
-  return <h1>{todo}</h1>;
+export default function TodoList({ todos }) {
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo}>{todo}</li>
+      ))}
+    </ul>
+  );
 }
