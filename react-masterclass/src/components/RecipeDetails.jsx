@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./recipedetails.module.css";
 
 export default function RecipeDetails({ foodId }) {
   const [food, setFood] = useState({});
@@ -25,11 +26,15 @@ export default function RecipeDetails({ foodId }) {
 
   return (
     <div>
-      <div>
-        <h1>{food.title}</h1>
-        {food.image}
+      <div className={styles.recipe_card}>
+        <h1 className={styles.recipe_name}>{food.title}</h1>
+        <img
+          src={food.image}
+          alt="food-image.jpg"
+          className={styles.recipe_image}
+        />
       </div>
-      <div>
+      <div styles={styles.recipe_details}>
         <span>
           <strong>⏲️{food.readyInMinutes} mins</strong>
         </span>
@@ -41,16 +46,18 @@ export default function RecipeDetails({ foodId }) {
       <div>
         💲<span>{food.pricePerServings} per serving</span>
       </div>
-      <div>
-        <h2>Instructions</h2>
 
-        {isLoading ? (
-          <p>Loading Instructions...</p>
-        ) : (
-          food.analyzedInstructions[0].steps.map((step) => {
-            return <li>{step.step}</li>;
-          })
-        )}
+      <h2>Instructions</h2>
+      <div className={styles.recipe_instructions}>
+        <ol>
+          {isLoading ? (
+            <p>Loading Instructions...</p>
+          ) : (
+            food.analyzedInstructions[0].steps.map((step) => {
+              return <li>{step.step}</li>;
+            })
+          )}
+        </ol>
       </div>
     </div>
   );
