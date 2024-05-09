@@ -47,6 +47,14 @@ export default function RecipeDetails({ foodId }) {
         💲<span>{food.pricePerServings} per serving</span>
       </div>
 
+      <h2>Ingredients</h2>
+      {food.extendedIngredients.map((ingredient) => (
+        <div>
+          <img src={`food_image_url${ingredient.image}`} alt="food_image.jpeg" />
+          <h3>{ingredient.amount} {ingredient.unit} of {ingredient.name}</h3>
+        </div>
+      ))}
+
       <h2>Instructions</h2>
       <div className={styles.recipe_instructions}>
         <ol>
