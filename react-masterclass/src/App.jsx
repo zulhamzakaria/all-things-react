@@ -15,6 +15,7 @@ import FoodList from "./components/FoodList";
 import Navbar from "./components/Navbar";
 import Container from "./components/Container";
 import InnerContainer from "./components/InnerContainer";
+import RecipeDetails from "./components/RecipeDetails";
 
 function App() {
   const numArray = [11, 2, 3, 4];
@@ -40,6 +41,7 @@ function App() {
         <Search foodData={foodData} setFoodData={setFoodData} />
         <Container>
           <InnerContainer>
+            <RecipeDetails />
             <FoodList foodData={foodData} />
           </InnerContainer>
         </Container>
