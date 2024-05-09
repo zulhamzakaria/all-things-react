@@ -1,3 +1,5 @@
-export default function Container() {
-  return <div>Container</div>;
+import styles from "./container.module.css";
+
+export default function Container({ children }) {
+  return <div className={styles.parent_container}>{children}</div>;
 }
