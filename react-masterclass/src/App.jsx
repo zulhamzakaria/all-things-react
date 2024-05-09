@@ -14,6 +14,7 @@ import { useState } from "react";
 import FoodList from "./components/FoodList";
 import Navbar from "./components/Navbar";
 import Container from "./components/Container";
+import InnerContainer from "./components/InnerContainer";
 
 function App() {
   const numArray = [11, 2, 3, 4];
@@ -38,7 +39,9 @@ function App() {
         <Navbar />
         <Search foodData={foodData} setFoodData={setFoodData} />
         <Container>
-          <FoodList foodData={foodData} />
+          <InnerContainer>
+            <FoodList foodData={foodData} />
+          </InnerContainer>
         </Container>
       </div>
     </>
