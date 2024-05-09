@@ -25,6 +25,7 @@ function App() {
     seatNumbers: numArray,
   };
   const [foodData, setFoodData] = useState([]);
+  const [foodId, setFoodId] = useState(0);
   return (
     <>
       <div className="app">
@@ -41,8 +42,8 @@ function App() {
         <Search foodData={foodData} setFoodData={setFoodData} />
         <Container>
           <InnerContainer>
-            <RecipeDetails />
-            <FoodList foodData={foodData} />
+            <RecipeDetails foodId={foodId} />
+            <FoodList setFoodId={setFoodId} foodData={foodData} />
           </InnerContainer>
         </Container>
       </div>
