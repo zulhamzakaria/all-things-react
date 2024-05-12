@@ -1,6 +1,14 @@
+import { Metadata } from "next";
+
 type ProductDetailsProps = {
   params: {
     productId: number;
+  };
+};
+
+export const generateMetadata = ({ params }: ProductDetailsProps): Metadata => {
+  return {
+    title: `Product ${params.productId}`,
   };
 };
 
