@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import { comments } from "./data";
+import { headers } from "next/headers";
 
 export async function GET(req: NextRequest) {
   const queryString = req.nextUrl.searchParams;
@@ -9,6 +10,12 @@ export async function GET(req: NextRequest) {
   const filteredComment = query
     ? comments.filter((comment) => comment.text.includes(query))
     : comments;
+
+  const headerList = headers();
+  const authHeader = headerList.get("Authorization");
+
+  const requestHeaders = new Headers(req.headers);
+  return new Response(requestHeaders.get("Authorization"));
 
   return Response.json(filteredComment);
 }
