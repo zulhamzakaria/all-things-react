@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { comments } from "./data";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 
 export async function GET(req: NextRequest) {
   const queryString = req.nextUrl.searchParams;
@@ -11,11 +11,16 @@ export async function GET(req: NextRequest) {
     ? comments.filter((comment) => comment.text.includes(query))
     : comments;
 
-  const headerList = headers();
-  const authHeader = headerList.get("Authorization");
+  const headerlist = headers();
+  const authheader = headerlist.get("authorization");
+  cookies().set("resultsPerPage", "20");
 
-  const requestHeaders = new Headers(req.headers);
-  return new Response(requestHeaders.get("Authorization"));
+  // const requestHeaders = new Headers(req.headers);
+  // return new Response(requestHeaders.get("Authorization"), {
+  //   headers: {
+  //     "Set-Cookie": "theme=dark",
+  //   },
+  // });
 
   return Response.json(filteredComment);
 }
