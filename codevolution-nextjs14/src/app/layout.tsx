@@ -1,10 +1,10 @@
 "use client";
 
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./globals.css";
+import ThemeProvider from "./components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,29 +32,30 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <header style={{ backgroundColor: "lightblue", padding: "1rem" }}>
-          Root Layout Header
-        </header>
-        {/*  */}
-        {navLinks.map((link) => {
-          const isActive = pathName.startsWith(link.href);
-          return (
-            <Link
-              href={link.href}
-              key={link.name}
-              className={isActive ? " font-bold mr-4" : " text-blue-500 mr-4"}
-            >
-              {link.name}
-            </Link>
-          );
-        })}
+      <ThemeProvider>
+        <body className={inter.className}>
+          <header style={{ backgroundColor: "lightblue", padding: "1rem" }}>
+            Root Layout Header
+          </header>
+          {navLinks.map((link) => {
+            const isActive = pathName.startsWith(link.href);
+            return (
+              <Link
+                href={link.href}
+                key={link.name}
+                className={isActive ? " font-bold mr-4" : " text-blue-500 mr-4"}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
 
-        {children}
-        <footer style={{ backgroundColor: "navajowhite" }}>
-          Root Layout Footer
-        </footer>
-      </body>
+          {children}
+          <footer style={{ backgroundColor: "navajowhite" }}>
+            Root Layout Footer
+          </footer>
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
