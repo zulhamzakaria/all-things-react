@@ -27,6 +27,19 @@ const ResumePage = () => {
       >
         Click me!
       </Button>
+      <Button
+        onClick={handleClick}
+        className=" ml-2 bg-red-500 text-white border-2 border-white  hover:bg-red-500 hover:text-white hover:shadow-md pl-2 pr-2"
+      >
+        Click me!
+      </Button>
+    
+      <Button
+        onClick={handleClick}
+        className=" ml-2 bg-orange-500 text-white border-2 border-white  hover:bg-orange-600 hover:text-white hover:shadow-md pl-2 pr-2"
+      >
+        Click me!
+      </Button>
     </div>
   );
 };
