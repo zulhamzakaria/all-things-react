@@ -17,13 +17,13 @@ const ResumePage = () => {
       misc */}
       <Button
         onClick={handleClick}
-        className=" ml-2 mr-2 bg-rose-300 shadow-sm text-slate-900 hover:bg-rose-500 hover:text-slate-50 hover:shadow-md pl-2 pr-2"
+        className=" ml-2 mr-2 bg-rose-200 border-2 border-white shadow-sm text-gray-900 hover:bg-rose-500 hover:text-slate-50 hover:shadow-md pl-2 pr-2"
       >
         Click me!
       </Button>
       <Button
         onClick={handleClick}
-        className=" bg-gray-50 text-slate-600 hover:bg-slate-300 hover:text-slate-900 hover:shadow-md pl-2 pr-2"
+        className=" bg-gray-50 border-2 border-gray-900 text-slate-600 hover:bg-slate-300 hover:text-slate-900 hover:shadow-md pl-2 pr-2"
       >
         Click me!
       </Button>
