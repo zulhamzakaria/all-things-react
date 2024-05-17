@@ -1,4 +1,8 @@
 export const NavBar = () => {
-  return <div className="p-5 bg-slate-50 text-blue-950">Navbar</div>;
-//   clerk, about
+  return (
+    <nav className=" flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10">
+      Navbar
+    </nav>
+  );
+  //   clerk, about
 };
