@@ -19,7 +19,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ClerkProvider>
+        <ClerkProvider
+          appearance={{
+            variables: {
+              colorText: "#fff",
+              colorPrimary: "#0E78F9",
+              colorBackground: "#1c1f2e",
+              colorInputBackground: "#252a41",
+              colorInputText: "white",
+            },
+            layout: {
+              logoImageUrl: "/resume-icon.png",
+              socialButtonsVariant:"iconButton"
+            },
+          }}
+        >
           <NavBar />
           {children}
         </ClerkProvider>
