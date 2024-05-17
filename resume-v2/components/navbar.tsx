@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import MobileNav from "./MobileNav";
 
 export const NavBar = () => {
   return (
@@ -16,6 +17,11 @@ export const NavBar = () => {
           Resume
         </p>
       </Link>
+
+      <div className="flex-between gap-5">
+        {/* Clerk */}
+        <MobileNav />
+      </div>
     </nav>
   );
   //   clerk, about
