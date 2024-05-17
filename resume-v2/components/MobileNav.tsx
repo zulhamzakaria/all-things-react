@@ -1,3 +1,5 @@
 export default function MobileNav() {
-  return <div>Mobile Nav</div>;
+  return <section className="w-full max-w-[264px]">
+    
+  </section>;
 }
