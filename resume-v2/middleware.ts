@@ -1,6 +1,10 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export default clerkMiddleware();
+const protectedRoutes = createRouteMatcher(["/some-link"]);
+
+export default clerkMiddleware((auth, req) => {
+  if (protectedRoutes(req)) auth().protect();
+});
 
 // Stop Middleware running on static files
 export const config = {
