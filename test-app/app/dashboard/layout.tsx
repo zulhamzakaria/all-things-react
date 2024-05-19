@@ -1,4 +1,3 @@
-
 const layout = ({
   children,
   details,
@@ -9,7 +8,7 @@ const layout = ({
   return (
     <div>
       {children}
-      {details}
+      {/* {details} */}
     </div>
   );
 };
