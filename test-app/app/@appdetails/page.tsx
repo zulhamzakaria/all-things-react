@@ -1,3 +1,3 @@
 export default function AppDetails() {
-  return <div>App Details Slot</div>;
+  return <div>Actual App Details Slot</div>;
 }
