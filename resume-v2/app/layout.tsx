@@ -13,8 +13,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  details,
 }: Readonly<{
   children: React.ReactNode;
+  details: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -30,12 +32,13 @@ export default function RootLayout({
             },
             layout: {
               logoImageUrl: "/resume-icon.png",
-              socialButtonsVariant:"iconButton"
+              socialButtonsVariant: "iconButton",
             },
           }}
         >
           <NavBar />
           {children}
+          {details}
         </ClerkProvider>
       </body>
     </html>
