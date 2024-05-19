@@ -1,5 +1,3 @@
-const Details = () => {
-  return <div>Details Slot</div>;
-};
-
-export default Details;
+export default function Details() {
+  return <div>Details Page</div>;
+}
