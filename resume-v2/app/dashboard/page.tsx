@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button";
+
 const DashboardPage = () => {
-  return <div>Resume page</div>;
+  return <div>cock</div>;
 };
 
 export default DashboardPage;
