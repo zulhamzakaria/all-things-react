@@ -3,7 +3,7 @@
 // }
 
 const DetailsSlot = () => {
-  return <div>Actual Details Page</div>;
+  return <div className=" text-blue-100">Actual Details Page</div>;
 };
 
 export default DetailsSlot;
