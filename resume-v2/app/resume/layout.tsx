@@ -2,16 +2,16 @@ import React from "react";
 
 const ResumeLayout = ({
   children,
-  details,
+  education,
 }: {
   children: React.ReactNode;
-  details: React.ReactNode;
+  education: React.ReactNode;
 }) => {
   return (
     <div>
       <p>ResumeLayout</p>
       {children}
-      {details}
+      {education}
     </div>
   );
 };
