@@ -38,7 +38,7 @@ export default function RootLayout({
         >
           <NavBar />
           {children}
-          {details}
+          {/* {details} */}
         </ClerkProvider>
       </body>
     </html>
