@@ -11,7 +11,7 @@ const ResumeLayout = ({
     <div>
       <p>ResumeLayout</p>
       {children}
-      {/* {education} */}
+      {education}
     </div>
   );
 };
