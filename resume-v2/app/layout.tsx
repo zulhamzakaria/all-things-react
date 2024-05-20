@@ -13,10 +13,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  education,
 }: Readonly<{
   children: React.ReactNode;
-  education: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -38,7 +36,6 @@ export default function RootLayout({
         >
           <NavBar />
           {children}
-          {education}
         </ClerkProvider>
       </body>
     </html>
