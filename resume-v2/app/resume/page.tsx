@@ -1,3 +1,7 @@
 export default function Resume() {
-  return <div className="">Resume!</div>;
+  return (
+    <div className=" flex min-h-screen flex-col items-center justify-between p-24">
+      Resume!
+    </div>
+  );
 }
