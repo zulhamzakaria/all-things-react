@@ -1,10 +1,17 @@
 import React from "react";
 
-const ResumeLayout = ({ children }: { children: React.ReactNode }) => {
+const ResumeLayout = ({
+  children,
+  details,
+}: {
+  children: React.ReactNode;
+  details: React.ReactNode;
+}) => {
   return (
     <div>
       <p>ResumeLayout</p>
       {children}
+      {details}
     </div>
   );
 };
