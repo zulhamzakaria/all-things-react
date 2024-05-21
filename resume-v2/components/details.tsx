@@ -9,16 +9,19 @@ interface DetailsProps {
   jobtitle: string;
 }
 
-const DetailsPage = () => {
-  const { data } = useSWR("/details");
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
+const DetailsPage = () => {
+  const { data, error } = useSWR("/details", fetcher);
+
+  if (error) {
+    return <h1>somn wrong</h1>;
+  }
   if (!data) {
-    console.log("no data");
-  } else {
-    console.log(data);
+    return <h1>Loading...</h1>;
   }
 
-  return <div>Calls from API!</div>;
+  return <div>{data.name}</div>;
 };
 
 export default DetailsPage;
