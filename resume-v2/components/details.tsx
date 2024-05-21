@@ -7,12 +7,13 @@ interface DetailsProps {
   phone: string;
   email: string;
   jobtitle: string;
+  test: string;
 }
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const DetailsPage = () => {
-  const { data, error } = useSWR("/details", fetcher);
+  const { data, error } = useSWR<DetailsProps>("/details", fetcher);
 
   if (error) {
     return <h1>somn wrong</h1>;
