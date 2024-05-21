@@ -7,7 +7,7 @@ interface DetailsProps {
   phone: string;
   email: string;
   jobtitle: string;
-  test: string;
+  location: string;
 }
 
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -22,7 +22,16 @@ const DetailsPage = () => {
     return <h1>Loading...</h1>;
   }
 
-  return <div>{data.name}</div>;
+  return (
+    <div>
+      <h3 className=" font-sans text-3xl justify-center flex mb-10">
+        {data.name}
+      </h3>
+      <p className=" justify-center items-stretch flex">
+        {data.email} | {data.phone} | {data.location}
+      </p>
+    </div>
+  );
 };
 
 export default DetailsPage;
