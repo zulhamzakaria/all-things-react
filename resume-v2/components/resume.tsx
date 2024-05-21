@@ -1,5 +1,6 @@
 "use client";
 
+import DetailsPage from "./details";
 import SlotTitle from "./slot-title";
 import { Button } from "./ui/button";
 
@@ -12,6 +13,7 @@ const ResumePage = () => {
     <>
       <div className=" h-[auto] w-[900px] bg-gray-50 rounded-sm shadow-sm pt-10 pb-10 pl-5 pr-5">
         <SlotTitle title="some string" />
+        <DetailsPage/>
         This is the resume body
         {/* slots inside this
       header, 
