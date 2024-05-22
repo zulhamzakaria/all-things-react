@@ -1,6 +1,7 @@
 "use client";
 
 import useSWR from "swr";
+import Card from "./card";
 
 interface DetailsProps {
   name: string;
@@ -23,18 +24,20 @@ const DetailsPage = () => {
   }
 
   return (
-    <div>
-      <h3 className=" font-sans text-3xl justify-center flex mb-10">
-        {data.name}
-      </h3>
-      <div className=" justify-center flex pb-5 ">
-        <p>{data.phone}</p>
-        <p className=" text-lg font-bold pr-10 pl-10">|</p>
-        <p>{data.email}</p>
-        <p className=" text-lg font-bold pr-10 pl-10">|</p>
-        <p>{data.location}</p>
+    <Card>
+      <div>
+        <h3 className=" font-sans text-3xl justify-center flex mb-10">
+          {data.name}
+        </h3>
+        <div className=" justify-center flex pb-5 ">
+          <p>{data.phone}</p>
+          <p className=" text-lg font-bold pr-10 pl-10">|</p>
+          <p>{data.email}</p>
+          <p className=" text-lg font-bold pr-10 pl-10">|</p>
+          <p>{data.location}</p>
+        </div>
       </div>
-    </div>
+    </Card>
   );
 };
 
