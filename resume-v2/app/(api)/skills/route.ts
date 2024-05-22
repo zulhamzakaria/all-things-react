@@ -1,5 +1,5 @@
 import { skills } from "@/data";
 
 export async function GET() {
-  Response.json(skills);
+  return Response.json(skills);
 }
