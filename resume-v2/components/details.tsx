@@ -2,6 +2,7 @@
 
 import useSWR from "swr";
 import Card from "./card";
+import LoadingCard from "./loading-card";
 
 interface DetailsProps {
   name: string;
@@ -20,7 +21,7 @@ const DetailsPage = () => {
     return <h1>somn wrong</h1>;
   }
   if (!data) {
-    return <h1>Loading...</h1>;
+    return <LoadingCard>Loading...</LoadingCard>;
   }
 
   return (
