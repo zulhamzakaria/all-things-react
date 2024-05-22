@@ -21,9 +21,9 @@ export const skills = [
   { id: 7, skill: "propduct development" },
   { id: 8, skill: "product deployment" },
   { id: 9, skill: "web api" },
-  { id: 9, skill: "mvc" },
-  { id: 9, skill: "next js" },
-  { id: 9, skill: "typescript" },
+  { id: 10, skill: "mvc" },
+  { id: 11, skill: "next js" },
+  { id: 12, skill: "typescript" },
 ];
 
 export const education = {
