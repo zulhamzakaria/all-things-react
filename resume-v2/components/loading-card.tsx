@@ -1,4 +1,4 @@
-import { Loader2 } from "lucide-react";
+import { HelpingHand, Loader2 } from "lucide-react";
 
 const LoadingCard = () => {
   const CardStyle = {
@@ -9,6 +9,7 @@ const LoadingCard = () => {
     justifyContent: "center",
     alignItems: "center",
   };
+
   return (
     <div style={CardStyle}>
       <Loader2 className="h-6 w-6 text-muted-foreground animate-spin" />
