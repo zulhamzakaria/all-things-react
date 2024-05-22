@@ -18,7 +18,7 @@ const DetailsPage = () => {
   const { data, error } = useSWR<DetailsProps>("/details", fetcher);
 
   if (error) {
-    return <h1>somn wrong</h1>;
+    return <h1>{error}</h1>;
   }
   if (!data) {
     return <LoadingCard />;

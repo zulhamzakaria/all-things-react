@@ -2,6 +2,7 @@
 
 import DetailsPage from "./details";
 import SlotTitle from "./slot-title";
+import SummaryPage from "./summary";
 import { Button } from "./ui/button";
 
 const ResumePage = () => {
@@ -13,7 +14,7 @@ const ResumePage = () => {
     <>
       <div className=" h-[auto] w-[900px] bg-gray-50 rounded-sm shadow-sm pt-10 pb-10 pl-5 pr-5">
         <DetailsPage />
-        <SlotTitle title="some string" />
+        <SummaryPage />
         This is the resume body
         {/* slots inside this
       header, 
