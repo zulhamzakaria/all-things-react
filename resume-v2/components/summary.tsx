@@ -24,7 +24,9 @@ const SummaryPage = () => {
   return (
     <div>
       <SlotTitle title="SUMMARY" />
-      <Card>{data.summary}</Card>
+      <Card>
+        <span className=" ">{data.summary}</span>
+      </Card>
     </div>
   );
 };
