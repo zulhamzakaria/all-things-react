@@ -12,18 +12,18 @@ export const summary = {
 };
 
 export const skills = [
-  ".net framework",
-  ".net core",
-  "c#",
-  "sql server",
-  "mysql",
-  "vb.net",
-  "propduct development",
-  "product deployment",
-  "web api",
-  "mvc",
-  "next js",
-  "typescript",
+  { id: 1, skill: ".net framework" },
+  { id: 2, skill: ".net core" },
+  { id: 3, skill: "c#" },
+  { id: 4, skill: "sql server" },
+  { id: 5, skill: "mysql" },
+  { id: 6, skill: "vb.net" },
+  { id: 7, skill: "propduct development" },
+  { id: 8, skill: "product deployment" },
+  { id: 9, skill: "web api" },
+  { id: 9, skill: "mvc" },
+  { id: 9, skill: "next js" },
+  { id: 9, skill: "typescript" },
 ];
 
 export const education = {
