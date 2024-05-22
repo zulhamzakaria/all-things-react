@@ -3,7 +3,6 @@
 import useSWR from "swr";
 import Card from "./card";
 import LoadingCard from "./loading-card";
-import { Loader } from "lucide-react";
 
 interface DetailsProps {
   name: string;
