@@ -3,6 +3,7 @@
 import useSWR from "swr";
 import Card from "./card";
 import LoadingCard from "./loading-card";
+import { Loader } from "lucide-react";
 
 interface DetailsProps {
   name: string;
@@ -21,7 +22,7 @@ const DetailsPage = () => {
     return <h1>somn wrong</h1>;
   }
   if (!data) {
-    return <LoadingCard>Loading...</LoadingCard>;
+    return <LoadingCard />;
   }
 
   return (

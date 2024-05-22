@@ -1,13 +1,19 @@
-const LoadingCard = ({ children }: { children: React.ReactNode }) => {
+import { Loader2 } from "lucide-react";
+
+const LoadingCard = () => {
   const CardStyle = {
-    padding: "61px",
+    padding: "60px",
     boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
     border: "1px solid #ddd",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   };
-  return <div style={CardStyle}>{children}</div>;
+  return (
+    <div style={CardStyle}>
+      <Loader2 className="h-6 w-6 text-muted-foreground animate-spin" />
+    </div>
+  );
 };
 
 export default LoadingCard;
