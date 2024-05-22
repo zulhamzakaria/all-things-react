@@ -8,7 +8,7 @@ export const details = {
 
 export const summary = {
   summary:
-    "Experienced Senior Application Developer wanting to learn more about System Design and Architecture ",
+    "Experienced Senior Application Developer wanting to learn more about System Design and Architecture. ",
 };
 
 export const skills = [

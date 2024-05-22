@@ -1,6 +1,6 @@
 const ItemCard = ({ children }: { children: React.ReactNode }) => {
   const CardStyle = {
-    margin: "5px",
+    margin: "10px",
     display: "flex",
   };
 
