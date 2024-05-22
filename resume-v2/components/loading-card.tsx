@@ -1,6 +1,7 @@
 const LoadingCard = ({ children }: { children: React.ReactNode }) => {
   const CardStyle = {
-    margin: "10px",
+    padding: "61px",
+    // margin: "10px",
     boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
     border: "1px solid #ddd",
     display: "flex",

@@ -1,9 +1,6 @@
 const Card = ({ children }: { children: React.ReactNode }) => {
   const CardStyle = {
-    // padding: "100px",
     margin: "10px",
-    // boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-    // border: "1px solid #ddd",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
