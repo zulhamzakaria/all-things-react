@@ -1,10 +1,7 @@
-
 const ItemCard = ({ children }: { children: React.ReactNode }) => {
   const CardStyle = {
-    margin: "10px",
+    margin: "5px",
     display: "flex",
-    justifyContent: "center",
-    // alignItems: "center",
   };
 
   return <div style={CardStyle}>{children}</div>;

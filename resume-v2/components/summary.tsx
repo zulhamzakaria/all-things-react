@@ -2,7 +2,7 @@ import React from "react";
 import SlotTitle from "./slot-title";
 import useSWR from "swr";
 import LoadingCard from "./loading-card";
-import Card from "./card";
+import ItemCard from "./item-card";
 
 interface SummaryProps {
   summary: string;
@@ -24,9 +24,9 @@ const SummaryPage = () => {
   return (
     <div>
       <SlotTitle title="SUMMARY" />
-      <Card>
-        <span className=" ">{data.summary}</span>
-      </Card>
+      <ItemCard>
+        <span>{data.summary}</span>
+      </ItemCard>
     </div>
   );
 };
