@@ -3,7 +3,7 @@ import { Loader2 } from "lucide-react";
 const LoadingCard = () => {
   const CardStyle = {
     padding: "60px",
-    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+    boxShadow: "0 1px 8px rgba(0,0,0,0.1)",
     border: "1px solid #ddd",
     display: "flex",
     justifyContent: "center",
