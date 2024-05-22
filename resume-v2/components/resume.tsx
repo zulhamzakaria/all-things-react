@@ -1,7 +1,6 @@
 "use client";
 
 import DetailsPage from "./details";
-import SlotTitle from "./slot-title";
 import SummaryPage from "./summary";
 import { Button } from "./ui/button";
 
