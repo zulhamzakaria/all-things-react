@@ -1,6 +1,7 @@
 "use client";
 
 import DetailsPage from "./details";
+import ExperiencesPage from "./experiences";
 import SkillsPage from "./skills";
 import SummaryPage from "./summary";
 import { Button } from "./ui/button";
@@ -16,6 +17,7 @@ const ResumePage = () => {
         <DetailsPage />
         <SummaryPage />
         <SkillsPage />
+        <ExperiencesPage />
         This is the resume body
         {/* slots inside this
       header, 

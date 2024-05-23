@@ -19,7 +19,7 @@ const SkillsPage = () => {
   if (error) return <h1>{error}</h1>;
 
   return data ? (
-    <div className="mb-5">
+    <div>
       <SlotTitle title="Skills" />
       <div>
         {skills.map((skill) => (
