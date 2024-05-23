@@ -21,9 +21,21 @@ const SkillsPage = () => {
     <div>
       <SlotTitle title="Skills" />
       <div className="flex flex-row">
-        {skills.map((skill) => (
-          <p key={skill.id} className=" text-wrap bg-slate-600 text-white">{skill.skill}</p>
-        ))}
+        {/* {skills.map((skill) => (
+          <span key={skill.id} className=" text-wrap bg-slate-600 text-white">
+            {skill.skill}
+          </span>
+        ))} */}
+        <div>item1 item2 item3 item4</div>
+        <div>item item item item</div>
+        <div>item item item item</div>
+        <div>item item item item</div>
+        <div>item item item item</div>
+        <div>item item item item</div>
+        <div>item item item item</div>
+        <div>item item item item</div>
+        <div>item item item item</div>
+        <div>item item item item</div>
       </div>
     </div>
   ) : (
