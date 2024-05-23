@@ -21,7 +21,7 @@ const SummaryPage = () => {
     <div>
       <SlotTitle title="SUMMARY" />
       <ItemCard>
-        <span>{data.summary}</span>
+        <span className="font-light">{data.summary}</span>
       </ItemCard>
     </div>
   ) : (

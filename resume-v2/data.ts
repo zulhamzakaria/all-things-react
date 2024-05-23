@@ -36,7 +36,7 @@ export const education = {
 export const experiences = {
   experiences: [
     {
-      period: "2009-01 - 2011-09",
+      period: "2009-01 ~ 2011-09",
       title: "Application Developer",
       company: "Edaran IT Services Sdn Bhd, Desa Pandan",
       responsibilities: [
@@ -45,9 +45,6 @@ export const experiences = {
         },
         {
           task: "Participated with clients in discussion meetings.",
-        },
-        {
-          task: "Developed and implemented personalized client solutions using programming language expertise.",
         },
         {
           task: "Developed and implemented personalized client solutions using programming language expertise.",
