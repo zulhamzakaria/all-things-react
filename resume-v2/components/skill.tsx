@@ -1,7 +1,7 @@
 import React from "react";
 
 const SkillPage = ({ skill }: { skill: string }) => {
-  return <div>{skill}</div>;
+  return <div className=" text-justify">{skill}</div>;
 };
 
 export default SkillPage;

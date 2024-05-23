@@ -2,6 +2,7 @@ import useSWR from "swr";
 import SlotTitle from "./slot-title";
 import LoadingCard from "./loading-card";
 import { skills } from "@/data";
+import SkillPage from "./skill";
 
 interface SkillsProps {
   skills: {
@@ -18,24 +19,17 @@ const SkillsPage = () => {
   if (error) return <h1>{error}</h1>;
 
   return data ? (
-    <div>
+    <div className="mb-5">
       <SlotTitle title="Skills" />
-      <div className="flex flex-row">
-        {/* {skills.map((skill) => (
-          <span key={skill.id} className=" text-wrap bg-slate-600 text-white">
+      <div className=" bg-green-300 justify-stretch">
+        {skills.map((skill) => (
+          <span
+            key={skill.id}
+            className=" bg-slate-100 mr-1 rounded-md p-1 text-sm font-semibold hover:border hover:border-slate-950"
+          >
             {skill.skill}
           </span>
-        ))} */}
-        <div>item1 item2 item3 item4</div>
-        <div>item item item item</div>
-        <div>item item item item</div>
-        <div>item item item item</div>
-        <div>item item item item</div>
-        <div>item item item item</div>
-        <div>item item item item</div>
-        <div>item item item item</div>
-        <div>item item item item</div>
-        <div>item item item item</div>
+        ))}
       </div>
     </div>
   ) : (
