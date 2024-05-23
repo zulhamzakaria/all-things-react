@@ -25,9 +25,16 @@ const ExperiencesPage = () => {
   return data ? (
     <div>
       <SlotTitle title="Experiences" />
-      {/* {experiences.map((experience) => (
-        <div>{experience.company}</div>
-      ))} */}
+      {data.experiences.map((experience) => (
+        <>
+          <div>{experience.company}</div>
+          <div>
+            {experience.responsibilities.map((responsibility) => (
+              <p>{responsibility.task}</p>
+            ))}
+          </div>
+        </>
+      ))}
     </div>
   ) : (
     <div>
