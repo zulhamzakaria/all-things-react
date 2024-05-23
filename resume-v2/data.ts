@@ -11,20 +11,22 @@ export const summary = {
     "Experienced Senior Application Developer wanting to learn more about System Design and Architecture. ",
 };
 
-export const skills = [
-  { id: 1, skill: ".net framework" },
-  { id: 2, skill: ".net core" },
-  { id: 3, skill: "c#" },
-  { id: 4, skill: "sql server" },
-  { id: 5, skill: "mysql" },
-  { id: 6, skill: "vb.net" },
-  { id: 9, skill: "web api" },
-  { id: 7, skill: "product development" },
-  { id: 8, skill: "product deployment" },
-  { id: 10, skill: "mvc" },
-  { id: 11, skill: "next js" },
-  { id: 12, skill: "typescript" },
-];
+export const skills = {
+  skills: [
+    { id: 1, skill: ".net framework" },
+    { id: 2, skill: ".net core" },
+    { id: 3, skill: "c#" },
+    { id: 4, skill: "sql server" },
+    { id: 5, skill: "mysql" },
+    { id: 6, skill: "vb.net" },
+    { id: 9, skill: "web api" },
+    { id: 7, skill: "product development" },
+    { id: 8, skill: "product deployment" },
+    { id: 10, skill: "mvc" },
+    { id: 11, skill: "next js" },
+    { id: 12, skill: "typescript" },
+  ],
+};
 
 export const education = {
   institution: "Universiti Malaysia Terengganu, Kuala Terengganu",
