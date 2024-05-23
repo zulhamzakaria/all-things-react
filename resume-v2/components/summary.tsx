@@ -17,17 +17,15 @@ const SummaryPage = () => {
     return <h1>{error}</h1>;
   }
 
-  if (!data) {
-    return <LoadingCard />;
-  }
-
-  return (
+  return data ? (
     <div>
       <SlotTitle title="SUMMARY" />
       <ItemCard>
         <span>{data.summary}</span>
       </ItemCard>
     </div>
+  ) : (
+    <LoadingCard />
   );
 };
 
