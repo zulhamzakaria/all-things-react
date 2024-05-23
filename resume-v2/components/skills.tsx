@@ -21,11 +21,11 @@ const SkillsPage = () => {
   return data ? (
     <div className="mb-5">
       <SlotTitle title="Skills" />
-      <div className=" bg-green-300 justify-stretch">
+      <div>
         {skills.map((skill) => (
           <span
             key={skill.id}
-            className=" bg-slate-100 mr-1 rounded-md p-1 text-sm font-semibold hover:border hover:border-slate-950"
+            className=" bg-slate-100 w-auto mr-1 rounded-md p-1 text-sm font-semibold hover:border hover:border-slate-950"
           >
             {skill.skill}
           </span>
