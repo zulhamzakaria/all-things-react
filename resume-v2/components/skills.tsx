@@ -20,9 +20,11 @@ const SkillsPage = () => {
   return data ? (
     <div>
       <SlotTitle title="Skills" />
-      {skills.map((skill) => (
-        <p key={skill.id}>{skill.skill}</p>
-      ))}
+      <div className="flex flex-row">
+        {skills.map((skill) => (
+          <p key={skill.id} className=" text-wrap bg-slate-600 text-white">{skill.skill}</p>
+        ))}
+      </div>
     </div>
   ) : (
     <div>
