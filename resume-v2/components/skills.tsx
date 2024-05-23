@@ -15,8 +15,6 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const SkillsPage = () => {
   const { data, error } = useSWR<SkillsProps>("/skills", fetcher);
 
-  console.log(data);
-
   if (error) return <h1>{error}</h1>;
 
   return data ? (
