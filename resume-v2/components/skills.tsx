@@ -25,7 +25,7 @@ const SkillsPage = () => {
         {skills.map((skill) => (
           <span
             key={skill.id}
-            className=" bg-slate-100 w-auto mr-1 rounded-md p-1 text-sm font-semibold hover:border hover:border-slate-950 inline-block"
+            className=" mt-1 bg-slate-100 w-auto mr-1 rounded-md p-1 text-sm font-semibold hover:border hover:border-slate-950 inline-block"
           >
             {skill.skill}
           </span>
