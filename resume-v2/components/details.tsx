@@ -3,6 +3,7 @@
 import useSWR from "swr";
 import Card from "./card";
 import LoadingCard from "./loading-card";
+import { LoaderPinwheel } from "lucide-react";
 
 interface DetailsProps {
   name: string;
@@ -20,11 +21,8 @@ const DetailsPage = () => {
   if (error) {
     return <h1>{error}</h1>;
   }
-  if (!data) {
-    return <LoadingCard />;
-  }
 
-  return (
+  return data ? (
     <Card>
       <div>
         <h3 className=" font-sans text-3xl justify-center flex mb-10">
@@ -39,6 +37,10 @@ const DetailsPage = () => {
         </div>
       </div>
     </Card>
+  ) : (
+    <div className=" h-auto">
+      <LoadingCard />
+    </div>
   );
 };
 
