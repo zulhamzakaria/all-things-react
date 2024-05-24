@@ -18,7 +18,6 @@ const ResumePage = () => {
         <SummaryPage />
         <SkillsPage />
         <ExperiencesPage />
-
         <p className="mt-10">This is the resume body</p>
         {/* slots inside this
       header, 
