@@ -19,11 +19,13 @@ const EducationPage = () => {
   }
 
   return data ? (
-    <div>
+    <>
       <SlotTitle title="education" />
-      {data.institution}
-      {data.major}
-    </div>
+      <div className="">
+        <p className="font-light">{data.institution.toUpperCase()}</p>
+        <p className="font-semibold text-gray-900">{data.major}</p>
+      </div>
+    </>
   ) : (
     <div>
       <LoadingCard />
