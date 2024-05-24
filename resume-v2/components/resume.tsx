@@ -1,6 +1,7 @@
 "use client";
 
 import DetailsPage from "./details";
+import EducationPage from "./education";
 import ExperiencesPage from "./experiences";
 import SkillsPage from "./skills";
 import SummaryPage from "./summary";
@@ -18,6 +19,7 @@ const ResumePage = () => {
         <SummaryPage />
         <SkillsPage />
         <ExperiencesPage />
+        <EducationPage />
         <p className="mt-10">This is the resume body</p>
         {/* slots inside this
       header, 
