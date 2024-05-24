@@ -28,13 +28,17 @@ const ExperiencesPage = () => {
       {data.experiences.map((experience) => (
         <>
           <div className=" justify-between flex">
-            <p>{experience.company.toLocaleUpperCase()}</p>
-            <p className="mr-2">{experience.period}</p>
+            <p className="font-light">
+              {experience.company.toLocaleUpperCase()}
+            </p>
+            <p className="mr-2 font-light">{experience.period}</p>
           </div>
-          <div className=" font-semibold">{experience.title}</div>
+          <div className=" font-semibold text-gray-900">{experience.title}</div>
           <div className="mb-5">
             {experience.responsibilities.map((responsibility) => (
-              <li className="ml-10 font-light">{responsibility.task}</li>
+              <li className="ml-10 font-thin font-sans ">
+                {responsibility.task}
+              </li>
             ))}
           </div>
         </>
