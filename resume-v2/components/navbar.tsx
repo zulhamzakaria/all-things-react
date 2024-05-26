@@ -23,14 +23,14 @@ export const NavBar = () => {
         </p>
       </Link>
 
-      <div className="flex-between gap-5">
+      <div className=" flex-row gap-5">
         <SignedOut>
-          <div
-            className=" text-white max-sm:hidden font-mono p-2 px-5 rounded-full bg-red-500 hover:cursor-pointer"
+          <button
+            className=" text-white font-light max-sm:hidden px-5 py-2 rounded-full font-mono bg-rose-600 opacity-95"
             onClick={() => routeTo.push("/sign-in")}
           >
-            login
-          </div>
+            sign-in
+          </button>
         </SignedOut>
 
         <SignedIn>
