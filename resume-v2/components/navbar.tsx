@@ -26,7 +26,7 @@ export const NavBar = () => {
       <div className="flex-between gap-5">
         <SignedOut>
           <div
-            className="text-white max-sm:hidden font-mono p-2 px-5 rounded-full bg-orange-600 hover:cursor-pointer"
+            className=" text-white max-sm:hidden font-mono p-2 px-5 rounded-full bg-red-400 hover:cursor-pointer"
             onClick={() => routeTo.push("/sign-in")}
           >
             login
