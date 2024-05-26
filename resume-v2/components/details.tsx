@@ -25,10 +25,10 @@ const DetailsPage = () => {
   return data ? (
     <Card>
       <div>
-        <h3 className=" font-sans text-3xl justify-center flex mb-10">
+        <h3 className=" font-sans text-3xl justify-center flex mb-10 font-bold">
           {data.name}
         </h3>
-        <div className=" justify-center flex pb-5 ">
+        <div className=" justify-center flex pb-5 font ">
           <p>{data.phone}</p>
           <p className=" text-lg font-bold pr-10 pl-10">|</p>
           <p>{data.email}</p>
