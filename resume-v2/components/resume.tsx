@@ -65,7 +65,7 @@ const ResumePage = () => {
             variant={"default"}
             className=" text-white bg-rose-600 font-mono font-semibold text-lg opacity-95 lg:w-[900px] sm:w-full"
           >
-            print 🖨️
+            print
           </Button>
         )}
         content={() => componentRef.current}
