@@ -28,10 +28,12 @@ const ExperiencesPage = () => {
       {data.experiences.map((experience) => (
         <div key={`${experience.company}_${experience.period}`}>
           <div className=" justify-between flex">
-            <p className="font-light">
+            <p className="font-light ">
               {experience.company.toLocaleUpperCase()}
             </p>
-            <p className="mr-2 font-light">{experience.period}</p>
+            <p className="mr-2 font-light lg:block sm:hidden">
+              {experience.period}
+            </p>
           </div>
           <div className=" font-semibold text-gray-900">{experience.title}</div>
           <div className="mb-5">
