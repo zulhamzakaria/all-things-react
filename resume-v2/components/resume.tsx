@@ -18,13 +18,9 @@ const ResumePage = () => {
 
   return (
     <>
-      <ReactToPrint
-        trigger={() => <Button variant={"default"}>Print</Button>}
-        content={() => componentRef.current}
-      />
       <div
         ref={componentRef}
-        className=" h-[auto] lg:w-[900px] sm:w-[auto] bg-gray-50 rounded-sm shadow-sm pt-10 pb-10 pl-5 pr-5 flex flex-col"
+        className=" h-[auto] lg:w-[900px] sm:w-auto bg-gray-50 rounded-sm shadow-sm pt-10 pb-10 pl-5 pr-5 flex flex-col"
       >
         <DetailsPage />
         <SummaryPage />
@@ -63,6 +59,17 @@ const ResumePage = () => {
           </Button>
         </div>
       </div>
+      <ReactToPrint
+        trigger={() => (
+          <Button
+            variant={"default"}
+            className=" text-white bg-rose-600 font-mono font-semibold text-lg opacity-95 lg:w-[900px] sm:w-full"
+          >
+            print 🖨️
+          </Button>
+        )}
+        content={() => componentRef.current}
+      />
     </>
   );
 };

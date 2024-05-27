@@ -29,7 +29,7 @@ export const NavBar = () => {
             className=" text-white font-light max-sm:hidden px-5 py-2 rounded-full font-mono bg-rose-600 opacity-95"
             onClick={() => routeTo.push("/sign-in")}
           >
-            sign-in
+            sign-in 🔐
           </button>
         </SignedOut>
 
