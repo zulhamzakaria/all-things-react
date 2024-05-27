@@ -14,7 +14,7 @@ const ResumePage = () => {
 
   return (
     <>
-      <div className=" h-[auto] w-[900px] bg-gray-50 rounded-sm shadow-sm pt-10 pb-10 pl-5 pr-5">
+      <div className=" h-[auto] lg:w-[900px] sm:w-[auto] bg-gray-50 rounded-sm shadow-sm pt-10 pb-10 pl-5 pr-5 flex flex-col">
         <DetailsPage />
         <SummaryPage />
         <SkillsPage />

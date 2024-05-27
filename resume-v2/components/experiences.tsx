@@ -26,7 +26,7 @@ const ExperiencesPage = () => {
     <div>
       <SlotTitle title="Experiences" />
       {data.experiences.map((experience) => (
-        <>
+        <div key={`${experience.company}_${experience.period}`}>
           <div className=" justify-between flex">
             <p className="font-light">
               {experience.company.toLocaleUpperCase()}
@@ -36,12 +36,15 @@ const ExperiencesPage = () => {
           <div className=" font-semibold text-gray-900">{experience.title}</div>
           <div className="mb-5">
             {experience.responsibilities.map((responsibility) => (
-              <li className="ml-10 font-thin font-sans ">
+              <li
+                className="ml-10 font-thin font-sans "
+                key={responsibility.task}
+              >
                 {responsibility.task}
               </li>
             ))}
           </div>
-        </>
+        </div>
       ))}
     </div>
   ) : (
