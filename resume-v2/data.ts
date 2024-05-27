@@ -3,7 +3,8 @@ export const details = {
   phone: "+60109185300",
   email: "mohd.zulham.zakaria@gmail.com",
   jobtitle: "Senior Application Developer",
-  location: "Kuala Lumpur, MY",
+  fulllocation: "Kuala Lumpur, MY",
+  shortlocation: "KL, MY",
 };
 
 export const summary = {
