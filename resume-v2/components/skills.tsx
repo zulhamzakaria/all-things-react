@@ -1,7 +1,6 @@
 import useSWR from "swr";
 import SlotTitle from "./slot-title";
 import LoadingCard from "./loading-card";
-import { skills } from "@/data";
 
 interface SkillsProps {
   skills: {
