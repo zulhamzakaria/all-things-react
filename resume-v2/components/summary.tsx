@@ -15,6 +15,8 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { Button } from "./ui/button";
+import { Label } from "./ui/label";
+import { Textarea } from "./ui/textarea";
 
 interface SummaryProps {
   userId: string;
@@ -50,9 +52,24 @@ const SummaryPage = () => {
           </DialogHeader>
           <div className=" grid gap-4 py-4">
             <div className=" grid grid-cols-4 items-center gap-4">
-              
+              <Label htmlFor="summary" className=" text-right">
+                Summary
+              </Label>
+              <Textarea
+                id="summary"
+                value={data.summary}
+                className=" col-span-3"
+              />
             </div>
           </div>
+          <DialogFooter>
+            <Button type="submit">Save changes</Button>
+            <DialogClose asChild>
+              <Button type="button" variant={"secondary"}>
+                Cancel
+              </Button>
+            </DialogClose>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
