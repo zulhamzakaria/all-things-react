@@ -6,7 +6,6 @@ import ItemCard from "./item-card";
 
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -48,33 +47,34 @@ const SummaryPage = () => {
               edit summary
             </Button>
           </DialogTrigger>
-          <DialogContent className="bg-slate-50 min-w-[900px]">
+          <DialogContent className="bg-slate-50 lg:min-w-[600px]">
             <DialogHeader>
-              <DialogTitle>Edit summary</DialogTitle>
-              <DialogDescription>
+              <DialogTitle className=" font-sans text-xl">Edit Summary</DialogTitle>
+              <DialogDescription className="font-sans">
                 Make changes to the resume summary here. Click save when you're
                 done.
               </DialogDescription>
             </DialogHeader>
-            <div className=" grid gap-4 py-4">
-              <div className=" grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="summary" className=" text-right">
+            <div>
+              <div className="flex flex-col">
+                <Label htmlFor="summary" className="my-2 font-sans text-lg">
                   Summary
                 </Label>
                 <Textarea
                   id="summary"
                   value={data.summary}
-                  className=" col-span-3"
+                  className=" col-span-3 font-sans"
+                  rows={7}
                 />
               </div>
             </div>
-            <DialogFooter>
-              <Button type="submit">Save changes</Button>
-              <DialogClose asChild>
-                <Button type="button" variant={"secondary"}>
-                  Cancel
-                </Button>
-              </DialogClose>
+            <DialogFooter className="flex flex-rows">
+              <Button
+                type="submit"
+                className=" bg-rose-500 text-white font-mono font-semibold"
+              >
+                save
+              </Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
