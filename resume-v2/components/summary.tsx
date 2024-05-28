@@ -38,40 +38,47 @@ const SummaryPage = () => {
       <ItemCard>
         <span className="font-light">{data.summary}</span>
       </ItemCard>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant={"outline"}>Edit Summary</Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Edit summary</DialogTitle>
-            <DialogDescription>
-              Make changes to the resume summary here. Click save when you're
-              done.
-            </DialogDescription>
-          </DialogHeader>
-          <div className=" grid gap-4 py-4">
-            <div className=" grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="summary" className=" text-right">
-                Summary
-              </Label>
-              <Textarea
-                id="summary"
-                value={data.summary}
-                className=" col-span-3"
-              />
+      <div className=" mt-5 flex justify-end">
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button
+              variant={"outline"}
+              className=" rounded-full font-mono text-amber-50 bg-rose-500 font-semibold"
+            >
+              edit summary
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Edit summary</DialogTitle>
+              <DialogDescription>
+                Make changes to the resume summary here. Click save when you're
+                done.
+              </DialogDescription>
+            </DialogHeader>
+            <div className=" grid gap-4 py-4">
+              <div className=" grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="summary" className=" text-right">
+                  Summary
+                </Label>
+                <Textarea
+                  id="summary"
+                  value={data.summary}
+                  className=" col-span-3"
+                />
+              </div>
             </div>
-          </div>
-          <DialogFooter>
-            <Button type="submit">Save changes</Button>
-            <DialogClose asChild>
-              <Button type="button" variant={"secondary"}>
-                Cancel
-              </Button>
-            </DialogClose>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+            <DialogFooter>
+              <Button type="submit">Save changes</Button>
+              <DialogClose asChild>
+                <Button type="button" variant={"secondary"}>
+                  Cancel
+                </Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div>
     </div>
   ) : (
     <LoadingCard />
