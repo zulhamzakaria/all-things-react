@@ -4,6 +4,18 @@ import useSWR from "swr";
 import LoadingCard from "./loading-card";
 import ItemCard from "./item-card";
 
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import { Button } from "./ui/button";
+
 interface SummaryProps {
   userId: string;
   summary: string;
@@ -24,6 +36,25 @@ const SummaryPage = () => {
       <ItemCard>
         <span className="font-light">{data.summary}</span>
       </ItemCard>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant={"outline"}>Edit Summary</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit summary</DialogTitle>
+            <DialogDescription>
+              Make changes to the resume summary here. Click save when you're
+              done.
+            </DialogDescription>
+          </DialogHeader>
+          <div className=" grid gap-4 py-4">
+            <div className=" grid grid-cols-4 items-center gap-4">
+              
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   ) : (
     <LoadingCard />
