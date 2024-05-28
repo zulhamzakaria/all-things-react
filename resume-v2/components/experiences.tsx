@@ -31,7 +31,7 @@ const ExperiencesPage = () => {
             <p className="font-light ">
               {experience.company.toLocaleUpperCase()}
             </p>
-            <p className="mr-2 font-light lg:block sm:hidden">
+            <p className="mr-2 font-light lg:block sm:hidden text-sm">
               {experience.period}
             </p>
           </div>
