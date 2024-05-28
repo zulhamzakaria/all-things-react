@@ -48,7 +48,7 @@ const SummaryPage = () => {
               edit summary
             </Button>
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="bg-slate-50 min-w-[900px]">
             <DialogHeader>
               <DialogTitle>Edit summary</DialogTitle>
               <DialogDescription>
