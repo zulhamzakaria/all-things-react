@@ -5,6 +5,7 @@ import LoadingCard from "./loading-card";
 import ItemCard from "./item-card";
 
 interface SummaryProps {
+  userId: string;
   summary: string;
 }
 
