@@ -25,23 +25,29 @@ interface SummaryProps {
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const SummaryPage = () => {
-  const { data, error } = useSWR<SummaryProps>("/summary", fetcher);
+  const { data, mutate, error } = useSWR<SummaryProps>("/summary", fetcher);
 
-  const [summary, setSummary] = useState(data?.summary || "");
+  const [resumeSummary, setResumeSummary] = useState(data?.summary || "");
+
+  const handleClick = () => {
+    if (data) {
+      mutate({ ...data, summary: resumeSummary }, false);
+    }
+  };
 
   useEffect(() => {
-    setSummary(data?.summary || "");
+    setResumeSummary(data?.summary || "");
   }, [data]);
 
   if (error) {
     return <h1>{error}</h1>;
   }
 
-  return summary ? (
+  return resumeSummary ? (
     <div>
       <SlotTitle title="SUMMARY" />
       <ItemCard>
-        <span className="font-light">{summary}</span>
+        <span className="font-light">{resumeSummary}</span>
       </ItemCard>
       <div className=" mt-5 flex justify-end">
         <Dialog>
@@ -70,10 +76,10 @@ const SummaryPage = () => {
                 </Label>
                 <Textarea
                   id="summary"
-                  value={summary}
+                  value={resumeSummary}
                   className=" col-span-3 font-sans"
                   rows={7}
-                  onChange={(e) => setSummary(e.target.value)}
+                  onChange={(e) => setResumeSummary(e.target.value)}
                 />
               </div>
             </div>
@@ -81,6 +87,7 @@ const SummaryPage = () => {
               <Button
                 type="submit"
                 className=" bg-rose-500 text-white font-mono font-semibold"
+                onClick={handleClick}
               >
                 save
               </Button>
