@@ -15,6 +15,7 @@ import {
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
+import { useEffect, useState } from "react";
 
 interface SummaryProps {
   userId: string;
@@ -25,6 +26,12 @@ export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const SummaryPage = () => {
   const { data, error } = useSWR<SummaryProps>("/summary", fetcher);
+
+  const [summary, setSummary] = useState(data?.summary || "");
+
+  useEffect(() => {
+    setSummary(data?.summary || "");
+  }, [data]);
 
   if (error) {
     return <h1>{error}</h1>;
@@ -48,7 +55,9 @@ const SummaryPage = () => {
           </DialogTrigger>
           <DialogContent className="bg-slate-50 lg:min-w-[600px]">
             <DialogHeader>
-              <DialogTitle className=" font-sans text-xl">Edit Summary</DialogTitle>
+              <DialogTitle className=" font-sans text-xl">
+                Edit Summary
+              </DialogTitle>
               <DialogDescription className="font-sans">
                 Make changes to the resume summary here. Click save when you're
                 done.
@@ -64,6 +73,7 @@ const SummaryPage = () => {
                   value={data.summary}
                   className=" col-span-3 font-sans"
                   rows={7}
+                  onChange={(e) => setSummary(e.target.value)}
                 />
               </div>
             </div>
