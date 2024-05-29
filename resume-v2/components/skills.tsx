@@ -58,6 +58,9 @@ const SkillsPage = () => {
             </SignedIn>
           </>
         ))}
+        <Button className="mt-1 bg-slate-200 text-slate-950 w-7 h-7 rounded-full py-1 px-2 text-sm font-semibold">
+          +
+        </Button>
       </div>
     </div>
   ) : (
