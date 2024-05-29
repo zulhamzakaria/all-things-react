@@ -1,6 +1,8 @@
 import useSWR from "swr";
 import SlotTitle from "./slot-title";
 import LoadingCard from "./loading-card";
+import { SignedIn } from "@clerk/nextjs";
+import { Button } from "./ui/button";
 
 interface SkillsProps {
   skills: {
@@ -23,7 +25,7 @@ const SkillsPage = () => {
         {data.skills.map((skill) => (
           <span
             key={skill.id}
-            className=" mt-1 bg-slate-200 text-slate-950 w-auto mr-1 rounded-md p-1 text-sm font-semibold inline-block"
+            className=" mt-1 bg-slate-200 text-slate-950 w-auto mr-1 rounded-full py-1 px-2 text-sm font-semibold inline-block"
           >
             {skill.skill}
           </span>
