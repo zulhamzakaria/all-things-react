@@ -25,6 +25,7 @@ interface SummaryProps {
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const SummaryPage = () => {
+
   const { data, mutate, error } = useSWR<SummaryProps>("/summary", fetcher);
 
   const [resumeSummary, setResumeSummary] = useState(data?.summary || "");
@@ -33,6 +34,7 @@ const SummaryPage = () => {
     if (data) {
       mutate({ ...data, summary: resumeSummary }, false);
     }
+    
   };
 
   useEffect(() => {
