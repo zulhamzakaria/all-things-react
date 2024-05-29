@@ -37,11 +37,11 @@ const SummaryPage = () => {
     return <h1>{error}</h1>;
   }
 
-  return data ? (
+  return summary ? (
     <div>
       <SlotTitle title="SUMMARY" />
       <ItemCard>
-        <span className="font-light">{data.summary}</span>
+        <span className="font-light">{summary}</span>
       </ItemCard>
       <div className=" mt-5 flex justify-end">
         <Dialog>
