@@ -16,6 +16,7 @@ import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface SummaryProps {
   userId: string;
@@ -25,7 +26,6 @@ interface SummaryProps {
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const SummaryPage = () => {
-
   const { data, mutate, error } = useSWR<SummaryProps>("/summary", fetcher);
 
   const [resumeSummary, setResumeSummary] = useState(data?.summary || "");
@@ -34,7 +34,7 @@ const SummaryPage = () => {
     if (data) {
       mutate({ ...data, summary: resumeSummary }, false);
     }
-    
+    toast("Summary updated");
   };
 
   useEffect(() => {
