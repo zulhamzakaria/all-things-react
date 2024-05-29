@@ -70,7 +70,7 @@ const SummaryPage = () => {
                 </Label>
                 <Textarea
                   id="summary"
-                  value={data.summary}
+                  value={summary}
                   className=" col-span-3 font-sans"
                   rows={7}
                   onChange={(e) => setSummary(e.target.value)}
