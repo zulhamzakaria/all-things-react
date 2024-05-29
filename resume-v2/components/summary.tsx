@@ -34,7 +34,7 @@ const SummaryPage = () => {
     if (data) {
       mutate({ ...data, summary: resumeSummary }, false);
     }
-    toast("Summary updated");
+    toast.success("Summary updated", { duration: 2000 });
   };
 
   useEffect(() => {
