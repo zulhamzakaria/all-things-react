@@ -8,7 +8,7 @@ const SlotTitle = ({ title }: { title?: string }) => {
         <p className="flex items-center gap-1 font-sans text-xl font-medium">
           {title?.toLocaleUpperCase()}
         </p>
-        <div className=" flex-between gap-4">
+        {/* <div className=" flex-between gap-4">
           <SignedIn>
             <PenIcon
               className=" cursor-pointer"
@@ -17,7 +17,7 @@ const SlotTitle = ({ title }: { title?: string }) => {
               height={20}
             />
           </SignedIn>
-        </div>
+        </div> */}
       </div>
     </>
   );
