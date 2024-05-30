@@ -97,7 +97,7 @@ const SkillsPage = () => {
         ))}
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="mt-1 bg-slate-200 text-slate-950 w-7 h-7 rounded-full py-1 px-2 font-semibold hover:bg-slate-300 ">
+            <Button className="mt-1 bg-slate-300 text-slate-950 w-7 h-7 rounded-full py-1 px-2 font-semibold hover:bg-slate-600 hover:text-white ">
               +
             </Button>
           </DialogTrigger>
