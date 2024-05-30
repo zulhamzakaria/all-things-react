@@ -3,7 +3,6 @@ import SlotTitle from "./slot-title";
 import LoadingCard from "./loading-card";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Button } from "./ui/button";
-import { PencilIcon } from "lucide-react";
 import { Input } from "./ui/input";
 
 interface SkillsProps {
