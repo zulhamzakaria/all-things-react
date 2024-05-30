@@ -100,18 +100,14 @@ const SkillsPage = () => {
               <Label htmlFor="skill" className=" text-right mx-2 ">
                 Skill
               </Label>
-              <Input
-                id="skill"
-                className="col-span-3"
-                value={""}
-                onChange={handleAdd}
-              />
+              <Input id="skill" className="col-span-3" />
               {/* </div> */}
             </div>
             <DialogFooter>
               <Button
                 type="submit"
                 className=" font-mono rounded-full bg-rose-500 text-white font-semibold"
+                onClick={handleAdd}
               >
                 save
               </Button>
