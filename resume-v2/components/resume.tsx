@@ -20,7 +20,7 @@ const ResumePage = () => {
     <>
       <div
         ref={componentRef}
-        className=" h-[auto] lg:w-[900px] sm:w-auto bg-gray-50 rounded-sm shadow-sm pt-10 pb-10 pl-5 pr-5 flex flex-col"
+        className=" h-[auto] lg:w-[900px] sm:w-auto bg-gray-50 rounded-t-sm shadow-sm pt-10 pb-10 pl-5 pr-5 flex flex-col"
       >
         <DetailsPage />
         <SummaryPage />
@@ -63,7 +63,7 @@ const ResumePage = () => {
         trigger={() => (
           <Button
             variant={"default"}
-            className=" text-white bg-rose-600 font-mono font-semibold text-lg opacity-95 lg:w-[900px] sm:w-full"
+            className=" text-white bg-rose-600 rounded-b-sm rounded-t-none font-mono font-semibold text-lg opacity-95 lg:w-[900px] sm:w-full"
           >
             print
           </Button>
