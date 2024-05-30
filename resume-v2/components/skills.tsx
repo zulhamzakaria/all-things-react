@@ -29,12 +29,11 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const SkillsPage = () => {
   const { data, mutate, error } = useSWR<SkillsProps>("/skills", fetcher);
-
   const [resumeSkills, setResumeSkills] = useState(data?.skills || []);
   const [newSkill, setNewSkill] = useState<string>("");
+  
   useEffect(() => {
     if (data?.skills) setResumeSkills(data.skills);
-    // console.log(resumeSkills);
   }, [data?.skills]);
 
   async function handleAdd() {
