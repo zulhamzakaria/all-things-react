@@ -74,25 +74,27 @@ const SkillsPage = () => {
               +
             </Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
+          <DialogContent className=" bg-slate-50 sm:max-w-[425px]">
             <DialogHeader>
-              <DialogTitle>Add skill</DialogTitle>
-              <DialogDescription>
+              <DialogTitle className=" font-sans text-xl">
+                Add skill
+              </DialogTitle>
+              <DialogDescription className=" font-sans">
                 Add a skill. Click save once done
               </DialogDescription>
             </DialogHeader>
-            <div className="grid py-4">
-              <div className="grid grid-cols-4 items-center">
-                <Label htmlFor="skill" className=" text-right">
-                  Skill
-                </Label>
-                <Input id="skill" className="col-span-3" />
-              </div>
+            <div className="flex flex-row items-center">
+              {/* <div className="grid grid-cols-4 items-center"> */}
+              <Label htmlFor="skill" className=" text-right mx-2 ">
+                Skill
+              </Label>
+              <Input id="skill" className="col-span-3" />
+              {/* </div> */}
             </div>
             <DialogFooter>
               <Button
                 type="submit"
-                className=" font-mono rounded-full bg-rose-500"
+                className=" font-mono rounded-full bg-rose-500 text-white font-semibold"
               >
                 save
               </Button>
