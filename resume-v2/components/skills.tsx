@@ -29,11 +29,12 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const SkillsPage = () => {
   const { data, error } = useSWR<SkillsProps>("/skills", fetcher);
 
-  const [resumeSkills, setResumeSkills] = useState(data || []);
+  const [resumeSkills, setResumeSkills] = useState(data?.skills || []);
 
   useEffect(() => {
-    if (data) setResumeSkills(data);
-  }, [data]);
+    if (data?.skills) setResumeSkills(data.skills);
+    console.log(resumeSkills);
+  }, [data?.skills]);
 
   if (error) return <h1>{error}</h1>;
 
