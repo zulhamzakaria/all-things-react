@@ -4,13 +4,16 @@ import LoadingCard from "./loading-card";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Dialog, DialogFooter, DialogHeader } from "./ui/dialog";
 import {
+  Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@radix-ui/react-dialog";
+} from "./ui/dialog";
+
 import { Label } from "./ui/label";
 
 interface SkillsProps {
@@ -83,7 +86,7 @@ const SkillsPage = () => {
                 <Label htmlFor="skill" className=" text-right">
                   Skill
                 </Label>
-                <Input id="skill" value={""} className="col-span-3" />
+                <Input id="skill" className="col-span-3" />
               </div>
             </div>
             <DialogFooter>
