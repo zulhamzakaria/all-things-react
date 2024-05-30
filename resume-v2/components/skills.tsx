@@ -15,6 +15,7 @@ import {
 } from "./ui/dialog";
 
 import { Label } from "./ui/label";
+import { useEffect, useState } from "react";
 
 interface SkillsProps {
   skills: {
@@ -27,6 +28,12 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const SkillsPage = () => {
   const { data, error } = useSWR<SkillsProps>("/skills", fetcher);
+
+  const [resumeSkills, setResumeSkills] = useState(data || []);
+
+  useEffect(() => {
+    if (data) setResumeSkills(data);
+  }, [data]);
 
   if (error) return <h1>{error}</h1>;
 
