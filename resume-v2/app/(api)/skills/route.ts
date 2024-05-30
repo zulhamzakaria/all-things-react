@@ -7,7 +7,7 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const skill = await req.json();
+  const { skill } = await req.json();
   const newSkill = {
     id: skills.skills.length + 1,
     skill: skill,

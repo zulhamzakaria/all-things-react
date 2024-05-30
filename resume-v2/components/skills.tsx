@@ -1,4 +1,4 @@
-import useSWR, { mutate } from "swr";
+import useSWR from "swr";
 import SlotTitle from "./slot-title";
 import LoadingCard from "./loading-card";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
@@ -28,13 +28,13 @@ interface SkillsProps {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const SkillsPage = () => {
-  const { data, error } = useSWR<SkillsProps>("/skills", fetcher);
+  const { data, mutate, error } = useSWR<SkillsProps>("/skills", fetcher);
 
   const [resumeSkills, setResumeSkills] = useState(data?.skills || []);
   const [newSkill, setNewSkill] = useState<string>("");
   useEffect(() => {
     if (data?.skills) setResumeSkills(data.skills);
-    console.log(resumeSkills);
+    // console.log(resumeSkills);
   }, [data?.skills]);
 
   async function handleAdd() {
@@ -48,7 +48,7 @@ const SkillsPage = () => {
       toast.error("Failed to add new skill", error);
     }
     const updatedData = await response.json();
-    // mutate("/skills", updatedData, false);
+    mutate({ ...resumeSkills, skills: updatedData }, false);
     toast.success("New skill added");
   }
 
