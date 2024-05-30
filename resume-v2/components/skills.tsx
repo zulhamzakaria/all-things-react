@@ -4,6 +4,14 @@ import LoadingCard from "./loading-card";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { Dialog, DialogFooter, DialogHeader } from "./ui/dialog";
+import {
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "@radix-ui/react-dialog";
+import { Label } from "./ui/label";
 
 interface SkillsProps {
   skills: {
@@ -57,9 +65,37 @@ const SkillsPage = () => {
             </SignedIn>
           </>
         ))}
-        <Button className="mt-1 bg-slate-200 text-slate-950 w-7 h-7 rounded-full py-1 px-2 font-semibold hover:bg-slate-300 ">
-          +
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="mt-1 bg-slate-200 text-slate-950 w-7 h-7 rounded-full py-1 px-2 font-semibold hover:bg-slate-300 ">
+              +
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Add skill</DialogTitle>
+              <DialogDescription>
+                Add a skill. Click save once done
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid py-4">
+              <div className="grid grid-cols-4 items-center">
+                <Label htmlFor="skill" className=" text-right">
+                  Skill
+                </Label>
+                <Input id="skill" value={""} className="col-span-3" />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button
+                type="submit"
+                className=" font-mono rounded-full bg-rose-500"
+              >
+                save
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   ) : (
