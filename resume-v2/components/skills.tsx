@@ -48,17 +48,17 @@ const SkillsPage = () => {
                   style={{ width: `${skill.skill.length + 2}ch` }}
                   className=" mt-1 bg-slate-200 text-slate-950 w-10 h-7 rounded-l-full py-1 px-2 text-sm font-semibold inline-block"
                 />
-                <Button className=" bg-rose-500 h-7 w-1 rounded-none text-white">
+                <Button className=" bg-rose-500 h-7 w-1 rounded-none text-white hover:bg-rose-600">
                   e
                 </Button>
-                <Button className=" bg-blue-900 text-white rounded-r-full h-7 w-1 mr-2">
+                <Button className=" bg-blue-800 hover:bg-blue-900 text-white rounded-r-full h-7 w-1 mr-2">
                   x
                 </Button>
               </span>
             </SignedIn>
           </>
         ))}
-        <Button className="mt-1 bg-slate-200 text-slate-950 w-7 h-7 rounded-full py-1 px-2 font-semibold">
+        <Button className="mt-1 bg-slate-200 text-slate-950 w-7 h-7 rounded-full py-1 px-2 font-semibold hover:bg-slate-300 ">
           +
         </Button>
       </div>
