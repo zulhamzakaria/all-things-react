@@ -23,7 +23,7 @@ export const NavBar = () => {
           Resume
         </p>
       </Link>
-      <ModeToggle />
+      {/* <ModeToggle /> */}
       <div className=" flex-row gap-5">
         <SignedOut>
           <button
