@@ -37,14 +37,14 @@ export default function RootLayout({
           }}
         >
           <NavBar />
-          <ThemeProvider
+          {/* <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+          > */}
+          {children}
+          {/* </ThemeProvider> */}
           <Toaster />
         </ClerkProvider>
       </body>
