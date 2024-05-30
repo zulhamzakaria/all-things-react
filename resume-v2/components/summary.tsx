@@ -49,7 +49,9 @@ const SummaryPage = () => {
     <div>
       <SlotTitle title="SUMMARY" />
       <ItemCard>
-        <span className="font-light text-black font-sans">{resumeSummary}</span>
+        <span className=" text-slate-950 font-semibold font-sans ">
+          {resumeSummary}
+        </span>
       </ItemCard>
       <div className=" mt-5 flex justify-end">
         <Dialog>
