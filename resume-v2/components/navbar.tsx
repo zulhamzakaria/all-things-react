@@ -5,6 +5,7 @@ import Link from "next/link";
 import MobileNav from "./mobile-nav";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { ModeToggle } from "./mode-toggle";
 
 export const NavBar = () => {
   const routeTo = useRouter();
@@ -22,7 +23,7 @@ export const NavBar = () => {
           Resume
         </p>
       </Link>
-
+      <ModeToggle />
       <div className=" flex-row gap-5">
         <SignedOut>
           <button
