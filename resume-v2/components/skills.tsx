@@ -38,18 +38,21 @@ const SkillsPage = () => {
   }, [data?.skills]);
 
   async function handleAdd() {
-    //howwwww
-    const response = await fetch("/skills", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ skill: newSkill }),
-    });
-    if (!response.ok) {
-      toast.error("Failed to add new skill", error);
+    try {
+      const response = await fetch("/skills", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ skill: newSkill }),
+      });
+      if (!response.ok) {
+        toast.error("Failed to add new skill", error);
+      }
+      const updatedData = await response.json();
+      mutate({ ...resumeSkills, skills: updatedData }, false);
+      toast.success("New skill added");
+    } catch (e) {
+      toast.error((e as Error).message);
     }
-    const updatedData = await response.json();
-    mutate({ ...resumeSkills, skills: updatedData }, false);
-    toast.success("New skill added");
   }
 
   if (error) return <h1>{error}</h1>;
