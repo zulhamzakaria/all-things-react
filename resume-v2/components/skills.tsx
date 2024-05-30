@@ -39,7 +39,7 @@ const SkillsPage = () => {
 
   async function handleAdd() {
     //howwwww
-    const response = await fetch("/api/skills", {
+    const response = await fetch("/skills", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ skill: newSkill }),
@@ -48,7 +48,7 @@ const SkillsPage = () => {
       toast.error("Failed to add new skill", error);
     }
     const updatedData = await response.json();
-    mutate("/api/skills", updatedData, false);
+    // mutate("/skills", updatedData, false);
     toast.success("New skill added");
   }
 

@@ -13,6 +13,7 @@ export async function POST(req: Request) {
     skill: skill,
   };
   skills.skills.push(newSkill);
+
   return new Response(JSON.stringify(skills.skills), {
     headers: { "Content-Type": "application/json" },
     status: 201,
