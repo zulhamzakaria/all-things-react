@@ -30,14 +30,15 @@ const SkillsPage = () => {
   const { data, error } = useSWR<SkillsProps>("/skills", fetcher);
 
   const [resumeSkills, setResumeSkills] = useState(data?.skills || []);
-
+  const [newSkill, setNewSkill] = useState<string>("");
   useEffect(() => {
     if (data?.skills) setResumeSkills(data.skills);
     console.log(resumeSkills);
   }, [data?.skills]);
 
-  function handleAdd() {
+  async function handleAdd() {
     //howwwww
+    alert(newSkill);
   }
 
   if (error) return <h1>{error}</h1>;
@@ -100,7 +101,12 @@ const SkillsPage = () => {
               <Label htmlFor="skill" className=" text-right mx-2 ">
                 Skill
               </Label>
-              <Input id="skill" className="col-span-3" />
+              <Input
+                id="skill"
+                className="col-span-3"
+                value={newSkill}
+                onChange={(e) => setNewSkill(e.target.value)}
+              />
               {/* </div> */}
             </div>
             <DialogFooter>
