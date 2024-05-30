@@ -36,6 +36,10 @@ const SkillsPage = () => {
     console.log(resumeSkills);
   }, [data?.skills]);
 
+  function handleAdd() {
+    //howwwww
+  }
+
   if (error) return <h1>{error}</h1>;
 
   return data ? (
@@ -96,7 +100,12 @@ const SkillsPage = () => {
               <Label htmlFor="skill" className=" text-right mx-2 ">
                 Skill
               </Label>
-              <Input id="skill" className="col-span-3" />
+              <Input
+                id="skill"
+                className="col-span-3"
+                value={""}
+                onChange={handleAdd}
+              />
               {/* </div> */}
             </div>
             <DialogFooter>
