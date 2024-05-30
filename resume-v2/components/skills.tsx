@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import SlotTitle from "./slot-title";
 import LoadingCard from "./loading-card";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
@@ -16,6 +16,7 @@ import {
 
 import { Label } from "./ui/label";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface SkillsProps {
   skills: {
@@ -38,7 +39,17 @@ const SkillsPage = () => {
 
   async function handleAdd() {
     //howwwww
-    alert(newSkill);
+    const response = await fetch("/api/skills", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ skill: newSkill }),
+    });
+    if (!response.ok) {
+      toast.error("Failed to add new skill", error);
+    }
+    const updatedData = await response.json();
+    mutate("/api/skills", updatedData, false);
+    toast.success("New skill added");
   }
 
   if (error) return <h1>{error}</h1>;
