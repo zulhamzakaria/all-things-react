@@ -31,7 +31,7 @@ const SkillsPage = () => {
   const { data, mutate, error } = useSWR<SkillsProps>("/skills", fetcher);
   const [resumeSkills, setResumeSkills] = useState(data?.skills || []);
   const [newSkill, setNewSkill] = useState<string>("");
-  
+
   useEffect(() => {
     if (data?.skills) setResumeSkills(data.skills);
   }, [data?.skills]);
@@ -56,11 +56,11 @@ const SkillsPage = () => {
 
   if (error) return <h1>{error}</h1>;
 
-  return data ? (
+  return resumeSkills ? (
     <div>
       <SlotTitle title="Skills" />
       <div>
-        {data.skills.map((skill) => (
+        {resumeSkills.map((skill) => (
           <>
             <SignedOut>
               <span
@@ -94,45 +94,47 @@ const SkillsPage = () => {
             </SignedIn>
           </>
         ))}
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button className="mt-1 bg-slate-300 text-slate-950 w-7 h-7 rounded-full py-1 px-2 font-semibold hover:bg-slate-600 hover:text-white ">
-              +
-            </Button>
-          </DialogTrigger>
-          <DialogContent className=" bg-slate-50 sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle className=" font-sans text-xl">
-                Add skill
-              </DialogTitle>
-              <DialogDescription className=" font-sans">
-                Add a skill. Click save once done
-              </DialogDescription>
-            </DialogHeader>
-            <div className="flex flex-row items-center">
-              {/* <div className="grid grid-cols-4 items-center"> */}
-              <Label htmlFor="skill" className=" text-right mx-2 ">
-                Skill
-              </Label>
-              <Input
-                id="skill"
-                className="col-span-3"
-                value={newSkill}
-                onChange={(e) => setNewSkill(e.target.value)}
-              />
-              {/* </div> */}
-            </div>
-            <DialogFooter>
-              <Button
-                type="submit"
-                className=" font-mono rounded-full bg-rose-500 text-white font-semibold"
-                onClick={handleAdd}
-              >
-                save
+        <SignedIn>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="mt-1 bg-slate-300 text-slate-950 w-7 h-7 rounded-full py-1 px-2 font-semibold hover:bg-slate-600 hover:text-white ">
+                +
               </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+            </DialogTrigger>
+            <DialogContent className=" bg-slate-50 sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle className=" font-sans text-xl">
+                  Add skill
+                </DialogTitle>
+                <DialogDescription className=" font-sans">
+                  Add a skill. Click save once done
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex flex-row items-center">
+                {/* <div className="grid grid-cols-4 items-center"> */}
+                <Label htmlFor="skill" className=" text-right mx-2 ">
+                  Skill
+                </Label>
+                <Input
+                  id="skill"
+                  className="col-span-3"
+                  value={newSkill}
+                  onChange={(e) => setNewSkill(e.target.value)}
+                />
+                {/* </div> */}
+              </div>
+              <DialogFooter>
+                <Button
+                  type="submit"
+                  className=" font-mono rounded-full bg-rose-500 text-white font-semibold"
+                  onClick={handleAdd}
+                >
+                  save
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </SignedIn>
       </div>
     </div>
   ) : (
