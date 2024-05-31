@@ -26,7 +26,7 @@ const DetailsPage = () => {
   return data ? (
     <Card>
       <div>
-        <h3 className=" font-sans lg:text-3xl sm:text-xl justify-center flex mb-10 font-bold">
+        <h3 className=" font-sans lg:text-5xl sm:text-xl justify-center flex mb-7 mt-7 ">
           {data.name}
         </h3>
         <div className=" justify-center flex pb-5 sm:text-xs lg:text-base">
