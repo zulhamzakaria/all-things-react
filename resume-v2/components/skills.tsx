@@ -28,7 +28,10 @@ interface SkillsProps {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const SkillsPage = () => {
-  const { data, mutate, error } = useSWR<SkillsProps>("/skills", fetcher);
+  const { data, mutate, isLoading, error } = useSWR<SkillsProps>(
+    "/skills",
+    fetcher
+  );
   const [resumeSkills, setResumeSkills] = useState(data?.skills || []);
   const [newSkill, setNewSkill] = useState<string>("");
 
@@ -56,7 +59,7 @@ const SkillsPage = () => {
 
   if (error) return <h1>{error}</h1>;
 
-  return resumeSkills ? (
+  return resumeSkills && !isLoading ? (
     <div>
       <SlotTitle title="Skills" />
       <div>
