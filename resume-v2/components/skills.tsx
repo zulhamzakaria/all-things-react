@@ -62,7 +62,7 @@ const SkillsPage = () => {
     console.log(`${updatedSkill}, ${index}, ${id}`);
     try {
       const response = await fetch(`/skills/${id}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ skill: updatedSkill }),
       });
