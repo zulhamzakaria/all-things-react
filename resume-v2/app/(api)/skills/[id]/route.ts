@@ -12,8 +12,8 @@ export async function PATCH(
   req: Request,
   { params }: { params: { id: number } }
 ) {
-  const { skill } = await req.json();
+  const { skill: newSkill } = await req.json();
   const index = skills.skills.findIndex((skill) => skill.id === params.id);
-  skills.skills[index].skill = skill;
+  skills.skills[index].skill = newSkill;
   return Response.json(skills.skills[index]);
 }
