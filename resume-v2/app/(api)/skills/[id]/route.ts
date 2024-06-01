@@ -19,3 +19,11 @@ export async function PATCH(
   skills.skills[index].skill = newskill;
   return Response.json(skills.skills);
 }
+
+export async function DELETE({ params }: { params: { id: string } }) {
+  const index = skills.skills.findIndex(
+    (skill) => skill.id === parseInt(params.id)
+  );
+  skills.skills.splice(index, 1);
+  return Response.json(skills.skills);
+}
