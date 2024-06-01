@@ -17,6 +17,7 @@ import {
 import { Label } from "./ui/label";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { Trykker } from "next/font/google";
 
 interface SkillsProps {
   skills: {
@@ -61,7 +62,7 @@ const SkillsPage = () => {
     }
   }
 
-  async function handleEdit(index: number, id: number) {
+  async function handleEdit(id: number) {
     try {
       const response = await fetch(`/skills/${id}`, {
         method: "PATCH",
@@ -74,6 +75,14 @@ const SkillsPage = () => {
       const updatedData = await response.json();
       mutate({ ...resumeSkills, skills: updatedData }, false);
       // console.log(resumeSkills);
+    } catch (e) {
+      toast.error((e as Error).message);
+    }
+  }
+
+  async function handleDelete(id: number) {
+    try {
+      alert(id);
     } catch (e) {
       toast.error((e as Error).message);
     }
@@ -115,12 +124,15 @@ const SkillsPage = () => {
                   className=" mt-1 focus:shadow-sm focus:shadow-dark-4 bg-slate-200 text-slate-950 w-10 h-7 rounded-l-full py-1 px-2 text-sm font-semibold inline-block"
                 />
                 <Button
-                  onClick={() => handleEdit(index, skill.id)}
+                  onClick={() => handleEdit(skill.id)}
                   className=" bg-rose-500 h-7 w-1 rounded-none text-white hover:bg-rose-600 hover:shadow-sm hover:shadow-dark-4"
                 >
                   e
                 </Button>
-                <Button className=" bg-blue-800 hover:bg-blue-900 hover:shadow-sm hover:shadow-dark-4 text-white rounded-r-full h-7 w-1 mr-2">
+                <Button
+                  onClick={() => handleDelete(skill.id)}
+                  className=" bg-blue-800 hover:bg-blue-900 hover:shadow-sm hover:shadow-dark-4 text-white rounded-r-full h-7 w-1 mr-2"
+                >
                   x
                 </Button>
               </span>
