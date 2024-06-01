@@ -70,7 +70,7 @@ const SkillsPage = () => {
         body: JSON.stringify({ skill: updatedSkill }),
       });
       if (!response.ok) {
-        toast.error("Failed to update skill.");
+        toast.error("Failed to update skill");
       }
       const updatedData = await response.json();
       mutate({ ...resumeSkills, skills: updatedData }, false);
@@ -82,7 +82,16 @@ const SkillsPage = () => {
 
   async function handleDelete(id: number) {
     try {
-      alert(id);
+      const response = await fetch(`skills/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        toast.error("Failed to delete skill");
+      }
+      const updatedData = await response.json();
+      alert(updatedData);
     } catch (e) {
       toast.error((e as Error).message);
     }
