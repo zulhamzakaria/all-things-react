@@ -1,6 +1,4 @@
 import { skills } from "@/data";
-import { headers } from "next/headers";
-import { json } from "stream/consumers";
 
 export async function GET() {
   return Response.json(skills);

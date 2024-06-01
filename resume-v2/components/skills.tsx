@@ -51,7 +51,10 @@ const SkillsPage = () => {
         toast.error("Failed to add new skill", error);
       }
       const updatedData = await response.json();
-      mutate({ ...resumeSkills, skills: updatedData }, false);
+      mutate({ ...data, skills: updatedData });
+      // console.log(resumeSkills.length);
+      // console.log(data?.skills.length);
+      // console.log(updatedData.length);
       toast.success("New skill added");
     } catch (e) {
       toast.error((e as Error).message);
@@ -59,7 +62,6 @@ const SkillsPage = () => {
   }
 
   async function handleEdit(index: number, id: number) {
-    console.log(`${updatedSkill}, ${index}, ${id}`);
     try {
       const response = await fetch(`/skills/${id}`, {
         method: "PATCH",
@@ -70,8 +72,8 @@ const SkillsPage = () => {
         toast.error("Failed to update skill.");
       }
       const updatedData = await response.json();
-      console.log(updatedData);
-      // mutate({ ...resumeSkills, skills: updatedData }, false);
+      mutate({ ...resumeSkills, skills: updatedData }, false);
+      // console.log(resumeSkills);
     } catch (e) {
       toast.error((e as Error).message);
     }
