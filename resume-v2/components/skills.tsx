@@ -63,7 +63,7 @@ const SkillsPage = () => {
     <div>
       <SlotTitle title="Skills" />
       <div>
-        {resumeSkills.map((skill) => (
+        {resumeSkills.map((skill, index) => (
           <>
             <SignedOut>
               <span
@@ -85,6 +85,11 @@ const SkillsPage = () => {
                   key={skill.id}
                   value={skill.skill}
                   style={{ width: `${skill.skill.length + 2}ch` }}
+                  onChange={(e) => {
+                    const updatedSkill = [...resumeSkills];
+                    updatedSkill[index].skill = e.target.value;
+                    setResumeSkills(updatedSkill);
+                  }}
                   className=" mt-1 bg-slate-200 text-slate-950 w-10 h-7 rounded-l-full py-1 px-2 text-sm font-semibold inline-block"
                 />
                 <Button className=" bg-rose-500 h-7 w-1 rounded-none text-white hover:bg-rose-600">
