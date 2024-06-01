@@ -10,10 +10,12 @@ export async function GET(
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { id: number } }
+  { params }: { params: { id: string } }
 ) {
-  const { skill: newSkill } = await req.json();
-  const index = skills.skills.findIndex((skill) => skill.id === params.id);
-  skills.skills[index].skill = newSkill;
-  return Response.json(skills.skills[index]);
+  const { skill: newskill } = await req.json();
+  const index = skills.skills.findIndex(
+    (skill) => skill.id === parseInt(params.id)
+  );
+  // skills.skills[index].skill = newskill;
+  return Response.json(index);
 }
