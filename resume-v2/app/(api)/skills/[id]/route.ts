@@ -20,7 +20,10 @@ export async function PATCH(
   return Response.json(skills.skills);
 }
 
-export async function DELETE({ params }: { params: { id: string } }) {
+export async function DELETE(
+  _req: Request,
+  { params }: { params: { id: string } }
+) {
   const index = skills.skills.findIndex(
     (skill) => skill.id === parseInt(params.id)
   );
