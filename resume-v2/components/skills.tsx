@@ -70,7 +70,8 @@ const SkillsPage = () => {
         toast.error("Failed to update skill.");
       }
       const updatedData = await response.json();
-      mutate({ ...resumeSkills, skills: updatedData }, false);
+      console.log(updatedData);
+      // mutate({ ...resumeSkills, skills: updatedData }, false);
     } catch (e) {
       toast.error((e as Error).message);
     }
