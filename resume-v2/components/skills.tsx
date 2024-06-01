@@ -60,6 +60,20 @@ const SkillsPage = () => {
 
   async function handleEdit(index: number, id: number) {
     console.log(`${updatedSkill}, ${index}, ${id}`);
+    try {
+      const response = await fetch(`/skills/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ skill: updatedSkill }),
+      });
+      if (!response.ok) {
+        toast.error("Failed to update skill.");
+      }
+      const updatedData = await response.json();
+      mutate({ ...resumeSkills, skills: updatedData }, false);
+    } catch (e) {
+      toast.error((e as Error).message);
+    }
   }
 
   if (error) return <h1>{error}</h1>;
