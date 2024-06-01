@@ -16,6 +16,6 @@ export async function PATCH(
   const index = skills.skills.findIndex(
     (skill) => skill.id === parseInt(params.id)
   );
-  // skills.skills[index].skill = newskill;
-  return Response.json(index);
+  skills.skills[index].skill = newskill;
+  return Response.json(skills.skills[index]);
 }
