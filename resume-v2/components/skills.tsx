@@ -17,7 +17,6 @@ import {
 import { Label } from "./ui/label";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { Trykker } from "next/font/google";
 
 interface SkillsProps {
   skills: {
@@ -53,9 +52,6 @@ const SkillsPage = () => {
       }
       const updatedData = await response.json();
       mutate({ ...data, skills: updatedData });
-      // console.log(resumeSkills.length);
-      // console.log(data?.skills.length);
-      // console.log(updatedData.length);
       toast.success("New skill added");
     } catch (e) {
       toast.error((e as Error).message);
@@ -74,7 +70,6 @@ const SkillsPage = () => {
       }
       const updatedData = await response.json();
       mutate({ ...resumeSkills, skills: updatedData }, false);
-      // console.log(resumeSkills);
     } catch (e) {
       toast.error((e as Error).message);
     }
