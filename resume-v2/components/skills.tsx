@@ -17,6 +17,7 @@ import {
 import { Label } from "./ui/label";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import React from "react";
 
 interface SkillsProps {
   skills: {
@@ -102,10 +103,10 @@ const SkillsPage = () => {
       <SlotTitle title="Skills" />
       <div>
         {resumeSkills.map((skill, index) => (
-          <>
+          <React.Fragment key={skill.id}>
             <SignedOut>
               <span
-                key={skill.id}
+                // key={skill.id}
                 className=" mt-1 bg-slate-200 text-slate-950 w-auto mr-1 rounded-full py-1 px-2 text-sm font-semibold inline-block"
               >
                 {skill.skill}
@@ -120,7 +121,7 @@ const SkillsPage = () => {
               </span> */}
               <span className=" inline-block">
                 <Input
-                  key={skill.id}
+                  // key={skill.id}
                   value={skill.skill}
                   style={{ width: `${skill.skill.length + 2}ch` }}
                   onChange={(e) => {
@@ -144,7 +145,7 @@ const SkillsPage = () => {
                 </Button>
               </span>
             </SignedIn>
-          </>
+          </React.Fragment>
         ))}
         <SignedIn>
           <Dialog>
