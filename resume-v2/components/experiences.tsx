@@ -18,15 +18,18 @@ interface ExperiencesProps {
 }
 
 const ExperiencesPage = () => {
-  const { data, error } = useSWR<ExperiencesProps>("/experiences", fetcher);
+  const { data, isLoading, error } = useSWR<ExperiencesProps>(
+    "/experiences",
+    fetcher
+  );
 
-  const [resumeExperience, setResumeExperience] = useState(
+  const [resumeExperiences, setResumeExperiences] = useState(
     data?.experiences || []
   );
 
   useEffect(() => {
     if (data) {
-      setResumeExperience(data.experiences);
+      setResumeExperiences(data.experiences);
     }
   }, [data]);
 
@@ -34,10 +37,10 @@ const ExperiencesPage = () => {
     return <h1>{error}</h1>;
   }
 
-  return data ? (
+  return resumeExperiences && !isLoading ? (
     <div>
       <SlotTitle title="Experiences" />
-      {data.experiences.map((experience) => (
+      {resumeExperiences.map((experience) => (
         <div key={`${experience.company}_${experience.period}`}>
           <div className=" justify-between flex">
             <p className="font-light ">
