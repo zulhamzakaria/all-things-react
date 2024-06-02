@@ -70,6 +70,7 @@ const SkillsPage = () => {
       }
       const updatedData = await response.json();
       mutate({ ...resumeSkills, skills: updatedData }, false);
+      toast.success("Skill updated");
     } catch (e) {
       toast.error((e as Error).message);
     }
@@ -85,7 +86,9 @@ const SkillsPage = () => {
       if (!response.ok) {
         toast.error("Failed to delete skill");
       }
-      // const updatedData = await response.json();
+      const updatedData = await response.json();
+      mutate({ ...resumeSkills, skills: updatedData }, false);
+      toast.success("Skill deleted");
       // alert(updatedData);
     } catch (e) {
       toast.error((e as Error).message);
