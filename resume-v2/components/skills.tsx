@@ -32,13 +32,13 @@ const SkillsPage = () => {
     "/skills",
     fetcher
   );
-  const [resumeSkills, setResumeSkills] = useState<SkillsProps["skills"]>([]);
+  const [resumeSkills, setResumeSkills] = useState(data?.skills || []);
   const [updatedSkill, setUpdatedSkill] = useState<string>("");
   const [newSkill, setNewSkill] = useState<string>("");
 
   useEffect(() => {
-    if (data) setResumeSkills(data.skills);
-  }, [data]);
+    if (data?.skills) setResumeSkills(data.skills);
+  }, [data?.skills]);
 
   async function handleAdd() {
     try {
@@ -86,6 +86,7 @@ const SkillsPage = () => {
         toast.error("Failed to delete skill");
       }
       // const updatedData = await response.json();
+      // alert(updatedData);
     } catch (e) {
       toast.error((e as Error).message);
     }
