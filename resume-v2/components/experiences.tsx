@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import SlotTitle from "./slot-title";
 import useSWR from "swr";
 import LoadingCard from "./loading-card";
-import { experiences } from "@/data";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -23,9 +22,9 @@ const ExperiencesPage = () => {
     fetcher
   );
 
-  const [resumeExperiences, setResumeExperiences] = useState(
-    data?.experiences || []
-  );
+  const [resumeExperiences, setResumeExperiences] = useState<
+    ExperiencesProps["experiences"]
+  >([]);
 
   useEffect(() => {
     if (data) {
