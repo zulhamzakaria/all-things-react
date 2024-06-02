@@ -130,7 +130,7 @@ const SkillsPage = () => {
                     editedSkill[index].skill = e.target.value;
                     setUpdatedSkill(editedSkill[index].skill);
                   }}
-                  className=" mt-1 focus:shadow-sm focus:shadow-dark-4 bg-slate-200 text-slate-950 w-10 h-7 rounded-l-full py-1 px-2 text-sm font-semibold inline-block"
+                  className=" mt-1 bg-slate-200 text-slate-950 w-10 h-7 rounded-l-full py-1 px-2 text-sm font-semibold inline-block"
                 />
                 <Button
                   onClick={() => handleEdit(skill.id)}
