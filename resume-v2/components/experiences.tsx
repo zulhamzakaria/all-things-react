@@ -1,7 +1,8 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import SlotTitle from "./slot-title";
 import useSWR from "swr";
 import LoadingCard from "./loading-card";
+import { experiences } from "@/data";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -18,6 +19,17 @@ interface ExperiencesProps {
 
 const ExperiencesPage = () => {
   const { data, error } = useSWR<ExperiencesProps>("/experiences", fetcher);
+
+  const [resumeExperience, setResumeExperience] = useState(
+    data?.experiences || []
+  );
+
+  useEffect(() => {
+    if (data) {
+      setResumeExperience(data.experiences);
+    }
+  }, [data]);
+
   if (error) {
     return <h1>{error}</h1>;
   }
