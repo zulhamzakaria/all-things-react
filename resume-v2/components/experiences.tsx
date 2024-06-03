@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import SlotTitle from "./slot-title";
 import useSWR from "swr";
 import LoadingCard from "./loading-card";
+import { Dialog, DialogTrigger } from "./ui/dialog";
+import { SignedIn } from "@clerk/nextjs";
+import { Button } from "./ui/button";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -40,7 +43,10 @@ const ExperiencesPage = () => {
     <div>
       <SlotTitle title="Experiences" />
       {resumeExperiences.map((experience) => (
-        <div key={`${experience.company}_${experience.period}`}>
+        <div
+          key={`${experience.company}_${experience.period}`}
+          className="mb-2"
+        >
           <div className=" justify-between flex">
             <p className="font-light ">
               {experience.company.toLocaleUpperCase()}
@@ -60,6 +66,15 @@ const ExperiencesPage = () => {
               </li>
             ))}
           </div>
+          <SignedIn>
+            <Dialog>
+              <DialogTrigger className=" flex flex-between justify-end mb-10">
+                <Button className="font-mono rounded-full bg-rose-500 text-white font-semibold">
+                  edit experience
+                </Button>
+              </DialogTrigger>
+            </Dialog>
+          </SignedIn>
         </div>
       ))}
     </div>
