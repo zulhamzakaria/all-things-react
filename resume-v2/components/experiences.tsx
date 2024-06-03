@@ -121,26 +121,23 @@ const ExperiencesPage = () => {
                   </div>
                   <div>
                     <div className=" flex flex-col">
-                      <Label
-                        htmlFor="responsibility"
-                        className=" font-sans mb-2"
-                      >
+                      <Label className=" font-sans mb-2">
                         Responsibilities
                       </Label>
-                      <Textarea id="responsibility" rows={7} />
                     </div>
                   </div>
-
                   <div className=" flex flex-col">
                     {tasks.map((task, index) => (
                       <div key={index}>
-                        <Label
-                          htmlFor={`task-${index}`}
-                          className=" font-sans mb-2"
-                        >
-                          Task {index + 1}
-                        </Label>
                         <div className=" flex flex-row">
+                          <div className=" items-center flex">
+                            <Label
+                              htmlFor={`task-${index}`}
+                              className=" font-sans mr-2 font-light"
+                            >
+                              {index + 1}.
+                            </Label>
+                          </div>
                           <Input
                             id={`task-${index}`}
                             value={task.task}
@@ -161,10 +158,10 @@ const ExperiencesPage = () => {
                       <Button
                         type="button"
                         onClick={() => {}}
-                        className=" bg-emerald-500 text-white items-center my-2 inline-flex"
+                        className=" items-center my-2 inline-flex hover:bg-emerald-500 hover:text-white font-mono font-semibold"
                       >
                         <PlusIcon className="mr-2" />
-                        add task
+                        add responsibility
                       </Button>
                     </div>
                   </div>
