@@ -89,7 +89,7 @@ const ExperiencesPage = () => {
               </DialogTrigger>
               <DialogContent className=" lg:min-w-[800px] bg-gray-50">
                 <DialogHeader className="">
-                  <DialogTitle className=" text-2xl font-light my-10">
+                  <DialogTitle className=" text-2xl font-light my-10 flex justify-center">
                     EDIT EXPERIENCE
                   </DialogTitle>
                   <DialogDescription className=" font-sans font-light">
@@ -162,7 +162,7 @@ const ExperiencesPage = () => {
                       <Button
                         type="button"
                         onClick={() => {}}
-                        className=" items-center my-2 inline-flex hover:bg-emerald-500 hover:text-white font-mono font-semibold"
+                        className=" items-center my-2 text-gray-950 inline-flex hover:bg-emerald-500 hover:text-white font-mono font-semibold"
                       >
                         <PlusIcon className="mr-2" />
                         add responsibility
