@@ -12,7 +12,7 @@ import {
 } from "./ui/dialog";
 import { SignedIn } from "@clerk/nextjs";
 import { Button } from "./ui/button";
-import { PlusIcon } from "lucide-react";
+import { DeleteIcon, PlusIcon, XIcon } from "lucide-react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -35,6 +35,8 @@ const ExperiencesPage = () => {
     "/experiences",
     fetcher
   );
+
+  const [tasks, setTasks] = useState([{ task: "" }]);
 
   const [resumeExperiences, setResumeExperiences] = useState<
     ExperiencesProps["experiences"]
@@ -126,6 +128,44 @@ const ExperiencesPage = () => {
                         Responsibilities
                       </Label>
                       <Textarea id="responsibility" rows={7} />
+                    </div>
+                  </div>
+
+                  <div className=" flex flex-col">
+                    {tasks.map((task, index) => (
+                      <div key={index}>
+                        <Label
+                          htmlFor={`task-${index}`}
+                          className=" font-sans mb-2"
+                        >
+                          Task {index + 1}
+                        </Label>
+                        <div className=" flex flex-row">
+                          <Input
+                            id={`task-${index}`}
+                            value={task.task}
+                            onChange={() => {}}
+                            className=" rounded-r-none"
+                          />
+                          <Button
+                            type="button"
+                            onClick={() => {}}
+                            className=" bg-rose-500 text-white rounded-l-none"
+                          >
+                            <XIcon />
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                    <div className=" w-full flex justify-center ">
+                      <Button
+                        type="button"
+                        onClick={() => {}}
+                        className=" bg-emerald-500 text-white items-center my-2 inline-flex"
+                      >
+                        <PlusIcon className="mr-2" />
+                        add task
+                      </Button>
                     </div>
                   </div>
                 </div>
