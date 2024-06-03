@@ -16,6 +16,7 @@ import { DeleteIcon, PlusIcon, XIcon } from "lucide-react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { Separator } from "./ui/separator";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -87,7 +88,7 @@ const ExperiencesPage = () => {
                 </Button>
               </DialogTrigger>
               <DialogContent className=" lg:min-w-[800px] bg-gray-50">
-                <DialogHeader className="mb-3">
+                <DialogHeader className="">
                   <DialogTitle className=" text-2xl font-light my-10">
                     EDIT EXPERIENCE
                   </DialogTitle>
@@ -96,6 +97,9 @@ const ExperiencesPage = () => {
                     done
                   </DialogDescription>
                 </DialogHeader>
+
+                <Separator className="bg-gray-950" />
+
                 <div className=" flex flex-col">
                   <div className=" grid grid-cols-4 gap-4 mb-4 ">
                     <div className=" col-span-3 ">
