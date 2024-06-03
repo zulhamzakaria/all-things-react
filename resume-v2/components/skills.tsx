@@ -60,6 +60,10 @@ const SkillsPage = () => {
   }
 
   async function handleEdit(id: number) {
+    if (updatedSkill.length === 0) {
+      return;
+    }
+
     try {
       const response = await fetch(`/skills/${id}`, {
         method: "PATCH",

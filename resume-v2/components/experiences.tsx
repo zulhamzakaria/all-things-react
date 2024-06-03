@@ -2,10 +2,17 @@ import { useState, useEffect } from "react";
 import SlotTitle from "./slot-title";
 import useSWR from "swr";
 import LoadingCard from "./loading-card";
-import { Dialog, DialogTrigger } from "./ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 import { SignedIn } from "@clerk/nextjs";
 import { Button } from "./ui/button";
-import { PenIcon, PlusIcon } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -74,6 +81,15 @@ const ExperiencesPage = () => {
                   edit experience
                 </Button>
               </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Edit Experience</DialogTitle>
+                  <DialogDescription>
+                    Make changes to the experience here. Click save once you're
+                    done
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
             </Dialog>
           </SignedIn>
         </div>
