@@ -58,7 +58,7 @@ const SummaryPage = () => {
           <DialogTrigger asChild>
             <Button
               variant={"outline"}
-              className=" rounded-full font-mono text-amber-50 bg-rose-500 hover:bg-rose-600 font-semibold"
+              className=" rounded-full font-mono text-amber-50 bg-blue-500 hover:bg-blue-700 font-semibold"
             >
               edit summary
             </Button>
