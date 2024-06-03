@@ -68,7 +68,7 @@ const ExperiencesPage = () => {
           </div>
           <SignedIn>
             <Dialog>
-              <DialogTrigger className=" flex flex-between justify-end mb-10">
+              <DialogTrigger className=" flex justify-end mb-10 w-full">
                 <Button className="font-mono rounded-full bg-rose-500 text-white font-semibold">
                   edit experience
                 </Button>
@@ -77,6 +77,9 @@ const ExperiencesPage = () => {
           </SignedIn>
         </div>
       ))}
+      <Button className="font-mono w-full rounded-sm bg-blue-800 text-white font-semibold">
+        add new experience
+      </Button>
     </div>
   ) : (
     <div>
