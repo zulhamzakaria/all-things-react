@@ -5,7 +5,7 @@ import LoadingCard from "./loading-card";
 import { Dialog, DialogTrigger } from "./ui/dialog";
 import { SignedIn } from "@clerk/nextjs";
 import { Button } from "./ui/button";
-import { PlusIcon } from "lucide-react";
+import { PenIcon, PlusIcon } from "lucide-react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -80,7 +80,7 @@ const ExperiencesPage = () => {
       ))}
       <SignedIn>
         <Button className="font-mono rounded-full bg-emerald-600  hover:bg-emerald-700 text-white font-semibold">
-          <PlusIcon />
+          <PlusIcon className=" mr-2" />
           add new experience
         </Button>
       </SignedIn>
