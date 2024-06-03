@@ -13,6 +13,9 @@ import {
 import { SignedIn } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { PlusIcon } from "lucide-react";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -81,14 +84,51 @@ const ExperiencesPage = () => {
                   edit experience
                 </Button>
               </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Edit Experience</DialogTitle>
-                  <DialogDescription>
+              <DialogContent className=" lg:min-w-[800px] bg-gray-50">
+                <DialogHeader className="mb-3">
+                  <DialogTitle className=" text-2xl font-light my-10">
+                    EDIT EXPERIENCE
+                  </DialogTitle>
+                  <DialogDescription className=" font-sans font-light">
                     Make changes to the experience here. Click save once you're
                     done
                   </DialogDescription>
                 </DialogHeader>
+                <div className=" flex flex-col">
+                  <div className=" grid grid-cols-4 gap-4 mb-4 ">
+                    <div className=" col-span-3 ">
+                      <Label htmlFor="company" className=" font-sans mb-2">
+                        Company
+                      </Label>
+                      <Input id="company" />
+                    </div>
+                    <div className=" col-span-1 ">
+                      <Label htmlFor="period" className=" font-sans mb-2">
+                        Period
+                      </Label>
+                      <Input id="period" />
+                    </div>
+                  </div>
+                  <div className=" mb-4">
+                    <div className=" flex flex-col">
+                      <Label htmlFor="title" className=" font-sans mb-2">
+                        Title
+                      </Label>
+                      <Input id="title" className="w-full" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className=" flex flex-col">
+                      <Label
+                        htmlFor="responsibility"
+                        className=" font-sans mb-2"
+                      >
+                        Responsibilities
+                      </Label>
+                      <Textarea id="responsibility" rows={7} />
+                    </div>
+                  </div>
+                </div>
               </DialogContent>
             </Dialog>
           </SignedIn>
