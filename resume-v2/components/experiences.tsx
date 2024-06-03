@@ -5,6 +5,7 @@ import LoadingCard from "./loading-card";
 import { Dialog, DialogTrigger } from "./ui/dialog";
 import { SignedIn } from "@clerk/nextjs";
 import { Button } from "./ui/button";
+import { PlusIcon } from "lucide-react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -69,7 +70,7 @@ const ExperiencesPage = () => {
           <SignedIn>
             <Dialog>
               <DialogTrigger className=" flex justify-end mb-10 w-full">
-                <Button className="font-mono rounded-full bg-rose-500 text-white font-semibold">
+                <Button className="font-mono rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold">
                   edit experience
                 </Button>
               </DialogTrigger>
@@ -77,9 +78,12 @@ const ExperiencesPage = () => {
           </SignedIn>
         </div>
       ))}
-      <Button className="font-mono w-full rounded-sm bg-blue-800 text-white font-semibold">
-        add new experience
-      </Button>
+      <SignedIn>
+        <Button className="font-mono rounded-full bg-emerald-600  hover:bg-emerald-700 text-white font-semibold">
+          <PlusIcon />
+          add new experience
+        </Button>
+      </SignedIn>
     </div>
   ) : (
     <div>
