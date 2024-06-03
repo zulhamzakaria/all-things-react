@@ -79,7 +79,7 @@ const ExperiencesPage = () => {
         </div>
       ))}
       <SignedIn>
-        <Button className="font-mono rounded-full bg-emerald-500  hover:bg-emerald-700 text-white font-semibold">
+        <Button className=" w-full font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold">
           <PlusIcon className=" mr-2" />
           add new experience
         </Button>
