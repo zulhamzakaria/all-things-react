@@ -41,7 +41,9 @@ const ExperiencesPage = () => {
   );
 
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [updatedCompany, setUpdatedCompany] = useState<string>("");
+  const [company, setCompany] = useState<string>();
+  const [period, setPeriod] = useState<string>();
+  const [title, setTitle] = useState<string>();
   const [resumeExperiences, setResumeExperiences] = useState<
     ExperiencesProps["experiences"]
   >([]);
@@ -77,9 +79,10 @@ const ExperiencesPage = () => {
   };
 
   const handleEditDialog = (index: number) => {
-    const responsibilities = resumeExperiences[index];
-    if (responsibilities) {
-      setTasks(responsibilities.responsibilities);
+    const experience = resumeExperiences[index];
+    if (experience) {
+      setTasks(experience.responsibilities);
+      setCompany(experience.company);
     }
   };
 
@@ -145,12 +148,9 @@ const ExperiencesPage = () => {
                       </Label>
                       <Input
                         id="company"
-                        value={experience.company}
+                        value={company}
                         onChange={(e) => {
-                          e.stopPropagation();
-                          const editedExperience = [...resumeExperiences];
-                          editedExperience[index].company = e.target.value;
-                          setUpdatedCompany(editedExperience[index].company);
+                          setCompany(e.target.value);
                         }}
                       />
                     </div>
@@ -160,8 +160,10 @@ const ExperiencesPage = () => {
                       </Label>
                       <Input
                         id="period"
-                        value={experience.period}
-                        onChange={() => {}}
+                        value={period}
+                        onChange={(e) => {
+                          setPeriod(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
@@ -173,8 +175,8 @@ const ExperiencesPage = () => {
                       <Input
                         id="title"
                         className="w-full"
-                        value={experience.title}
-                        onChange={() => {}}
+                        value={title}
+                        onChange={(e) => {setTitle(e.target.value)}}
                       />
                     </div>
                   </div>
