@@ -67,7 +67,7 @@ const SummaryPage = () => {
           <DialogContent className="bg-slate-50 lg:min-w-[600px]">
             <DialogHeader>
               <DialogTitle className=" font-sans text-4xl font-light my-10 flex justify-center">
-                Edit Summary
+                EDIT SUMMARY
               </DialogTitle>
               <DialogDescription className="font-sans font-light">
                 Make changes to the resume summary here. Click save when you're
