@@ -89,7 +89,7 @@ const ExperiencesPage = () => {
               </DialogTrigger>
               <DialogContent className=" lg:min-w-[800px] bg-gray-50">
                 <DialogHeader className="">
-                  <DialogTitle className=" text-2xl font-light my-10 flex justify-center">
+                  <DialogTitle className=" text-4xl font-light my-10 flex justify-center">
                     EDIT EXPERIENCE
                   </DialogTitle>
                   <DialogDescription className=" font-sans font-light">
