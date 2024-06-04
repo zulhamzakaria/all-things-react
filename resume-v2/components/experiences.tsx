@@ -83,6 +83,8 @@ const ExperiencesPage = () => {
     if (experience) {
       setTasks(experience.responsibilities);
       setCompany(experience.company);
+      setPeriod(experience.period);
+      setTitle(experience.title);
     }
   };
 
@@ -176,7 +178,9 @@ const ExperiencesPage = () => {
                         id="title"
                         className="w-full"
                         value={title}
-                        onChange={(e) => {setTitle(e.target.value)}}
+                        onChange={(e) => {
+                          setTitle(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
