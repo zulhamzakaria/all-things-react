@@ -12,7 +12,7 @@ import {
 } from "./ui/dialog";
 import { SignedIn } from "@clerk/nextjs";
 import { Button } from "./ui/button";
-import { PlusIcon, XIcon } from "lucide-react";
+import { PlusIcon, SaveAllIcon, XIcon } from "lucide-react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
@@ -191,9 +191,9 @@ const ExperiencesPage = () => {
                     </div>
                   </div>
                 </div>
-                <Button className=" mt-10 w-full font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold">
-                  <PlusIcon className=" mr-2" />
-                  save task
+                <Button className=" mt-10 font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold">
+                  <SaveAllIcon className=" mr-2" />
+                  save
                 </Button>
               </DialogContent>
             </Dialog>

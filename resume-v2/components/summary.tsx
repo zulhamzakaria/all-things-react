@@ -18,6 +18,7 @@ import { Textarea } from "./ui/textarea";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Separator } from "./ui/separator";
+import { SaveAllIcon } from "lucide-react";
 
 interface SummaryProps {
   userId: string;
@@ -92,9 +93,10 @@ const SummaryPage = () => {
             <DialogFooter className="flex flex-rows">
               <Button
                 type="submit"
-                className=" bg-rose-500 text-white font-mono font-semibold"
+                className=" mt-10 w-full font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
                 onClick={handleClick}
               >
+                <SaveAllIcon className=" mr-2" />
                 save
               </Button>
             </DialogFooter>
