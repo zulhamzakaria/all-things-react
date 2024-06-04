@@ -105,7 +105,7 @@ const ExperiencesPage = () => {
           </div>
           <SignedIn>
             <Dialog>
-              <DialogTrigger className=" flex justify-end mb-10 w-full">
+              <DialogTrigger asChild className=" flex justify-end mb-10">
                 <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
                   edit experience
                 </Button>
