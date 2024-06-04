@@ -127,13 +127,21 @@ const ExperiencesPage = () => {
                       <Label htmlFor="company" className=" font-sans mb-2">
                         Company
                       </Label>
-                      <Input id="company" />
+                      <Input
+                        id="company"
+                        value={experience.company}
+                        onChange={() => {}}
+                      />
                     </div>
                     <div className=" col-span-1 ">
                       <Label htmlFor="period" className=" font-sans mb-2">
                         Period
                       </Label>
-                      <Input id="period" />
+                      <Input
+                        id="period"
+                        value={experience.period}
+                        onChange={() => {}}
+                      />
                     </div>
                   </div>
                   <div className=" mb-4">
@@ -141,7 +149,12 @@ const ExperiencesPage = () => {
                       <Label htmlFor="title" className=" font-sans mb-2">
                         Title
                       </Label>
-                      <Input id="title" className="w-full" />
+                      <Input
+                        id="title"
+                        className="w-full"
+                        value={experience.title}
+                        onChange={() => {}}
+                      />
                     </div>
                   </div>
                   <div>
