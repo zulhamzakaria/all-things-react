@@ -4,8 +4,10 @@ import useSWR from "swr";
 import LoadingCard from "./loading-card";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -235,13 +237,17 @@ const ExperiencesPage = () => {
                     </div>
                   </div>
                 </div>
-                <Button
-                  onClick={handleSave}
-                  className=" mt-10 font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
-                >
-                  <SaveAllIcon className=" mr-2" />
-                  save
-                </Button>
+                <DialogFooter>
+                  <DialogClose asChild>
+                    <Button
+                      onClick={handleSave}
+                      className=" mt-10 font-mono rounded-lg w-full bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
+                    >
+                      <SaveAllIcon className=" mr-2" />
+                      save
+                    </Button>
+                  </DialogClose>
+                </DialogFooter>
               </DialogContent>
             </Dialog>
           </SignedIn>
