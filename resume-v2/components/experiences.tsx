@@ -152,11 +152,11 @@ const ExperiencesPage = () => {
                   <div className=" flex flex-col">
                     {tasks.map((task, index) => (
                       <div key={index}>
-                        <div className=" flex flex-row">
-                          <div className=" items-center flex">
+                        <div className=" flex flex-row mb-1">
+                          <div className=" flex items-center justify-center rounded-l-lg bg-slate-800 text-white w-10">
                             <Label
                               htmlFor={`task-${index}`}
-                              className=" font-sans mr-2 font-light"
+                              className=" font-sans"
                             >
                               {index + 1}.
                             </Label>
@@ -164,12 +164,16 @@ const ExperiencesPage = () => {
                           <Input
                             id={`task-${index}`}
                             value={task.task}
-                            onChange={() => {}}
+                            onChange={(e) => {
+                              handleEdit(index, e);
+                            }}
                             className=" rounded-r-none"
                           />
                           <Button
                             type="button"
-                            onClick={() => {}}
+                            onClick={() => {
+                              handleRemove(index);
+                            }}
                             className=" bg-rose-500 text-white rounded-l-none"
                           >
                             <XIcon />
@@ -180,7 +184,7 @@ const ExperiencesPage = () => {
                     <div className=" w-full flex justify-center ">
                       <Button
                         type="button"
-                        onClick={() => {}}
+                        onClick={handleAdd}
                         className=" items-center my-2 text-gray-950 inline-flex hover:bg-emerald-500 hover:text-white font-mono font-semibold"
                       >
                         <PlusIcon className="mr-2" />
