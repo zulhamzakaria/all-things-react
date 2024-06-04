@@ -40,7 +40,7 @@ const ExperiencesPage = () => {
     fetcher
   );
 
-  const [tasks, setTasks] = useState<Task[]>([{ task: "" }]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const [resumeExperiences, setResumeExperiences] = useState<
     ExperiencesProps["experiences"]
@@ -49,6 +49,10 @@ const ExperiencesPage = () => {
   useEffect(() => {
     if (data) {
       setResumeExperiences(data.experiences);
+      const firstExperience = data.experiences[0];
+      if (firstExperience) {
+        setTasks(firstExperience.responsibilities);
+      }
     }
   }, [data]);
 
