@@ -41,7 +41,7 @@ const ExperiencesPage = () => {
   );
 
   const [tasks, setTasks] = useState<Task[]>([]);
-
+  const [updatedCompany, setUpdatedCompany] = useState<string>("");
   const [resumeExperiences, setResumeExperiences] = useState<
     ExperiencesProps["experiences"]
   >([]);
@@ -146,7 +146,12 @@ const ExperiencesPage = () => {
                       <Input
                         id="company"
                         value={experience.company}
-                        onChange={() => {}}
+                        onChange={(e) => {
+                          e.stopPropagation();
+                          const editedExperience = [...resumeExperiences];
+                          editedExperience[index].company = e.target.value;
+                          setUpdatedCompany(editedExperience[index].company);
+                        }}
                       />
                     </div>
                     <div className=" col-span-1 ">
