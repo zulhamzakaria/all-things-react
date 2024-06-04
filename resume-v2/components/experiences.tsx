@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import SlotTitle from "./slot-title";
 import useSWR from "swr";
 import LoadingCard from "./loading-card";
@@ -30,13 +30,17 @@ interface ExperiencesProps {
   }[];
 }
 
+interface Task {
+  task: string;
+}
+
 const ExperiencesPage = () => {
   const { data, isLoading, error } = useSWR<ExperiencesProps>(
     "/experiences",
     fetcher
   );
 
-  const [tasks, setTasks] = useState([{ task: "" }]);
+  const [tasks, setTasks] = useState<Task[]>([{ task: "" }]);
 
   const [resumeExperiences, setResumeExperiences] = useState<
     ExperiencesProps["experiences"]
@@ -47,6 +51,22 @@ const ExperiencesPage = () => {
       setResumeExperiences(data.experiences);
     }
   }, [data]);
+
+  const handleEdit = (index: number, e: ChangeEvent<HTMLInputElement>) => {
+    const values = [...tasks];
+    values[index].task = e.target.value;
+    setTasks(values);
+  };
+
+  const handleAdd = () => {
+    setTasks([...tasks, { task: "" }]);
+  };
+
+  const handleRemove = (index: number) => {
+    const values = [...tasks];
+    values.splice(index, 1);
+    setTasks(values);
+  };
 
   if (error) {
     return <h1>{error}</h1>;
