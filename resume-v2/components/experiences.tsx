@@ -68,6 +68,10 @@ const ExperiencesPage = () => {
     setTasks(values);
   };
 
+  const handleSave = () => {
+    const addedTasks = tasks.filter((task) => task.task.trim() !== "");
+  };
+
   if (error) {
     return <h1>{error}</h1>;
   }
@@ -191,7 +195,10 @@ const ExperiencesPage = () => {
                     </div>
                   </div>
                 </div>
-                <Button className=" mt-10 font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold">
+                <Button
+                  onClick={handleSave}
+                  className=" mt-10 font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
+                >
                   <SaveAllIcon className=" mr-2" />
                   save
                 </Button>
