@@ -5,6 +5,7 @@ import ItemCard from "./item-card";
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -91,14 +92,16 @@ const SummaryPage = () => {
               </div>
             </div>
             <DialogFooter className="flex flex-rows">
-              <Button
-                type="submit"
-                className=" mt-10 w-full font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
-                onClick={handleClick}
-              >
-                <SaveAllIcon className=" mr-2" />
-                save
-              </Button>
+              <DialogClose asChild>
+                <Button
+                  type="submit"
+                  className=" mt-10 w-full font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
+                  onClick={handleClick}
+                >
+                  <SaveAllIcon className=" mr-2" />
+                  save
+                </Button>
+              </DialogClose>
             </DialogFooter>
           </DialogContent>
         </Dialog>
