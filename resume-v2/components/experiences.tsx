@@ -126,7 +126,7 @@ const ExperiencesPage = () => {
                   </Button>
                 </div>
               </DialogTrigger>
-              <DialogContent className=" lg:min-w-[800px] bg-gray-50">
+              <DialogContent className=" lg:min-w-[800px] bg-gray-50 overflow-auto h-screen">
                 <DialogHeader className="">
                   <DialogTitle className=" text-4xl font-light my-10 flex justify-center">
                     EDIT EXPERIENCE
