@@ -12,10 +12,9 @@ import {
 } from "./ui/dialog";
 import { SignedIn } from "@clerk/nextjs";
 import { Button } from "./ui/button";
-import { DeleteIcon, PlusIcon, XIcon } from "lucide-react";
+import { PlusIcon, XIcon } from "lucide-react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
 import { Separator } from "./ui/separator";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
