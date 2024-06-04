@@ -116,9 +116,7 @@ const ExperiencesPage = () => {
                     done
                   </DialogDescription>
                 </DialogHeader>
-
                 <Separator className="bg-gray-950" />
-
                 <div className=" flex flex-col">
                   <div className=" grid grid-cols-4 gap-4 mb-4 ">
                     <div className=" col-span-3 ">
@@ -193,6 +191,10 @@ const ExperiencesPage = () => {
                     </div>
                   </div>
                 </div>
+                <Button className=" mt-10 w-full font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold">
+                  <PlusIcon className=" mr-2" />
+                  save task
+                </Button>
               </DialogContent>
             </Dialog>
           </SignedIn>
