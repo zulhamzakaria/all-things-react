@@ -76,6 +76,13 @@ const ExperiencesPage = () => {
     const addedTasks = tasks.filter((task) => task.task.trim() !== "");
   };
 
+  const handleEditDialog = (index: number) => {
+    const responsibilities = resumeExperiences[index];
+    if (responsibilities) {
+      setTasks(responsibilities.responsibilities);
+    }
+  };
+
   if (error) {
     return <h1>{error}</h1>;
   }
@@ -83,7 +90,7 @@ const ExperiencesPage = () => {
   return resumeExperiences && !isLoading ? (
     <div>
       <SlotTitle title="Experiences" />
-      {resumeExperiences.map((experience) => (
+      {resumeExperiences.map((experience, index) => (
         <div
           key={`${experience.company}_${experience.period}`}
           className="mb-2"
@@ -111,7 +118,10 @@ const ExperiencesPage = () => {
             <Dialog>
               <DialogTrigger asChild className=" flex justify-end mb-10 w-full">
                 <div>
-                  <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
+                  <Button
+                    onClick={() => handleEditDialog(index)}
+                    className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold"
+                  >
                     edit experience
                   </Button>
                 </div>
