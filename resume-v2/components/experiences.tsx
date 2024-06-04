@@ -105,10 +105,12 @@ const ExperiencesPage = () => {
           </div>
           <SignedIn>
             <Dialog>
-              <DialogTrigger asChild className=" flex justify-end mb-10">
-                <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
-                  edit experience
-                </Button>
+              <DialogTrigger asChild className=" flex justify-end mb-10 w-full">
+                <div>
+                  <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
+                    edit experience
+                  </Button>
+                </div>
               </DialogTrigger>
               <DialogContent className=" lg:min-w-[800px] bg-gray-50">
                 <DialogHeader className="">
