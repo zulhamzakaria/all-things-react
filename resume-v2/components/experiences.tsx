@@ -87,6 +87,9 @@ const ExperiencesPage = () => {
     }
 
     mutate({ ...data, experiences: updatedExperiences });
+    mutate({ ...resumeExperiences, experiences: updatedExperiences });
+    // alert(JSON.stringify(data?.experiences[index], null, 2));
+    // alert(JSON.stringify(resumeExperiences[index], null, 2));
   };
 
   const handleEditDialog = (index: number) => {
