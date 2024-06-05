@@ -38,6 +38,7 @@ export const education = {
 export const experiences = {
   experiences: [
     {
+      id: 1,
       period: "2009-01 ~ 2011-09",
       title: "Application Developer",
       company: "Edaran IT Services Sdn Bhd, Desa Pandan",
@@ -57,6 +58,7 @@ export const experiences = {
       ],
     },
     {
+      id: 2,
       period: "2011-10 ~ 2014-09",
       title: "Application Developer",
       company: "Strateq Sdn Bhd, Petaling Jaya",
@@ -88,6 +90,7 @@ export const experiences = {
       ],
     },
     {
+      id: 3,
       period: "2014-10 ~ 2022-02",
       title: "Senior Application Developer",
       company: "Strateq Sdn Bhd, Petaling Jaya",
@@ -125,6 +128,7 @@ export const experiences = {
       ],
     },
     {
+      id: 4,
       period: "2022-11 ~ 2023-10",
       title: ".Net Developer (C#)",
       company: "Pulse Eight Malaysia Sdn Bhd, Petaling Jaya",
