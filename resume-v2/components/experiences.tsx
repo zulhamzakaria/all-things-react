@@ -18,11 +18,13 @@ import { PlusIcon, SaveAllIcon, XIcon } from "lucide-react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
+import { toast } from "sonner";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface ExperiencesProps {
   experiences: {
+    id: number;
     period: string;
     title: string;
     company: string;
@@ -76,9 +78,10 @@ const ExperiencesPage = () => {
     setTasks(values);
   };
 
-  const handleSaveEdit = (index: number, id: number) => {
+  async function handleSaveEdit(index: number, id: number) {
     const addedTasks = tasks.filter((task) => task.task.trim() !== "");
     const updatedExperiences = [...resumeExperiences];
+
     if (updatedExperiences[index]) {
       updatedExperiences[index].responsibilities = addedTasks;
       updatedExperiences[index].company = company;
@@ -86,11 +89,28 @@ const ExperiencesPage = () => {
       updatedExperiences[index].title = title;
     }
 
-    mutate({ ...data, experiences: updatedExperiences });
-    mutate({ ...resumeExperiences, experiences: updatedExperiences });
-    // alert(JSON.stringify(data?.experiences[index], null, 2));
-    // alert(JSON.stringify(resumeExperiences[index], null, 2));
-  };
+    try {
+      const response = await fetch(`/experiences/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ exp: updatedExperiences[index] }),
+      });
+
+      if (!response.ok) {
+        toast.error("Failed to update experience");
+      }
+
+      const updatedData = await response.json();
+      mutate({ ...data, experiences: updatedData });
+      mutate({ ...resumeExperiences, experiences: updatedData });
+      // alert(JSON.stringify(data?.experiences[index], null, 2));
+      // alert(JSON.stringify(resumeExperiences[index], null, 2));
+
+      toast.success("Experience updated");
+    } catch (e) {
+      toast.error((e as Error).message);
+    }
+  }
 
   const handleEditDialog = (index: number) => {
     const experience = resumeExperiences[index];

@@ -19,5 +19,5 @@ export async function PUT(
     (exp) => exp.id === parseInt(params.id)
   );
   exps.experiences[index] = { ...exps.experiences[index], ...updatedExp };
-  return Response.json(exps.experiences[index]);
+  return Response.json(exps.experiences);
 }
