@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import SlotTitle from "./slot-title";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import LoadingCard from "./loading-card";
 import {
   Dialog,
@@ -37,7 +37,7 @@ interface Task {
 }
 
 const ExperiencesPage = () => {
-  const { data, isLoading, error } = useSWR<ExperiencesProps>(
+  const { data, isLoading, error, mutate } = useSWR<ExperiencesProps>(
     "/experiences",
     fetcher
   );
@@ -86,7 +86,7 @@ const ExperiencesPage = () => {
       updatedExperiences[index].title = title;
     }
 
-    alert(updatedExperiences[index].responsibilities);
+    mutate({ ...data, experiences: updatedExperiences });
   };
 
   const handleEditDialog = (index: number) => {
