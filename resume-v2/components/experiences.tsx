@@ -156,6 +156,12 @@ const ExperiencesPage = () => {
           <SignedIn>
             <Dialog>
               <div className=" flex justify-end mb-10 w-full">
+                <Button
+                  className=" hover:text-red-700 font-mono font-semibold"
+                  onClick={() => confirm("u really want to delete this entry?")}
+                >
+                  Delete
+                </Button>
                 <DialogTrigger asChild>
                   <Button
                     onClick={() => handleEditDialog(index)}
