@@ -43,9 +43,9 @@ const ExperiencesPage = () => {
   );
 
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [company, setCompany] = useState<string>();
-  const [period, setPeriod] = useState<string>();
-  const [title, setTitle] = useState<string>();
+  const [company, setCompany] = useState<string>("");
+  const [period, setPeriod] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
   const [resumeExperiences, setResumeExperiences] = useState<
     ExperiencesProps["experiences"]
   >([]);
@@ -79,7 +79,13 @@ const ExperiencesPage = () => {
   const handleSave = (index: number) => {
     const addedTasks = tasks.filter((task) => task.task.trim() !== "");
     const updatedExperiences = [...resumeExperiences];
-    updatedExperiences[index].responsibilities = addedTasks;
+    if (updatedExperiences[index]) {
+      updatedExperiences[index].responsibilities = addedTasks;
+      updatedExperiences[index].company = company;
+      updatedExperiences[index].period = period;
+      updatedExperiences[index].title = title;
+    }
+
     alert(updatedExperiences[index].responsibilities);
   };
 
