@@ -76,8 +76,11 @@ const ExperiencesPage = () => {
     setTasks(values);
   };
 
-  const handleSave = () => {
+  const handleSave = (index: number) => {
     const addedTasks = tasks.filter((task) => task.task.trim() !== "");
+    const updatedExperiences = [...resumeExperiences];
+    updatedExperiences[index].responsibilities = addedTasks;
+    alert(updatedExperiences[index].responsibilities);
   };
 
   const handleEditDialog = (index: number) => {
@@ -240,7 +243,7 @@ const ExperiencesPage = () => {
                 <DialogFooter>
                   <DialogClose asChild>
                     <Button
-                      onClick={handleSave}
+                      onClick={() => handleSave(index)}
                       className=" mt-10 font-mono rounded-lg w-full bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
                     >
                       <SaveAllIcon className=" mr-2" />
