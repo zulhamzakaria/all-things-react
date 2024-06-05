@@ -14,7 +14,7 @@ export async function PUT(
   req: Request,
   { params }: { params: { id: string } }
 ) {
-  const { updatedExp } = await req.json();
+  const { exp: updatedExp } = await req.json();
   const index = exps.experiences.findIndex(
     (exp) => exp.id === parseInt(params.id)
   );
