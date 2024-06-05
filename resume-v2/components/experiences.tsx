@@ -155,16 +155,16 @@ const ExperiencesPage = () => {
           </div>
           <SignedIn>
             <Dialog>
-              <DialogTrigger asChild className=" flex justify-end mb-10 w-full">
-                <div>
+              <div className=" flex justify-end mb-10 w-full">
+                <DialogTrigger asChild>
                   <Button
                     onClick={() => handleEditDialog(index)}
                     className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold"
                   >
                     edit experience
                   </Button>
-                </div>
-              </DialogTrigger>
+                </DialogTrigger>
+              </div>
               <DialogContent className=" lg:min-w-[800px] bg-gray-50 overflow-auto h-screen">
                 <DialogHeader className="">
                   <DialogTitle className=" text-4xl font-light my-10 flex justify-center">
