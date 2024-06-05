@@ -18,6 +18,6 @@ export async function PUT(
   const index = exps.experiences.findIndex(
     (exp) => exp.id === parseInt(params.id)
   );
-  exps.experiences[index] = updatedExp;
+  exps.experiences[index] = { ...exps.experiences[index], ...updatedExp };
   return Response.json(exps.experiences);
 }
