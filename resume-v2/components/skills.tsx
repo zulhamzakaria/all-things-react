@@ -143,7 +143,7 @@ const SkillsPage = () => {
                 </Button>
                 <Button
                   onClick={() => handleDelete(skill.id)}
-                  className=" bg-rose-500 hover:bg-rose-700 hover:shadow-sm hover:shadow-dark-4 text-white rounded-r-full h-7 w-1 mr-2"
+                  className=" bg-red-500 hover:bg-red-700 hover:shadow-sm hover:shadow-dark-4 text-white rounded-r-full h-7 w-1 mr-2"
                 >
                   x
                 </Button>
