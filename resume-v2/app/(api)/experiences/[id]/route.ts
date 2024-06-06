@@ -21,3 +21,14 @@ export async function PUT(
   exps.experiences[index] = { ...exps.experiences[index], ...updatedExp };
   return Response.json(exps.experiences);
 }
+
+export async function DELETE(
+  _req: Request,
+  { params }: { params: { id: string } }
+) {
+  const index = exps.experiences.findIndex(
+    (exp) => exp.id === parseInt(params.id)
+  );
+  exps.experiences.splice(index, 1);
+  return Response.json(exps.experiences);
+}
