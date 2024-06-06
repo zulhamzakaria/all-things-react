@@ -173,8 +173,8 @@ const ExperiencesPage = () => {
               <div className=" flex justify-end mb-10 w-full">
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <Button className=" hover:text-red-700 font-mono font-semibold">
-                      Delete
+                    <Button className=" hover:text-red-600 font-mono font-semibold">
+                      delete
                     </Button>
                   </AlertDialogTrigger>
                   <AlertDialogContent className=" bg-slate-50">
@@ -193,7 +193,7 @@ const ExperiencesPage = () => {
                           onClick={() => {
                             confirmDelete(index, experience.id);
                           }}
-                          className=" text-slate-900 font-mono font-semibold hover:bg-red-500 hover:text-white rounded-full"
+                          className=" text-slate-900 font-mono font-semibold hover:text-red-600"
                         >
                           confirm
                         </AlertDialogAction>
