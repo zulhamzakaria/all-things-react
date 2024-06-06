@@ -177,25 +177,25 @@ const ExperiencesPage = () => {
                       Delete
                     </Button>
                   </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This will delete the entry permanently.
+                      </AlertDialogDescription>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={() => {
+                            confirmDelete(index, experience.id);
+                          }}
+                        >
+                          confirm
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogHeader>
+                  </AlertDialogContent>
                 </AlertDialog>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This will delete the entry permanently.
-                    </AlertDialogDescription>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>cancel</AlertDialogCancel>
-                      <AlertDialogAction
-                        onClick={() => {
-                          confirmDelete(index, experience.id);
-                        }}
-                      >
-                        confirm
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogHeader>
-                </AlertDialogContent>
 
                 <DialogTrigger asChild>
                   <Button
