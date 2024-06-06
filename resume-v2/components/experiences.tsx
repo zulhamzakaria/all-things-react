@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import SlotTitle from "./slot-title";
-import useSWR, { mutate } from "swr";
+import useSWR from "swr";
 import LoadingCard from "./loading-card";
 import {
   Dialog,
@@ -12,6 +12,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { SignedIn } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { PlusIcon, SaveAllIcon, XIcon } from "lucide-react";
@@ -122,6 +133,10 @@ const ExperiencesPage = () => {
     }
   };
 
+  const confirmDelete = (index: number, id: number) => {
+    toast.success(`experience id: ${id} deleted`);
+  };
+
   if (error) {
     return <h1>{error}</h1>;
   }
@@ -156,11 +171,32 @@ const ExperiencesPage = () => {
           <SignedIn>
             <Dialog>
               <div className=" flex justify-end mb-10 w-full">
-                <Button
-                  className=" hover:text-red-700 font-mono font-semibold"
-                >
-                  Delete
-                </Button>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button className=" hover:text-red-700 font-mono font-semibold">
+                      Delete
+                    </Button>
+                  </AlertDialogTrigger>
+                </AlertDialog>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This will delete the entry permanently.
+                    </AlertDialogDescription>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>cancel</AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={() => {
+                          confirmDelete(index, experience.id);
+                        }}
+                      >
+                        confirm
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogHeader>
+                </AlertDialogContent>
+
                 <DialogTrigger asChild>
                   <Button
                     onClick={() => handleEditDialog(index)}
