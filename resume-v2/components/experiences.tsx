@@ -179,19 +179,21 @@ const ExperiencesPage = () => {
                   </AlertDialogTrigger>
                   <AlertDialogContent className=" bg-slate-50">
                     <AlertDialogHeader>
-                      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                      <AlertDialogDescription>
+                      <AlertDialogTitle className=" text-slate-900">
+                        Are you sure?
+                      </AlertDialogTitle>
+                      <AlertDialogDescription className="text-slate-800">
                         This will delete the entry permanently.
                       </AlertDialogDescription>
                       <AlertDialogFooter className="pt-5">
-                        <AlertDialogCancel className=" rounded-full border-solid border-2 border-black font-mono font-semibold hover:bg-black hover:text-white">
+                        <AlertDialogCancel className=" text-slate-900 rounded-full border-solid border-2 border-black font-mono font-semibold hover:bg-black hover:text-white">
                           cancel
                         </AlertDialogCancel>
                         <AlertDialogAction
                           onClick={() => {
                             confirmDelete(index, experience.id);
                           }}
-                          className=" font-mono font-semibold hover:bg-red-500 hover:text-white rounded-full"
+                          className=" text-slate-900 font-mono font-semibold hover:bg-red-500 hover:text-white rounded-full"
                         >
                           confirm
                         </AlertDialogAction>
