@@ -134,8 +134,26 @@ const ExperiencesPage = () => {
   };
 
   const confirmDelete = (index: number, id: number) => {
-    toast.success(`experience id: ${id} deleted`);
+    handleDelete(index, id);
   };
+
+  async function handleDelete(index: number, id: number) {
+    try {
+      const response = await fetch(`experiences/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!response.ok) {
+        toast.error("Failed to delete experience");
+      }
+      const updatedData = await response.json();
+      mutate({ ...data, experiences: updatedData });
+      mutate({ ...resumeExperiences, experiences: updatedData });
+      toast.success("Experience deleted");
+    } catch (e) {
+      toast.error((e as Error).message);
+    }
+  }
 
   if (error) {
     return <h1>{error}</h1>;
