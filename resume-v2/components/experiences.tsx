@@ -191,7 +191,7 @@ const ExperiencesPage = () => {
               <div className=" flex justify-end mb-10 w-full">
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <Button className=" hover:text-red-600 font-mono font-semibold">
+                    <Button className=" hover:text-red-600 font-mono font-semibold underline">
                       delete
                     </Button>
                   </AlertDialogTrigger>
@@ -350,7 +350,7 @@ const ExperiencesPage = () => {
         </div>
       ))}
       <SignedIn>
-        <Button className=" w-full font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold">
+        <Button className=" w-full font-mono rounded-lg  hover:bg-emerald-700 underline hover:text-white font-semibold">
           <PlusIcon className=" mr-2" />
           add new experience
         </Button>
