@@ -148,7 +148,7 @@ const ExperiencesPage = () => {
       }
       const updatedData = await response.json();
       mutate({ ...data, experiences: updatedData });
-      mutate({ ...resumeExperiences, experiences: updatedData });
+      // mutate({ ...resumeExperiences, experiences: updatedData });
       toast.success("Experience deleted");
     } catch (e) {
       toast.error((e as Error).message);
