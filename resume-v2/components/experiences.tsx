@@ -191,7 +191,7 @@ const ExperiencesPage = () => {
               <div className=" flex justify-end mb-10 w-full">
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <Button className=" hover:text-red-600 font-mono font-semibold underline">
+                    <Button className=" hover:text-red-600 font-mono font-semibold hover:underline">
                       delete
                     </Button>
                   </AlertDialogTrigger>
@@ -211,7 +211,7 @@ const ExperiencesPage = () => {
                           onClick={() => {
                             confirmDelete(index, experience.id);
                           }}
-                          className=" text-slate-900 font-mono font-semibold hover:text-red-600"
+                          className=" text-slate-900 font-mono font-semibold hover:text-red-600 hover:underline"
                         >
                           confirm
                         </AlertDialogAction>
@@ -350,7 +350,7 @@ const ExperiencesPage = () => {
         </div>
       ))}
       <SignedIn>
-        <Button className=" w-full font-mono rounded-lg  hover:bg-emerald-700 underline hover:text-white font-semibold">
+        <Button className=" w-full font-mono rounded-lg  hover:bg-emerald-700 hover:text-white font-semibold">
           <PlusIcon className=" mr-2" />
           add new experience
         </Button>
