@@ -8,7 +8,6 @@ import SummaryPage from "./summary";
 import { Button } from "./ui/button";
 import ReactToPrint from "react-to-print";
 import { useRef } from "react";
-import DialogComponent from "./test-dialog";
 
 const ResumePage = () => {
   const componentRef = useRef<HTMLDivElement>(null);
@@ -28,8 +27,6 @@ const ResumePage = () => {
         <SkillsPage />
         <ExperiencesPage />
         <EducationPage />
-
-        <DialogComponent />
 
         <div className="flex flex-row text-sm font-thin mt-36 justify-end mr-2">
           <span>powered by</span>
