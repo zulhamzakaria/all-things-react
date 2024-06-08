@@ -20,7 +20,7 @@ const CreateExperience = () => {
   const [experiences, setExperiences] = useState<
     ExperiencesProps["experiences"]
   >([]);
-  
+
   if (error) return <div>error fetching data</div>;
 
   useEffect(() => {
@@ -30,7 +30,12 @@ const CreateExperience = () => {
   }, [data]);
 
   return data ? (
-    <div>basic-create-experience {experiences.length}</div>
+    <div>
+      Cock
+      {experiences.map((exp) => (
+        <div>{exp.id}</div>
+      ))}
+    </div>
   ) : (
     "loading..."
   );
