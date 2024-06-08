@@ -337,7 +337,7 @@ const ExperiencesPage = () => {
                 <DialogFooter>
                   <DialogClose asChild>
                     <Button
-                      onClick={() => handleSaveEdit(index, 1)}
+                      onClick={() => handleSaveEdit(index, experience.id)}
                       className=" mt-10 font-mono rounded-lg w-full bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
                     >
                       <SaveAllIcon className=" mr-2" />
