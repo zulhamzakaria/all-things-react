@@ -15,15 +15,16 @@ interface ExperiencesProps {
 }
 
 const CreateExperience = () => {
-  const { data, error } = useSWR(`/experiences`, fetcher);
+  const { data, isLoading, error } = useSWR(`/experiences`, fetcher);
 
-  const [experiences, setExperiences] =
-    useState<ExperiencesProps["experiences"]>(data);
+  const [experiences, setExperiences] = useState<
+    ExperiencesProps["experiences"]
+  >([]);
   if (error) return <div>error fetching data</div>;
 
   useEffect(() => {
     if (data) {
-      setExperiences(data);
+      setExperiences(data.experiences);
     }
   }, [data]);
 
