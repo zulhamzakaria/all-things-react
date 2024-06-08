@@ -17,7 +17,7 @@ interface ExperiencesProps {
 }
 
 const CreateExperience = () => {
-  const { data, error } = useSWR(`/experiences`, fetcher);
+  const { data, mutate, error } = useSWR(`/experiences`, fetcher);
 
   const [experiences, setExperiences] = useState<
     ExperiencesProps["experiences"]
@@ -56,6 +56,9 @@ const CreateExperience = () => {
       if (!response) {
         toast.error("Failed adding a new exp");
       }
+
+      const updatedData = await response.json();
+      mutate({ ...data, experiences: updatedData });
       toast.success("new exp added");
     } catch (e) {
       toast.error((e as Error).message);
