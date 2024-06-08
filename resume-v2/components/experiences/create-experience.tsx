@@ -20,6 +20,7 @@ const CreateExperience = () => {
   const [experiences, setExperiences] = useState<
     ExperiencesProps["experiences"]
   >([]);
+  
   if (error) return <div>error fetching data</div>;
 
   useEffect(() => {

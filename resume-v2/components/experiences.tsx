@@ -52,8 +52,8 @@ interface Task {
 const ExperiencesPage = () => {
   const { data, isLoading, error, mutate } = useSWR<ExperiencesProps>(
     "/experiences",
-    fetcher,
-    { revalidateOnMount: true }
+    fetcher
+    // { revalidateOnMount: true }
   );
 
   const [tasks, setTasks] = useState<Task[]>([]);
