@@ -140,7 +140,6 @@ const ExperiencesPage = () => {
 
   async function handleDelete(index: number, id: number) {
     try {
-      alert(`index:${index}, id:${id}`);
       const response = await fetch(`experiences/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
