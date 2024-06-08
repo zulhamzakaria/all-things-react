@@ -21,8 +21,8 @@ const DialogComponent = () => {
           <AlertDialogDescription>Allegedly</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>cancel</AlertDialogCancel>
-          <AlertDialogAction>continue...</AlertDialogAction>
+          <AlertDialogCancel >cancel</AlertDialogCancel>
+          <AlertDialogAction >continue...</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
