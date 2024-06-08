@@ -34,7 +34,7 @@ const CreateExperience = () => {
   const newExp = {
     period: "2009-01 ~ 2011-09",
     title: "Application Developer",
-    company: "Edaran IT Services Sdn Bhd, Desa Pandan",
+    company: "Edaran IT Servicos Sdn Bhd, Desa Pandan",
     responsibilities: [
       {
         task: "Task A",
@@ -52,14 +52,20 @@ const CreateExperience = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ exp: newExp }),
       });
+
+      if (!response) {
+        toast.error("Failed adding a new exp");
+      }
+      toast.success("new exp added");
     } catch (e) {
       toast.error((e as Error).message);
     }
   }
 
-  return data ? (
+  return experiences ? (
     <div>
       <Button onClick={handleAddExperience}>add exp</Button>
+      <span>there are {experiences.length} exps now</span>
     </div>
   ) : (
     "loading..."
