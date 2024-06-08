@@ -8,6 +8,7 @@ import SummaryPage from "./summary";
 import { Button } from "./ui/button";
 import ReactToPrint from "react-to-print";
 import { useRef } from "react";
+import DialogComponent from "./test-dialog";
 
 const ResumePage = () => {
   const componentRef = useRef<HTMLDivElement>(null);
@@ -22,6 +23,7 @@ const ResumePage = () => {
         ref={componentRef}
         className=" h-[auto] lg:w-[900px] sm:w-auto bg-gray-50 rounded-t-sm shadow-sm pt-10 pb-10 pl-5 pr-5 flex flex-col"
       >
+        <DialogComponent />
         <DetailsPage />
         <SummaryPage />
         <SkillsPage />
