@@ -36,19 +36,21 @@ const DialogContainer = ({
         <DialogTrigger asChild>{buttonChild}</DialogTrigger>
         <DialogContent
           className={
-            style || " lg:min-w-[800px] bg-gray-50 overflow-auto h-screen"
+            style ?? " lg:min-w-[800px] bg-gray-50 overflow-auto "
           }
         >
-          <DialogHeader>
-            <DialogTitle className=" text-4xl font-light my-10 flex justify-center ">
-              {dialogTitle.toUpperCase()}
-            </DialogTitle>
-            <DialogDescription className="font-sans font-light ">
-              {dialogDescription}
-            </DialogDescription>
-          </DialogHeader>
-          <Separator className=" bg-gray-950" />
-          <div>{pageChild}</div>
+          <div>
+            <DialogHeader>
+              <DialogTitle className=" text-4xl font-light py-10 flex justify-center ">
+                {dialogTitle.toUpperCase()}
+              </DialogTitle>
+              <DialogDescription className="font-sans font-light ">
+                {dialogDescription}
+              </DialogDescription>
+            </DialogHeader>
+            <Separator className=" bg-slate-950 my-5" />
+            {pageChild}
+          </div>
           <DialogFooter>
             <DialogClose asChild>
               <Button>save</Button>
