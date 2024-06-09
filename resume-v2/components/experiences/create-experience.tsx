@@ -68,11 +68,6 @@ const CreateExperience = () => {
   return experiences ? (
     <div>
       <Button onClick={handleAddExperience}>add exp</Button>
-      <span>
-        {experiences.map((exp) => (
-          <div className="my-2">exp no:{exp.id}</div>
-        ))}
-      </span>
     </div>
   ) : (
     "loading..."
