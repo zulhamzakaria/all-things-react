@@ -30,6 +30,8 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
 import { toast } from "sonner";
+import DialogContainer from "./dialog-container";
+import CreateExperience from "./experiences/create-experience";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -351,10 +353,16 @@ const ExperiencesPage = () => {
         </div>
       ))}
       <SignedIn>
-        <Button className=" w-full font-mono rounded-lg  hover:bg-emerald-700 hover:text-white font-semibold">
-          <PlusIcon className=" mr-2" />
-          add new experience
-        </Button>
+        <DialogContainer
+          dialogTitle="add experience"
+          dialogDescription="For adding experience. Click save once done."
+        >
+          <Button className=" w-full font-mono rounded-lg  hover:bg-emerald-700 hover:text-white font-semibold">
+            <PlusIcon className=" mr-2" />
+            add new experience
+          </Button>
+          <CreateExperience />
+        </DialogContainer>
       </SignedIn>
     </div>
   ) : (
