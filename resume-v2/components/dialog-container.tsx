@@ -11,7 +11,6 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { Separator } from "./ui/separator";
-import ItemCard from "./item-card";
 
 interface DialogContainerProps {
   dialogTitle: string;
@@ -35,17 +34,21 @@ const DialogContainer = ({
     <div>
       <Dialog>
         <DialogTrigger asChild>{buttonChild}</DialogTrigger>
-        <DialogContent className={style || " bg-rose-950"}>
+        <DialogContent
+          className={
+            style || " lg:min-w-[800px] bg-gray-50 overflow-auto h-screen"
+          }
+        >
           <DialogHeader>
-            <DialogTitle className=" text-4xl font-light my-10 flex justify-center text-white">
+            <DialogTitle className=" text-4xl font-light my-10 flex justify-center ">
               {dialogTitle.toUpperCase()}
             </DialogTitle>
-            <DialogDescription className="font-sans font-light text-white">
+            <DialogDescription className="font-sans font-light ">
               {dialogDescription}
             </DialogDescription>
           </DialogHeader>
-          <Separator className=" bg-gray-50" />
-          <ItemCard>{pageChild}</ItemCard>
+          <Separator className=" bg-gray-950" />
+          <div>{pageChild}</div>
           <DialogFooter>
             <DialogClose asChild>
               <Button>save</Button>
