@@ -1,23 +1,15 @@
-import React, { ReactNode } from "react";
+import React from "react";
+import { Button } from "./ui/button";
 
 interface DialogContainerProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: ReactNode;
+  children: [
+    React.ReactElement<typeof Button>,
+    React.ReactElement<React.ComponentType<any>>
+  ];
 }
 
-export default function DialogContainer({
-  isOpen,
-  onClose,
-  children,
-}: DialogContainerProps) {
-  if (!isOpen) return null;
-  return (
-    <div id="dialog-backdrop">
-      <div id="dialog-content">
-        <button onClick={onClose}>Close</button>
-        {children}
-      </div>
-    </div>
-  );
-}
+const DialogContainer = ({ children }: DialogContainerProps) => {
+  return <div></div>;
+};
+
+export default DialogContainer;
