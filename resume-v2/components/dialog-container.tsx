@@ -13,23 +13,31 @@ import {
 import { Separator } from "./ui/separator";
 
 interface DialogContainerProps {
+  dialogTitle: string;
+  dialogDescription: string;
+  style?: string;
   children: [
     React.ReactElement<typeof Button>,
     React.ReactElement<React.ComponentType<any>>
   ];
 }
 
-const DialogContainer = ({ children }: DialogContainerProps) => {
+const DialogContainer = ({
+  children,
+  dialogTitle,
+  dialogDescription,
+  style,
+}: DialogContainerProps) => {
   const [buttonChild, pageChild] = React.Children.toArray(children);
 
   return (
     <div>
       <Dialog>
         <DialogTrigger asChild>{buttonChild}</DialogTrigger>
-        <DialogContent className=" bg-amber-50">
+        <DialogContent className={style || " bg-amber-50"}>
           <DialogHeader>
-            <DialogTitle></DialogTitle>
-            <DialogDescription></DialogDescription>
+            <DialogTitle>{dialogTitle}</DialogTitle>
+            <DialogDescription>{dialogDescription}</DialogDescription>
           </DialogHeader>
           <Separator />
           <div>{pageChild}</div>
