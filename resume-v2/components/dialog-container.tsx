@@ -54,7 +54,10 @@ const DialogContainer = ({
           </div>
           <DialogFooter>
             <DialogClose asChild>
-              <Button className="mt-5 font-mono rounded-lg w-full bg-emerald-500  hover:bg-emerald-700 text-white font-semibold">
+              <Button
+                onClick={onSave}
+                className="mt-5 font-mono rounded-lg w-full bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
+              >
                 save
               </Button>
             </DialogClose>
