@@ -82,7 +82,7 @@ const ExperiencesPage = () => {
     setTasks(values);
   };
 
-  function handleAddNewExperience() {
+  function handleSaveNewExperience() {
     toast.success("new exp added");
   }
 
@@ -360,7 +360,7 @@ const ExperiencesPage = () => {
         <DialogContainer
           dialogTitle="add experience"
           dialogDescription="For adding experience. Click save once done."
-          onSave={handleAddNewExperience}
+          onSave={handleSaveNewExperience}
         >
           <Button className=" w-full font-mono rounded-lg  hover:bg-emerald-700 hover:text-white font-semibold">
             <PlusIcon className=" mr-2" />
