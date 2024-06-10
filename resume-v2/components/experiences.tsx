@@ -135,11 +135,11 @@ const ExperiencesPage = () => {
     }
   };
 
-  const confirmDelete = (index: number, id: number) => {
-    handleDelete(index, id);
+  const confirmDelete = (id: number) => {
+    handleDelete(id);
   };
 
-  async function handleDelete(index: number, id: number) {
+  async function handleDelete(id: number) {
     try {
       const response = await fetch(`experiences/${id}`, {
         method: "DELETE",
@@ -211,7 +211,7 @@ const ExperiencesPage = () => {
                         </AlertDialogCancel>
                         <AlertDialogAction
                           onClick={() => {
-                            confirmDelete(index, experience.id);
+                            confirmDelete(experience.id);
                           }}
                           className=" text-slate-900 font-mono font-semibold hover:text-red-600 hover:underline"
                         >
