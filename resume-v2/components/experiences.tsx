@@ -357,7 +357,7 @@ const ExperiencesPage = () => {
           dialogTitle="add experience"
           dialogDescription="For adding experience. Click save once done."
         >
-          <Button className=" w-full font-mono rounded-lg  hover:bg-emerald-700 hover:text-white font-semibold">
+          <Button className=" w-full font-mono rounded-full  hover:bg-emerald-700 hover:text-white font-semibold">
             <PlusIcon className=" mr-2" />
             add new experience
           </Button>

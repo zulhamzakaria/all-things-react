@@ -172,7 +172,7 @@ const CreateExperience = () => {
             <Button
               type="button"
               onClick={() => handleAddTask()}
-              className=" items-center my-2 text-gray-950 inline-flex hover:bg-emerald-500 hover:text-white font-mono font-semibold"
+              className=" items-center my-2 text-gray-950 inline-flex rounded-full hover:bg-emerald-500 hover:text-white font-mono font-semibold"
             >
               <PlusIcon className="mr-2" />
               add responsibility
