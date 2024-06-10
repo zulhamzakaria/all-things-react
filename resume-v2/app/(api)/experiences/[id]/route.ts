@@ -31,13 +31,7 @@ export async function DELETE(
   );
 
   if (index === -1) {
-    return new Response(
-      JSON.stringify({ error: `Id ${params.id} not found` }),
-      {
-        status: 404,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    throw new Error(`Id ${params.id} not found`);
   }
 
   exps.experiences.splice(index, 1);
