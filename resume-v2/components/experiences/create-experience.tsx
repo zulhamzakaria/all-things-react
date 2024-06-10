@@ -57,6 +57,7 @@ const CreateExperience = () => {
   };
 
   function handleAddTask(index: number, e: ChangeEvent<HTMLInputElement>) {
+    console.log("here");
     const values = [...tasks];
     values[index].task = e.target.value;
     setTasks(values);
