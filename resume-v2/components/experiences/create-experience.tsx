@@ -182,7 +182,7 @@ const CreateExperience = () => {
         <div className=" w-full flex justify-end">
           <Button
             type="submit"
-            className=" font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
+            className=" px-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
             onClick={handleAddNewExperience}
           >
             save
