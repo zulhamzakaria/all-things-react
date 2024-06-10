@@ -52,7 +52,7 @@ const DialogContainer = ({
             <Separator className=" bg-slate-950 my-5" />
             <ItemCard>{pageChild}</ItemCard>
           </div>
-          <DialogFooter>
+          <DialogFooter style={{ display: "none" }}>
             <DialogClose asChild>
               <Button
                 onClick={onSave}
