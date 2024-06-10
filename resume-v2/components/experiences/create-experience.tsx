@@ -179,10 +179,10 @@ const CreateExperience = () => {
             </Button>
           </div>
         </div>
-        <div>
+        <div className=" w-full flex justify-end">
           <Button
             type="submit"
-            className=" font-mono font-semibold w-full flex justify-end rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
+            className=" font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
             onClick={handleAddNewExperience}
           >
             save
