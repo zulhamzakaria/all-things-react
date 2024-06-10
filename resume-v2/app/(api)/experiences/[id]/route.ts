@@ -30,10 +30,6 @@ export async function DELETE(
     (exp) => exp.id === parseInt(params.id)
   );
 
-  if (index === -1) {
-    throw new Error(`Id ${params.id} not found`);
-  }
-
-  exps.experiences.splice(index, 1);
+  if (index !== -1) exps.experiences.splice(index, 1);
   return Response.json(exps.experiences);
 }
