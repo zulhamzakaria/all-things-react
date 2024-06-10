@@ -63,6 +63,7 @@ const CreateExperience = () => {
   }
 
   function handleAddTask() {
+    console.log("cock");
     setTasks([...tasks, { task: "" }]);
   }
 
@@ -154,9 +155,7 @@ const CreateExperience = () => {
                 />
                 <Button
                   type="button"
-                  onClick={() => {
-                    handleAddTask;
-                  }}
+                  onClick={() => {}}
                   className=" bg-rose-500 text-white rounded-l-none"
                 >
                   <XIcon />
@@ -167,7 +166,7 @@ const CreateExperience = () => {
           <div className=" w-full flex justify-center ">
             <Button
               type="button"
-              onClick={() => {}}
+              onClick={() => handleAddTask()}
               className=" items-center my-2 text-gray-950 inline-flex hover:bg-emerald-500 hover:text-white font-mono font-semibold"
             >
               <PlusIcon className="mr-2" />
