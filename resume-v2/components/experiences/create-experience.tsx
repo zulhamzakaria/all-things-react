@@ -56,11 +56,14 @@ const CreateExperience = () => {
     ],
   };
 
-  function handleAddTask(index: number, e: ChangeEvent<HTMLInputElement>) {
-    console.log("here");
+  function handleEditTask(index: number, e: ChangeEvent<HTMLInputElement>) {
     const values = [...tasks];
     values[index].task = e.target.value;
     setTasks(values);
+  }
+
+  function handleAddTask() {
+    setTasks([...tasks, { task: "" }]);
   }
 
   async function handleAddExperience() {
@@ -145,13 +148,15 @@ const CreateExperience = () => {
                   id={`task-${index}`}
                   value={task.task}
                   onChange={(e) => {
-                    handleAddTask(index, e);
+                    handleEditTask(index, e);
                   }}
                   className=" rounded-r-none"
                 />
                 <Button
                   type="button"
-                  onClick={() => {}}
+                  onClick={() => {
+                    handleAddTask;
+                  }}
                   className=" bg-rose-500 text-white rounded-l-none"
                 >
                   <XIcon />
