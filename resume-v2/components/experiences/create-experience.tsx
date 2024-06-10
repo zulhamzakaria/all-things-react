@@ -27,7 +27,7 @@ interface Task {
   task: string;
 }
 
-const CreateExperience = ({ onSave }: CreateExperienceProps) => {
+const CreateExperience = () => {
   const { data, mutate, error } = useSWR(`/experiences`, fetcher);
 
   const [company, setCompany] = useState("");
