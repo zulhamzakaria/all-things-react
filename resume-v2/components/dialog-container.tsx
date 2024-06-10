@@ -12,6 +12,7 @@ import {
 } from "./ui/dialog";
 import { Separator } from "./ui/separator";
 import ItemCard from "./item-card";
+import { useDialog } from "@/lib/use-dialog";
 
 interface DialogContainerProps {
   dialogTitle: string;
@@ -31,9 +32,11 @@ const DialogContainer = ({
 }: DialogContainerProps) => {
   const [buttonChild, pageChild] = React.Children.toArray(children);
 
+  const { isOpen, onClose } = useDialog();
+
   return (
     <div>
-      <Dialog>
+      <Dialog onOpenChange={onClose} open={isOpen} defaultOpen={isOpen}>
         <DialogTrigger asChild>{buttonChild}</DialogTrigger>
         <DialogContent
           className={style ?? " lg:min-w-[800px] bg-gray-50 overflow-auto "}
@@ -52,9 +55,7 @@ const DialogContainer = ({
           </div>
           <DialogFooter style={{ display: "none" }}>
             <DialogClose asChild>
-              <Button
-                className="mt-5 font-mono rounded-lg w-full bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
-              >
+              <Button className="mt-5 font-mono rounded-lg w-full bg-emerald-500  hover:bg-emerald-700 text-white font-semibold">
                 save
               </Button>
             </DialogClose>

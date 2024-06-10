@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { PlusIcon, XIcon } from "lucide-react";
+import { useDialog } from "@/lib/use-dialog";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 interface ExperiencesProps {
@@ -24,6 +25,7 @@ interface Task {
 }
 
 const CreateExperience = () => {
+  const { onClose } = useDialog();
   const { data, mutate, error } = useSWR(`/experiences`, fetcher);
 
   const [company, setCompany] = useState("");
