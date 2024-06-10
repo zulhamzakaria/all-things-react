@@ -63,7 +63,6 @@ const CreateExperience = () => {
   }
 
   function handleAddTask() {
-    console.log("cock");
     setTasks([...tasks, { task: "" }]);
   }
 
