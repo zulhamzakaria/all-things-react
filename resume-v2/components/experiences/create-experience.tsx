@@ -179,6 +179,11 @@ const CreateExperience = () => {
             </Button>
           </div>
         </div>
+        <div>
+          <Button type="submit" className=" font-mono font-semibold">
+            save
+          </Button>
+        </div>
       </div>
     </>
   ) : (
