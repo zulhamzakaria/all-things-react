@@ -76,19 +76,28 @@ const CreateExperience = () => {
 
   async function handleAddNewExperience() {
     try {
-      const response = await fetch(`/experiences`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ exp: newExp }),
-      });
+      const test = {
+        company: company,
+        period: period,
+        title: title,
+        responsibilities: tasks,
+      };
 
-      if (!response) {
-        toast.error("Failed adding a new experience");
-      }
+      alert(JSON.stringify(test));
 
-      const updatedData = await response.json();
-      mutate({ ...data, experiences: updatedData });
-      onClose();
+      // const response = await fetch(`/experiences`, {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ exp: newExp }),
+      // });
+
+      // if (!response) {
+      //   toast.error("Failed adding a new experience");
+      // }
+
+      // const updatedData = await response.json();
+      // mutate({ ...data, experiences: updatedData });
+      // onClose();
       toast.success("New experience added");
     } catch (e) {
       toast.error((e as Error).message);
