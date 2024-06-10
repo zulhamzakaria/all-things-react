@@ -81,12 +81,12 @@ const CreateExperience = () => {
       });
 
       if (!response) {
-        toast.error("Failed adding a new exp");
+        toast.error("Failed adding a new experience");
       }
 
       const updatedData = await response.json();
       mutate({ ...data, experiences: updatedData });
-      toast.success("new exp added");
+      toast.success("New experience added");
     } catch (e) {
       toast.error((e as Error).message);
     }
