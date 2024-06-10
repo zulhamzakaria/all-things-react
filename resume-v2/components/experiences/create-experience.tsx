@@ -72,7 +72,7 @@ const CreateExperience = () => {
     setTasks(values);
   }
 
-  async function handleAddExperience() {
+  async function handleAddNewExperience() {
     try {
       const response = await fetch(`/experiences`, {
         method: "POST",
@@ -180,7 +180,11 @@ const CreateExperience = () => {
           </div>
         </div>
         <div>
-          <Button type="submit" className=" font-mono font-semibold">
+          <Button
+            type="submit"
+            className=" font-mono font-semibold"
+            onClick={handleAddNewExperience}
+          >
             save
           </Button>
         </div>
