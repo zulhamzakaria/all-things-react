@@ -29,6 +29,17 @@ export async function DELETE(
   const index = exps.experiences.findIndex(
     (exp) => exp.id === parseInt(params.id)
   );
+
+  if (index === -1) {
+    return new Response(
+      JSON.stringify({ error: `Id ${params.id} not found` }),
+      {
+        status: 404,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
   exps.experiences.splice(index, 1);
   return Response.json(exps.experiences);
 }
