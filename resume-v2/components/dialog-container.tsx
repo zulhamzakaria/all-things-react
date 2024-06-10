@@ -32,12 +32,18 @@ const DialogContainer = ({
 }: DialogContainerProps) => {
   const [buttonChild, pageChild] = React.Children.toArray(children);
 
-  const { isOpen, onClose } = useDialog();
+  const { isOpen, onOpen, onClose } = useDialog();
 
   return (
     <div>
-      <Dialog onOpenChange={onClose} open={isOpen} defaultOpen={isOpen}>
-        <DialogTrigger asChild>{buttonChild}</DialogTrigger>
+      <Dialog
+        onOpenChange={isOpen ? onClose : onOpen}
+        open={isOpen}
+        defaultOpen={isOpen}
+      >
+        <DialogTrigger asChild onClick={onOpen}>
+          {buttonChild}
+        </DialogTrigger>
         <DialogContent
           className={style ?? " lg:min-w-[800px] bg-gray-50 overflow-auto "}
         >
