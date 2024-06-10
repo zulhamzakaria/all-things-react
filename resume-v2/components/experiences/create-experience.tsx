@@ -20,14 +20,15 @@ interface ExperiencesProps {
 }
 
 interface CreateExperienceProps {
-  onSave: () => void;
+  onSave?: () => void;
+  isOpen?: false;
 }
 
 interface Task {
   task: string;
 }
 
-const CreateExperience = () => {
+const CreateExperience = ({ onSave, isOpen }: CreateExperienceProps) => {
   const { data, mutate, error } = useSWR(`/experiences`, fetcher);
 
   const [company, setCompany] = useState("");
