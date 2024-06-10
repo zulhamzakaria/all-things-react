@@ -21,7 +21,6 @@ interface DialogContainerProps {
     React.ReactElement<typeof Button>,
     React.ReactElement<React.ComponentType<any>>
   ];
-  onSave: () => void;
 }
 
 const DialogContainer = ({
@@ -29,7 +28,6 @@ const DialogContainer = ({
   dialogTitle,
   dialogDescription,
   style,
-  onSave,
 }: DialogContainerProps) => {
   const [buttonChild, pageChild] = React.Children.toArray(children);
 
@@ -55,7 +53,6 @@ const DialogContainer = ({
           <DialogFooter style={{ display: "none" }}>
             <DialogClose asChild>
               <Button
-                onClick={onSave}
                 className="mt-5 font-mono rounded-lg w-full bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
               >
                 save
