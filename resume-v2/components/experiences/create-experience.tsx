@@ -25,7 +25,7 @@ interface Task {
 }
 
 const CreateExperience = () => {
-  const { onClose } = useDialog();
+  // const { onClose } = useDialog();
   const { data, mutate, error } = useSWR(`/experiences`, fetcher);
 
   const [company, setCompany] = useState("");
@@ -88,7 +88,7 @@ const CreateExperience = () => {
 
       const updatedData = await response.json();
       mutate({ ...data, experiences: updatedData });
-      onClose();
+      // onClose();
       toast.success("New experience added");
     } catch (e) {
       toast.error((e as Error).message);
