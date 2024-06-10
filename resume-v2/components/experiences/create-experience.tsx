@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import useSWR from "swr";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
@@ -55,6 +55,12 @@ const CreateExperience = () => {
       },
     ],
   };
+
+  function handleAddTask(index: number, e: ChangeEvent<HTMLInputElement>) {
+    const values = [...tasks];
+    values[index].task = e.target.value;
+    setTasks(values);
+  }
 
   async function handleAddExperience() {
     try {
@@ -137,7 +143,9 @@ const CreateExperience = () => {
                 <Input
                   id={`task-${index}`}
                   value={task.task}
-                  onChange={(e) => {}}
+                  onChange={(e) => {
+                    handleAddTask(index, e);
+                  }}
                   className=" rounded-r-none"
                 />
                 <Button
@@ -153,7 +161,7 @@ const CreateExperience = () => {
           <div className=" w-full flex justify-center ">
             <Button
               type="button"
-              onClick={()=>{}}
+              onClick={() => {}}
               className=" items-center my-2 text-gray-950 inline-flex hover:bg-emerald-500 hover:text-white font-mono font-semibold"
             >
               <PlusIcon className="mr-2" />
