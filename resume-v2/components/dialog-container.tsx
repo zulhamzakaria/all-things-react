@@ -21,6 +21,7 @@ interface DialogContainerProps {
     React.ReactElement<typeof Button>,
     React.ReactElement<React.ComponentType<any>>
   ];
+  onSave: () => void;
 }
 
 const DialogContainer = ({
@@ -28,6 +29,7 @@ const DialogContainer = ({
   dialogTitle,
   dialogDescription,
   style,
+  onSave,
 }: DialogContainerProps) => {
   const [buttonChild, pageChild] = React.Children.toArray(children);
 
