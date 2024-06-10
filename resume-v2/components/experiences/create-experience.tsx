@@ -67,6 +67,12 @@ const CreateExperience = () => {
     setTasks([...tasks, { task: "" }]);
   }
 
+  function handleDeleteTask(index: number) {
+    const values = [...tasks];
+    values.splice(index, 1);
+    setTasks(values);
+  }
+
   async function handleAddExperience() {
     try {
       const response = await fetch(`/experiences`, {
@@ -155,7 +161,7 @@ const CreateExperience = () => {
                 />
                 <Button
                   type="button"
-                  onClick={() => {}}
+                  onClick={() => handleDeleteTask(index)}
                   className=" bg-rose-500 text-white rounded-l-none"
                 >
                   <XIcon />
