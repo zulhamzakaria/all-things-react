@@ -44,19 +44,19 @@ const CreateExperience = () => {
     }
   }, [data]);
 
-  const newExp = {
-    period: "2009-01 ~ 2011-09",
-    title: "Application Developer",
-    company: "Edaran IT Servicos Sdn Bhd, Desa Pandan",
-    responsibilities: [
-      {
-        task: "Task A",
-      },
-      {
-        task: "Task B",
-      },
-    ],
-  };
+  // const newExp = {
+  //   period: "2009-01 ~ 2011-09",
+  //   title: "Application Developer",
+  //   company: "Edaran IT Servicos Sdn Bhd, Desa Pandan",
+  //   responsibilities: [
+  //     {
+  //       task: "Task A",
+  //     },
+  //     {
+  //       task: "Task B",
+  //     },
+  //   ],
+  // };
 
   function handleEditTask(index: number, e: ChangeEvent<HTMLInputElement>) {
     const values = [...tasks];
@@ -76,28 +76,26 @@ const CreateExperience = () => {
 
   async function handleAddNewExperience() {
     try {
-      const test = {
+      const newExp = {
         company: company,
         period: period,
         title: title,
         responsibilities: tasks,
       };
 
-      alert(JSON.stringify(test));
+      const response = await fetch(`/experiences`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ exp: newExp }),
+      });
 
-      // const response = await fetch(`/experiences`, {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ exp: newExp }),
-      // });
+      if (!response) {
+        toast.error("Failed adding a new experience");
+      }
 
-      // if (!response) {
-      //   toast.error("Failed adding a new experience");
-      // }
-
-      // const updatedData = await response.json();
-      // mutate({ ...data, experiences: updatedData });
-      // onClose();
+      const updatedData = await response.json();
+      mutate({ ...data, experiences: updatedData });
+      onClose();
       toast.success("New experience added");
     } catch (e) {
       toast.error((e as Error).message);
