@@ -15,6 +15,8 @@ import { useState, useTransition } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
+import { XIcon } from "lucide-react";
+import { Separator } from "@radix-ui/react-dropdown-menu";
 
 interface CreateEducationProps {
   institution: string;
@@ -41,21 +43,20 @@ const CreateEducation = () => {
   };
 
   return (
-    <div>
+    <div className=" w-full">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           {createEducations.map((edu, index) => (
-            <div className=" flex flex-row">
+            <div className=" flex flex-row mb-1" key={index}>
               <FormField
                 name="institution"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Institution</FormLabel>
+                  <FormItem className=" w-1/2 pr-1">
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="University of Science"
+                        placeholder="Institution"
                         disabled={isPending}
                       />
                     </FormControl>
@@ -67,12 +68,11 @@ const CreateEducation = () => {
                 name="major"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Major</FormLabel>
+                  <FormItem className=" w-1/2 pr-1">
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="Computer Science"
+                        placeholder="Major"
                         disabled={isPending}
                       />
                     </FormControl>
@@ -80,6 +80,9 @@ const CreateEducation = () => {
                   </FormItem>
                 )}
               />
+              <Button className="bg-red-500">
+                <XIcon />
+              </Button>
             </div>
           ))}
         </form>
