@@ -75,6 +75,7 @@ const CreateExperience = () => {
   }
 
   async function handleAddNewExperience() {
+    if (!validateData()) return;
     try {
       const newExp = {
         company: company,
@@ -100,6 +101,20 @@ const CreateExperience = () => {
     } catch (e) {
       toast.error((e as Error).message);
     }
+  }
+
+  function validateData(): boolean {
+    if (
+      company.trim() === "" ||
+      period.trim() === "" ||
+      title.trim() === "" ||
+      tasks.length === 0
+    ) {
+      const response = confirm("Are you sure you want to add incomplete data?");
+
+      if (response) return true;
+    }
+    return false;
   }
 
   return experiences ? (
