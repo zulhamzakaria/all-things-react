@@ -36,16 +36,18 @@ const EducationPage = () => {
   return resumeEducations && !isLoading ? (
     <>
       <SlotTitle title="education" />
-      {resumeEducations.map((edu, index) => (
-        <div className="" key={index}>
-          <p className="font-light">{edu.institution.toUpperCase()}</p>
-          <p className="font-semibold text-gray-900">{edu.major}</p>
-        </div>
-      ))}
+      <div>
+        {resumeEducations.map((edu, index) => (
+          <div className="" key={index}>
+            <p className="font-light">{edu.institution.toUpperCase()}</p>
+            <p className="font-semibold text-gray-900">{edu.major}</p>
+          </div>
+        ))}
+      </div>
       <SignedIn>
         <DialogContainer
-          dialogTitle="add experience"
-          dialogDescription="For adding experience. Click save once done."
+          dialogTitle="add educations"
+          dialogDescription="For adding education(s). Click save once done."
         >
           <Button className=" mt-10 w-full font-mono rounded-full  hover:bg-emerald-700 hover:text-white font-semibold">
             <PlusIcon className=" mr-2" />

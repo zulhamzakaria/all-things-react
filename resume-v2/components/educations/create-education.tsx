@@ -45,7 +45,7 @@ const CreateEducation = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           {createEducations.map((edu, index) => (
-            <div>
+            <div className=" flex flex-row">
               <FormField
                 name="institution"
                 control={form.control}
