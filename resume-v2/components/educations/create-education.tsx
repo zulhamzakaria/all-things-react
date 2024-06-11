@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/form";
 import { useState, useTransition } from "react";
 import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { toast } from "sonner";
 
 interface CreateEducationProps {
   institution: string;
@@ -33,25 +35,54 @@ const CreateEducation = () => {
     setCreateEducation([...createEducation, { institution: "", major: "" }]);
   };
 
+  const onSubmit = (values: z.infer<typeof EducationSchema>) => {
+    toast.success("education(s) added");
+  };
+
   return (
     <div>
       <Form {...form}>
-        <FormField
-          name="institution"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Institution</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  placeholder="University of Science"
-                  disabled={isPending}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <FormField
+            name="institution"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Institution</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder="University of Science"
+                    disabled={isPending}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="major"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Major</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder="Computer Science"
+                    disabled={isPending}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </form>
+        <div>
+          <Button type="submit" disabled={isPending}>
+            save
+          </Button>
+        </div>
       </Form>
     </div>
   );
