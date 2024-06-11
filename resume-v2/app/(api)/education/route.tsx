@@ -1,5 +1,5 @@
-import { education } from "@/data";
+import { educations } from "@/data";
 
 export async function GET() {
-  return Response.json(education);
+  return Response.json(educations);
 }
