@@ -30,10 +30,12 @@ export const skills = {
   ],
 };
 
-export const education = {
-  institution: "Universiti Malaysia Terengganu, Kuala Terengganu",
-  major: "Information Technology, Software Engineering",
-};
+export const educations = [
+  {
+    institution: "Universiti Malaysia Terengganu, Kuala Terengganu",
+    major: "Information Technology, Software Engineering",
+  },
+];
 
 export const experiences = {
   experiences: [
