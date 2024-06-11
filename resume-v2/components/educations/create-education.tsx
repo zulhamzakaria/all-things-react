@@ -79,6 +79,9 @@ const CreateEducation = () => {
           />
         </form>
         <div>
+          <Button onClick={handleAddEducation} disabled={isPending}>
+            Add Education
+          </Button>
           <Button type="submit" disabled={isPending}>
             save
           </Button>
