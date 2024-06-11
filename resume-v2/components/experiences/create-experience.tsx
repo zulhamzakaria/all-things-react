@@ -113,8 +113,9 @@ const CreateExperience = () => {
       const response = confirm("Are you sure you want to add incomplete data?");
 
       if (response) return true;
+      return false;
     }
-    return false;
+    return true;
   }
 
   return experiences ? (
