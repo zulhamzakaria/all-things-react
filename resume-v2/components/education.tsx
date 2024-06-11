@@ -49,7 +49,7 @@ const EducationPage = () => {
         >
           <Button className=" mt-10 w-full font-mono rounded-full  hover:bg-emerald-700 hover:text-white font-semibold">
             <PlusIcon className=" mr-2" />
-            add new experience
+            add new education
           </Button>
           <CreateEducation />
         </DialogContainer>
