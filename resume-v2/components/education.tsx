@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import SlotTitle from "./slot-title";
 import useSWR from "swr";
 import LoadingCard from "./loading-card";
+import { SignedIn } from "@clerk/nextjs";
+import DialogContainer from "./dialog-container";
+import { Button } from "./ui/button";
+import { PlusIcon } from "lucide-react";
+import CreateEducation from "./educations/create-education";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -37,6 +42,18 @@ const EducationPage = () => {
           <p className="font-semibold text-gray-900">{edu.major}</p>
         </div>
       ))}
+      <SignedIn>
+        <DialogContainer
+          dialogTitle="add experience"
+          dialogDescription="For adding experience. Click save once done."
+        >
+          <Button className=" w-full font-mono rounded-full  hover:bg-emerald-700 hover:text-white font-semibold">
+            <PlusIcon className=" mr-2" />
+            add new experience
+          </Button>
+          <CreateEducation />
+        </DialogContainer>
+      </SignedIn>
     </>
   ) : (
     <div>
