@@ -48,6 +48,7 @@ const EducationPage = () => {
         <DialogContainer
           dialogTitle="add educations"
           dialogDescription="For adding education(s). Click save once done."
+          dialogId="create-education"
         >
           <Button className=" mt-10 w-full font-mono rounded-full  hover:bg-emerald-700 hover:text-white font-semibold">
             <PlusIcon className=" mr-2" />

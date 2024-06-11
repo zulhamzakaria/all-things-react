@@ -15,6 +15,7 @@ import ItemCard from "./item-card";
 import { useDialog } from "@/lib/use-dialog";
 
 interface DialogContainerProps {
+  dialogId: string;
   dialogTitle: string;
   dialogDescription: string;
   style?: string;
@@ -26,22 +27,24 @@ interface DialogContainerProps {
 
 const DialogContainer = ({
   children,
+  dialogId,
   dialogTitle,
   dialogDescription,
   style,
 }: DialogContainerProps) => {
   const [buttonChild, pageChild] = React.Children.toArray(children);
 
-  const { isOpen, onOpen, onClose } = useDialog();
-
+  // const { isOpen, onOpen, onClose } = useDialog();
+  const { dialogs, onOpen, onClose } = useDialog();
+  const isOpen = dialogs[dialogId]?.isOpen || false;
   return (
     <div>
       <Dialog
-        onOpenChange={isOpen ? onClose : onOpen}
+        onOpenChange={isOpen ? () => onClose(dialogId) : () => onOpen(dialogId)}
         open={isOpen}
         defaultOpen={isOpen}
       >
-        <DialogTrigger asChild onClick={onOpen}>
+        <DialogTrigger asChild onClick={() => onOpen(dialogId)}>
           {buttonChild}
         </DialogTrigger>
         <DialogContent
