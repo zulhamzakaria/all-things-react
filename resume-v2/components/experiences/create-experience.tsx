@@ -27,7 +27,7 @@ interface Task {
 const CreateExperience = () => {
   const { onClose } = useDialog();
   const { data, mutate, error } = useSWR(`/experiences`, fetcher);
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [company, setCompany] = useState("");
   const [title, setTitle] = useState("");
   const [period, setPeriod] = useState("");
@@ -43,20 +43,6 @@ const CreateExperience = () => {
       setExperiences(data.experiences);
     }
   }, [data]);
-
-  // const newExp = {
-  //   period: "2009-01 ~ 2011-09",
-  //   title: "Application Developer",
-  //   company: "Edaran IT Servicos Sdn Bhd, Desa Pandan",
-  //   responsibilities: [
-  //     {
-  //       task: "Task A",
-  //     },
-  //     {
-  //       task: "Task B",
-  //     },
-  //   ],
-  // };
 
   function handleEditTask(index: number, e: ChangeEvent<HTMLInputElement>) {
     const values = [...tasks];
@@ -76,6 +62,7 @@ const CreateExperience = () => {
 
   async function handleAddNewExperience() {
     if (!validateData()) return;
+    setIsSubmitting(true);
     try {
       const newExp = {
         company: company,
@@ -100,6 +87,8 @@ const CreateExperience = () => {
       toast.success("New experience added");
     } catch (e) {
       toast.error((e as Error).message);
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -210,6 +199,7 @@ const CreateExperience = () => {
             type="submit"
             className=" px-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
             onClick={handleAddNewExperience}
+            disabled={isSubmitting}
           >
             save
           </Button>
