@@ -23,7 +23,7 @@ interface CreateEducationProps {
 
 const CreateEducation = () => {
   const [isPending, startTransition] = useTransition();
-  const [createEducation, setCreateEducation] = useState<
+  const [createEducations, setCreateEducations] = useState<
     CreateEducationProps[]
   >([]);
 
@@ -32,11 +32,12 @@ const CreateEducation = () => {
   });
 
   const handleAddEducation = () => {
-    setCreateEducation([...createEducation, { institution: "", major: "" }]);
+    setCreateEducations([...createEducations, { institution: "", major: "" }]);
   };
 
   const onSubmit = (values: z.infer<typeof EducationSchema>) => {
     toast.success("education(s) added");
+    //TODO
   };
 
   return (
