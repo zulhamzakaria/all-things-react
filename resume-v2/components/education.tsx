@@ -28,15 +28,15 @@ const EducationPage = () => {
     }
   }, [data]);
 
-  return resumeEducations && !isLoading ? (
+  return data && !isLoading ? (
     <>
       <SlotTitle title="education" />
-      {resumeEducations.map((edu, index) => {
+      {data.map((edu, index) => (
         <div className="" key={index}>
           <p className="font-light">{edu.institution.toUpperCase()}</p>
           <p className="font-semibold text-gray-900">{edu.major}</p>
-        </div>;
-      })}
+        </div>
+      ))}
     </>
   ) : (
     <div>
