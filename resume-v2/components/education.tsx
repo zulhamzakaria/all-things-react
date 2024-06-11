@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SlotTitle from "./slot-title";
 import useSWR from "swr";
-import { Divide } from "lucide-react";
 import LoadingCard from "./loading-card";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -12,19 +11,32 @@ interface EducationProps {
 }
 
 const EducationPage = () => {
-  const { data, error } = useSWR<EducationProps>("/education", fetcher);
-
+  const { data, mutate, isLoading, error } = useSWR<EducationProps[]>(
+    "/education",
+    fetcher
+  );
+  const [resumeEducations, setResumeEducations] = useState<EducationProps[]>(
+    []
+  );
   if (error) {
     return <h1>{error}</h1>;
   }
 
-  return data ? (
+  useEffect(() => {
+    if (data) {
+      setResumeEducations(data);
+    }
+  }, [data]);
+
+  return resumeEducations && !isLoading ? (
     <>
       <SlotTitle title="education" />
-      <div className="">
-        <p className="font-light">{data.institution.toUpperCase()}</p>
-        <p className="font-semibold text-gray-900">{data.major}</p>
-      </div>
+      {resumeEducations.map((edu, index) => {
+        <div className="" key={index}>
+          <p className="font-light">{edu.institution.toUpperCase()}</p>
+          <p className="font-semibold text-gray-900">{edu.major}</p>
+        </div>;
+      })}
     </>
   ) : (
     <div>
