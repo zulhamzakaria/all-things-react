@@ -27,9 +27,12 @@ const CreateEducation = () => {
     CreateEducationProps[]
   >([{ institution: "", major: "" }]);
 
-  const { control, handleSubmit, register } = useForm<
-    z.infer<typeof EducationSchema>
-  >({
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<z.infer<typeof EducationSchema>>({
     resolver: zodResolver(EducationSchema),
   });
 
@@ -126,6 +129,11 @@ const CreateEducation = () => {
                 <XIcon />
               </Button>
             </div>
+            {errors.educations?.[index]?.institution && (
+              <p className=" text-red-400 text-sm mx-1">
+                {`errors.educations[index].institution.message`}
+              </p>
+            )}
           </>
         ))}
         <div className="w-full flex justify-center">
