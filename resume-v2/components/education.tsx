@@ -11,6 +11,7 @@ import CreateEducation from "./educations/create-education";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface EducationProps {
+  id: number;
   institution: string;
   major: string;
 }
