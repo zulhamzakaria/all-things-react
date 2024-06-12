@@ -31,7 +31,7 @@ const CreateExperience = () => {
   const [company, setCompany] = useState("");
   const [title, setTitle] = useState("");
   const [period, setPeriod] = useState("");
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([{ task: "" }]);
   const [experiences, setExperiences] = useState<
     ExperiencesProps["experiences"]
   >([]);
