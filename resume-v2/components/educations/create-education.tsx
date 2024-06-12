@@ -94,9 +94,12 @@ const CreateEducation = () => {
           ))}
         </form>
         <div className=" w-full flex justify-center ">
-          className=" items-center my-2 text-gray-950 inline-flex rounded-full
+          <Button
+            onClick={handleAddEducation}
+            disabled={isPending}
+            className=" items-center my-2 text-gray-950 inline-flex rounded-full
           hover:bg-emerald-500 hover:text-white font-mono font-semibold"
-          <Button onClick={handleAddEducation} disabled={isPending}>
+          >
             <PlusIcon className="mr-2" />
             add education
           </Button>
