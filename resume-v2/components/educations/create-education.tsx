@@ -1,14 +1,14 @@
 import { z } from "zod";
-import { useFieldArray, useForm } from "react-hook-form";
+import { Form, useFieldArray, useForm } from "react-hook-form";
 import { EducationSchema } from "@/schemas/education";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormItem,
-  FormField,
-  FormControl,
-  FormMessage,
-} from "@/components/ui/form";
+// import {
+//   Form,
+//   FormItem,
+//   FormField,
+//   FormControl,
+//   FormMessage,
+// } from "@/components/ui/form";
 import { useState, useTransition } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -32,10 +32,10 @@ const CreateEducation = () => {
     resolver: zodResolver(EducationSchema),
   });
 
-  // const { fields, append, remove } = useFieldArray({
-  //   control,
-  //   name: "educations",
-  // });
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "educations",
+  });
 
   const handleAddEducation = () => {
     setCreateEducations([
@@ -59,58 +59,74 @@ const CreateEducation = () => {
 
   return (
     <div className=" w-full">
-      <Form {...form}>
-        {createEducations.map((edu, index) => (
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className=" flex flex-row mb-1" key={index}>
-              <FormField
-                name="institution"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem className=" w-1/2 pr-1">
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder="Institution"
-                        disabled={isPending}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                name="major"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem className=" w-1/2 pr-1">
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder="Major"
-                        disabled={isPending}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              {/* <Button
-                className="bg-red-500"
-                onClick={() => handleDeleteEducation(index)}
-              >
-                <XIcon />
-              </Button> */}
-              <Button
-                type="submit"
-                disabled={isPending}
-                className=" font-mono font-semibold bg-emerald-500  hover:bg-emerald-700 text-white"
-              >
-                <PlusIcon />
-              </Button>
-            </div>
-          </form>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {fields.map((field, index) => (
+          // <form>
+          //   <div className=" flex flex-row mb-1" key={index}>
+          //     <FormField
+          //       name="institution"
+          //       control={form.control}
+          //       render={({ field }) => (
+          //         <FormItem className=" w-1/2 pr-1">
+          //           <FormControl>
+          //             <Input
+          //               {...field}
+          //               placeholder="Institution"
+          //               disabled={isPending}
+          //             />
+          //           </FormControl>
+          //           <FormMessage />
+          //         </FormItem>
+          //       )}
+          //     />
+          //     <FormField
+          //       name="major"
+          //       control={form.control}
+          //       render={({ field }) => (
+          //         <FormItem className=" w-1/2 pr-1">
+          //           <FormControl>
+          //             <Input
+          //               {...field}
+          //               placeholder="Major"
+          //               disabled={isPending}
+          //             />
+          //           </FormControl>
+          //           <FormMessage />
+          //         </FormItem>
+          //       )}
+          //     />
+          //     {/* <Button
+          //       className="bg-red-500"
+          //       onClick={() => handleDeleteEducation(index)}
+          //     >
+          //       <XIcon />
+          //     </Button> */}
+          //     <Button
+          //       type="submit"
+          //       disabled={isPending}
+          //       className=" font-mono font-semibold bg-emerald-500  hover:bg-emerald-700 text-white"
+          //     >
+          //       <PlusIcon />
+          //     </Button>
+          //   </div>
+          // </form>
+
+          <div key={field.id}>
+            <input {...register(`educations.${index}.institution`)} />
+            <input {...register(`educations.${index}.major`)} />
+            <button type="button" onClick={() => remove(index)}>
+              Delete
+            </button>
+          </div>
         ))}
+        <button
+          type="button"
+          onClick={() => append({ institution: "", major: "" })}
+        >
+          Add Education
+        </button>
+        <button type="submit">Save</button>
+
         {/* <div className=" w-full flex justify-center ">
           <Button
             onClick={handleAddEducation}
@@ -131,7 +147,7 @@ const CreateEducation = () => {
             save
           </Button>
         </div> */}
-      </Form>
+      </form>
     </div>
   );
 };
