@@ -200,6 +200,7 @@ const CreateExperience = () => {
             className=" px-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
             onClick={handleAddNewExperience}
             disabled={isSubmitting}
+            
           >
             save
           </Button>
