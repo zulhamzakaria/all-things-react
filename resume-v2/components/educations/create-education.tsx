@@ -5,11 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormItem,
-  FormLabel,
   FormField,
   FormControl,
   FormMessage,
-  FormDescription,
 } from "@/components/ui/form";
 import { useState, useTransition } from "react";
 import { Input } from "../ui/input";
@@ -30,6 +28,7 @@ const CreateEducation = () => {
 
   const form = useForm<z.infer<typeof EducationSchema>>({
     resolver: zodResolver(EducationSchema),
+    mode: "onSubmit",
   });
 
   const handleAddEducation = () => {
