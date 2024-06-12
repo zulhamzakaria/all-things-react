@@ -40,6 +40,7 @@ const CreateEducation = () => {
   const handleDeleteEducation = (index: number) => {
     const educations = [...createEducations];
     educations.splice(index, 1);
+    setCreateEducations(educations);
   };
 
   const onSubmit = (values: z.infer<typeof EducationSchema>) => {
