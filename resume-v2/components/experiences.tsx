@@ -2,6 +2,7 @@ import { useState, useEffect, ChangeEvent } from "react";
 import SlotTitle from "./slot-title";
 import useSWR from "swr";
 import LoadingCard from "./loading-card";
+import { createExperienceDialogId } from "@/constants";
 import {
   Dialog,
   DialogClose,
@@ -355,7 +356,7 @@ const ExperiencesPage = () => {
         <DialogContainer
           dialogTitle="add experience"
           dialogDescription="For adding experience. Click save once done."
-          dialogId="create-experience"
+          dialogId={createExperienceDialogId}
         >
           <Button className=" w-full font-mono rounded-full  hover:bg-emerald-700 hover:text-white font-semibold">
             <PlusIcon className=" mr-2" />

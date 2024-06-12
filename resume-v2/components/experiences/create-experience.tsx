@@ -6,6 +6,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { PlusIcon, XIcon } from "lucide-react";
 import { useDialog } from "@/lib/use-dialog";
+import { createExperienceDialogId } from "@/constants";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 interface ExperiencesProps {
@@ -83,7 +84,7 @@ const CreateExperience = () => {
 
       const updatedData = await response.json();
       mutate({ ...data, experiences: updatedData });
-      onClose("create-experience");
+      onClose(createExperienceDialogId);
       toast.success("New experience added");
     } catch (e) {
       toast.error((e as Error).message);
@@ -200,7 +201,6 @@ const CreateExperience = () => {
             className=" px-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
             onClick={handleAddNewExperience}
             disabled={isSubmitting}
-            
           >
             save
           </Button>
