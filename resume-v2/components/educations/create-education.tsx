@@ -35,13 +35,14 @@ const CreateEducation = () => {
     setCreateEducations([...createEducations, { institution: "", major: "" }]);
   };
 
-  const handleDeleteEducation = (index: number) => {
-    const educations = [...createEducations];
-    educations.splice(index, 1);
-    setCreateEducations(educations);
-  };
+  // const handleDeleteEducation = (index: number) => {
+  //   const educations = [...createEducations];
+  //   educations.splice(index, 1);
+  //   setCreateEducations(educations);
+  // };
 
   const onSubmit = (values: z.infer<typeof EducationSchema>) => {
+    handleAddEducation();
     toast.success("education(s) added");
     //TODO
   };
@@ -93,9 +94,9 @@ const CreateEducation = () => {
               <Button
                 type="submit"
                 disabled={isPending}
-                className=" px-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
+                className=" font-mono font-semibold bg-emerald-500  hover:bg-emerald-700 text-white"
               >
-                save
+                <PlusIcon />
               </Button>
             </div>
           </form>
