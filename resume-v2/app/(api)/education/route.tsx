@@ -3,3 +3,14 @@ import { educations } from "@/data";
 export async function GET() {
   return Response.json(educations);
 }
+
+export async function POST(req: Request) {
+  const education = await req.json();
+  const newId = educations.length + 1;
+  const newEdu = { id: newId, ...education };
+  educations.push(newEdu);
+  return new Response(JSON.stringify(educations), {
+    headers: { "Content-Type": "application/json" },
+    status: 201,
+  });
+}
