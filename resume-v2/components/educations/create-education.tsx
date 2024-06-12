@@ -116,10 +116,12 @@ const CreateEducation = () => {
               <Input
                 {...register(`educations.${index}.institution`)}
                 className=" w-1/2 mx-1"
+                placeholder="Institution"
               />
               <Input
                 {...register(`educations.${index}.major`)}
                 className=" w-1/2 mr-1"
+                placeholder="Major"
               />
               <Button
                 type="button"
