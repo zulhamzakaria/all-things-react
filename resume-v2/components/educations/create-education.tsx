@@ -84,16 +84,23 @@ const CreateEducation = () => {
                   </FormItem>
                 )}
               />
-              <Button
+              {/* <Button
                 className="bg-red-500"
                 onClick={() => handleDeleteEducation(index)}
               >
                 <XIcon />
+              </Button> */}
+              <Button
+                type="submit"
+                disabled={isPending}
+                className=" px-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
+              >
+                save
               </Button>
             </div>
           </form>
         ))}
-        <div className=" w-full flex justify-center ">
+        {/* <div className=" w-full flex justify-center ">
           <Button
             onClick={handleAddEducation}
             disabled={isPending}
@@ -103,8 +110,8 @@ const CreateEducation = () => {
             <PlusIcon className="mr-2" />
             add education
           </Button>
-        </div>
-        <div className=" w-full flex justify-end">
+        </div> */}
+        {/* <div className=" w-full flex justify-end">
           <Button
             type="submit"
             disabled={isPending}
@@ -112,7 +119,7 @@ const CreateEducation = () => {
           >
             save
           </Button>
-        </div>
+        </div> */}
       </Form>
     </div>
   );
