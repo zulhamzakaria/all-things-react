@@ -37,7 +37,7 @@ const EducationPage = () => {
   return resumeEducations && !isLoading ? (
     <>
       <SlotTitle title="education" />
-      <div>
+      <div className=" mb-1">
         {resumeEducations.map((edu, index) => (
           <div className="" key={index}>
             <p className="font-light">{edu.institution.toUpperCase()}</p>
