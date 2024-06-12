@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const EducationEntrySchema = z.object({
-  institution: z.string().min(1),
+  institution: z.string().min(1, { message: "Institution is required." }),
   major: z.string().optional(),
 });
 
