@@ -49,8 +49,8 @@ const CreateEducation = () => {
   return (
     <div className=" w-full">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          {createEducations.map((edu, index) => (
+        {createEducations.map((edu, index) => (
+          <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className=" flex flex-row mb-1" key={index}>
               <FormField
                 name="institution"
@@ -91,8 +91,8 @@ const CreateEducation = () => {
                 <XIcon />
               </Button>
             </div>
-          ))}
-        </form>
+          </form>
+        ))}
         <div className=" w-full flex justify-center ">
           <Button
             onClick={handleAddEducation}
