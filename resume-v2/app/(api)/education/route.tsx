@@ -1,6 +1,8 @@
 import { educations } from "@/data";
 
 export async function GET() {
+  // const sortedEducations = educations.sort((a, b) => a.id - b.id);
+
   return Response.json(educations);
 }
 
