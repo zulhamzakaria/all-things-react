@@ -83,7 +83,7 @@ const CreateExperience = () => {
 
       const updatedData = await response.json();
       mutate({ ...data, experiences: updatedData });
-      onClose();
+      onClose("create-experience");
       toast.success("New experience added");
     } catch (e) {
       toast.error((e as Error).message);

@@ -16,7 +16,6 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { XIcon } from "lucide-react";
-import { Separator } from "@radix-ui/react-dropdown-menu";
 
 interface CreateEducationProps {
   institution: string;
@@ -27,7 +26,7 @@ const CreateEducation = () => {
   const [isPending, startTransition] = useTransition();
   const [createEducations, setCreateEducations] = useState<
     CreateEducationProps[]
-  >([]);
+  >([{ institution: "", major: "" }]);
 
   const form = useForm<z.infer<typeof EducationSchema>>({
     resolver: zodResolver(EducationSchema),
