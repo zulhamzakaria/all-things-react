@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import { EducationSchema } from "@/schemas/education";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -26,10 +26,16 @@ const CreateEducation = () => {
     CreateEducationProps[]
   >([{ institution: "", major: "" }]);
 
-  const form = useForm<z.infer<typeof EducationSchema>>({
+  const { control, handleSubmit, register } = useForm<
+    z.infer<typeof EducationSchema>
+  >({
     resolver: zodResolver(EducationSchema),
-    mode: "onSubmit",
   });
+
+  // const { fields, append, remove } = useFieldArray({
+  //   control,
+  //   name: "educations",
+  // });
 
   const handleAddEducation = () => {
     setCreateEducations([
