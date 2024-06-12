@@ -87,7 +87,7 @@ const CreateEducation = () => {
               />
               <Button
                 className="bg-red-500"
-                onClick={() => confirm("delete this?")}
+                onClick={() => handleDeleteEducation}
               >
                 <XIcon />
               </Button>
