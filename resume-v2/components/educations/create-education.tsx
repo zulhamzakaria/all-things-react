@@ -32,7 +32,11 @@ const CreateEducation = () => {
   });
 
   const handleAddEducation = () => {
-    setCreateEducations([...createEducations, { institution: "", major: "" }]);
+    setCreateEducations([
+      ...createEducations,
+      { institution: "kote", major: "kote" },
+    ]);
+    toast.success(JSON.stringify(createEducations));
   };
 
   // const handleDeleteEducation = (index: number) => {
@@ -43,7 +47,7 @@ const CreateEducation = () => {
 
   const onSubmit = (values: z.infer<typeof EducationSchema>) => {
     handleAddEducation();
-    toast.success("education(s) added");
+    // toast.success("education(s) added");
     //TODO
   };
 
