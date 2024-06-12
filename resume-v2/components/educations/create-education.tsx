@@ -14,6 +14,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { PlusIcon, XIcon } from "lucide-react";
+import { FormMessage } from "../ui/form";
 
 interface CreateEducationProps {
   institution: string;
@@ -38,11 +39,7 @@ const CreateEducation = () => {
   });
 
   const handleAddEducation = () => {
-    setCreateEducations([
-      ...createEducations,
-      { institution: "kote", major: "kote" },
-    ]);
-    toast.success(JSON.stringify(createEducations));
+    setCreateEducations([...createEducations, { institution: "", major: "" }]);
   };
 
   // const handleDeleteEducation = (index: number) => {
@@ -52,7 +49,7 @@ const CreateEducation = () => {
   // };
 
   const onSubmit = (values: z.infer<typeof EducationSchema>) => {
-    handleAddEducation();
+    //handleAddEducation();
     // toast.success("education(s) added");
     //TODO
   };
@@ -111,21 +108,44 @@ const CreateEducation = () => {
           //   </div>
           // </form>
 
-          <div key={field.id}>
-            <input {...register(`educations.${index}.institution`)} />
-            <input {...register(`educations.${index}.major`)} />
-            <button type="button" onClick={() => remove(index)}>
-              Delete
-            </button>
-          </div>
+          <>
+            <div className=" w-full flex flex-row mb-1" key={field.id}>
+              <Input
+                {...register(`educations.${index}.institution`)}
+                className=" w-1/2 mx-1"
+              />
+              <Input
+                {...register(`educations.${index}.major`)}
+                className=" w-1/2 mr-1"
+              />
+              <Button
+                type="button"
+                className=" bg-rose-500 text-white "
+                onClick={() => remove(index)}
+              >
+                <XIcon />
+              </Button>
+            </div>
+          </>
         ))}
-        <button
-          type="button"
-          onClick={() => append({ institution: "", major: "" })}
-        >
-          Add Education
-        </button>
-        <button type="submit">Save</button>
+        <div className="w-full flex justify-center">
+          <Button
+            type="button"
+            onClick={() => append({ institution: "", major: "" })}
+            className="items-center my-2 text-gray-950 inline-flex rounded-full hover:bg-emerald-500 hover:text-white font-mono font-semibold"
+          >
+            <PlusIcon className="mr-2" />
+            add education
+          </Button>
+        </div>
+        <div className="w-full flex justify-end">
+          <Button
+            type="submit"
+            className=" px-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
+          >
+            save
+          </Button>
+        </div>
 
         {/* <div className=" w-full flex justify-center ">
           <Button
