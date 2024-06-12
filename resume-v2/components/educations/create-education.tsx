@@ -37,6 +37,11 @@ const CreateEducation = () => {
     setCreateEducations([...createEducations, { institution: "", major: "" }]);
   };
 
+  const handleDeleteEducation = (index: number) => {
+    const educations = [...createEducations];
+    educations.splice(index, 1);
+  };
+
   const onSubmit = (values: z.infer<typeof EducationSchema>) => {
     toast.success("education(s) added");
     //TODO
@@ -80,7 +85,10 @@ const CreateEducation = () => {
                   </FormItem>
                 )}
               />
-              <Button className="bg-red-500">
+              <Button
+                className="bg-red-500"
+                onClick={() => confirm("delete this?")}
+              >
                 <XIcon />
               </Button>
             </div>
