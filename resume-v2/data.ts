@@ -32,6 +32,7 @@ export const skills = {
 
 export const educations = [
   {
+    id: 1,
     institution: "Universiti Malaysia Terengganu, Kuala Terengganu",
     major: "Information Technology, Software Engineering",
   },
