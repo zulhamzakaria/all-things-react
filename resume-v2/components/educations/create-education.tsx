@@ -131,7 +131,7 @@ const CreateEducation = () => {
             </div>
             {errors.educations?.[index]?.institution && (
               <p className=" text-red-400 text-sm mx-1">
-                {`errors.educations[index].institution.message`}
+                {errors.educations[index].institution.message}
               </p>
             )}
           </>
