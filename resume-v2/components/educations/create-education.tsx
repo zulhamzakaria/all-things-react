@@ -13,7 +13,7 @@ import { useState, useTransition } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
-import { XIcon } from "lucide-react";
+import { PlusIcon, XIcon } from "lucide-react";
 
 interface CreateEducationProps {
   institution: string;
