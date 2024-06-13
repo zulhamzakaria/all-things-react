@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SlotTitle from "./slot-title";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import LoadingCard from "./loading-card";
 import { SignedIn } from "@clerk/nextjs";
 import DialogContainer from "./dialog-container";
@@ -28,7 +28,7 @@ interface EducationProps {
 }
 
 const EducationPage = () => {
-  const { data, mutate, isLoading, error } = useSWR<EducationProps[]>(
+  const { data, isLoading, error } = useSWR<EducationProps[]>(
     "/education",
     fetcher
   );
@@ -49,8 +49,11 @@ const EducationPage = () => {
       if (!response) {
         throw new Error(response);
       }
-      const updatedData = response.json()
+      const updatedData = await response.json();
       //how to mutate?
+      if (data) {
+        mutate("/education", [...data, ...updatedData], false);
+      }
     } catch (e) {
       toast.error((e as Error).message);
     }
