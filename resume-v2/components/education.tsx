@@ -18,6 +18,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { toast } from "sonner";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface EducationProps {
@@ -39,7 +40,21 @@ const EducationPage = () => {
     handleDelete(id);
   };
 
-  const handleDelete = (id: number) => {};
+  const handleDelete = async (id: number) => {
+    try {
+      const response = await fetch(`/education/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!response) {
+        throw new Error(response);
+      }
+      const updatedData = response.json()
+      //how to mutate?
+    } catch (e) {
+      toast.error((e as Error).message);
+    }
+  };
 
   if (error) {
     return <h1>{error}</h1>;
