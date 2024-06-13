@@ -57,9 +57,8 @@ const CreateEducation = () => {
         throw new Error(`HTTP error! Status:${response}`);
       }
       const updatedData = await response.json();
-      mutate("/education", [...data, updatedData], false);
-      alert(JSON.stringify(data));
-      //onClose(createEducationDialogId);
+      mutate("/education", [...data, ...updatedData], false);
+      onClose(createEducationDialogId);
       toast.success("New education added");
     } catch (e) {
       toast.error((e as Error).message);

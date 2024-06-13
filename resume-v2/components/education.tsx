@@ -31,6 +31,8 @@ const EducationPage = () => {
 
   useEffect(() => {
     if (data) {
+      alert(JSON.stringify(data));
+
       setResumeEducations(data);
     }
   }, [data]);
