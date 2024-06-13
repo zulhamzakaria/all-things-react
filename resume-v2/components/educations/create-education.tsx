@@ -9,13 +9,18 @@ import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { PlusIcon, XIcon } from "lucide-react";
 import { useDialog } from "@/lib/use-dialog";
+import useSWR from "swr";
+import { educations } from "@/data";
 
 interface CreateEducationProps {
   institution: string;
   major: string;
 }
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 const CreateEducation = () => {
+  const { data, mutate } = useSWR("/education", fetcher);
   const { onClose } = useDialog();
   const [isPending, startTransition] = useTransition();
   const [createEducations, setCreateEducations] = useState<
@@ -42,7 +47,7 @@ const CreateEducation = () => {
 
   const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
     try {
-      var response = fetch(`/education`, {
+      var response = await fetch(`/education`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ education: values }),
@@ -50,6 +55,8 @@ const CreateEducation = () => {
       if (!response) {
         toast.error("Failed adding a new education ");
       }
+      const updatedData = await response.json();
+      mutate({ ...data, educations: updatedData });
       onClose(createEducationDialogId);
       toast.success("New education added");
     } catch (e) {

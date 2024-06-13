@@ -24,6 +24,7 @@ const EducationPage = () => {
   const [resumeEducations, setResumeEducations] = useState<EducationProps[]>(
     []
   );
+
   if (error) {
     return <h1>{error}</h1>;
   }
