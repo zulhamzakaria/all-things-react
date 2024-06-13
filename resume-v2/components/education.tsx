@@ -52,7 +52,7 @@ const EducationPage = () => {
       const updatedData = await response.json();
       //how to mutate?
       if (data) {
-        mutate("/education", [...data, ...updatedData], false);
+        mutate("/education", [...data, ...updatedData]);
       }
     } catch (e) {
       toast.error((e as Error).message);
