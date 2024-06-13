@@ -45,12 +45,6 @@ const CreateEducation = () => {
     setCreateEducations([...createEducations, { institution: "", major: "" }]);
   };
 
-  // const handleDeleteEducation = (index: number) => {
-  //   const educations = [...createEducations];
-  //   educations.splice(index, 1);
-  //   setCreateEducations(educations);
-  // };
-
   const onSubmit = (values: z.infer<typeof EducationSchema>) => {
     //handleAddEducation();
     // toast.success("education(s) added");
@@ -61,56 +55,6 @@ const CreateEducation = () => {
     <div className=" w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
         {fields.map((field, index) => (
-          // <form>
-          //   <div className=" flex flex-row mb-1" key={index}>
-          //     <FormField
-          //       name="institution"
-          //       control={form.control}
-          //       render={({ field }) => (
-          //         <FormItem className=" w-1/2 pr-1">
-          //           <FormControl>
-          //             <Input
-          //               {...field}
-          //               placeholder="Institution"
-          //               disabled={isPending}
-          //             />
-          //           </FormControl>
-          //           <FormMessage />
-          //         </FormItem>
-          //       )}
-          //     />
-          //     <FormField
-          //       name="major"
-          //       control={form.control}
-          //       render={({ field }) => (
-          //         <FormItem className=" w-1/2 pr-1">
-          //           <FormControl>
-          //             <Input
-          //               {...field}
-          //               placeholder="Major"
-          //               disabled={isPending}
-          //             />
-          //           </FormControl>
-          //           <FormMessage />
-          //         </FormItem>
-          //       )}
-          //     />
-          //     {/* <Button
-          //       className="bg-red-500"
-          //       onClick={() => handleDeleteEducation(index)}
-          //     >
-          //       <XIcon />
-          //     </Button> */}
-          //     <Button
-          //       type="submit"
-          //       disabled={isPending}
-          //       className=" font-mono font-semibold bg-emerald-500  hover:bg-emerald-700 text-white"
-          //     >
-          //       <PlusIcon />
-          //     </Button>
-          //   </div>
-          // </form>
-
           <>
             <div className=" w-full flex flex-row mb-1" key={field.id}>
               <Input
@@ -151,32 +95,12 @@ const CreateEducation = () => {
         <div className="w-full flex justify-end">
           <Button
             type="submit"
+            disabled={isPending}
             className=" px-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
           >
             save
           </Button>
         </div>
-
-        {/* <div className=" w-full flex justify-center ">
-          <Button
-            onClick={handleAddEducation}
-            disabled={isPending}
-            className=" items-center my-2 text-gray-950 inline-flex rounded-full
-          hover:bg-emerald-500 hover:text-white font-mono font-semibold"
-          >
-            <PlusIcon className="mr-2" />
-            add education
-          </Button>
-        </div> */}
-        {/* <div className=" w-full flex justify-end">
-          <Button
-            type="submit"
-            disabled={isPending}
-            className=" px-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
-          >
-            save
-          </Button>
-        </div> */}
       </form>
     </div>
   );
