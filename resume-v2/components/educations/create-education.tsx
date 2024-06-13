@@ -59,8 +59,6 @@ const CreateEducation = () => {
     } catch (e) {
       toast.error((e as Error).message);
     }
-    // toast.success("education(s) added");
-    //TODO
   };
 
   return (
