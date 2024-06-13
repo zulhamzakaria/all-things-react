@@ -63,7 +63,7 @@ const SummaryPage = () => {
               variant={"outline"}
               className=" rounded-full font-mono text-amber-50 bg-blue-500 hover:bg-blue-700 font-semibold"
             >
-              edit summary
+              edit
             </Button>
           </DialogTrigger>
           <DialogContent className="bg-slate-50 lg:min-w-[600px]">
