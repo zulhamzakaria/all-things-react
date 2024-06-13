@@ -47,17 +47,20 @@ const CreateEducation = () => {
 
   const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
     try {
+      const { educations } = values;
+
       var response = await fetch(`/education`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ education: values }),
+        body: JSON.stringify({ educations }),
       });
       if (!response) {
-        toast.error("Failed adding a new education ");
+        throw new Error(`HTTP error! Status:${response}`);
       }
       const updatedData = await response.json();
-      mutate({ ...data, educations: updatedData });
-      onClose(createEducationDialogId);
+      alert(JSON.stringify(updatedData));
+      //mutate({ ...data, educations: updatedData });
+      //onClose(createEducationDialogId);
       toast.success("New education added");
     } catch (e) {
       toast.error((e as Error).message);
