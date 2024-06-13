@@ -228,7 +228,7 @@ const ExperiencesPage = () => {
                     onClick={() => handleEditDialog(index)}
                     className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold"
                   >
-                    edit experience
+                    edit
                   </Button>
                 </DialogTrigger>
               </div>
