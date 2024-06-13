@@ -45,8 +45,20 @@ const CreateEducation = () => {
     setCreateEducations([...createEducations, { institution: "", major: "" }]);
   };
 
-  const onSubmit = (values: z.infer<typeof EducationSchema>) => {
-    //handleAddEducation();
+  const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
+    try {
+      var response = fetch(`/education`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ education: values }),
+      });
+      if (!response) {
+        toast.error("Failed adding a new education ");
+      }
+      toast.success("New education added");
+    } catch (e) {
+      toast.error((e as Error).message);
+    }
     // toast.success("education(s) added");
     //TODO
   };
