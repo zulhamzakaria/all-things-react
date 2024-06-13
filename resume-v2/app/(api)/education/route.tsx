@@ -7,10 +7,14 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const { education } = await req.json();
-  const newId = educations.length + 1;
-  const newEdu = { id: newId, ...education };
-  educations.push(newEdu);
+  const educationsArray = await req.json();
+
+  educationsArray.array.forEach((education: any) => {
+    const newId = educations.length + 1;
+    const newEdu = { id: newId, ...education };
+    educations.push(newEdu);
+  });
+
   return new Response(JSON.stringify(educations), {
     headers: { "Content-Type": "application/json" },
     status: 201,
