@@ -1,20 +1,14 @@
 import { z } from "zod";
-import { Form, useFieldArray, useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import { EducationSchema } from "@/schemas/education";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import {
-//   Form,
-//   FormItem,
-//   FormField,
-//   FormControl,
-//   FormMessage,
-// } from "@/components/ui/form";
+import { createEducationDialogId } from "@/constants";
 import { useState, useTransition } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { PlusIcon, XIcon } from "lucide-react";
-import { FormMessage } from "../ui/form";
+import { useDialog } from "@/lib/use-dialog";
 
 interface CreateEducationProps {
   institution: string;
@@ -22,6 +16,7 @@ interface CreateEducationProps {
 }
 
 const CreateEducation = () => {
+  const { onClose } = useDialog();
   const [isPending, startTransition] = useTransition();
   const [createEducations, setCreateEducations] = useState<
     CreateEducationProps[]
@@ -55,6 +50,7 @@ const CreateEducation = () => {
       if (!response) {
         toast.error("Failed adding a new education ");
       }
+      onClose(createEducationDialogId);
       toast.success("New education added");
     } catch (e) {
       toast.error((e as Error).message);
