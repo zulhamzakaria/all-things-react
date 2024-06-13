@@ -35,6 +35,12 @@ const EducationPage = () => {
     []
   );
 
+  const confirmDelete = (id: number) => {
+    handleDelete(id);
+  };
+
+  const handleDelete = (id: number) => {};
+
   if (error) {
     return <h1>{error}</h1>;
   }
@@ -76,7 +82,7 @@ const EducationPage = () => {
                       </AlertDialogCancel>
                       <AlertDialogAction
                         onClick={() => {
-                          // confirmDelete(experience.id);
+                          confirmDelete(edu.id);
                         }}
                         className=" text-slate-900 font-mono font-semibold hover:text-red-600 hover:underline"
                       >
