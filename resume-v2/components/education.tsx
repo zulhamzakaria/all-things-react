@@ -115,7 +115,7 @@ const EducationPage = () => {
                 </AlertDialog>
                 <DialogContainer
                   dialogTitle="edit education"
-                  dialogDescription="For editing education. Click save once done."
+                  dialogDescription="Make changes to the experience here. Click save once you're done."
                   dialogId={editEducationDialogId}
                 >
                   <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
