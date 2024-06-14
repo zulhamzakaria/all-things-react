@@ -7,6 +7,7 @@ import DialogContainer from "./dialog-container";
 import { Button } from "./ui/button";
 import { PlusIcon } from "lucide-react";
 import CreateEducation from "./educations/create-education";
+import { createEducationDialogId, editEducationDialogId } from "@/constants";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,6 +20,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import EditEducation from "./educations/edit-education";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface EducationProps {
@@ -79,41 +81,50 @@ const EducationPage = () => {
               <p className="font-light">{edu.institution.toUpperCase()}</p>
               <p className="font-semibold text-gray-900">{edu.major}</p>
             </div>
-            <div className=" flex justify-end mb-10 w-full">
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button className=" hover:text-red-600 font-mono font-semibold hover:underline">
-                    delete
+            <SignedIn>
+              <div className=" flex justify-end mb-10 w-full">
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button className=" hover:text-red-600 font-mono font-semibold hover:underline">
+                      delete
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent className=" bg-slate-50">
+                    <AlertDialogHeader>
+                      <AlertDialogTitle className=" text-slate-900">
+                        Are you sure?
+                      </AlertDialogTitle>
+                      <AlertDialogDescription className="text-slate-800">
+                        This will delete the entry permanently.
+                      </AlertDialogDescription>
+                      <AlertDialogFooter className="pt-5">
+                        <AlertDialogCancel className=" text-slate-900 rounded-full border-solid border-2 border-black font-mono font-semibold hover:bg-black hover:text-white">
+                          cancel
+                        </AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={() => {
+                            confirmDelete(edu.id);
+                          }}
+                          className=" text-slate-900 font-mono font-semibold hover:text-red-600 hover:underline"
+                        >
+                          confirm
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogHeader>
+                  </AlertDialogContent>
+                </AlertDialog>
+                <DialogContainer
+                  dialogTitle="edit education"
+                  dialogDescription="For editing education. Click save once done."
+                  dialogId={editEducationDialogId}
+                >
+                  <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
+                    edit
                   </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent className=" bg-slate-50">
-                  <AlertDialogHeader>
-                    <AlertDialogTitle className=" text-slate-900">
-                      Are you sure?
-                    </AlertDialogTitle>
-                    <AlertDialogDescription className="text-slate-800">
-                      This will delete the entry permanently.
-                    </AlertDialogDescription>
-                    <AlertDialogFooter className="pt-5">
-                      <AlertDialogCancel className=" text-slate-900 rounded-full border-solid border-2 border-black font-mono font-semibold hover:bg-black hover:text-white">
-                        cancel
-                      </AlertDialogCancel>
-                      <AlertDialogAction
-                        onClick={() => {
-                          confirmDelete(edu.id);
-                        }}
-                        className=" text-slate-900 font-mono font-semibold hover:text-red-600 hover:underline"
-                      >
-                        confirm
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogHeader>
-                </AlertDialogContent>
-              </AlertDialog>
-              <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
-                edit
-              </Button>
-            </div>
+                  <EditEducation />
+                </DialogContainer>
+              </div>
+            </SignedIn>
           </>
         ))}
       </div>
@@ -121,7 +132,7 @@ const EducationPage = () => {
         <DialogContainer
           dialogTitle="add educations"
           dialogDescription="For adding education(s). Click save once done."
-          dialogId="create-education"
+          dialogId={createEducationDialogId}
         >
           <Button className=" mt-10 w-full font-mono rounded-full  hover:bg-emerald-700 hover:text-white font-semibold">
             <PlusIcon className=" mr-2" />
