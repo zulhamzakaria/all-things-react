@@ -47,7 +47,7 @@ const EditEducation = () => {
               <Button
                 type="button"
                 className="bg-rose-500 text-white"
-                onClick={() => {}}
+                onClick={() => remove(index)}
               >
                 <XIcon />
               </Button>
