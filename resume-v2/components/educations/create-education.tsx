@@ -3,7 +3,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { EducationSchema } from "@/schemas/education";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createEducationDialogId } from "@/constants";
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
@@ -41,6 +41,12 @@ const CreateEducation = () => {
     name: "educations",
   });
 
+  useEffect(() => {
+    if (fields.length === 0) {
+      append({ institution: "", major: "" });
+    }
+  }, [fields, append]);
+
   // const handleAddEducation = () => {
   //   setCreateEducations([...createEducations, { institution: "", major: "" }]);
   // };
@@ -75,13 +81,11 @@ const CreateEducation = () => {
                 {...register(`educations.${index}.institution`)}
                 className=" w-1/2 mx-1"
                 placeholder="Institution"
-                defaultValue=""
               />
               <Input
                 {...register(`educations.${index}.major`)}
                 className=" w-1/2 mr-1"
                 placeholder="Major"
-                defaultValue=""
               />
               <Button
                 type="button"
