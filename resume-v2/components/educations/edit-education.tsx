@@ -75,16 +75,6 @@ const EditEducation = () => {
             )}
           </>
         ))}
-        <div className="w-full flex justify-center">
-          <Button
-            type="button"
-            onClick={() => append({ institution: "", major: "" })}
-            className="items-center my-2 text-gray-950 inline-flex rounded-full hover:bg-emerald-500 hover:text-white font-mono font-semibold"
-          >
-            <PlusIcon className="mr-2" />
-            add education
-          </Button>
-        </div>
         <div className="w-full flex justify-end">
           <Button
             type="submit"
