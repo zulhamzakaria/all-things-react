@@ -79,7 +79,7 @@ const EditEducation = () => {
           <Button
             type="submit"
             disabled={isPending}
-            className="px-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
+            className="px-10 mt-10 mb-2 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
           >
             save
           </Button>
