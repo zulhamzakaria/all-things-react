@@ -113,20 +113,24 @@ const EducationPage = () => {
                     </AlertDialogHeader>
                   </AlertDialogContent>
                 </AlertDialog>
-                <DialogContainer
-                  dialogTitle="edit education"
-                  dialogDescription="Make changes to the experience here. Click save once you're done."
-                  dialogId={editEducationDialogId}
-                >
-                  <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
-                    edit
-                  </Button>
-                  <EditEducation />
-                </DialogContainer>
               </div>
             </SignedIn>
           </>
         ))}
+        <SignedIn>
+          <div className="w-full flex justify-end">
+            <DialogContainer
+              dialogTitle="edit education"
+              dialogDescription="Make changes to the experience here. Click save once you're done."
+              dialogId={editEducationDialogId}
+            >
+              <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
+                edit
+              </Button>
+              <EditEducation />
+            </DialogContainer>
+          </div>
+        </SignedIn>
       </div>
       <SignedIn>
         <DialogContainer
