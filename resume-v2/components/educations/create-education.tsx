@@ -23,9 +23,9 @@ const CreateEducation = () => {
   const { data } = useSWR("/education", fetcher);
   const { onClose } = useDialog();
   const [isPending, startTransition] = useTransition();
-  const [createEducations, setCreateEducations] = useState<
-    CreateEducationProps[]
-  >([{ institution: "", major: "" }]);
+  // const [createEducations, setCreateEducations] = useState<
+  //   CreateEducationProps[]
+  // >([{ institution: "", major: "" }]);
 
   const {
     control,
@@ -41,9 +41,9 @@ const CreateEducation = () => {
     name: "educations",
   });
 
-  const handleAddEducation = () => {
-    setCreateEducations([...createEducations, { institution: "", major: "" }]);
-  };
+  // const handleAddEducation = () => {
+  //   setCreateEducations([...createEducations, { institution: "", major: "" }]);
+  // };
 
   const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
     try {
@@ -75,11 +75,13 @@ const CreateEducation = () => {
                 {...register(`educations.${index}.institution`)}
                 className=" w-1/2 mx-1"
                 placeholder="Institution"
+                defaultValue=""
               />
               <Input
                 {...register(`educations.${index}.major`)}
                 className=" w-1/2 mr-1"
                 placeholder="Major"
+                defaultValue=""
               />
               <Button
                 type="button"
