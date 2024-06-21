@@ -10,6 +10,7 @@ import { Button } from "../ui/button";
 import { PlusIcon, XIcon } from "lucide-react";
 
 interface EditEducationProps {
+  id: number;
   institution: string;
   major: string;
 }
@@ -17,7 +18,7 @@ interface EditEducationProps {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const EditEducation = () => {
-  const { data } = useSWR("/education", fetcher);
+  const { data } = useSWR<EditEducationProps[]>("/education", fetcher);
   const { onClose } = useDialog();
   const [isPending, setisPending] = useState(false);
   const {
@@ -34,16 +35,31 @@ const EditEducation = () => {
     name: "educations",
   });
 
+  const mappedFields =
+    data?.map((edu) => ({
+      id: edu.id,
+      institution: edu.institution,
+      major: edu.major,
+    })) || [];
+
   const onSubmit = async (values: z.infer<typeof EducationSchema>) => {};
 
   return (
     <div className="w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
-        {fields.map((field, index) => (
+        {mappedFields.map((field, index) => (
           <>
             <div className="w-full flex flex-row mb-1" key={field.id}>
-              <Input className="w-1/2 mx-1" />
-              <Input className="w-1/2 mx-1" />
+              <Input
+                className="w-1/2 mx-1"
+                {...register(`educations.${index}.institution`)}
+                defaultValue={field.institution}
+              />
+              <Input
+                className="w-1/2 mx-1"
+                {...register(`educations.${index}.major`)}
+                defaultValue={field.major}
+              />
               <Button
                 type="button"
                 className="bg-rose-500 text-white"
