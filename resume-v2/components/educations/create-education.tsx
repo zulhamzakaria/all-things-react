@@ -11,7 +11,6 @@ import { PlusIcon, XIcon } from "lucide-react";
 import { useDialog } from "@/lib/use-dialog";
 import useSWR from "swr";
 import { mutate } from "swr";
-import { Label } from "../ui/label";
 
 interface CreateEducationProps {
   institution: string;
@@ -69,14 +68,6 @@ const CreateEducation = () => {
   return (
     <div className=" w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="w-full flex flex-row mb-1">
-          <Label htmlFor="institution" className=" font-sans mb-2 w-1/2 mx-1">
-            Institution
-          </Label>
-          <Label htmlFor="major" className=" font-sans mb-2 w-1/2 mx-1">
-            Major
-          </Label>
-        </div>
         {fields.map((field, index) => (
           <>
             <div className=" w-full flex flex-row mb-1" key={field.id}>
