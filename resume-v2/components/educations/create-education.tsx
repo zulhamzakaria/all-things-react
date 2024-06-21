@@ -41,11 +41,9 @@ const CreateEducation = () => {
     name: "educations",
   });
 
-  useEffect(() => {
-    if (fields.length === 0) {
-      append({ institution: "", major: "" });
-    }
-  }, [fields, append]);
+  if (fields.length === 0) {
+    append({ institution: "", major: "" });
+  }
 
   // const handleAddEducation = () => {
   //   setCreateEducations([...createEducations, { institution: "", major: "" }]);
