@@ -8,6 +8,7 @@ import { z } from "zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { PlusIcon, XIcon } from "lucide-react";
+import { Label } from "../ui/label";
 
 interface EditEducationProps {
   id: number;
@@ -47,15 +48,26 @@ const EditEducation = () => {
   return (
     <div className="w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="w-full flex flex-row mb-1">
+          <Label htmlFor="institution" className=" font-sans mb-2 w-1/2 mx-1">
+            Institution
+          </Label>
+          <Label htmlFor="major" className=" font-sans mb-2 w-1/2 mx-1">
+            Major
+          </Label>
+        </div>
+
         {mappedFields.map((field, index) => (
           <>
             <div className="w-full flex flex-row mb-1" key={field.id}>
               <Input
+                id="institution"
                 className="w-1/2 mx-1"
                 {...register(`educations.${index}.institution`)}
                 defaultValue={field.institution}
               />
               <Input
+                id="major"
                 className="w-1/2 mx-1"
                 {...register(`educations.${index}.major`)}
                 defaultValue={field.major}
