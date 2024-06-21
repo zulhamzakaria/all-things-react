@@ -60,13 +60,6 @@ const EditEducation = () => {
                 {...register(`educations.${index}.major`)}
                 defaultValue={field.major}
               />
-              <Button
-                type="button"
-                className="bg-rose-500 text-white"
-                onClick={() => remove(index)}
-              >
-                <XIcon />
-              </Button>
             </div>
             {errors.educations?.[index]?.institution && (
               <p className="text-red-400 text-sm mx-1">
