@@ -1,5 +1,5 @@
 import { useDialog } from "@/lib/use-dialog";
-import { EducationSchema } from "@/schemas/education";
+import { EditEducationSchema } from "@/schemas/education";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -29,8 +29,8 @@ const EditEducation = ({ id }: { id: number }) => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<z.infer<typeof EducationSchema>>({
-    resolver: zodResolver(EducationSchema),
+  } = useForm<z.infer<typeof EditEducationSchema>>({
+    resolver: zodResolver(EditEducationSchema),
   });
 
   // const { fields, append, remove } = useFieldArray({
@@ -51,8 +51,8 @@ const EditEducation = ({ id }: { id: number }) => {
     major: data?.major,
   };
 
-  const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
-    const { educations } = values;
+  const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
+    const { id, institution, major } = values;
     alert(JSON.stringify(id));
   };
 
