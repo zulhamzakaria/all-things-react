@@ -17,7 +17,7 @@ interface EditEducationProps {
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const EditEducation = ({ params }: { params: { id: number } }) => {
+const EditEducation = ({ id }: { id: number }) => {
   const { data } = useSWR<EditEducationProps[]>("/education", fetcher);
   const { onClose } = useDialog();
   const [isPending, setisPending] = useState(false);
@@ -44,7 +44,7 @@ const EditEducation = ({ params }: { params: { id: number } }) => {
 
   const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
     const { educations } = values;
-    alert(JSON.stringify(params));
+    alert(JSON.stringify(id));
   };
 
   return (
