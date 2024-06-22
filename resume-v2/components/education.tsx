@@ -77,7 +77,7 @@ const EducationPage = () => {
       <div className=" mb-1">
         {resumeEducations.map((edu, index) => (
           <>
-            <div className="" key={index}>
+            <div key={edu.id}>
               <p className="font-light">{edu.institution.toUpperCase()}</p>
               <p className="font-semibold text-gray-900">{edu.major}</p>
             </div>
