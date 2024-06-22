@@ -18,7 +18,7 @@ interface EditEducationProps {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const EditEducation = ({ id }: { id: number }) => {
-  const { data, isLoading } = useSWR<EditEducationProps[]>(
+  const { data, isLoading } = useSWR<EditEducationProps>(
     `/education/${id}`,
     fetcher
   );
@@ -33,17 +33,23 @@ const EditEducation = ({ id }: { id: number }) => {
     resolver: zodResolver(EducationSchema),
   });
 
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "educations",
-  });
+  // const { fields, append, remove } = useFieldArray({
+  //   control,
+  //   name: "educations",
+  // });
 
-  const mappedFields =
-    data?.map((edu) => ({
-      id: edu.id,
-      institution: edu.institution,
-      major: edu.major,
-    })) || [];
+  // const mappedFields =
+  //   data?.map((edu) => ({
+  //     id: edu.id,
+  //     institution: edu.institution,
+  //     major: edu.major,
+  //   })) || [];
+
+  const mappedField = {
+    id: data?.id,
+    institution: data?.institution,
+    major: data?.major,
+  };
 
   const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
     const { educations } = values;
@@ -61,30 +67,29 @@ const EditEducation = ({ id }: { id: number }) => {
             Major
           </Label>
         </div>
-
-        {mappedFields.map((field, index) => (
-          <>
-            <div className="w-full flex flex-row mb-1" key={field.id}>
-              <Input
-                id="institution"
-                className="w-1/2 mx-1"
-                {...register(`educations.${index}.institution`)}
-                defaultValue={field.institution}
-              />
-              <Input
-                id="major"
-                className="w-1/2 mx-1"
-                {...register(`educations.${index}.major`)}
-                defaultValue={field.major}
-              />
-            </div>
-            {errors.educations?.[index]?.institution && (
-              <p className="text-red-400 text-sm mx-1">
-                {errors.educations[index].institution.message}
-              </p>
-            )}
-          </>
-        ))}
+        (
+        <>
+          <div className="w-full flex flex-row mb-1" key={mappedField.id}>
+            <Input
+              id="institution"
+              className="w-1/2 mx-1"
+              {...register("institution")}
+              defaultValue={mappedField.institution}
+            />
+            <Input
+              id="major"
+              className="w-1/2 mx-1"
+              {...register("major")}
+              defaultValue={mappedField.major}
+            />
+          </div>
+          {errors.institution && (
+            <p className="text-red-400 text-sm mx-1">
+              {errors.institution.message}
+            </p>
+          )}
+        </>
+        )
         <div className="w-full flex justify-end">
           <Button
             type="submit"
