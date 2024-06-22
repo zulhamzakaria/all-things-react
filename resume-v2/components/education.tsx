@@ -113,8 +113,6 @@ const EducationPage = () => {
                     </AlertDialogHeader>
                   </AlertDialogContent>
                 </AlertDialog>
-              </div>
-              <div className="w-full flex justify-end">
                 <DialogContainer
                   dialogTitle="edit education"
                   dialogDescription="Make changes to the experience here. Click save once you're done."
