@@ -56,7 +56,7 @@ const EditEducation = ({ id }: { id: number }) => {
     alert(JSON.stringify(id));
   };
 
-  return (
+  return data && !isLoading ? (
     <div className="w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="w-full flex flex-row mb-1">
@@ -67,7 +67,6 @@ const EditEducation = ({ id }: { id: number }) => {
             Major
           </Label>
         </div>
-        (
         <>
           <div className="w-full flex flex-row mb-1" key={mappedField.id}>
             <Input
@@ -89,7 +88,6 @@ const EditEducation = ({ id }: { id: number }) => {
             </p>
           )}
         </>
-        )
         <div className="w-full flex justify-end">
           <Button
             type="submit"
@@ -100,6 +98,10 @@ const EditEducation = ({ id }: { id: number }) => {
           </Button>
         </div>
       </form>
+    </div>
+  ) : (
+    <div>
+      <LoadingCard />
     </div>
   );
 };
