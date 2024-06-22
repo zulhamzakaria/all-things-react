@@ -43,7 +43,10 @@ const EditEducation = () => {
       major: edu.major,
     })) || [];
 
-  const onSubmit = async (values: z.infer<typeof EducationSchema>) => {};
+  const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
+    const { educations } = values;
+    alert(JSON.stringify(educations));
+  };
 
   return (
     <div className="w-full">
