@@ -8,6 +8,7 @@ import { z } from "zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
+import LoadingCard from "../loading-card";
 
 interface EditEducationProps {
   id: number;
