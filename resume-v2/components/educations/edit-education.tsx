@@ -18,7 +18,10 @@ interface EditEducationProps {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const EditEducation = ({ id }: { id: number }) => {
-  const { data } = useSWR<EditEducationProps[]>("/education", fetcher);
+  const { data, isLoading } = useSWR<EditEducationProps[]>(
+    `/education/${id}`,
+    fetcher
+  );
   const { onClose } = useDialog();
   const [isPending, setisPending] = useState(false);
   const {
