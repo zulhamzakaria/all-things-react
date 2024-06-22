@@ -7,7 +7,6 @@ import useSWR, { mutate } from "swr";
 import { z } from "zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { PlusIcon, XIcon } from "lucide-react";
 import { Label } from "../ui/label";
 
 interface EditEducationProps {
