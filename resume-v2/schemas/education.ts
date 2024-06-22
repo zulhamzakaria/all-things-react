@@ -9,7 +9,7 @@ export const EducationSchema = z.object({
   educations: z.array(EducationEntrySchema),
 });
 
-export const EditEducationScheme = z.object({
+export const EditEducationSchema = z.object({
   id: z.number(),
   institution: z.string().min(1, { message: "Institution is required" }),
   major: z.string().optional(),
