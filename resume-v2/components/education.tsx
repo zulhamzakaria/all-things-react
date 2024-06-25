@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import EditEducation from "./educations/edit-education";
+import EditDialogWrapper from "./edit-dialog-wrapper";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface EducationProps {
@@ -121,6 +122,7 @@ const EducationPage = () => {
                   <EditEducation id={edu.id.toString()} />
                   {/* <EditEducationV2 /> */}
                 </DialogContainer>
+                <EditDialogWrapper id={edu.id.toString()} />
               </div>
             </SignedIn>
           </>

@@ -1,7 +1,14 @@
 import React from "react";
+import { Button } from "./ui/button";
+import { toast } from "sonner";
 
-const EditDialogWrapper = () => {
-  return <div>EditDialogWrapper</div>;
+const EditDialogWrapper = ({ id }: { id: string }) => {
+  return (
+    <div>
+      EditDialogWrapper # {id}
+      <Button onClick={() => toast.success(id)}></Button>
+    </div>
+  );
 };
 
 export default EditDialogWrapper;
