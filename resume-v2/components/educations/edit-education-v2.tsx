@@ -4,13 +4,16 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 const EditEducationV2 = () => {
-  const { handleSubmit, register } = useForm<z.infer<typeof EducationSchema>>({
-    resolver: zodResolver(EducationSchema),
+  const { handleSubmit, register } = useForm<
+    z.infer<typeof EditEducationSchema>
+  >({
+    resolver: zodResolver(EditEducationSchema),
   });
 
-  const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
+  const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
     alert("button clicked");
   };
 
@@ -18,6 +21,7 @@ const EditEducationV2 = () => {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         EditEducationV2
+        <Input {...register("institution")} />
         <Button type="submit">Submit</Button>
       </form>
     </div>
