@@ -122,8 +122,8 @@ const EducationPage = () => {
                   <EditEducation id={edu.id.toString()} />
                   {/* <EditEducationV2 /> */}
                 </DialogContainer>
-                <EditDialogWrapper id={edu.id.toString()} />
               </div>
+              <EditDialogWrapper id={edu.id.toString()} />
             </SignedIn>
           </>
         ))}
