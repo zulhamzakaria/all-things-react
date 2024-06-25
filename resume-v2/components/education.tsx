@@ -113,17 +113,20 @@ const EducationPage = () => {
                 </AlertDialog>
                 <DialogContainer
                   dialogTitle="edit education"
-                  dialogDescription="Make changes to the experience here. Click save once you're done."
+                  dialogDescription="Make changes to the education here. Click save once you're done."
                   dialogId={editEducationDialogId}
                 >
-                  <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
+                  <Button className=" font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
                     edit
                   </Button>
                   <EditEducation id={edu.id.toString()} />
-                  {/* <EditEducationV2 /> */}
                 </DialogContainer>
+                <EditDialogWrapper
+                  dialogTitle="edit education"
+                  dialogDescription="Make changes to the education here. Click save once you're done."
+                  id={edu.id.toString()}
+                />
               </div>
-              <EditDialogWrapper id={edu.id.toString()} />
             </SignedIn>
           </>
         ))}
