@@ -57,6 +57,16 @@ const EditEducation = ({ id }: { id: number }) => {
   const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
     try {
       setisPending(true);
+      var response = await fetch(`/education/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ education: values }),
+      });
+      if (!response) {
+        throw new Error(`HTTP Error! Status:${response}`);
+      }
+      const updatedData = await response.json();
+      alert(JSON.stringify(updatedData));
     } catch (e) {
       toast.error((e as Error).message);
     } finally {
