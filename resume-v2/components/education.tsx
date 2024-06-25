@@ -114,7 +114,6 @@ const EducationPage = () => {
                   dialogTitle="edit education"
                   dialogDescription="Make changes to the experience here. Click save once you're done."
                   dialogId={editEducationDialogId}
-                  id={edu.id.toString()}
                 >
                   <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
                     edit

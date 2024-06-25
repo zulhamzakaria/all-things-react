@@ -19,7 +19,6 @@ interface DialogContainerProps {
   dialogTitle: string;
   dialogDescription: string;
   style?: string;
-  id?: string;
   children: [
     React.ReactElement<typeof Button>,
     React.ReactElement<React.ComponentType<any>>
