@@ -12,7 +12,7 @@ import LoadingCard from "../loading-card";
 import { editEducationDialogId } from "@/constants";
 
 interface EditEducationProps {
-  id: number;
+  // id: number;
   institution: string;
   major: string;
 }
@@ -48,13 +48,13 @@ const EditEducation = ({ id }: { id: number }) => {
   //   })) || [];
 
   const mappedField = {
-    id: data?.id,
+    // id: data?.id,
     institution: data?.institution,
     major: data?.major,
   };
 
   const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
-    alert("save clicked");
+    alert("will it work?");
     onClose(editEducationDialogId);
   };
 
@@ -70,9 +70,7 @@ const EditEducation = ({ id }: { id: number }) => {
           </Label>
         </div>
         <>
-          <Input {...register("id")} defaultValue={mappedField.id} />
-          {errors.id && <p>{errors.id.message}</p>}
-          <div className="w-full flex flex-row mb-1" key={mappedField.id}>
+          <div className="w-full flex flex-row mb-1">
             <Input
               id="institution"
               className="w-1/2 mx-1"

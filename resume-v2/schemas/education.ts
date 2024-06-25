@@ -10,7 +10,7 @@ export const EducationSchema = z.object({
 });
 
 export const EditEducationSchema = z.object({
-  id: z.number(),
-  institution: z.string().optional(), //z.string().min(1, { message: "Institution is required" }),
+  // id: z.string(),
+  institution: z.string().min(1, { message: "Institution is required" }),
   major: z.string().optional(),
 });
