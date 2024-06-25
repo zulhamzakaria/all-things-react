@@ -26,7 +26,6 @@ const EditEducation = ({ id }: { id: number }) => {
   const { onClose } = useDialog();
   const [isPending, setisPending] = useState(false);
   const {
-    control,
     handleSubmit,
     register,
     formState: { errors },
