@@ -21,7 +21,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import EditEducation from "./educations/edit-education";
-import EditEducationV2 from "./educations/edit-education-v2";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface EducationProps {
@@ -122,8 +121,8 @@ const EducationPage = () => {
                   <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
                     edit
                   </Button>
-                  {/* <EditEducation id={edu.id} /> */}
-                  <EditEducationV2 />
+                  <EditEducation id={edu.id} />
+                  {/* <EditEducationV2 /> */}
                 </DialogContainer>
               </div>
             </SignedIn>
