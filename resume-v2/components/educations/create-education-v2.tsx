@@ -19,7 +19,7 @@ interface CreateEducationProps {
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const CreateEducation = () => {
+const CreateEducationV2 = () => {
   const { data } = useSWR("/education", fetcher);
   const { onClose } = useDialog();
   const [isPending, startTransition] = useTransition();
@@ -125,4 +125,4 @@ const CreateEducation = () => {
   );
 };
 
-export default CreateEducation;
+export default CreateEducationV2;
