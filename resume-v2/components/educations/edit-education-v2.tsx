@@ -7,9 +7,11 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 const EditEducationV2 = () => {
-  const { handleSubmit, register } = useForm<
-    z.infer<typeof EditEducationSchema>
-  >({
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<z.infer<typeof EditEducationSchema>>({
     resolver: zodResolver(EditEducationSchema),
   });
 
@@ -22,6 +24,7 @@ const EditEducationV2 = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         EditEducationV2
         <Input {...register("institution")} />
+        {errors.institution && <p>{errors.institution.message}</p>}
         <Button type="submit">Submit</Button>
       </form>
     </div>
