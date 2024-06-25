@@ -6,7 +6,7 @@ import { z } from "zod";
 import { Button } from "../ui/button";
 
 const EditEducationV2 = () => {
-  const { handleSubmit } = useForm<z.infer<typeof EducationSchema>>({
+  const { handleSubmit, register } = useForm<z.infer<typeof EducationSchema>>({
     resolver: zodResolver(EducationSchema),
   });
 

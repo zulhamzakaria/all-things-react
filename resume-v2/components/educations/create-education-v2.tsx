@@ -50,24 +50,25 @@ const CreateEducationV2 = () => {
   // };
 
   const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
-    try {
-      const { educations } = values;
-      var response = await fetch(`/education`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(educations),
-      });
-      if (!response) {
-        throw new Error(`HTTP error! Status:${response}`);
-      }
-      const updatedData = await response.json();
-      mutate("/education", [...data, ...updatedData]);
-      // alert(JSON.stringify(data));
-      onClose(createEducationDialogId);
-      toast.success("New education added");
-    } catch (e) {
-      toast.error((e as Error).message);
-    }
+    toast.success("button clicked");
+    // try {
+    //   const { educations } = values;
+    //   var response = await fetch(`/education`, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(educations),
+    //   });
+    //   if (!response) {
+    //     throw new Error(`HTTP error! Status:${response}`);
+    //   }
+    //   const updatedData = await response.json();
+    //   mutate("/education", [...data, ...updatedData]);
+    //   // alert(JSON.stringify(data));
+    //   onClose(createEducationDialogId);
+    //   toast.success("New education added");
+    // } catch (e) {
+    //   toast.error((e as Error).message);
+    // }
   };
 
   return (
