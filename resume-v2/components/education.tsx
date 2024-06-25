@@ -52,10 +52,7 @@ const EducationPage = () => {
         throw new Error(response);
       }
       const updatedData = await response.json();
-      //how to mutate?
-      if (data) {
-        mutate("/education", [...data, ...updatedData]);
-      }
+      mutate("/education", [...data!, ...updatedData]);
     } catch (e) {
       toast.error((e as Error).message);
     }
@@ -92,7 +89,7 @@ const EducationPage = () => {
                   <AlertDialogContent className=" bg-slate-50">
                     <AlertDialogHeader>
                       <AlertDialogTitle className=" text-slate-900">
-                        Are you sure?
+                        Are you sure ({edu.id})?
                       </AlertDialogTitle>
                       <AlertDialogDescription className="text-slate-800">
                         This will delete the entry permanently.
@@ -119,7 +116,7 @@ const EducationPage = () => {
                   dialogId={editEducationDialogId}
                 >
                   <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
-                    edit
+                    edit {edu.id}
                   </Button>
                   <EditEducation id={edu.id.toString()} />
                   {/* <EditEducationV2 /> */}
