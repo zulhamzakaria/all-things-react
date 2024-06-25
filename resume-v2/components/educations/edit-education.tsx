@@ -65,8 +65,6 @@ const EditEducation = ({ id }: { id: number }) => {
       if (!response) {
         throw new Error(`HTTP Error! Status:${response}`);
       }
-      const updatedData = await response.json();
-      alert(JSON.stringify(updatedData));
     } catch (e) {
       toast.error((e as Error).message);
     } finally {
