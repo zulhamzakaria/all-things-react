@@ -10,6 +10,7 @@ import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import LoadingCard from "../loading-card";
 import { editEducationDialogId } from "@/constants";
+import { toast } from "sonner";
 
 interface EditEducationProps {
   // id: number;
@@ -54,8 +55,14 @@ const EditEducation = ({ id }: { id: number }) => {
   };
 
   const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
-    alert("will it work?");
-    onClose(editEducationDialogId);
+    try {
+      setisPending(true);
+    } catch (e) {
+      toast.error((e as Error).message);
+    } finally {
+      setisPending(false);
+      onClose(editEducationDialogId);
+    }
   };
 
   return data && !isLoading ? (
