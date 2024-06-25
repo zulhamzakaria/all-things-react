@@ -1,7 +1,7 @@
 import { useDialog } from "@/lib/use-dialog";
 import { EditEducationSchema } from "@/schemas/education";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import useSWR, { mutate } from "swr";
 import { z } from "zod";
@@ -25,6 +25,7 @@ const EditEducation = ({ id }: { id: number }) => {
   );
   const { onClose } = useDialog();
   const [isPending, setisPending] = useState(false);
+
   const {
     handleSubmit,
     register,
@@ -52,7 +53,6 @@ const EditEducation = ({ id }: { id: number }) => {
   };
 
   const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
-    const { id, institution, major } = values;
     alert(JSON.stringify("123"));
   };
 
@@ -92,18 +92,12 @@ const EditEducation = ({ id }: { id: number }) => {
           <Button
             type="submit"
             disabled={isPending}
-            onClick={() => console.log("clicked")}
             className="px-10 mt-10 mb-2 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
           >
             save
           </Button>
         </div>
       </form>
-      <Button
-        onClick={() => onSubmit({ id: 1, institution: "jibo", major: "9090" })}
-      >
-        save outside
-      </Button>
     </div>
   ) : (
     <div className=" w-full flex justify-center">
