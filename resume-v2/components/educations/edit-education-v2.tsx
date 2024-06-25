@@ -6,11 +6,11 @@ import { z } from "zod";
 import { Button } from "../ui/button";
 
 const EditEducationV2 = () => {
-  const { handleSubmit } = useForm<z.infer<typeof EditEducationSchema>>({
-    resolver: zodResolver(EditEducationSchema),
+  const { handleSubmit } = useForm<z.infer<typeof EducationSchema>>({
+    resolver: zodResolver(EducationSchema),
   });
 
-  const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
+  const onSubmit = async (values: z.infer<typeof EducationSchema>) => {
     alert("button clicked");
   };
 
