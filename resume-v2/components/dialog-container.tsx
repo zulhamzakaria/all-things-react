@@ -34,7 +34,6 @@ const DialogContainer = ({
 }: DialogContainerProps) => {
   const [buttonChild, pageChild] = React.Children.toArray(children);
 
-  // const { isOpen, onOpen, onClose } = useDialog();
   const { dialogs, onOpen, onClose } = useDialog();
   const isOpen = dialogs[dialogId]?.isOpen || false;
   return (
