@@ -121,7 +121,7 @@ const EducationPage = () => {
                   <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
                     edit
                   </Button>
-                  <EditEducation id={edu.id} />
+                  <EditEducation id={edu.id.toString()} />
                   {/* <EditEducationV2 /> */}
                 </DialogContainer>
               </div>

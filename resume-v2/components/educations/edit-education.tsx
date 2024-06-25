@@ -1,7 +1,7 @@
 import { useDialog } from "@/lib/use-dialog";
 import { EditEducationSchema } from "@/schemas/education";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import useSWR, { mutate } from "swr";
 import { z } from "zod";
@@ -20,7 +20,7 @@ interface EditEducationProps {
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const EditEducation = ({ id }: { id: number }) => {
+const EditEducation = ({ id }: { id: string }) => {
   const { data, isLoading } = useSWR<EditEducationProps>(
     `/education/${id}`,
     fetcher
@@ -85,6 +85,7 @@ const EditEducation = ({ id }: { id: number }) => {
           </Label>
         </div>
         <>
+          <Input defaultValue={`/education/${id}`} />
           <div className="w-full flex flex-row mb-1">
             <Input
               id="institution"
