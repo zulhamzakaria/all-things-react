@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import EditEducation from "./educations/edit-education";
+import EditEducationV2 from "./educations/edit-education-v2";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface EducationProps {
@@ -82,7 +83,7 @@ const EducationPage = () => {
               <p className="font-semibold text-gray-900">{edu.major}</p>
             </div>
             <SignedIn>
-              <div className=" flex justify-end mb-10 w-full">
+              <div className=" flex justify-end mb-10 w-full" key={edu.id}>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
                     <Button className=" hover:text-red-600 font-mono font-semibold hover:underline">
@@ -121,7 +122,8 @@ const EducationPage = () => {
                   <Button className="font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
                     edit
                   </Button>
-                  <EditEducation id={edu.id} />
+                  {/* <EditEducation id={edu.id} /> */}
+                  <EditEducationV2 />
                 </DialogContainer>
               </div>
             </SignedIn>
