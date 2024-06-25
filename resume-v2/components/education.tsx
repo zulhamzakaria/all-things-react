@@ -111,7 +111,7 @@ const EducationPage = () => {
                     </AlertDialogHeader>
                   </AlertDialogContent>
                 </AlertDialog>
-                <DialogContainer
+                {/* <DialogContainer
                   dialogTitle="edit education"
                   dialogDescription="Make changes to the education here. Click save once you're done."
                   dialogId={editEducationDialogId}
@@ -120,7 +120,7 @@ const EducationPage = () => {
                     edit
                   </Button>
                   <EditEducation id={edu.id.toString()} />
-                </DialogContainer>
+                </DialogContainer> */}
                 <EditDialogWrapper
                   dialogId={editEducationDialogId}
                   dialogTitle="edit education"
