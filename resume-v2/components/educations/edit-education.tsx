@@ -70,6 +70,7 @@ const EditEducation = ({ id }: { id: number }) => {
         </div>
         <>
           <div className="w-full flex flex-row mb-1" key={mappedField.id}>
+            <Input {...register("id")} hidden />
             <Input
               id="institution"
               className="w-1/2 mx-1"
