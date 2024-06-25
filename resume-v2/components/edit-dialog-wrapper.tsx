@@ -6,7 +6,7 @@ const EditDialogWrapper = ({ id }: { id: string }) => {
   return (
     <div>
       EditDialogWrapper # {id}
-      <Button onClick={() => toast.success(id)}></Button>
+      <Button onClick={() => toast.success(id)}>button</Button>
     </div>
   );
 };
