@@ -54,6 +54,7 @@ const EditEducation = ({ id }: { id: number }) => {
   };
 
   const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
+    alert("save clicked");
     onClose(editEducationDialogId);
   };
 
@@ -69,8 +70,9 @@ const EditEducation = ({ id }: { id: number }) => {
           </Label>
         </div>
         <>
+          <Input {...register("id")} defaultValue={mappedField.id} />
+          {errors.id && <p>{errors.id.message}</p>}
           <div className="w-full flex flex-row mb-1" key={mappedField.id}>
-            <Input {...register("id")} hidden />
             <Input
               id="institution"
               className="w-1/2 mx-1"
