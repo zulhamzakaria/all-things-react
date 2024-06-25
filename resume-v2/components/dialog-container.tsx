@@ -19,6 +19,7 @@ interface DialogContainerProps {
   dialogTitle: string;
   dialogDescription: string;
   style?: string;
+  id?: string;
   children: [
     React.ReactElement<typeof Button>,
     React.ReactElement<React.ComponentType<any>>
@@ -31,6 +32,7 @@ const DialogContainer = ({
   dialogTitle,
   dialogDescription,
   style,
+  id,
 }: DialogContainerProps) => {
   const [buttonChild, pageChild] = React.Children.toArray(children);
 
@@ -38,6 +40,7 @@ const DialogContainer = ({
   const isOpen = dialogs[dialogId]?.isOpen || false;
   return (
     <div>
+      {id}
       <Dialog
         onOpenChange={isOpen ? () => onClose(dialogId) : () => onOpen(dialogId)}
         open={isOpen}
