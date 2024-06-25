@@ -9,6 +9,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import LoadingCard from "../loading-card";
+import { editEducationDialogId } from "@/constants";
 
 interface EditEducationProps {
   id: number;
@@ -53,7 +54,7 @@ const EditEducation = ({ id }: { id: number }) => {
   };
 
   const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
-    alert(JSON.stringify("123"));
+    onClose(editEducationDialogId);
   };
 
   return data && !isLoading ? (
