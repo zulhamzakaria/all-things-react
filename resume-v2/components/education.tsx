@@ -22,7 +22,6 @@ import {
 import { toast } from "sonner";
 import EditEducation from "./educations/edit-education";
 import EditEducationV2 from "./educations/edit-education-v2";
-import CreateEducationV2 from "./educations/create-education-v2";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface EducationProps {
@@ -124,8 +123,7 @@ const EducationPage = () => {
                     edit
                   </Button>
                   {/* <EditEducation id={edu.id} /> */}
-                  {/* <EditEducationV2 /> */}
-                  <CreateEducationV2 />
+                  <EditEducationV2 />
                 </DialogContainer>
               </div>
             </SignedIn>
