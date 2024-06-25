@@ -2,7 +2,6 @@ import { create } from "zustand";
 
 interface DialogState {
   isOpen: boolean;
-  id?: string;
 }
 
 interface DialogStore {
