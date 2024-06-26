@@ -28,7 +28,8 @@ const EditEducation = () => {
 
   const { data, isLoading } = useSWR<EditEducationProps>(
     `/education/${id}`,
-    fetcher
+    fetcher,
+    { revalidateOnFocus: true }
   );
   const { onClose } = useDialog();
   const [isPending, setisPending] = useState(false);
