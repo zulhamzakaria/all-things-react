@@ -22,6 +22,7 @@ import {
 import { toast } from "sonner";
 import EditEducation from "./educations/edit-education";
 import EditDialogWrapper from "./edit-dialog-wrapper";
+import { EditDialogItemIdStore } from "@/lib/use-dialog";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface EducationProps {
@@ -32,6 +33,7 @@ interface EducationProps {
 
 const EducationPage = () => {
   const { user } = useUser();
+  const { userId, itemId } = EditDialogItemIdStore();
 
   const { data, isLoading, error } = useSWR<EducationProps[]>(
     "/education",

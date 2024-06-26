@@ -30,12 +30,12 @@ export const useDialog = create<DialogStore>((set) => ({
 
 type EditDialogItemId = {
   userId: string;
-  id: string;
+  itemId: string;
 };
 
 export const EditDialogItemIdStore = create<EditDialogItemId>(() => ({
   userId: "",
-  id: "",
+  itemId: "",
 }));
 
 // interface DialogProps {
