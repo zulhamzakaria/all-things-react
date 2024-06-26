@@ -1,8 +1,8 @@
-import { useDialog } from "@/lib/use-dialog";
+import { EditDialogItemIdStore, useDialog } from "@/lib/use-dialog";
 import { EditEducationSchema } from "@/schemas/education";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect, useState } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+import React, {  useState } from "react";
+import { useForm } from "react-hook-form";
 import useSWR, { mutate } from "swr";
 import { z } from "zod";
 import { Input } from "../ui/input";
@@ -21,8 +21,10 @@ interface EditEducationProps {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const EditEducation = () => {
+  const { itemId, userId } = EditDialogItemIdStore();
+
   const { data, isLoading } = useSWR<EditEducationProps>(
-    `/education/${id}`,
+    `/education/${itemId}`,
     fetcher
   );
   const { onClose } = useDialog();
@@ -57,7 +59,7 @@ const EditEducation = () => {
   const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
     try {
       setisPending(true);
-      var response = await fetch(`/education/${id}`, {
+      var response = await fetch(`/education/${itemId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ education: values }),
@@ -85,7 +87,7 @@ const EditEducation = () => {
           </Label>
         </div>
         <>
-          <Input defaultValue={`/education/${id}`} />
+          <Input defaultValue={userId} />
           <div className="w-full flex flex-row mb-1">
             <Input
               id="institution"
