@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import DialogContainer from "./dialog-container";
@@ -17,6 +17,7 @@ const EditDialogWrapper = ({
   dialogTitle,
   dialogDescription,
 }: EditDialogWrapperProps) => {
+  const [editId, setEditId] = useState(id);
   return (
     <div className="flex justify-end">
       <DialogContainer
@@ -30,7 +31,7 @@ const EditDialogWrapper = ({
         >
           edit
         </Button>
-        <EditEducation id={id} />
+        <EditEducation id={editId} />
       </DialogContainer>
     </div>
   );
