@@ -1,7 +1,7 @@
 import { EditDialogItemIdStore, useDialog } from "@/lib/use-dialog";
 import { EditEducationSchema } from "@/schemas/education";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useSWR, { mutate } from "swr";
 import { z } from "zod";
@@ -50,7 +50,6 @@ const EditEducation = () => {
   //   })) || [];
 
   const mappedField = {
-    // id: data?.id,
     institution: data?.institution,
     major: data?.major,
   };
@@ -66,9 +65,12 @@ const EditEducation = () => {
       if (!response) {
         throw new Error(`HTTP Error! Status:${response}`);
       }
+      var updatedData = await response.json();
+      mutate(`/education/${itemId}`, { ...data, updatedData });
     } catch (e) {
       toast.error((e as Error).message);
     } finally {
+      toast.success("Education updated");
       setisPending(false);
       onClose(editEducationDialogId);
     }
@@ -86,7 +88,6 @@ const EditEducation = () => {
           </Label>
         </div>
         <>
-          <Input defaultValue={userId} />
           <div className="w-full flex flex-row mb-1">
             <Input
               id="institution"
