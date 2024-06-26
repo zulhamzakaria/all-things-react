@@ -6,18 +6,20 @@ import { useUser } from "@clerk/nextjs";
 import { EditDialogItemIdStore } from "@/lib/use-dialog";
 
 interface EditDialogWrapperProps {
+  id: string;
   dialogId: string;
   dialogTitle: string;
   dialogDescription: string;
 }
 
 const EditDialogWrapper = ({
+  id,
   dialogId,
   dialogTitle,
   dialogDescription,
 }: EditDialogWrapperProps) => {
   const { user } = useUser();
-  const { itemId, userId, setItemId, setUserId } = EditDialogItemIdStore();
+  const { setItemId, setUserId } = EditDialogItemIdStore();
 
   return (
     <div className="flex justify-end">
@@ -26,10 +28,16 @@ const EditDialogWrapper = ({
         dialogTitle={dialogTitle}
         dialogDescription={dialogDescription}
       >
-        <Button className=" font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
+        <Button
+          onClick={() => {
+            setItemId(id);
+            setUserId(user!.id);
+          }}
+          className=" font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold"
+        >
           edit
         </Button>
-        <EditEducation id={"cock"} />
+        <EditEducation id={id} />
       </DialogContainer>
     </div>
   );

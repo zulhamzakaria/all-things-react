@@ -123,6 +123,7 @@ const EducationPage = () => {
                 </DialogContainer> */}
                 <EditDialogWrapper
                   key={edu.id}
+                  id={edu.id.toString()}
                   dialogId={editEducationDialogId}
                   dialogTitle="edit education"
                   dialogDescription="Make changes to the education here. Click save once you're done."
