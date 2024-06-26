@@ -27,7 +27,7 @@ const EditEducation = () => {
   const id = user!.id === userId ? itemId : null;
 
   const { data, isLoading } = useSWR<EditEducationProps>(
-    `/education/${itemId}`,
+    `/education/${id}`,
     fetcher
   );
   const { onClose } = useDialog();
@@ -61,7 +61,7 @@ const EditEducation = () => {
   const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
     try {
       setisPending(true);
-      var response = await fetch(`/education/${itemId}`, {
+      var response = await fetch(`/education/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ education: values }),
