@@ -4,14 +4,12 @@ import DialogContainer from "./dialog-container";
 import EditEducation from "./educations/edit-education";
 
 interface EditDialogWrapperProps {
-  id: string;
   dialogId: string;
   dialogTitle: string;
   dialogDescription: string;
 }
 
 const EditDialogWrapper = ({
-  id,
   dialogId,
   dialogTitle,
   dialogDescription,
@@ -23,13 +21,10 @@ const EditDialogWrapper = ({
         dialogTitle={dialogTitle}
         dialogDescription={dialogDescription}
       >
-        <Button
-          onClick={() => toast.success(id)}
-          className=" font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold"
-        >
+        <Button className=" font-mono rounded-full bg-blue-500 hover:bg-blue-700 text-white font-semibold">
           edit
         </Button>
-        <EditEducation id={id} />
+        <EditEducation id={"cock"} />
       </DialogContainer>
     </div>
   );
