@@ -33,7 +33,7 @@ type EditDialogItemId = {
   id: string;
 };
 
-export const EditDialogId = create<EditDialogItemId>(() => ({
+export const EditDialogItemIdStore = create<EditDialogItemId>(() => ({
   userId: "",
   id: "",
 }));

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SlotTitle from "./slot-title";
 import useSWR, { mutate } from "swr";
 import LoadingCard from "./loading-card";
-import { SignedIn } from "@clerk/nextjs";
+import { SignedIn, useUser } from "@clerk/nextjs";
 import DialogContainer from "./dialog-container";
 import { Button } from "./ui/button";
 import { PlusIcon } from "lucide-react";
@@ -31,6 +31,8 @@ interface EducationProps {
 }
 
 const EducationPage = () => {
+  const { user } = useUser();
+
   const { data, isLoading, error } = useSWR<EducationProps[]>(
     "/education",
     fetcher
