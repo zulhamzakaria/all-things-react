@@ -2,6 +2,8 @@ import { Button } from "./ui/button";
 import { toast } from "sonner";
 import DialogContainer from "./dialog-container";
 import EditEducation from "./educations/edit-education";
+import { useUser } from "@clerk/nextjs";
+import { EditDialogItemIdStore } from "@/lib/use-dialog";
 
 interface EditDialogWrapperProps {
   dialogId: string;
@@ -14,6 +16,9 @@ const EditDialogWrapper = ({
   dialogTitle,
   dialogDescription,
 }: EditDialogWrapperProps) => {
+  const { user } = useUser();
+  const { itemId, userId, setItemId, setUserId } = EditDialogItemIdStore();
+
   return (
     <div className="flex justify-end">
       <DialogContainer

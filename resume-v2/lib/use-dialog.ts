@@ -31,6 +31,8 @@ export const useDialog = create<DialogStore>((set) => ({
 type EditDialogItemId = {
   userId: string;
   itemId: string;
+  setUserId: (userId: string) => void;
+  setItemId: (itemId: string) => void;
 };
 
 export const EditDialogItemIdStore = create<EditDialogItemId>((set) => ({
