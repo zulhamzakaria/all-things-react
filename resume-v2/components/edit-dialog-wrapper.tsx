@@ -37,7 +37,7 @@ const EditDialogWrapper = ({
         >
           edit
         </Button>
-        <EditEducation id={id} />
+        <EditEducation />
       </DialogContainer>
     </div>
   );

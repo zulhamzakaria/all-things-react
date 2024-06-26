@@ -20,7 +20,7 @@ interface EditEducationProps {
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const EditEducation = ({ id }: { id: string }) => {
+const EditEducation = () => {
   const { data, isLoading } = useSWR<EditEducationProps>(
     `/education/${id}`,
     fetcher
