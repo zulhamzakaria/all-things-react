@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SlotTitle from "./slot-title";
 import useSWR, { mutate } from "swr";
 import LoadingCard from "./loading-card";
-import { SignedIn, useUser } from "@clerk/nextjs";
+import { SignedIn } from "@clerk/nextjs";
 import DialogContainer from "./dialog-container";
 import { Button } from "./ui/button";
 import { PlusIcon } from "lucide-react";
@@ -22,7 +22,6 @@ import {
 import { toast } from "sonner";
 import EditEducation from "./educations/edit-education";
 import EditDialogWrapper from "./edit-dialog-wrapper";
-import { EditDialogItemIdStore } from "@/lib/use-dialog";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface EducationProps {
@@ -32,9 +31,6 @@ interface EducationProps {
 }
 
 const EducationPage = () => {
-  const { user } = useUser();
-  const { userId, itemId } = EditDialogItemIdStore();
-
   const { data, isLoading, error } = useSWR<EducationProps[]>(
     "/education",
     fetcher
