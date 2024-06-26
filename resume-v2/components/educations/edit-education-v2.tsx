@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { EditDialogItemIdStore } from "@/lib/use-dialog";
 
 const EditEducationV2 = () => {
   const {
@@ -15,6 +16,8 @@ const EditEducationV2 = () => {
     resolver: zodResolver(EditEducationSchema),
   });
 
+  const { itemId, userId } = EditDialogItemIdStore();
+
   const onSubmit = async (values: z.infer<typeof EditEducationSchema>) => {
     alert("button clicked");
   };
@@ -23,7 +26,7 @@ const EditEducationV2 = () => {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         EditEducationV2
-        <Input {...register("institution")} />
+        <Input {...register("institution")} defaultValue={itemId} />
         {errors.institution && <p>{errors.institution.message}</p>}
         <Button type="submit">Submit</Button>
       </form>
