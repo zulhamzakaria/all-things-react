@@ -13,7 +13,6 @@ import { editEducationDialogId } from "@/constants";
 import { toast } from "sonner";
 
 interface EditEducationProps {
-  // id: number;
   institution: string;
   major: string;
 }
