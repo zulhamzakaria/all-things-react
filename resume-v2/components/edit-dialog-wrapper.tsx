@@ -4,7 +4,6 @@ import DialogContainer from "./dialog-container";
 import EditEducation from "./educations/edit-education";
 import { useUser } from "@clerk/nextjs";
 import { EditDialogItemIdStore } from "@/lib/use-dialog";
-import EditEducationV2 from "./educations/edit-education-v2";
 
 interface EditDialogWrapperProps {
   id: string;
@@ -38,8 +37,7 @@ const EditDialogWrapper = ({
         >
           edit
         </Button>
-        {/* <EditEducation id={id} /> */}
-        <EditEducationV2 />
+        <EditEducation id={id} />
       </DialogContainer>
     </div>
   );
