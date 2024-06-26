@@ -33,9 +33,15 @@ type EditDialogItemId = {
   itemId: string;
 };
 
-export const EditDialogItemIdStore = create<EditDialogItemId>(() => ({
+export const EditDialogItemIdStore = create<EditDialogItemId>((set) => ({
   userId: "",
   itemId: "",
+  setUserId: (userId: string) => {
+    set({ userId });
+  },
+  setItemId: (itemId: string) => {
+    set({ itemId });
+  },
 }));
 
 // interface DialogProps {
