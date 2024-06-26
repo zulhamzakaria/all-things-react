@@ -28,6 +28,16 @@ export const useDialog = create<DialogStore>((set) => ({
     })),
 }));
 
+type EditDialogItemId = {
+  userId: string;
+  id: string;
+};
+
+export const EditDialogId = create<EditDialogItemId>(() => ({
+  userId: "",
+  id: "",
+}));
+
 // interface DialogProps {
 //   isOpen: boolean;
 //   onOpen: () => void;
