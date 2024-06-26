@@ -66,7 +66,7 @@ const EditEducation = () => {
         throw new Error(`HTTP Error! Status:${response}`);
       }
       var updatedData = await response.json();
-      mutate(`/education/${itemId}`, { ...data, updatedData });
+      mutate("/education", [...updatedData]);
     } catch (e) {
       toast.error((e as Error).message);
     } finally {
