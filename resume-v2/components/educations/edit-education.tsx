@@ -23,7 +23,8 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const EditEducation = () => {
   const { user } = useUser();
   const { itemId, userId } = EditDialogItemIdStore();
-  const [id, setId] = useState("");
+
+  const id = user!.id === userId ? itemId : null;
 
   const { data, isLoading } = useSWR<EditEducationProps>(
     `/education/${itemId}`,
@@ -31,14 +32,6 @@ const EditEducation = () => {
   );
   const { onClose } = useDialog();
   const [isPending, setisPending] = useState(false);
-
-  if (user?.id !== userId) {
-    toast.error("User Id mismatched");
-    onClose(editEducationDialogId);
-  } else {
-    setId(itemId);
-    toast.success(`Updating item of id ${id}`);
-  }
 
   const {
     handleSubmit,
