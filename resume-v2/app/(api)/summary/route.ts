@@ -1,11 +1,14 @@
 import { summary } from "@/data";
 
-const url = process.env.API_URL;
+// https://online-resume-with-minimal-api.azurewebsites.net/api/summaries/user01
+const url = `${process.env.API_URL}/summaries`;
 
 export async function GET() {
   // get data from api
   const fullUrl = `${url}/user01`;
-  console.log(fullUrl);
+
+  const result = await fetch(fullUrl);
+  console.log(result);
 
   return Response.json(summary);
 }
