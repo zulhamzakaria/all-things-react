@@ -1,12 +1,12 @@
 import { summary } from "@/data";
-import { getAuth } from "@clerk/nextjs/server";
-import { NextApiRequest } from "next";
+import { useUser } from "@clerk/nextjs";
 
 const url = process.env.API_URL;
 
-export async function GET(req: NextApiRequest) {
-  const { userId } = getAuth(req);
-  if (userId) {
+export async function GET() {
+  const { user } = useUser();
+
+  if (user) {
     // get data from api
   }
   return Response.json(summary);
