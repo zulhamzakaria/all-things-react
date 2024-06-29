@@ -1,16 +1,12 @@
 import { summary } from "@/data";
-import { useUser } from "@clerk/nextjs";
 
 const url = process.env.API_URL;
 
 export async function GET() {
-  const { user } = useUser();
+  // get data from api
+  const fullUrl = `${url}/user01`;
+  console.log(fullUrl);
 
-  if (user) {
-    // get data from api
-    const fullUrl = `${url}/${user.id}`;
-    console.log(fullUrl);
-  }
   return Response.json(summary);
 }
 
