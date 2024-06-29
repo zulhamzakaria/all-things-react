@@ -4,11 +4,15 @@ import { useUser } from "@clerk/nextjs";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { user } = useUser();
-  if (req.method === "GET") {
-    if(user){
-      var result = getHandler(user!.id);
-      return res.status(200).json(result);
+
+  try {
+    switch (req.method) {
+      case "GET":
+        var result = getHandler(user!.id);
+        return res.status(200).json(result);
     }
+  } catch (e) {
+    res.status(500).json("Error!");
   }
 }
 
