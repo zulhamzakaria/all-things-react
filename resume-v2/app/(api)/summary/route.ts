@@ -8,6 +8,8 @@ export async function GET() {
 
   if (user) {
     // get data from api
+    const fullUrl = `${url}/${user.id}`;
+    console.log(fullUrl);
   }
   return Response.json(summary);
 }
