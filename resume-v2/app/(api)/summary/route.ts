@@ -1,6 +1,12 @@
 import { summary } from "@/data";
+import { getAuth } from "@clerk/nextjs/server";
+import { NextApiRequest } from "next";
 
-export async function GET() {
+const url = process.env.API_URL;
+
+export async function GET(req: NextApiRequest) {
+  const { userId } = getAuth(req);
+  console.log(`${url}:${userId}`);
   return Response.json(summary);
 }
 
