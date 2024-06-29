@@ -10,7 +10,8 @@ export async function GET() {
   const result = await response.json();
 
   if (result) {
-    return Response.json(result);
+    //return Response.json(result);
+    return Response.json({ id: 2, userId: "user01", description: "string" });
   } else {
     return Response.json(summary);
   }
