@@ -12,13 +12,11 @@ export async function GET(_req: NextApiRequest) {
   console.log(summary);
   console.log(result);
 
-  return Response.json(summary);
-
-  // if (result) {
-  //return Response.json(result);
-  // } else {
-  //   return Response.json(summary);
-  // }
+  if (result) {
+    return Response.json(result);
+  } else {
+    return Response.json(summary);
+  }
 }
 
 export async function PATCH(req: Request) {
