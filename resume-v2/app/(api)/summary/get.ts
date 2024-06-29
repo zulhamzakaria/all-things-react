@@ -1,5 +1,5 @@
 import { summary } from "@/data";
 
-export async function GET() {
+export async function getHandler() {
   return Response.json(summary);
 }
