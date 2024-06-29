@@ -1,8 +1,20 @@
-import { summary } from "@/data";
+import { NextApiRequest, NextApiResponse } from "next";
+import { getHandler } from "./get";
+import { useUser } from "@clerk/nextjs";
 
-export async function GET() {
-  return Response.json(summary);
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { user } = useUser();
+  if (req.method === "GET") {
+    if(user){
+      var result = getHandler(user!.id);
+      return res.status(200).json(result);
+    }
+  }
 }
+
+// export async function GET() {
+//   return Response.json(summary);
+// }
 
 export async function PATCH(req: Request) {
   const body = await req.json();
