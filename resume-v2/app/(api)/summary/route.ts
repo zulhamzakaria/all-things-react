@@ -4,11 +4,11 @@ import { useUser } from "@clerk/nextjs";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { user } = useUser();
-
+  const url = process.env.API_URL;
   try {
     switch (req.method) {
       case "GET":
-        var result = getHandler(user!.id);
+        var result = getHandler(user!.id, url!);
         return res.status(200).json(result);
     }
   } catch (e) {
