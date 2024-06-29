@@ -1,7 +1,6 @@
 import { summary } from "@/data";
 import { NextApiRequest, NextApiResponse } from "next";
 
-// https://online-resume-with-minimal-api.azurewebsites.net/api/summaries/user01
 const url = `${process.env.API_URL}/summaries`;
 
 export async function GET(_req: NextApiRequest) {
@@ -9,6 +8,9 @@ export async function GET(_req: NextApiRequest) {
 
   const response = await fetch(fullUrl);
   const result = await response.json();
+
+  console.log(summary);
+  console.log(result);
 
   return Response.json(summary);
 

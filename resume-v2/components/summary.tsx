@@ -23,7 +23,7 @@ import { SaveAllIcon } from "lucide-react";
 
 interface SummaryProps {
   userId: string;
-  summary: string;
+  description: string;
 }
 
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -31,17 +31,17 @@ export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const SummaryPage = () => {
   const { data, mutate, error } = useSWR<SummaryProps>("/summary", fetcher);
 
-  const [resumeSummary, setResumeSummary] = useState(data?.summary || "");
+  const [resumeSummary, setResumeSummary] = useState(data?.description || "");
 
   const handleClick = () => {
     if (data) {
-      mutate({ ...data, summary: resumeSummary }, false);
+      mutate({ ...data, description: resumeSummary }, false);
     }
     toast.success("Summary updated", { duration: 2000 });
   };
 
   useEffect(() => {
-    setResumeSummary(data?.summary || "");
+    setResumeSummary(data?.description || "");
   }, [data]);
 
   if (error) {

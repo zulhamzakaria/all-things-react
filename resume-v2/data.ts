@@ -9,7 +9,7 @@ export const details = {
 
 export const summary = {
   userId: "user01",
-  summary:
+  description:
     "Experienced Senior Application Developer wanting to learn more about System Design and Architecture. Worked on enterprise projects catering to clients like HLB, HLISB, Prudential, SIRIM, SEH. Now is exploring the world of front-end development via Typescript and NextJS. ",
 };
 
