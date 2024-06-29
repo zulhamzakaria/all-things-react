@@ -6,7 +6,9 @@ const url = process.env.API_URL;
 
 export async function GET(req: NextApiRequest) {
   const { userId } = getAuth(req);
-  console.log(`${url}:${userId}`);
+  if (userId) {
+    // get data from api
+  }
   return Response.json(summary);
 }
 
