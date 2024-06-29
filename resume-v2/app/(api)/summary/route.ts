@@ -4,12 +4,15 @@ import { summary } from "@/data";
 const url = `${process.env.API_URL}/summaries`;
 
 export async function GET() {
-  // get data from api
+  
   const fullUrl = `${url}/user01`;
 
-  const result = await fetch(fullUrl);
-  console.log(result);
+  const response = await fetch(fullUrl);
+  const result = await response.json();
 
+  if (result) {
+    return Response.json(summary);
+  }
   return Response.json(summary);
 }
 
