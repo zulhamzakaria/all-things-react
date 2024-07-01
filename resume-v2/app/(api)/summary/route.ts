@@ -13,14 +13,10 @@ export async function GET(req: NextRequest) {
 
   const currentUser = userId ?? userIdFromURL;
 
-  console.log(currentUser);
-
   const fullUrl = `${url}/${currentUser}`;
 
   const response = await fetch(fullUrl);
   const result = await response.json();
-
-  console.log(result);
 
   if (result !== "No data found.") {
     return Response.json(result);
