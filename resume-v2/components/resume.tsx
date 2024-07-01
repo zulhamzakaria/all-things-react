@@ -7,10 +7,26 @@ import SkillsPage from "./skills";
 import SummaryPage from "./summary";
 import { Button } from "./ui/button";
 import ReactToPrint from "react-to-print";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useParams } from "next/navigation";
+import { UserStore } from "@/lib/use-store";
+import { useUser } from "@clerk/nextjs";
 
 const ResumePage = () => {
   const componentRef = useRef<HTMLDivElement>(null);
+
+  const { user } = useUser();
+  const { setUserId } = UserStore();
+  const searchParams = useParams();
+
+  useEffect(() => {
+    // if (user) {
+    //   setUserId(user.id);
+    // } else {
+    //   const userId = router.query.userId as string;
+    //   setUserId(userId!);
+    // }
+  }, [user]);
 
   return (
     <>
