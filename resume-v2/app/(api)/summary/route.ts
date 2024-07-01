@@ -7,12 +7,11 @@ const url = `${process.env.API_URL}/summaries`;
 
 export async function GET(req: NextRequest) {
   const headersList = headers();
-  const requestUrl = headersList.get("referer");
-
+  const requestUrl = headersList.get("referer") as string;
+  const userIdFromURL = requestUrl?.split("=")[1];
   const { userId } = getAuth(req);
 
-  const cock = req.nextUrl.searchParams.get("userId");
-  console.log(userId);
+  console.log(userIdFromURL);
   const fullUrl = `${url}/user01`;
 
   const response = await fetch(fullUrl);
