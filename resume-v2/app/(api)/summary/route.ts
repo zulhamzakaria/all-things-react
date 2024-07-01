@@ -1,12 +1,17 @@
 import { summary } from "@/data";
-import { NextApiRequest } from "next";
+import { NextRequest } from "next/server";
+import { headers } from "next/headers";
 
 const url = `${process.env.API_URL}/summaries`;
 
-export async function GET(_req: NextApiRequest) {
+export async function GET(req: NextRequest) {
+  const headersList = headers();
 
+  const requestUrl = headersList.get("referer");
+
+  const cock = req.nextUrl.searchParams.get("userId");
+  console.log(requestUrl);
   const fullUrl = `${url}/user01`;
-  //const fullUrl = `${url}/${userId}`;
 
   const response = await fetch(fullUrl);
   const result = await response.json();
