@@ -26,7 +26,8 @@ const ResumePage = () => {
     //   const userId = router.query.userId as string;
     //   setUserId(userId!);
     // }
-  }, [user]);
+    console.log(searchParams);
+  }, [user, searchParams]);
 
   return (
     <>
