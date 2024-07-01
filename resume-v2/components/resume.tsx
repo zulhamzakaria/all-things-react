@@ -8,7 +8,7 @@ import SummaryPage from "./summary";
 import { Button } from "./ui/button";
 import ReactToPrint from "react-to-print";
 import { useEffect, useRef } from "react";
-import { useParams, usePathname } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 import { UserStore } from "@/lib/use-store";
 import { useUser } from "@clerk/nextjs";
 
@@ -17,7 +17,8 @@ const ResumePage = () => {
 
   const { user } = useUser();
   const { setUserId } = UserStore();
-  const searchParams = useParams();
+  const searchParams = useSearchParams();
+  const query = searchParams.get("userId") as string;
   const pathName = usePathname();
 
   useEffect(() => {
@@ -27,7 +28,8 @@ const ResumePage = () => {
     //   const userId = router.query.userId as string;
     //   setUserId(userId!);
     // }
-  }, [user, searchParams]);
+    alert(query);
+  }, [user, query]);
 
   return (
     <>
