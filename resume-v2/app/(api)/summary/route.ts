@@ -1,16 +1,18 @@
 import { summary } from "@/data";
 import { NextRequest } from "next/server";
 import { headers } from "next/headers";
+import { getAuth } from "@clerk/nextjs/server";
 
 const url = `${process.env.API_URL}/summaries`;
 
 export async function GET(req: NextRequest) {
   const headersList = headers();
-
   const requestUrl = headersList.get("referer");
 
+  const { userId } = getAuth(req);
+
   const cock = req.nextUrl.searchParams.get("userId");
-  console.log(requestUrl);
+  console.log(userId);
   const fullUrl = `${url}/user01`;
 
   const response = await fetch(fullUrl);
