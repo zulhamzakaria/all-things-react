@@ -9,9 +9,6 @@ export async function GET(_req: NextApiRequest) {
   const response = await fetch(fullUrl);
   const result = await response.json();
 
-  console.log(summary);
-  console.log(result);
-
   if (result) {
     return Response.json(result);
   } else {
