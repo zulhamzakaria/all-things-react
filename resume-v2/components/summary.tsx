@@ -91,14 +91,13 @@ const SummaryPage = () => {
                 />
               </div>
             </div>
-            <DialogFooter className="flex flex-rows">
+            <DialogFooter className="flex flex-rows w-full ">
               <DialogClose asChild>
                 <Button
                   type="submit"
-                  className=" mt-10 w-full font-mono rounded-lg bg-emerald-500  hover:bg-emerald-700 text-white font-semibold"
+                  className=" px-10 mt-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
                   onClick={handleClick}
                 >
-                  <SaveAllIcon className=" mr-2" />
                   save
                 </Button>
               </DialogClose>
