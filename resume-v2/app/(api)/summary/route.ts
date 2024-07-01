@@ -1,14 +1,12 @@
 import { summary } from "@/data";
-import { UserStore } from "@/lib/use-store";
 import { NextApiRequest } from "next";
 
 const url = `${process.env.API_URL}/summaries`;
 
 export async function GET(_req: NextApiRequest) {
-  const { userId } = UserStore();
 
-  // const fullUrl = `${url}/user01`;
-  const fullUrl = `${url}/${userId}`;
+  const fullUrl = `${url}/user01`;
+  //const fullUrl = `${url}/${userId}`;
 
   const response = await fetch(fullUrl);
   const result = await response.json();
