@@ -13,6 +13,10 @@ export async function GET(req: NextRequest) {
 
   const currentUser = userId ?? userIdFromURL;
 
+  if (currentUser === undefined) {
+    return Response.json(summary);
+  }
+
   const fullUrl = `${url}/${currentUser}`;
 
   const response = await fetch(fullUrl);
