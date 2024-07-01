@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
 
   console.log(currentUser);
 
-  const fullUrl = `${url}/900`;
+  const fullUrl = `${url}/${currentUser}`;
 
   const response = await fetch(fullUrl);
   const result = await response.json();
