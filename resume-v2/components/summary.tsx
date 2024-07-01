@@ -19,7 +19,6 @@ import { Textarea } from "./ui/textarea";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Separator } from "./ui/separator";
-import { SaveAllIcon } from "lucide-react";
 
 interface SummaryProps {
   userId: string;
