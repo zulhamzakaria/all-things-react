@@ -19,6 +19,7 @@ import { Textarea } from "./ui/textarea";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Separator } from "./ui/separator";
+import { SignedIn } from "@clerk/nextjs";
 
 interface SummaryProps {
   userId: string;
@@ -55,55 +56,57 @@ const SummaryPage = () => {
           {resumeSummary}
         </span>
       </ItemCard>
-      <div className=" mt-5 flex justify-end">
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button
-              variant={"outline"}
-              className=" rounded-full font-mono text-amber-50 bg-blue-500 hover:bg-blue-700 font-semibold"
-            >
-              edit
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="bg-slate-50 lg:min-w-[600px]">
-            <DialogHeader>
-              <DialogTitle className=" font-sans text-4xl font-light my-10 flex justify-center">
-                EDIT SUMMARY
-              </DialogTitle>
-              <DialogDescription className="font-sans font-light">
-                Make changes to the resume summary here. Click save when you're
-                done.
-              </DialogDescription>
-            </DialogHeader>
-            <Separator className="bg-gray-950" />
-            <div>
-              <div className="flex flex-col">
-                <Label htmlFor="summary" className="mb-3 font-sans">
-                  Summary
-                </Label>
-                <Textarea
-                  id="summary"
-                  value={resumeSummary}
-                  className=" col-span-3 font-sans"
-                  rows={7}
-                  onChange={(e) => setResumeSummary(e.target.value)}
-                />
+      <SignedIn>
+        <div className=" mt-5 flex justify-end">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant={"outline"}
+                className=" rounded-full font-mono text-amber-50 bg-blue-500 hover:bg-blue-700 font-semibold"
+              >
+                edit
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="bg-slate-50 lg:min-w-[600px]">
+              <DialogHeader>
+                <DialogTitle className=" font-sans text-4xl font-light my-10 flex justify-center">
+                  EDIT SUMMARY
+                </DialogTitle>
+                <DialogDescription className="font-sans font-light">
+                  Make changes to the resume summary here. Click save when
+                  you're done.
+                </DialogDescription>
+              </DialogHeader>
+              <Separator className="bg-gray-950" />
+              <div>
+                <div className="flex flex-col">
+                  <Label htmlFor="summary" className="mb-3 font-sans">
+                    Summary
+                  </Label>
+                  <Textarea
+                    id="summary"
+                    value={resumeSummary}
+                    className=" col-span-3 font-sans"
+                    rows={7}
+                    onChange={(e) => setResumeSummary(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
-            <DialogFooter className="flex flex-rows w-full ">
-              <DialogClose asChild>
-                <Button
-                  type="submit"
-                  className=" px-10 mt-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
-                  onClick={handleClick}
-                >
-                  save
-                </Button>
-              </DialogClose>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-      </div>
+              <DialogFooter className="flex flex-rows w-full ">
+                <DialogClose asChild>
+                  <Button
+                    type="submit"
+                    className=" px-10 mt-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
+                    onClick={handleClick}
+                  >
+                    save
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </div>
+      </SignedIn>
     </div>
   ) : (
     <LoadingCard />
