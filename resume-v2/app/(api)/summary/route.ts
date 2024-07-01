@@ -11,13 +11,18 @@ export async function GET(req: NextRequest) {
   const userIdFromURL = requestUrl?.split("=")[1];
   const { userId } = getAuth(req);
 
-  console.log(userIdFromURL);
-  const fullUrl = `${url}/user01`;
+  const currentUser = userId ?? userIdFromURL;
+
+  console.log(currentUser);
+
+  const fullUrl = `${url}/900`;
 
   const response = await fetch(fullUrl);
   const result = await response.json();
 
-  if (result) {
+  console.log(result);
+
+  if (result !== "No data found.") {
     return Response.json(result);
   } else {
     return Response.json(summary);
