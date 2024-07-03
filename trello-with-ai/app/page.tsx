@@ -1,3 +1,4 @@
+// @ means root directive. defined inside the tsconfig.json "paths" section
 import Header from "@/components/header";
 
 export default function Home() {
