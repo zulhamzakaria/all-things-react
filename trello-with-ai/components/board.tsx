@@ -3,6 +3,7 @@
 import { useBoardStore } from "@/store/board-store";
 import { useEffect } from "react";
 import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
+import Column from "./column";
 
 const Board = () => {
   const [board, getBoard] = useBoardStore((state) => [
