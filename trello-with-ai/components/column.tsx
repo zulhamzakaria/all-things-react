@@ -1,6 +1,7 @@
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { Draggable, Droppable } from "react-beautiful-dnd";
+import TodoCard from "./todo-card";
 
 interface ColumnProps {
   id: TypedColumn;
@@ -56,7 +57,7 @@ const Column = ({ id, todos, index }: ColumnProps) => {
                               id={id}
                               innerRef={provided.innerRef}
                               draggableProps={provided.draggableProps}
-                              dragHandleProps={provided.dragHandleProps}
+                              dragHandleProps={provided.dragHandleProps!}
                             />
                           </div>
                         )}
