@@ -8,7 +8,7 @@ export const getTodosGroupedByColumn = async () => {
 
   const todos = data.documents;
 
-  const solumns = todos.reduce((acc, todo) => {
+  const columns = todos.reduce((acc, todo) => {
     if (!acc.get(todo.status)) {
       acc.set(todo.status, {
         id: todo.status,
@@ -29,4 +29,25 @@ export const getTodosGroupedByColumn = async () => {
 
     return acc;
   }, new Map<TypedColumn, Column>());
+
+  // empty todos as default if theres no data
+  const columnTypes: TypedColumn[] = ["todo", "in-progress", "done"];
+  for (const columnType of columnTypes) {
+    if (!columns.get(columnType)) {
+      columns.set(columnType, {
+        id: columnType,
+        todos: [],
+      });
+    }
+  }
+
+  const sortedColumns = new Map(
+    Array.from(columns.entries()).sort(
+      (a, b) => columnTypes.indexOf(a[0]) - columnTypes.indexOf(b[0])
+    )
+  );
+
+  const board: Board = { columns: sortedColumns };
+
+  return board;
 };
