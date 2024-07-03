@@ -10,6 +10,7 @@ const useBoardStore = create<BoardState>((set) => ({
     columns: new Map<TypedColumn, Column>(),
   },
   getBoard: async () => {
-    
+    let board;
+    set({ board });
   },
 }));
