@@ -32,7 +32,7 @@ const TaskTypeRadioGroup = () => {
       <div className="mx-auto w-full max-w-d">
         <RadioGroup value={newTaskType} onChange={(e) => setNewTaskType(e)}>
           <div className="space-y-2">
-            {types.map((type) => (
+            {/* {types.map((type) => (
               <Radio
                 key={type.id}
                 value={type.id}
@@ -48,7 +48,7 @@ const TaskTypeRadioGroup = () => {
                   } relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                 }
               ></Radio>
-            ))}
+            ))} */}
           </div>
         </RadioGroup>
       </div>
