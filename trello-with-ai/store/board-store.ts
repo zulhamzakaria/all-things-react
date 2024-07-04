@@ -16,6 +16,7 @@ interface BoardState {
   setNewTaskType: (newTaskType: TypedColumn) => void;
   image: File | null;
   setImage: (image: File | null) => void;
+  addTask: (todo: string, columnId: TypedColumn, image?: File | null) => void;
 }
 
 export const useBoardStore = create<BoardState>((set, get) => ({
@@ -62,5 +63,18 @@ export const useBoardStore = create<BoardState>((set, get) => ({
   image: null,
   setImage(image) {
     set({ image });
+  },
+  async addTask(todo, columnId, image?) {
+    let file: Image | undefined;
+
+    if (image) {
+      const fileUploaded = await uploadImage(image);
+      if (!fileUploaded) {
+        file = {
+          bucketId: fileUploaded.bucketId,
+          fileId: fileUploaded.$id,
+        };
+      }
+    }
   },
 }));
