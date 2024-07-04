@@ -14,6 +14,8 @@ interface BoardState {
   setNewTaskInput: (newTask: string) => void;
   newTaskType: TypedColumn;
   setNewTaskType: (newTaskType: TypedColumn) => void;
+  image: File | null;
+  setImage: (image: File | null) => void;
 }
 
 export const useBoardStore = create<BoardState>((set, get) => ({
@@ -56,5 +58,9 @@ export const useBoardStore = create<BoardState>((set, get) => ({
   newTaskType: "todo",
   setNewTaskType(newTaskType) {
     set({ newTaskType });
+  },
+  image: null,
+  setImage(image) {
+    set({ image });
   },
 }));
