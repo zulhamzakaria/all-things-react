@@ -8,8 +8,8 @@ function Modal() {
   const { isOpen, closeModal } = useModalStore();
   return (
     <>
-      <Transition show={isOpen}>
-        <Dialog onClose={closeModal}>
+      <Transition appear show={isOpen}>
+        <Dialog as="form" className="relative z-10" onClose={closeModal}>
           {/* Backdrop */}
           <TransitionChild>
             <div
