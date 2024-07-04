@@ -1,6 +1,12 @@
 "use client";
 import { useModalStore } from "@/store/modal-store";
-import { Dialog, Transition, TransitionChild } from "@headlessui/react";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 import { useState } from "react";
 
 function Modal() {
@@ -20,7 +26,19 @@ function Modal() {
           {/* Slide-in sidebar */}
           <TransitionChild>
             <div className="fixed inset-y-0 left-0 w-64 bg-white transition duration-300 data-[closed]:-translate-x-full">
-              {/* ... */}
+              <DialogPanel>
+                <DialogTitle as="h3">Add a task</DialogTitle>
+
+                <div>
+                  <input
+                    type="text"
+                    value={newTaskInput}
+                    onChange={(e) => setNewTaskInput(e.target.value)}
+                    placeholder="Add a task"
+                    className="w-full border border-gray-300 rounded-md outline-none p-5"
+                  />
+                </div>
+              </DialogPanel>
             </div>
           </TransitionChild>
         </Dialog>
