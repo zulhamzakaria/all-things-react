@@ -1,5 +1,6 @@
 "use client";
 
+import fetchSuggestion from "@/lib/fetchSuggestion";
 import { useBoardStore } from "@/store/board-store";
 import { MagnifyingGlassIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
