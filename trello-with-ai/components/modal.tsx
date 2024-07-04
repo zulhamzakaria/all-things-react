@@ -9,6 +9,7 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import { useState } from "react";
+import TaskTypeRadioGroup from "./task-type-radio-group";
 
 function Modal() {
   const { isOpen, closeModal } = useModalStore();
@@ -38,6 +39,12 @@ function Modal() {
                     placeholder="Add a task"
                     className="w-full border border-gray-300 rounded-md outline-none p-5"
                   />
+                </div>
+
+                <TaskTypeRadioGroup />
+
+                <div>
+                  
                 </div>
               </DialogPanel>
             </div>
