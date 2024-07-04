@@ -1,4 +1,5 @@
 "use client";
+import { useBoardStore } from "@/store/board-store";
 import { useModalStore } from "@/store/modal-store";
 import {
   Dialog,
@@ -10,8 +11,8 @@ import {
 import { useState } from "react";
 
 function Modal() {
-  const [open, setOpen] = useState(false);
   const { isOpen, closeModal } = useModalStore();
+  const { newTaskInput, setNewTaskInput } = useBoardStore();
   return (
     <>
       <Transition appear show={isOpen}>
@@ -20,7 +21,7 @@ function Modal() {
           <TransitionChild>
             <div
               className="fixed inset-0 bg-black/30 transition duration-300 data-[closed]:opacity-0"
-              onClick={() => setOpen(false)}
+              onClick={closeModal}
             />
           </TransitionChild>
           {/* Slide-in sidebar */}
