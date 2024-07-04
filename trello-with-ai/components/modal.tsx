@@ -9,16 +9,31 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import TaskTypeRadioGroup from "./task-type-radio-group";
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
+import Image from "next/image";
+import { PhotoIcon } from "@heroicons/react/24/solid";
 
 function Modal() {
   const { isOpen, closeModal } = useModalStore();
-  const { newTaskInput, setNewTaskInput } = useBoardStore();
+  const { newTaskInput, setNewTaskInput, image, setImage } = useBoardStore();
   const imagePickerRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!newTaskInput) return;
+    setImage(null);
+    closeModal();
+  };
+
   return (
     <>
       <Transition appear show={isOpen}>
-        <Dialog as="form" className="relative z-10" onClose={closeModal}>
+        <Dialog
+          as="form"
+          onSubmit={handleSubmit}
+          className="relative z-10"
+          onClose={closeModal}
+        >
           {/* Backdrop */}
           <TransitionChild>
             <div
@@ -45,6 +60,30 @@ function Modal() {
                 <TaskTypeRadioGroup />
 
                 <div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      imagePickerRef.current?.click();
+                    }}
+                    className="w-full border border-gray-300 rounded-md outline-none p-5 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  >
+                    <PhotoIcon className="h-6 w-6 mr-2 inline-block" />
+                    Upload Image
+                  </button>
+
+                  {image && (
+                    <Image
+                      alt="uploaded-image"
+                      width={200}
+                      height={200}
+                      className="w-full h-44 object-cover mt-2 filter hover:grayscale transition-all duration-150 cursor-not-allowed"
+                      src={URL.createObjectURL(image)}
+                      onClick={() => {
+                        setImage(null);
+                      }}
+                    />
+                  )}
+
                   <input
                     type="file"
                     ref={imagePickerRef}
@@ -54,6 +93,12 @@ function Modal() {
                       setImage(e.target.files![0]);
                     }}
                   />
+                </div>
+
+                <div>
+                  <button type="submit" disabled={!newTaskInput}>
+                    Add task
+                  </button>
                 </div>
               </DialogPanel>
             </div>
