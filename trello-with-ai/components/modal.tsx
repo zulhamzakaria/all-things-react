@@ -8,12 +8,13 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
-import { useState } from "react";
 import TaskTypeRadioGroup from "./task-type-radio-group";
+import { useRef } from "react";
 
 function Modal() {
   const { isOpen, closeModal } = useModalStore();
   const { newTaskInput, setNewTaskInput } = useBoardStore();
+  const imagePickerRef = useRef<HTMLInputElement>(null);
   return (
     <>
       <Transition appear show={isOpen}>
@@ -44,7 +45,15 @@ function Modal() {
                 <TaskTypeRadioGroup />
 
                 <div>
-                  
+                  <input
+                    type="file"
+                    ref={imagePickerRef}
+                    hidden
+                    onChange={(e) => {
+                      if (!e.target.files![0].type.startsWith("image/")) return;
+                      setImage(e.target.files![0]);
+                    }}
+                  />
                 </div>
               </DialogPanel>
             </div>
