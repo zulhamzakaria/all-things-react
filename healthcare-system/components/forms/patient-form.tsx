@@ -16,12 +16,12 @@ const formSchema = z.object({
 
 export enum FormFieldTypes {
   INPUT = "input",
-  TEXTAREA = 'textarea'
-  PHONE_INPUT = 'phoneinput'
+  TEXTAREA = "textarea",
+  PHONE_INPUT = "phoneinput",
   CHECKBOX = "checkbox",
-  DATE_PICKER = 'datepicker'
-  SELECT='select'
-  SKELETON = 'skeleton'
+  DATE_PICKER = "datepicker",
+  SELECT = "select",
+  SKELETON = "skeleton",
 }
 
 const PatientForm = () => {
