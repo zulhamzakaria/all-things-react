@@ -14,6 +14,10 @@ const formSchema = z.object({
     .max(50),
 });
 
+export enum FormFieldTypes {
+  INPUT = "input",
+}
+
 const PatientForm = () => {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -35,7 +39,10 @@ const PatientForm = () => {
           <p className=" text-dark-700">Schedule your first appointment.</p>
         </section>
 
-        <CustomFormField control={form.control} />
+        <CustomFormField
+          control={form.control}
+          fieldType={FormFieldTypes.INPUT}
+        />
 
         <Button type="submit">Submit</Button>
       </form>
