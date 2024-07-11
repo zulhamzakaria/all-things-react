@@ -10,12 +10,14 @@ import {
   FormMessage,
 } from "./ui/form";
 import { Input } from "./ui/input";
+import { FormFieldTypes } from "./forms/patient-form";
 
 interface CustomProps {
   control: Control<any>;
+  fieldType: FormFieldTypes;
 }
 
-const CustomFormField = ({ control }: CustomProps) => {
+const CustomFormField = ({ control, fieldType }: CustomProps) => {
   return (
     <FormField
       control={control}
