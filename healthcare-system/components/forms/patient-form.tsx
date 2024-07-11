@@ -16,6 +16,7 @@ const formSchema = z.object({
 
 export enum FormFieldTypes {
   INPUT = "input",
+  CHECKBOX = "checkbox",
 }
 
 const PatientForm = () => {
@@ -42,11 +43,11 @@ const PatientForm = () => {
         <CustomFormField
           control={form.control}
           fieldType={FormFieldTypes.INPUT}
-          name='name'
-          label='Full Name'
-          placeholder='John Doe'
-          iconSrc='/assets/icons/user.svg'
-          iconAlt='user'
+          name="name"
+          label="Full Name"
+          placeholder="John Doe"
+          iconSrc="/assets/icons/user.svg"
+          iconAlt="user"
         />
 
         <Button type="submit">Submit</Button>
