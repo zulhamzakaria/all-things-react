@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import CustomFormField from "../custom-form-field";
 import SubmitButton from "../submit-button";
@@ -72,7 +71,7 @@ const PatientForm = () => {
           placeholder="012-3456789"
         />
 
-        <SubmitButton />
+        <SubmitButton isLoading={isLoading} />
       </form>
     </Form>
   );
