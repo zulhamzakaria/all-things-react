@@ -8,6 +8,8 @@ import CustomFormField from "../custom-form-field";
 import SubmitButton from "../submit-button";
 import { useState } from "react";
 import { PatientFormValidation } from "@/lib/validation";
+import { useRouter } from "next/navigation";
+import { createUntrackedSearchParams } from "next/dist/client/components/search-params";
 
 export enum FormFieldTypes {
   INPUT = "input",
@@ -21,6 +23,7 @@ export enum FormFieldTypes {
 
 const PatientForm = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof PatientFormValidation>>({
@@ -31,10 +34,19 @@ const PatientForm = () => {
       phone: "",
     },
   });
-  function onSubmit(values: z.infer<typeof PatientFormValidation>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit({
+    name,
+    email,
+    phone,
+  }: z.infer<typeof PatientFormValidation>) {
+    setIsLoading(true);
+    try {
+      const userData = { name, email, phone };
+      // const user = await createUser(userData);
+      // if (user) router.push(`/patients/${user.$id}/register`);
+    } catch (error) {
+      console.error(error);
+    }
   }
   return (
     <Form {...form}>
