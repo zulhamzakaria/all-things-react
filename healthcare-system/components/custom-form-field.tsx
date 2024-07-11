@@ -28,6 +28,10 @@ interface CustomProps {
   renderSkeleton: (field: any) => React.ReactNode;
 }
 
+const RenderInput = () => {
+  return <Input type="text" placeholder="Jon Doe" />;
+};
+
 const CustomFormField = ({ control, fieldType, name, label }: CustomProps) => {
   return (
     <FormField
@@ -39,12 +43,7 @@ const CustomFormField = ({ control, fieldType, name, label }: CustomProps) => {
             <FormLabel>{label}</FormLabel>
           )}
 
-          <FormLabel>Username</FormLabel>
-          <FormControl>
-            <Input placeholder="shadcn" {...field} />
-          </FormControl>
-          <FormDescription>This is your public display name.</FormDescription>
-          <FormMessage />
+          <RenderInput />
         </FormItem>
       )}
     />
