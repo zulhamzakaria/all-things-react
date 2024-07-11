@@ -25,7 +25,7 @@ interface CustomProps {
   disabled?: boolean;
   showTimeSelect?: boolean;
   children?: React.ReactNode;
-  renderSkeleton: (field: any) => React.ReactNode;
+  renderSkeleton?: (field: any) => React.ReactNode;
 }
 
 const RenderInput = () => {
