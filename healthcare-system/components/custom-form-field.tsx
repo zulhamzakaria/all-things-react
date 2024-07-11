@@ -11,22 +11,33 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { FormFieldTypes } from "./forms/patient-form";
+import React from "react";
 
 interface CustomProps {
   control: Control<any>;
   fieldType: FormFieldTypes;
   name: string;
+  label?: string;
+  placeholder?: string;
+  iconSrc?: string;
+  iconAlt?: string;
+  dateFormat?: string;
+  disabled?: boolean;
+  showTimeSelect?: boolean;
+  children?: React.ReactNode;
+  renderSkeleton: (field: any) => React.ReactNode;
 }
 
-const CustomFormField = ({ control, fieldType, name }: CustomProps) => {
+const CustomFormField = ({ control, fieldType, name, label }: CustomProps) => {
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
         <FormItem className=" flex-1">
-          {fieldType !== FormFieldTypes.CHECKBOX &&
-            label(<FormLabel>{label}</FormLabel>)}
+          {fieldType !== FormFieldTypes.CHECKBOX && label && (
+            <FormLabel>{label}</FormLabel>
+          )}
 
           <FormLabel>Username</FormLabel>
           <FormControl>
