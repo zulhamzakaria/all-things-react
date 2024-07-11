@@ -6,6 +6,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import CustomFormField from "../custom-form-field";
+import SubmitButton from "../submit-button";
 
 const formSchema = z.object({
   username: z
@@ -71,7 +72,7 @@ const PatientForm = () => {
           placeholder="012-3456789"
         />
 
-        <Button type="submit">Submit</Button>
+        <SubmitButton />
       </form>
     </Form>
   );
