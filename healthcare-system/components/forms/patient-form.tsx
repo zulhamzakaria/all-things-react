@@ -7,13 +7,7 @@ import { Form } from "@/components/ui/form";
 import CustomFormField from "../custom-form-field";
 import SubmitButton from "../submit-button";
 import { useState } from "react";
-
-const formSchema = z.object({
-  username: z
-    .string()
-    .min(2, { message: "Username must be at least 2 characters." })
-    .max(50),
-});
+import { PatientFormValidation } from "@/lib/validation";
 
 export enum FormFieldTypes {
   INPUT = "input",
@@ -29,13 +23,15 @@ const PatientForm = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof PatientFormValidation>>({
+    resolver: zodResolver(PatientFormValidation),
     defaultValues: {
-      username: "",
+      name: "",
+      email: "",
+      phone: "",
     },
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof PatientFormValidation>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
