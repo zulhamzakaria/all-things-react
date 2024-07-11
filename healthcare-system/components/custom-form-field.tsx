@@ -12,6 +12,7 @@ import {
 import { Input } from "./ui/input";
 import { FormFieldTypes } from "./forms/patient-form";
 import React from "react";
+import Image from "next/image";
 
 interface CustomProps {
   control: Control<any>;
@@ -29,7 +30,33 @@ interface CustomProps {
 }
 
 const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
-  return <Input type="text" placeholder="Jon Doe" />;
+  switch (props.fieldType) {
+    case FormFieldTypes.INPUT:
+      return (
+        <div className=" flex rounded-md border border-dark-500 bg-dark-400">
+          {props.iconSrc && (
+            <Image
+              src={props.iconSrc}
+              alt={props.iconAlt || "icon"}
+              height={24}
+              width={24}
+              className="ml-2"
+            />
+          )}
+          <FormControl>
+            <Input
+              placeholder={props.placeholder}
+              {...field}
+              className=" shad-input border-0"
+            />
+          </FormControl>
+        </div>
+      );
+      break;
+
+    default:
+      break;
+  }
 };
 
 const CustomFormField = (props: CustomProps) => {
