@@ -10,6 +10,7 @@ import { useState } from "react";
 import { PatientFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUntrackedSearchParams } from "next/dist/client/components/search-params";
+import { createUser } from "@/lib/actions/patient.actions";
 
 export enum FormFieldTypes {
   INPUT = "input",
@@ -42,7 +43,7 @@ const PatientForm = () => {
     setIsLoading(true);
     try {
       const userData = { name, email, phone };
-      // const user = await createUser(userData);
+      const user = await createUser(userData);
       // if (user) router.push(`/patients/${user.$id}/register`);
     } catch (error) {
       console.error(error);
