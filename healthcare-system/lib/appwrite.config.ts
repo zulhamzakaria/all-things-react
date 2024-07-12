@@ -1,7 +1,7 @@
 import * as sdk from "node-appwrite";
 import { Account, Client, Databases, Messaging, Storage } from "appwrite";
 
-// const client = new sdk.Client();
+const clientSdk = new sdk.Client();
 const client = new Client();
 
 client
@@ -13,4 +13,4 @@ export const databases = new Databases(client);
 export const storage = new Storage(client);
 export const messaging = new Messaging(client);
 export const account = new Account(client);
-// export const users = new sdk.Users(client);
+export const users = new sdk.Users(clientSdk);
