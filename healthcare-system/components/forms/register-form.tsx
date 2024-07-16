@@ -11,18 +11,9 @@ import { PatientFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUntrackedSearchParams } from "next/dist/client/components/search-params";
 import { createUser } from "@/lib/actions/patient.actions";
+import { FormFieldTypes } from "./patient-form";
 
-export enum FormFieldTypes {
-  INPUT = "input",
-  TEXTAREA = "textarea",
-  PHONE_INPUT = "phoneinput",
-  CHECKBOX = "checkbox",
-  DATE_PICKER = "datepicker",
-  SELECT = "select",
-  SKELETON = "skeleton",
-}
-
-const RegisterForm = () => {
+const RegisterForm = ({ user }: { user: User }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
@@ -65,22 +56,6 @@ const RegisterForm = () => {
           placeholder="John Doe"
           iconSrc="/assets/icons/user.svg"
           iconAlt="user"
-        />
-        <CustomFormField
-          control={form.control}
-          fieldType={FormFieldTypes.INPUT}
-          name="email"
-          label="Email"
-          placeholder="john.doe@mail.com"
-          iconSrc="/assets/icons/email.svg"
-          iconAlt="email"
-        />
-        <CustomFormField
-          control={form.control}
-          fieldType={FormFieldTypes.PHONE_INPUT}
-          name="phone"
-          label="Phone"
-          placeholder="012-3456789"
         />
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
