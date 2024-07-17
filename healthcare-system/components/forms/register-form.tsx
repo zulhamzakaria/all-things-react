@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form } from "@/components/ui/form";
+import { Form, FormControl } from "@/components/ui/form";
 import CustomFormField from "../custom-form-field";
 import SubmitButton from "../submit-button";
 import { useState } from "react";
@@ -59,6 +59,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           control={form.control}
           fieldType={FormFieldTypes.INPUT}
           name="name"
+          label="Full Name"
           placeholder="John Doe"
           iconSrc="/assets/icons/user.svg"
           iconAlt="user"
@@ -81,6 +82,30 @@ const RegisterForm = ({ user }: { user: User }) => {
             placeholder="012-3456789"
           />
         </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.DATE_PICKER}
+            name="birthDate"
+            label="Date of Birth"
+          />
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.SKELETON}
+            name="gender"
+            label="Gender"
+            renderSkeleton={(field)=>(
+                <FormControl>
+                    
+                </FormControl>
+            )}
+          />
+        </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row"></div>
+        <div className="flex flex-col gap-6 xl:flex-row"></div>
+        <div className="flex flex-col gap-6 xl:flex-row"></div>
+        <div className="flex flex-col gap-6 xl:flex-row"></div>
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
       </form>
