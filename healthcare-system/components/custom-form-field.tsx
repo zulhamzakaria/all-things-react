@@ -3,7 +3,6 @@
 import { Control } from "react-hook-form";
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,6 +14,8 @@ import React from "react";
 import Image from "next/image";
 import "react-phone-number-input/style.css";
 import PhoneInput, { type Value } from "react-phone-number-input";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.module.css";
 
 interface CustomProps {
   control: Control<any>;
@@ -79,7 +80,10 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
             className="ml-2"
           />
           <FormControl>
-            
+            <DatePicker
+              selected={field.value}
+              onChange={(date) => field.onChange(date)}
+            />
           </FormControl>
         </div>
       );
