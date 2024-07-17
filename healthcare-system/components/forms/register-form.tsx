@@ -9,7 +9,6 @@ import SubmitButton from "../submit-button";
 import { useState } from "react";
 import { PatientFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
-import { createUntrackedSearchParams } from "next/dist/client/components/search-params";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldTypes } from "./patient-form";
 
