@@ -11,6 +11,7 @@ import { PatientFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldTypes } from "./patient-form";
+import { RadioGroup } from "../ui/radio-group";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -94,10 +95,14 @@ const RegisterForm = ({ user }: { user: User }) => {
             fieldType={FormFieldTypes.SKELETON}
             name="gender"
             label="Gender"
-            renderSkeleton={(field)=>(
-                <FormControl>
-                    
-                </FormControl>
+            renderSkeleton={(field) => (
+              <FormControl>
+                <RadioGroup
+                  className="flex h-11 gap-6 xl:justify-between"
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                ></RadioGroup>
+              </FormControl>
             )}
           />
         </div>
