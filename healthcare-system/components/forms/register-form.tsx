@@ -182,7 +182,39 @@ const RegisterForm = ({ user }: { user: User }) => {
           })}
         </CustomFormField>
 
-        <div className="flex flex-col gap-6 xl:flex-row"></div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.INPUT}
+            name="insuranceProvider"
+            label="Insurance provider"
+            placeholder="PRUBSN"
+          />
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.INPUT}
+            name="insurancePolicyNumber"
+            label="Insurance policy number"
+            placeholder="ABC123456"
+          />
+        </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.TEXTAREA}
+            name="allergies"
+            label="Allergies"
+            placeholder="Peanuts, Shellfish, Pollen"
+          />
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.TEXTAREA}
+            name="currentMedication"
+            label="Current medication"
+            placeholder="Fluticasone, Cetirizine"
+          />
+        </div>
+
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
