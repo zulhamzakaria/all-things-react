@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldTypes } from "./patient-form";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Doctors, GenderOptions } from "@/constants";
+import { Doctors, GenderOptions, IdentificationTypes } from "@/constants";
 import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
@@ -231,6 +231,40 @@ const RegisterForm = ({ user }: { user: User }) => {
           />
         </div>
 
+        <section className="space-y-6">
+          <div className=" mb-9 space-y-1">
+            <h2 className=" sub-header">Identification and Verification</h2>
+          </div>
+        </section>
+        <CustomFormField
+          control={form.control}
+          fieldType={FormFieldTypes.SELECT}
+          name="identificationType"
+          label="Identification type"
+          placeholder="Select an id type"
+        >
+          {IdentificationTypes.map((idType) => {
+            return (
+              <SelectItem key={idType} value={idType}>
+                {idType}
+              </SelectItem>
+            );
+          })}
+        </CustomFormField>
+        <CustomFormField
+          control={form.control}
+          fieldType={FormFieldTypes.INPUT}
+          name="identificationNumber"
+          label="Identification number"
+          placeholder="ABC12345678"
+        />
+        <CustomFormField
+          control={form.control}
+          fieldType={FormFieldTypes.SKELETON}
+          name="identificationDocument"
+          label="Scanned copy of identification document"
+          renderSkeleton={(field) => <FormControl>File Upload</FormControl>}
+        />
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
