@@ -214,6 +214,22 @@ const RegisterForm = ({ user }: { user: User }) => {
             placeholder="Fluticasone, Cetirizine"
           />
         </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.TEXTAREA}
+            name="familyMedicalHistory"
+            label="Family medical history"
+            placeholder="Father had diabetes, Granny had hypertension"
+          />
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.TEXTAREA}
+            name="pastMedicalHistory"
+            label="Past medical history"
+            placeholder="Appendectomy, Vasectomy"
+          />
+        </div>
 
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
