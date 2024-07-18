@@ -16,6 +16,7 @@ import { Doctors, GenderOptions, IdentificationTypes } from "@/constants";
 import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
+import FileUploader from "../file-uploader";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -263,7 +264,11 @@ const RegisterForm = ({ user }: { user: User }) => {
           fieldType={FormFieldTypes.SKELETON}
           name="identificationDocument"
           label="Scanned copy of identification document"
-          renderSkeleton={(field) => <FormControl>File Upload</FormControl>}
+          renderSkeleton={(field) => (
+            <FormControl>
+              <FileUploader />
+            </FormControl>
+          )}
         />
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
