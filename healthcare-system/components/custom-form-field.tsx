@@ -119,6 +119,8 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
           />
         </FormControl>
       );
+    case FormFieldTypes.CHECKBOX:
+      return <FormControl className=" flex items-center gap-4"></FormControl>;
     case FormFieldTypes.SKELETON:
       return props.renderSkeleton ? props.renderSkeleton(field) : null;
     default:
