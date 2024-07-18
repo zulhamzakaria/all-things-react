@@ -117,9 +117,44 @@ const RegisterForm = ({ user }: { user: User }) => {
             )}
           />
         </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.INPUT}
+            name="address"
+            label="Address"
+            placeholder="No 15, Jln Temenggong"
+          />
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.INPUT}
+            name="occupation"
+            label="Occupation"
+            placeholder="Teacher"
+          />
+        </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.INPUT}
+            name="emergencyContactName"
+            label="Emergency contact name"
+            placeholder="Doe Dory"
+          />
+          <CustomFormField
+            control={form.control}
+            fieldType={FormFieldTypes.PHONE_INPUT}
+            name="emergencyContactForm"
+            label="Emergency contact number"
+            placeholder="012-3456789"
+          />
+        </div>
 
-        <div className="flex flex-col gap-6 xl:flex-row"></div>
-        <div className="flex flex-col gap-6 xl:flex-row"></div>
+        {/* <section className="space-y-6">
+          <div className=" mb-9 space-y-1">
+            <h2 className=" sub-header">Medical Information</h2>
+          </div>
+        </section> */}
         <div className="flex flex-col gap-6 xl:flex-row"></div>
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
