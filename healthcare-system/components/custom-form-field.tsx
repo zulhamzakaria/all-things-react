@@ -107,7 +107,13 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
           </Select>
         </FormControl>
       );
-    case FormFieldTypes.SKELETON:
+    case FormFieldTypes.TEXTAREA:
+      return(
+        <FormControl>
+          
+        </FormControl>
+      )
+      case FormFieldTypes.SKELETON:
       return props.renderSkeleton ? props.renderSkeleton(field) : null;
     default:
       break;
