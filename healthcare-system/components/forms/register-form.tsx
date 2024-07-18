@@ -144,17 +144,27 @@ const RegisterForm = ({ user }: { user: User }) => {
           <CustomFormField
             control={form.control}
             fieldType={FormFieldTypes.PHONE_INPUT}
-            name="emergencyContactForm"
+            name="emergencyContactNumber"
             label="Emergency contact number"
             placeholder="012-3456789"
           />
         </div>
 
-        {/* <section className="space-y-6">
+        <section className="space-y-6">
           <div className=" mb-9 space-y-1">
             <h2 className=" sub-header">Medical Information</h2>
           </div>
-        </section> */}
+        </section>
+        <CustomFormField
+          control={form.control}
+          fieldType={FormFieldTypes.SELECT}
+          name="primaryPhysician"
+          label="Primary Physician"
+          placeholder="Select a physician"
+        >
+          {["Dr Dove", "Dr Pearce", "Dr Ashwar"]}
+        </CustomFormField>
+
         <div className="flex flex-col gap-6 xl:flex-row"></div>
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
