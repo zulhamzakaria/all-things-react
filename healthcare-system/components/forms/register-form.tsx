@@ -310,7 +310,7 @@ const RegisterForm = ({ user }: { user: User }) => {
         <CustomFormField
           fieldType={FormFieldTypes.CHECKBOX}
           control={form.control}
-          name="dosclosureConsent"
+          name="disclosureConsent"
           label="I CONSENT to disclosure of information"
         />
         <CustomFormField
