@@ -136,7 +136,7 @@ const RegisterForm = ({ user }: { user: User }) => {
                     <div key={gender} className="radio-group">
                       <RadioGroupItem value={gender} id={gender} />
                       <Label htmlFor="gender" className=" cursor-pointer">
-                        {gender}
+                        {gender.toLocaleUpperCase()}
                       </Label>
                     </div>
                   ))}
