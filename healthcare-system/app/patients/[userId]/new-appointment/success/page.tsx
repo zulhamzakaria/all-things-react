@@ -1,7 +1,19 @@
+import { Doctors } from "@/constants";
+import { getAppointment } from "@/lib/actions/appointment.action";
 import Image from "next/image";
 import Link from "next/link";
 
-const Success = () => {
+const Success = async ({
+  params: { userId },
+  searchParams,
+}: SearchParamProps) => {
+  const appointmentId = (searchParams?.appointmentId as string) || "";
+  const appointment = await getAppointment(appointmentId);
+
+  const doctor = Doctors.find(
+    (doc) => doc.name === appointment.primaryPhysician
+  );
+
   return (
     <div className="flex h-screen max-h-screen px-[5%]">
       <div className="success-img">
@@ -33,11 +45,11 @@ const Success = () => {
           <p>Requested appointment details:</p>
           <div className="flex items-center gap-3">
             <Image
-              src="/assets/icons/logo-full.svg"
-              alt="success"
-              height={1000}
-              width={1000}
-              className="h-10 w-fit"
+              src={doctor?.image!}
+              alt="doctor"
+              height={100}
+              width={100}
+              className="size-6"
             />
           </div>
         </section>
