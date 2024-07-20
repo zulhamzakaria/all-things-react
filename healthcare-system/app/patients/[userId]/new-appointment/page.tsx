@@ -1,7 +1,8 @@
 import AppointmentForm from "@/components/forms/appointment-form";
 import Image from "next/image";
 
-const NewAppointment = () => {
+const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
+  const patient = await getPatient(userId);
   return (
     <div className=" flex h-screen max-h-screen">
       <section className=" remove-scrollbar container my-auto">
@@ -13,7 +14,7 @@ const NewAppointment = () => {
             alt="patient"
             className=" mb-12 h-10 w-fit"
           />
-          <AppointmentForm />
+          <AppointmentForm type="create" userId={userId} />
           <p className=" justify-items-end text-dark-600 xl:text-left">
             © 2024 healthcare-app
           </p>
