@@ -33,21 +33,44 @@ const AppointmentForm = ({
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
+      primaryPhysician: "",
+      schedule: new Date(),
+      reason: "",
+      note: "",
+      cancellationReason: "",
     },
   });
-  async function onSubmit({
-    name,
-    email,
-    phone,
-  }: z.infer<typeof AppointmentFormValidation>) {
+  async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
     setIsLoading(true);
+
+    let status;
+    switch (type) {
+      case "schedule":
+        status = "Scheduled";
+        break;
+      case "cancel":
+        status = "cancelled";
+        break;
+      default:
+        status = "pending";
+        break;
+    }
+
     try {
-      const userData = { name, email, phone };
-      const user = await createUser(userData);
-      if (user) router.push(`/patients/${user.$id}/register`);
+      //do somn
+      if (type === "create" && patientId) {
+        const appointmentData = {
+          userId,
+          patient: patientId,
+          primaryPhysician: values.primaryPhysician,
+          schedule: new Date(values.schedule),
+          reason: values.reason,
+          note: values.note,
+          status: status as Status,
+        };
+      }
+
+      //   const appointment = await createAppointment(appointmentData)
     } catch (error) {
       console.error(error);
     }
@@ -125,7 +148,7 @@ const AppointmentForm = ({
               <CustomFormField
                 fieldType={FormFieldTypes.TEXTAREA}
                 control={form.control}
-                name="notes"
+                name="note"
                 label="Notes"
                 placeholder="Add notes"
               />
