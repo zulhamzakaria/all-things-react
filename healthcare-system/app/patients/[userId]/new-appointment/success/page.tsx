@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button";
 import { Doctors } from "@/constants";
 import { getAppointment } from "@/lib/actions/appointment.action";
+import { formatDateTime } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,9 +12,7 @@ const Success = async ({
   const appointmentId = (searchParams?.appointmentId as string) || "";
   const appointment = await getAppointment(appointmentId);
 
-  const doctor = Doctors.find(
-    (doc) => doc.name === appointment.primaryPhysician
-  );
+  const doctor = Doctors.find((doc) => doc.name === "John Green");
 
   return (
     <div className="flex h-screen max-h-screen px-[5%]">
@@ -51,8 +51,26 @@ const Success = async ({
               width={100}
               className="size-6"
             />
+            <p className="whitespace-nowrap">Dr. {doctor?.name}</p>
+          </div>
+          <div className="flex gap-2">
+            <Image
+              src="/assets/icons/calendar.svg"
+              alt="calendar"
+              height={24}
+              width={24}
+              className="size-6"
+            />
+            {/* <p>{formatDateTime(appointment.schedule).dateTime}</p> */}
+            <p>{formatDateTime(new Date()).dateTime}</p>
           </div>
         </section>
+        <Button variant={"outline"} className="shad-primary-btn" asChild>
+          <Link href={`/patients/${userId}/new-appointment`}>
+            Book new appointment
+          </Link>
+        </Button>
+        <p className="copyright">© 2024 my-care</p>
       </div>
     </div>
   );
