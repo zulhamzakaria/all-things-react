@@ -7,13 +7,13 @@ import { Form } from "@/components/ui/form";
 import CustomFormField from "../custom-form-field";
 import SubmitButton from "../submit-button";
 import { useState } from "react";
-import { PatientFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldTypes } from "./patient-form";
 import { Doctors } from "@/constants";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
+import { getAppointmentSchema } from "@/lib/validation";
 
 const AppointmentForm = ({
   userId,
@@ -27,9 +27,11 @@ const AppointmentForm = ({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
+  const AppointmentFormValidation = getAppointmentSchema(type);
+
   // 1. Define your form.
-  const form = useForm<z.infer<typeof PatientFormValidation>>({
-    resolver: zodResolver(PatientFormValidation),
+  const form = useForm<z.infer<typeof AppointmentFormValidation>>({
+    resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
       name: "",
       email: "",
@@ -40,7 +42,7 @@ const AppointmentForm = ({
     name,
     email,
     phone,
-  }: z.infer<typeof PatientFormValidation>) {
+  }: z.infer<typeof AppointmentFormValidation>) {
     setIsLoading(true);
     try {
       const userData = { name, email, phone };
