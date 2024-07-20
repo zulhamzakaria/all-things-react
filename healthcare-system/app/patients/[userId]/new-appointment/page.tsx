@@ -1,3 +1,4 @@
+import AppointmentForm from "@/components/forms/appointment-form";
 import Image from "next/image";
 
 const NewAppointment = () => {
@@ -12,7 +13,7 @@ const NewAppointment = () => {
             alt="patient"
             className=" mb-12 h-10 w-fit"
           />
-          {/* <PatientForm /> */}
+          <AppointmentForm />
           <p className=" justify-items-end text-dark-600 xl:text-left">
             © 2024 healthcare-app
           </p>
