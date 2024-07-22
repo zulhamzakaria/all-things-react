@@ -3,7 +3,7 @@ import StatCard from "@/components/stat-card";
 import { getRecentAppointments } from "@/lib/actions/appointment.action";
 import Image from "next/image";
 import Link from "next/link";
-import Columns from "@/components/table/columns";
+import { columns } from "@/components/table/columns";
 
 const Admin = async () => {
   const appointments = await getRecentAppointments();
@@ -49,7 +49,7 @@ const Admin = async () => {
           />
         </section>
 
-        <DataTable columns={Columns} data={appointments.documents} />
+        <DataTable columns={columns} data={appointments.documents} />
       </main>
     </div>
   );
