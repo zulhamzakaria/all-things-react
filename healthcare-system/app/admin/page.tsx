@@ -1,3 +1,4 @@
+import StatCard from "@/components/stat-card";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,7 +23,7 @@ const Admin = () => {
           <p className="text-dark-700">Manage appointments</p>
         </section>
         <section className="admin-stat">
-            
+          <StatCard />
         </section>
       </main>
     </div>
