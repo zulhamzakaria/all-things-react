@@ -6,8 +6,6 @@ import Link from "next/link";
 const Admin = async () => {
   const appointments = await getRecentAppointments();
 
-  console.log(appointments);
-
   return (
     <div className="mx-auto flex max-w-7xl flex-col space-y-14">
       <header className="admin-header">
@@ -30,20 +28,20 @@ const Admin = async () => {
         <section className="admin-stat">
           <StatCard
             type="appointments"
-            count={0}
-            // count={appointments.scheduledCount}
+            // count={0}
+            count={appointments.scheduledCount}
             label="Scheduled appointments"
             icon="/assets/icons/appointments.svg"
           />
           <StatCard
             type="pending"
-            count={10}
+            count={appointments.pendingCount}
             label="Pending appointments"
             icon="/assets/icons/pending.svg"
           />
           <StatCard
             type="cancelled"
-            count={5}
+            count={appointments.cancelledCount}
             label="Cancelled appointments"
             icon="/assets/icons/cancelled.svg"
           />
