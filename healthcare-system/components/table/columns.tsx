@@ -2,7 +2,6 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-
 import StatusBadge from "../status-badge";
 import { formatDateTime } from "@/lib/utils";
 import { Doctors } from "@/constants";
@@ -48,7 +47,7 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => (
       <p className=" text-14-regular min-w-[100px]">
         {/* {formatDateTime(row.original.schedule).dateTime} */}
-        {formatDateTime(new Date()).dateTime}
+        cock
       </p>
     ),
   },
@@ -76,10 +75,22 @@ export const columns: ColumnDef<Payment>[] = [
   {
     id: "actions",
     header: () => <div className="pl-4">Actions</div>,
-    cell: ({ row }) => {
+    cell: ({ row: { original: data } }) => {
       return (
         <div className="flex gap-1">
-          <AppointmentModal />
+          <AppointmentModal
+            type="schedule"
+            patientId={data.patient.$id}
+            userId={data.userId}
+            appointment={data}
+          />
+
+          <AppointmentModal
+            type="cancel"
+            patientId={data.patient.$id}
+            userId={data.userId}
+            appointment={data}
+          />
         </div>
       );
     },
