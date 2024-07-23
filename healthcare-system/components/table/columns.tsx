@@ -18,7 +18,7 @@ import StatusBadge from "../status-badge";
 export type Payment = {
   id: string;
   amount: number;
-  status: "pending" | "processing" | "success" | "failed";
+  status: Status;
   email: string;
 };
 
