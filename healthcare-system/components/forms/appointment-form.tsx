@@ -15,15 +15,20 @@ import { SelectItem } from "../ui/select";
 import Image from "next/image";
 import { getAppointmentSchema } from "@/lib/validation";
 import { createAppointment } from "@/lib/actions/appointment.action";
+import { Appointment } from "@/types/appwrite.types";
 
 const AppointmentForm = ({
   userId,
   patientId,
   type,
+  appointment,
+  setOpen,
 }: {
   userId: string;
   patientId: string;
   type: "create" | "cancel" | "schedule";
+  appointment?: Appointment;
+  setOpen: (open: boolean) => void;
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
@@ -50,10 +55,10 @@ const AppointmentForm = ({
         status = "Scheduled";
         break;
       case "cancel":
-        status = "cancelled";
+        status = "Cancelled";
         break;
       default:
-        status = "pending";
+        status = "Pending";
         break;
     }
 
@@ -77,6 +82,21 @@ const AppointmentForm = ({
             `/patients/${userId}/new-appointment/success?appoinmentId=${appointment.$id}`
           );
         }
+      } else {
+        const appointmentToUpdate = {
+          userId,
+          appointmentId: appointment?.$id,
+          appointment: {
+            // values => get data from the form
+            primaryPhysician: values?.primaryPhysician,
+            schedule: new Date(values?.schedule),
+            status: status as Status,
+            cancellationReason: values?.cancellationReason,
+          },
+          type,
+        };
+
+        const updatedAppointment = await updateAppointment(appointmentToUpdate);
       }
     } catch (error) {
       console.error(error);
