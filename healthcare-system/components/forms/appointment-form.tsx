@@ -14,7 +14,10 @@ import { Doctors } from "@/constants";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
 import { getAppointmentSchema } from "@/lib/validation";
-import { createAppointment } from "@/lib/actions/appointment.action";
+import {
+  createAppointment,
+  updateAppointment,
+} from "@/lib/actions/appointment.action";
 import { Appointment } from "@/types/appwrite.types";
 
 const AppointmentForm = ({
@@ -85,7 +88,7 @@ const AppointmentForm = ({
       } else {
         const appointmentToUpdate = {
           userId,
-          appointmentId: appointment?.$id,
+          appointmentId: appointment?.$id!,
           appointment: {
             // values => get data from the form
             primaryPhysician: values?.primaryPhysician,
@@ -97,6 +100,11 @@ const AppointmentForm = ({
         };
 
         const updatedAppointment = await updateAppointment(appointmentToUpdate);
+
+        if (updatedAppointment) {
+          setOpen && setOpen(false);
+          form.reset();
+        }
       }
     } catch (error) {
       console.error(error);
