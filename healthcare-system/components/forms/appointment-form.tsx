@@ -57,7 +57,7 @@ const AppointmentForm = ({
         status = "Scheduled";
         break;
       case "cancel":
-        status = "Cancelled";
+        status = "Canceled";
         break;
       default:
         status = "Pending";
