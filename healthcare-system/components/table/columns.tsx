@@ -7,18 +7,9 @@ import { formatDateTime } from "@/lib/utils";
 import { Doctors } from "@/constants";
 import Image from "next/image";
 import AppointmentModal from "../appointment-modal";
+import { Appointment } from "@/types/appwrite.types";
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Payment = {
-  id: string;
-  amount: number;
-  status: Status;
-  email: string;
-  primaryPhysician: "John Green";
-};
-
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Appointment>[] = [
   {
     header: "Id",
     cell: ({ row }) => <p className=" text-14-medium">{row.index + 1}</p>,
@@ -29,7 +20,7 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       // get the data based on accessor key. i.e patient data
       const appointment = row.original;
-      // return <p className="text-14-medium">{appointment.patient.name}</p>;
+      return <p className="text-14-medium">{appointment.patient.name}</p>;
     },
   },
   {
@@ -46,8 +37,7 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Appointment",
     cell: ({ row }) => (
       <p className=" text-14-regular min-w-[100px]">
-        {/* {formatDateTime(row.original.schedule).dateTime} */}
-        cock
+        {formatDateTime(row.original.schedule).dateTime}
       </p>
     ),
   },
