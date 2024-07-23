@@ -8,7 +8,6 @@ import CustomFormField from "../custom-form-field";
 import SubmitButton from "../submit-button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldTypes } from "./patient-form";
 import { Doctors } from "@/constants";
 import { SelectItem } from "../ui/select";
@@ -42,11 +41,11 @@ const AppointmentForm = ({
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
-      primaryPhysician: "",
-      schedule: new Date(),
-      reason: "",
-      note: "",
-      cancellationReason: "",
+      primaryPhysician: appointment ? appointment.primaryPhysician : "",
+      schedule: appointment ? new Date(appointment.schedule) : new Date(),
+      reason: appointment ? appointment.reason : "",
+      note: appointment ? appointment.note : "",
+      cancellationReason: appointment ? appointment.cancellationReason! : "",
     },
   });
   async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
