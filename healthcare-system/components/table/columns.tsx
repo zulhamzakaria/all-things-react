@@ -23,8 +23,22 @@ export type Payment = {
 
 export const columns: ColumnDef<Payment>[] = [
   {
+    header: "Id",
+    cell: ({ row }) => <p className=" text-14-medium">{row.index + 1}</p>,
+  },
+  {
+    accessorKey: "patient",
+    header: "Patient",
+    cell: ({ row }) => {
+      // get the data based on accessor key. i.e patient data
+      const appointment = row.original;
+      // return <p className="text-14-medium">{appointment.patient.name}</p>;
+    },
+  },
+  {
     accessorKey: "status",
     header: "Status",
+    cell: ({ row }) => <div className=" min-w-[115px]"></div>,
   },
   {
     accessorKey: "email",
