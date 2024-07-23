@@ -20,7 +20,7 @@ export const columns: ColumnDef<Appointment>[] = [
     cell: ({ row }) => {
       // get the data based on accessor key. i.e patient data
       const appointment = row.original;
-      return <p className="text-14-medium">{appointment.patient.name}</p>;
+      return <p className="text-14-medium">{appointment.patients.name}</p>;
     },
   },
   {
@@ -70,14 +70,14 @@ export const columns: ColumnDef<Appointment>[] = [
         <div className="flex gap-1">
           <AppointmentModal
             type="schedule"
-            patientId={data.patient.$id}
+            patientId={data.patients.$id}
             userId={data.userId}
             appointment={data}
           />
 
           <AppointmentModal
             type="cancel"
-            patientId={data.patient.$id}
+            patientId={data.patients.$id}
             userId={data.userId}
             appointment={data}
           />
