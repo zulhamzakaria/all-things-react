@@ -27,7 +27,7 @@ export default function Home() {
                 className="relative w-fit tracking-tight text-balance mt-16 
                 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl"
               >
-                Your image on a
+                Your image on a{" "}
                 <span className="bg-green-600 px-2 text-white">Custom</span>{" "}
                 Phone Case
               </h1>
