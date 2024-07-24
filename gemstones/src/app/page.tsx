@@ -74,8 +74,11 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col justify-between items-center sm:items-start">
                   <div className="flex gap-0.5">
-                    {Array.from({ length: 5 }).map(() => (
-                      <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <Star
+                        className="h-4 w-4 text-green-600 fill-green-600"
+                        key={index}
+                      />
                     ))}
                   </div>
                   <p>
