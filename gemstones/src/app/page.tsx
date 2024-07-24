@@ -1,4 +1,5 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import Phone from "@/components/Phone";
 import { Check, Star } from "lucide-react";
 import Image from "next/image";
 
@@ -102,6 +103,7 @@ export default function Home() {
                 width={50}
                 height={50}
               />
+              <Phone />
             </div>
           </div>
         </MaxWidthWrapper>
