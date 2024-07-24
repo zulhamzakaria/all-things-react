@@ -6,7 +6,9 @@ export default function Home() {
     <div className="bg-slate-50">
       <section>
         {/* reusable component that works as a 'container' for uniform design */}
-        <MaxWidthWrapper></MaxWidthWrapper>
+        <MaxWidthWrapper>
+          <div>hello</div>
+        </MaxWidthWrapper>
       </section>
     </div>
   );
