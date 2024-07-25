@@ -25,19 +25,17 @@ const Phone = ({
         src={
           darkMode
             ? "/phone-template-dark-edges.png"
-            : "phone-template-white-edges.png"
+            : "/phone-template-white-edges.png"
         }
         className=" pointer-events-none z-50 select-none"
         alt="phone-image"
       />
       {/* -z-10 sends div to the back; z-axis */}
       <div className=" absolute -z-10 inset-0">
-        <Image
+        <img
+          className="object-cover min-w-full min-h-full"
           src={imgSrc}
-          className="object-cover"
-          alt="cover"
-          width={50}
-          height={50}
+          alt="overlaying phone image"
         />
       </div>
     </div>
