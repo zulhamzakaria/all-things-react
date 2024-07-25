@@ -53,22 +53,22 @@ export default function Home() {
               <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
                 <div className="flex -space-x-4">
                   <Image
-                    className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                    src="/users/user-1.png"
+                    className="inline-block h-10 w-10 object-cover rounded-full ring-2 ring-slate-100"
+                    src="/phones/jn.jpg"
                     alt="😃"
-                    width={100}
-                    height={100}
+                    width={10}
+                    height={10}
                   />
                   <Image
-                    className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                    src="/users/user-2.png"
+                    className="inline-block h-10 object-cover w-10 rounded-full ring-2 ring-slate-100"
+                    src="/phones/jn.jpg"
                     alt="🥱"
                     width={100}
                     height={100}
                   />
                   <Image
                     className="inline-block h-10 w-10 object-cover rounded-full ring-2 ring-slate-100"
-                    src="/users/user-3.png"
+                    src="/phones/jn.jpg"
                     alt="😆"
                     width={100}
                     height={100}
