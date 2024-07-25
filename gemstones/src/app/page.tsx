@@ -123,6 +123,81 @@ export default function Home() {
                 <Icons.underline className="hidden sm:block inset-x-0 absolute -bottom-8 text-green-500  pointer-events-none" />
               </span>
             </h2>
+            <img
+              src="/snake-2.png"
+              className="w-24 order-0 lg:order-2"
+              alt="snake-2"
+            />
+          </div>
+          <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gep-y-16">
+            {/* first review */}
+            <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
+              <div className="flex gap-0.5 mb-2">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star
+                    className="h-5 w-5 text-green-600 fill-green-600"
+                    key={index}
+                  />
+                ))}
+              </div>
+              <div className="text-lg leading-8">
+                <p>
+                  "The case has the premium feels to it.{" "}
+                  <span className="p-0.5 bg-slate-800 text-white">
+                    Recommended!
+                  </span>{" "}
+                  "
+                </p>
+              </div>
+              <div className="flex gap-4 mt-2">
+                <img
+                  className="rounded-full h-12 w-12 object-cover"
+                  src="/users/user-1.png"
+                  alt="user-1"
+                />
+                <div className="flex flex-col">
+                  <p className="font-semibold">Jonny</p>
+                  <div className="flex gap-1.5 items-center text-zinc-600">
+                    <Check className="h-4 w-4 stroke-[3px] text-green-600" />
+                    <p className="text-sm">Verified purchase</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* second review */}
+            <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
+              <div className="flex gap-0.5 mb-2">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star
+                    className="h-5 w-5 text-green-600 fill-green-600"
+                    key={index}
+                  />
+                ))}
+              </div>
+              <div className="text-lg leading-8">
+                <p>
+                  "The case has the premium feels to it.{" "}
+                  <span className="p-0.5 bg-slate-800 text-white">
+                    Recommended!
+                  </span>{" "}
+                  "
+                </p>
+              </div>
+              <div className="flex gap-4 mt-2">
+                <img
+                  className="rounded-full h-12 w-12 object-cover"
+                  src="/users/user-1.png"
+                  alt="user-1"
+                />
+                <div className="flex flex-col">
+                  <p className="font-semibold">Jonny</p>
+                  <div className="flex gap-1.5 items-center text-zinc-600">
+                    <Check className="h-4 w-4 stroke-[3px] text-green-600" />
+                    <p className="text-sm">Verified purchase</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </MaxWidthWrapper>
       </section>
