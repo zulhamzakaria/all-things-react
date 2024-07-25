@@ -2,9 +2,17 @@
 
 import React, { useRef } from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
+import { useInView } from "framer-motion";
+
+const PHONES = [
+    '/phones/'
+]
 
 function ReviewGrid() {
+  // animation only work if it's in view
+  // useRef is for accessing DOM elements
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.4 });
 
   return (
     <div
