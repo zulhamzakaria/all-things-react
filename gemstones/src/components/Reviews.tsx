@@ -8,7 +8,7 @@ import Phone from "./Phone";
 
 const PHONES = [
   "/phones/elgato.jpg",
-  "/phones/hr.jpg",
+  "/phones/jn2.jpg",
   "/phones/kl-skyline.jpg",
   "/phones/maxwell.jpg",
   "/phones/jn.jpg",
