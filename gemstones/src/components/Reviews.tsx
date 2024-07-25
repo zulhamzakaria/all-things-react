@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { HTMLAttributes, useEffect, useRef, useState } from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Phone from "./Phone";
 
 const PHONES = [
   "/phones/hr.jpg",
@@ -60,7 +61,47 @@ function ReviewColumn({
       className={cn(" animate-marquee space-y-8 py-4", className)}
       style={{ "--maquee-duration": duration } as React.CSSProperties}
     >
-      review col
+      {reviews.concat(reviews).map((imgSrc, reviewIndex) => (
+        <Review
+          key={reviewIndex}
+          className={reviewClassName?.(reviewIndex % reviews.length)}
+          imgSrc={imgSrc}
+        />
+      ))}
+    </div>
+  );
+}
+
+// allow for passing html props
+interface ReviewProps extends HTMLAttributes<HTMLDivElement> {
+  imgSrc: string;
+}
+
+function Review({ imgSrc, className, ...props }: ReviewProps) {
+  const POSSIBLE_ANIMATION_DELAYS = [
+    "0s",
+    "0.1s",
+    "0.2s",
+    ".3s",
+    "0.4s",
+    "0.5s",
+  ];
+
+  const animationDelay =
+    POSSIBLE_ANIMATION_DELAYS[
+      Math.floor(Math.random() * POSSIBLE_ANIMATION_DELAYS.length)
+    ];
+
+  return (
+    <div
+      className={cn(
+        "animate-fade-in rounded-[2.25rem] bg-white p-6 opacity-0 shadow-xl shadow-slate-900/5",
+        className
+      )}
+      style={{ animationDelay }}
+      {...props}
+    >
+      <Phone imgSrc={imgSrc} />
     </div>
   );
 }
@@ -73,7 +114,7 @@ function ReviewGrid() {
   const columns = splitArray(PHONES, 3);
   const col1 = columns[0];
   const col2 = columns[1];
-  const col3 = splitArray(columns[0], 2);
+  const col3 = splitArray(columns[2], 2);
   return (
     <div
       ref={containerRef}
@@ -81,7 +122,30 @@ function ReviewGrid() {
     >
       {isInView && (
         <>
-          <ReviewColumn />
+          {/* flat() turns 3d array to 2d */}
+          <ReviewColumn
+            reviews={[...col1, ...col3.flat(), ...col2]}
+            reviewClassName={(reviewIndex) =>
+              cn({
+                "md:hidden": reviewIndex >= col1.length + col3[0].length,
+                "lg:hidden": reviewIndex >= col1.length,
+              })
+            }
+            msPerPixel={10}
+          />
+          <ReviewColumn
+            reviews={[...col2, ...col3[1]]}
+            className="hidden md:block"
+            reviewClassName={(reviewIndex) =>
+              reviewIndex >= col2.length ? "lg:hidden" : ""
+            }
+            msPerPixel={15}
+          />
+          <ReviewColumn
+            reviews={col3.flat()}
+            className="hidden md:block"
+            msPerPixel={10}
+          />
         </>
       )}
     </div>
