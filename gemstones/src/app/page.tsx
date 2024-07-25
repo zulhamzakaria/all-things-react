@@ -108,7 +108,7 @@ export default function Home() {
                 width={50}
                 height={50}
               />
-              <Phone className="w-64" imgSrc="/testimonials/1.jpg" />
+              <Phone className="w-64" imgSrc="/phones/hr.jpg" />
             </div>
           </div>
         </MaxWidthWrapper>
