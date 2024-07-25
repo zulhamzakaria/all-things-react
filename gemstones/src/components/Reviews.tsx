@@ -82,7 +82,7 @@ function Review({ imgSrc, className, ...props }: ReviewProps) {
     "0s",
     "0.1s",
     "0.2s",
-    ".3s",
+    "0.3s",
     "0.4s",
     "0.5s",
   ];
