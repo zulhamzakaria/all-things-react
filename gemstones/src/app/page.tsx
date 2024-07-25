@@ -18,7 +18,7 @@ export default function Home() {
             <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
               <div className="absolute w-28 left-0 -top-20 hidden lg:block">
                 <Image
-                  src="/snake-1.png"
+                  src="/phones/maxwell2.jpg"
                   alt="snake-1"
                   className="w-full"
                   width={100}
