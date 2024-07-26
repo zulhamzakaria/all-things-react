@@ -11,12 +11,11 @@ import Dropzone, { FileRejection } from "react-dropzone";
 
 const Upload = () => {
   const [isDraggedOver, setIsDraggedOver] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const router = useRouter();
   const { toast } = useToast();
 
-  const { startUpload } = useUploadThing("imageUploader", {
+  const { startUpload, isUploading } = useUploadThing("imageUploader", {
     onClientUploadComplete: ([data]) => {
       const configId = data.serverData.configId;
       startTransition(() => {
