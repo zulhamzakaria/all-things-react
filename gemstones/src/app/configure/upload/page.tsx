@@ -14,7 +14,7 @@ const Upload = () => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const router = useRouter();
 
-  const {} = useUploadThing("imageUploader", {
+  const { startUpload } = useUploadThing("imageUploader", {
     onClientUploadComplete: ([data]) => {
       const configId = data.serverData.configId;
       startTransition(() => {
@@ -28,8 +28,14 @@ const Upload = () => {
 
   const [isPending, startTransition] = useTransition();
 
-  const onDropRejected = () => {};
-  const onDropAccepted = () => {};
+  const onDropRejected = (rejectedFiles: FileRejection[]) => {
+    const [file] = rejectedFiles;
+    setIsDraggedOver(false);
+  };
+  const onDropAccepted = (acceptedFiles: File[]) => {
+    startUpload(acceptedFiles, { configId: undefined });
+    setIsDraggedOver(false);
+  };
   return (
     <div
       className={cn(
