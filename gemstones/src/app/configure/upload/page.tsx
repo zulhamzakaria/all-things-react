@@ -1,15 +1,18 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { Image, Loader2, MousePointerSquareDashed } from "lucide-react";
+import { useState, useTransition } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
 
 const Upload = () => {
   const [isDraggedOver, setIsDraggedOver] = useState(false);
-  const onDropRejected = () => {};
-  const onDropAccepted = () => {
+  const [isUploading, setIsUploading] = useState(false);
 
-  };
+  const [isPending, startTransition] = useTransition();
+
+  const onDropRejected = () => {};
+  const onDropAccepted = () => {};
   return (
     <div
       className={cn(
@@ -40,7 +43,27 @@ const Upload = () => {
               {...getRootProps()}
             >
               <input {...getInputProps()} />
-              Drop file here
+              {isDraggedOver ? (
+                <MousePointerSquareDashed className=" h-6 w-6 text-zinc-500 mb-2" />
+              ) : isUploading || isPending ? (
+                <Loader2 className="animate-spin h-6 w-6 text-zinc-500 mb-2" />
+              ) : (
+                <Image className=" h-6 w-6 text-zinc-500 mb-2" />
+              )}
+              <div className="flex flex-col justify-center mb-2 text-sm text-zinc-700">
+                {isUploading ? (
+                  <div className="flex flex-col items-center ">
+                    <p>Uploading...</p>
+                    
+                  </div>
+                ) : isPending ? (
+                  <div></div>
+                ) : isDraggedOver ? (
+                  <span></span>
+                ) : (
+                  <span></span>
+                )}
+              </div>
             </div>
           )}
         </Dropzone>
