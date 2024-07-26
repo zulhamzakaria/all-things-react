@@ -2,9 +2,14 @@
 
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import Dropzone, { FileRejection } from "react-dropzone";
 
 const Upload = () => {
   const [isDraggedOver, setIsDraggedOver] = useState(false);
+  const onDropRejected = () => {};
+  const onDropAccepted = () => {
+
+  };
   return (
     <div
       className={cn(
@@ -13,7 +18,32 @@ const Upload = () => {
       )}
     >
       <div className=" relative flex flex-1 flex-col items-center justify-center w-full">
-        
+        <Dropzone
+          onDropRejected={onDropRejected}
+          onDropAccepted={onDropAccepted}
+          accept={{
+            "image/png": [".png"],
+            "image/jpg": [".jpg"],
+            "image/jpeg": [".jpeg"],
+          }}
+          onDragEnter={() => {
+            setIsDraggedOver(true);
+          }}
+          onDragLeave={() => {
+            setIsDraggedOver(false);
+          }}
+        >
+          {({ getRootProps, getInputProps }) => (
+            <div
+              // ...getRootProps accepts everything that getRootProps has and pass it to the div
+              className=" h-full w-full flex flex-1 flex-col items-center justify-center"
+              {...getRootProps()}
+            >
+              <input {...getInputProps()} />
+              Drop file here
+            </div>
+          )}
+        </Dropzone>
       </div>
     </div>
   );
