@@ -1,6 +1,7 @@
 "use client";
 
 import { Progress } from "@/components/ui/progress";
+import { useToast } from "@/components/ui/use-toast";
 import { useUploadThing } from "@/lib/uploadthing";
 import { cn } from "@/lib/utils";
 import { Image, Loader2, MousePointerSquareDashed } from "lucide-react";
@@ -13,6 +14,7 @@ const Upload = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const router = useRouter();
+  const { toast } = useToast();
 
   const { startUpload } = useUploadThing("imageUploader", {
     onClientUploadComplete: ([data]) => {
@@ -31,6 +33,11 @@ const Upload = () => {
   const onDropRejected = (rejectedFiles: FileRejection[]) => {
     const [file] = rejectedFiles;
     setIsDraggedOver(false);
+    toast({
+      title: `${file.file.type} is not supported`,
+      description: "Please choose a png, jpg or jpeg image instead",
+      variant: "destructive",
+    });
   };
   const onDropAccepted = (acceptedFiles: File[]) => {
     startUpload(acceptedFiles, { configId: undefined });
