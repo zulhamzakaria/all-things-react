@@ -127,8 +127,8 @@ export default function Home() {
               </span>
             </h2>
             <img
-              src="/snake-2.png"
-              className="w-24 order-0 lg:order-2"
+              src="/phones/maxwell.jpg"
+              className="w-24 order-0 lg:order-2 object-cover"
               alt="snake-2"
             />
           </div>
@@ -256,7 +256,7 @@ export default function Home() {
                 href="/configure/upload"
                 className={buttonVariants({
                   size: "lg",
-                  className:'mx-auto mt-8 '
+                  className: "mx-auto mt-8 ",
                 })}
               >
                 Create your case here <ArrowRight className="h-4 w-4 m-1.5" />
