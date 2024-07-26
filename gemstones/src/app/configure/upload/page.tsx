@@ -4,6 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import { useUploadThing } from "@/lib/uploadthing";
 import { cn } from "@/lib/utils";
 import { Image, Loader2, MousePointerSquareDashed } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
 
@@ -11,10 +12,19 @@ const Upload = () => {
   const [isDraggedOver, setIsDraggedOver] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const router = useRouter();
 
-const {} = useUploadThing('imageUploader',{
-    onClientUploadComplete: ([data])=>{},
-})
+  const {} = useUploadThing("imageUploader", {
+    onClientUploadComplete: ([data]) => {
+      const configId = data.serverData.configId;
+      startTransition(() => {
+        router.push(`/configure/design?id=${configId}`);
+      });
+    },
+    onUploadProgress(p) {
+      setUploadProgress(p);
+    },
+  });
 
   const [isPending, startTransition] = useTransition();
 
