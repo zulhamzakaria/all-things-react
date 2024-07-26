@@ -1,6 +1,7 @@
 "use client";
 
 import { Progress } from "@/components/ui/progress";
+import { useUploadThing } from "@/lib/uploadthing";
 import { cn } from "@/lib/utils";
 import { Image, Loader2, MousePointerSquareDashed } from "lucide-react";
 import { useState, useTransition } from "react";
@@ -10,6 +11,10 @@ const Upload = () => {
   const [isDraggedOver, setIsDraggedOver] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+
+const {} = useUploadThing('imageUploader',{
+    onClientUploadComplete: ([data])=>{},
+})
 
   const [isPending, startTransition] = useTransition();
 
