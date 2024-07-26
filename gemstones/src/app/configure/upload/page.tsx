@@ -1,5 +1,6 @@
 "use client";
 
+import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { Image, Loader2, MousePointerSquareDashed } from "lucide-react";
 import { useState, useTransition } from "react";
@@ -8,6 +9,7 @@ import Dropzone, { FileRejection } from "react-dropzone";
 const Upload = () => {
   const [isDraggedOver, setIsDraggedOver] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   const [isPending, startTransition] = useTransition();
 
@@ -54,16 +56,30 @@ const Upload = () => {
                 {isUploading ? (
                   <div className="flex flex-col items-center ">
                     <p>Uploading...</p>
-                    
+                    <Progress
+                      value={uploadProgress}
+                      className=" mt-2 w-40 h-2 bg-gray-300"
+                    />
                   </div>
                 ) : isPending ? (
-                  <div></div>
+                  <div className=" flex flex-col items-center">
+                    <p>Redirecting. Please wait...</p>
+                  </div>
                 ) : isDraggedOver ? (
-                  <span></span>
+                  <p>
+                    <span className="font-semibold">Drop file</span> to upload
+                  </p>
                 ) : (
-                  <span></span>
+                  <p>
+                    <span className="font-semibold">Click to upload</span> or
+                    drag-and-drop
+                  </p>
                 )}
               </div>
+
+              {!isPending && (
+                <p className="text-xs text-zinc-500">PNG, JPG, JPEG</p>
+              )}
             </div>
           )}
         </Dropzone>
