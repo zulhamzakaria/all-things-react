@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Card from "./card";
 import LoadingCard from "./loading-card";
 import { LoaderPinwheel } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 interface DetailsProps {
   name: string;
@@ -17,6 +18,13 @@ interface DetailsProps {
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const DetailsPage = () => {
+  const searchParams = useSearchParams();
+
+  // get the userId if user is not logged in
+  let userId;
+  const userFromURL = searchParams.get("user");
+  if (userFromURL !== "") userId = userFromURL;
+
   const { data, error } = useSWR<DetailsProps>("/details", fetcher);
 
   if (error) {
@@ -26,6 +34,7 @@ const DetailsPage = () => {
   return data ? (
     <Card>
       <div>
+        <h3>{userId}</h3>
         <h3 className=" font-sans lg:text-5xl sm:text-xl justify-center flex mb-7 mt-8 ">
           {data.name}
         </h3>
