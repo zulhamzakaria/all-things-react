@@ -10,7 +10,7 @@ export default clerkMiddleware((auth, req) => {
 export function middleware(req: NextRequest) {
   if (req.nextUrl.pathname === "/") {
     return NextResponse.redirect(
-      new URL("/?user=user_2gzSBiNggGcNbE28mwhWxtaZyLC")
+      new URL("/?user=user_2gzSBiNggGcNbE28mwhWxtaZyLC", req.url)
     );
   }
   return NextResponse.next();
