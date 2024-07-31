@@ -9,6 +9,12 @@ const protectedRoutes = createRouteMatcher(["/some-link"]);
 
 export default clerkMiddleware((auth, req) => {
   if (protectedRoutes(req)) auth().protect();
+
+  const { userId } = getAuth(req);
+  // user logged in
+  if (userId) {
+    return NextResponse.redirect(new URL("/?user=user001", req.url));
+  }
 });
 
 // default user
@@ -18,13 +24,6 @@ export function middleware(req: NextRequest) {
       new URL("/?user=user_2gzSBiNggGcNbE28mwhWxtaZyLC", req.url)
     );
   }
-
-  const { userId } = getAuth(req);
-  // user logged in
-  if (userId) {
-    return NextResponse.redirect(new URL("/?user=user001", req.url));
-  }
-
   return NextResponse.next();
 }
 
