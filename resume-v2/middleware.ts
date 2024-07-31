@@ -7,9 +7,12 @@ export default clerkMiddleware((auth, req) => {
   if (protectedRoutes(req)) auth().protect();
 });
 
+// default user
 export function middleware(req: NextRequest) {
   if (req.nextUrl.pathname === "/" && !req.nextUrl.searchParams.has("user")) {
-    return NextResponse.redirect(new URL("/?user=user001", req.url));
+    return NextResponse.redirect(
+      new URL("/?user=user_2gzSBiNggGcNbE28mwhWxtaZyLC", req.url)
+    );
   }
   return NextResponse.next();
 }
