@@ -1,4 +1,8 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import {
+  clerkMiddleware,
+  createRouteMatcher,
+  getAuth,
+} from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
 const protectedRoutes = createRouteMatcher(["/some-link"]);
@@ -14,6 +18,13 @@ export function middleware(req: NextRequest) {
       new URL("/?user=user_2gzSBiNggGcNbE28mwhWxtaZyLC", req.url)
     );
   }
+
+  const { userId } = getAuth(req);
+  // user logged in
+  if (userId) {
+    return NextResponse.redirect(new URL("/?user=user001", req.url));
+  }
+
   return NextResponse.next();
 }
 
