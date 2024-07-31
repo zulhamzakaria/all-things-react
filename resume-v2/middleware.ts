@@ -13,7 +13,7 @@ export default clerkMiddleware((auth, req) => {
   const userId = auth().userId;
 
   if (userId) {
-    console.log(userId);
+    return NextResponse.redirect(new URL(`/?user=${userId}`, req.url));
   }
   return NextResponse.next();
 });
