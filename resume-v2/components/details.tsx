@@ -1,10 +1,9 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import Card from "./card";
 import LoadingCard from "./loading-card";
-import { LoaderPinwheel } from "lucide-react";
-import { useSearchParams } from "next/navigation";
 
 interface DetailsProps {
   name: string;
