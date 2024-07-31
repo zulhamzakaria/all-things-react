@@ -30,7 +30,7 @@ const ResumePage = () => {
         ref={componentRef}
         className=" h-[auto] lg:w-[900px] sm:w-auto bg-gray-50 rounded-t-sm shadow-sm pt-10 pb-10 pl-5 pr-5 flex flex-col"
       >
-        <DetailsPage />
+        {/* <DetailsPage /> */}
         {/* <SummaryPage />
         <SkillsPage />
         <ExperiencesPage />
