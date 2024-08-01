@@ -9,7 +9,7 @@ const NotificationWrapper = ({ children }: { children: React.ReactNode }) => {
       </p>
       <span className="text-slate-100 font-sans w-full">{children}</span>
       <div className="border-l border-gray-400 h-full mx-2"></div>
-      <span className="text-white font-semibold">
+      <span className="text-white font-semibold cursor-pointer">
         <XIcon />
       </span>
     </div>
