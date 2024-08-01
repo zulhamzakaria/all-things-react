@@ -13,8 +13,14 @@ export default clerkMiddleware((auth, req) => {
   const userId = auth().userId;
 
   if (userId) {
-    if (req.nextUrl.pathname === "/" && !req.nextUrl.searchParams.has("user"))
-      return NextResponse.redirect(new URL(`/?user=${userId}`, req.url));
+    // if (req.nextUrl.pathname === "/" && !req.nextUrl.searchParams.has("user"))
+    return NextResponse.redirect(new URL(`/?user=${userId}`, req.url));
+  } else {
+    if (req.nextUrl.pathname === "/" && !req.nextUrl.searchParams.has("user")) {
+      return NextResponse.redirect(
+        new URL("/?user=user_2gzSBiNggGcNbE28mwhWxtaZyLC", req.url)
+      );
+    }
   }
   return NextResponse.next();
 });
