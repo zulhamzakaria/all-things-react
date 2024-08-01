@@ -19,7 +19,7 @@ export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const DetailsPage = () => {
   const searchParams = useSearchParams();
 
-  // get the userId if user is not logged in
+  // get the userId from query string
   let userId;
   const userFromURL = searchParams.get("user");
   if (userFromURL !== "") userId = userFromURL;
