@@ -8,27 +8,40 @@ import SummaryPage from "./summary";
 import { Button } from "./ui/button";
 import ReactToPrint from "react-to-print";
 import { useEffect, useRef } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { UserStore } from "@/lib/use-store";
 import { useUser } from "@clerk/nextjs";
 import NotificationWrapper from "./wrappers/notification-wrapper";
+import { Copy } from "lucide-react";
 
 const ResumePage = () => {
   const componentRef = useRef<HTMLDivElement>(null);
-
-  const { user } = useUser();
-  const { setUserId } = UserStore();
+  const router = useRouter();
+  // const { user } = useUser();
+  // const { setUserId } = UserStore();
   const searchParams = useSearchParams();
   const query = searchParams.get("userId") as string;
 
-  useEffect(() => {
-    setUserId(user ? user.id : query);
-  }, [user, query]);
+  const pathname = usePathname();
+
+  // useEffect(() => {
+  //   setUserId(user ? user.id : query);
+  // }, [user, query]);
 
   return (
     <>
       <NotificationWrapper>
-        <div>Notification</div>
+        <div className=" text-slate-100 flex flex-row space-x-2">
+          {query}
+          <p>The link to your resume is </p>
+          <span className="text-white font-semibold">
+            {`${window.location.origin}${pathname}?${searchParams.toString()}`}
+          </span>{" "}
+          <Copy
+            className="text-slate-100 size-3 cursor-pointer"
+            onClick={() => {}}
+          />
+        </div>
       </NotificationWrapper>
       <div
         ref={componentRef}
