@@ -3,7 +3,7 @@ import React from "react";
 
 const NotificationWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-10 bg-dark-3 space-x-2  rounded-md my-2 lg:w-[900px] w-auto p-2 flex flex-row">
+    <div className="bg-dark-3/75 space-x-2  rounded-md my-2 lg:w-[900px] py-6 w-auto px-2 flex flex-row">
       <p className="text-yellow-100">
         <AlertCircleIcon />
       </p>
