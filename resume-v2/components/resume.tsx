@@ -20,7 +20,7 @@ const ResumePage = () => {
   // const { user } = useUser();
   // const { setUserId } = UserStore();
   const searchParams = useSearchParams();
-  const query = searchParams.get("userId") as string;
+  const query = searchParams.get("user") as string;
 
   const pathname = usePathname();
 
