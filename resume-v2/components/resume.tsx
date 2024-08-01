@@ -14,6 +14,7 @@ import { useUser } from "@clerk/nextjs";
 import NotificationWrapper from "./wrappers/notification-wrapper";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
+import { Tooltip } from "react-tooltip";
 
 const ResumePage = () => {
   const componentRef = useRef<HTMLDivElement>(null);
@@ -49,12 +50,15 @@ const ResumePage = () => {
         <div className=" text-slate-100 flex flex-row space-x-2">
           <p>The link to your resume is </p>
           <span className="text-white font-semibold">{resumeLink}</span>{" "}
-          <Copy
-            className="text-slate-100 size-3 cursor-pointer"
-            onClick={() => {
-              copyToClipboard(resumeLink);
-            }}
-          />
+          <Tooltip id="copy" />
+          <p data-tooltip-id="copy" data-tooltip-content="Copy Link">
+            <Copy
+              className="text-slate-100 size-3 cursor-pointer"
+              onClick={() => {
+                copyToClipboard(resumeLink);
+              }}
+            />
+          </p>
         </div>
       </NotificationWrapper>
       <div
