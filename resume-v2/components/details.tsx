@@ -33,17 +33,24 @@ const DetailsPage = () => {
   return data ? (
     <Card>
       <div>
-        <h3>{userId}</h3>
         <h3 className=" font-sans lg:text-5xl sm:text-xl justify-center flex mb-7 mt-8 ">
           {data.name}
         </h3>
-        <div className=" justify-center flex pb-5 sm:text-xs lg:text-base">
-          <p>{data.phone}</p>
+        <div className=" justify-center flex pb-5">
+          <p className="text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
+            {data.phone}
+          </p>
           <p className=" lg:text-lg lg:font-bold sm:px-1 lg:px-10">|</p>
-          <p>{data.email}</p>
-          <p className=" lg:text-lg lg:font-bold sm:px-1 lg:px-10">|</p>
-          <p className=" sm:hidden lg:block">{data.fulllocation}</p>
-          <p className=" sm:block lg:hidden">{data.shortlocation}</p>
+          <p className="text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
+            {data.email}
+          </p>
+          <p className=" lg:text-lg lg:font-bold sm:px-1 lg:px-10 ">|</p>
+          <p className=" hidden lg:block text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
+            {data.fulllocation}
+          </p>
+          <p className=" sm:block lg:hidden xl:hidden text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
+            {data.shortlocation}
+          </p>
         </div>
       </div>
     </Card>
