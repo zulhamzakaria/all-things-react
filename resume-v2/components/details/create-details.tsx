@@ -1,4 +1,4 @@
-import React from "react";
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const CreateDetails = () => {
   return <div>CreateDetails</div>;
