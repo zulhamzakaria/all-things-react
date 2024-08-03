@@ -25,9 +25,10 @@ const ResumePage = () => {
   const query = searchParams.get("user") as string;
 
   const pathname = usePathname();
-  const resumeLink = `${
-    window.location.origin
-  }${pathname}?${searchParams.toString()}`;
+  // const resumeLink = `${
+  //   window.location.origin
+  // }${pathname}?${searchParams.toString()}`;
+  const resumeLink = `${pathname}?${searchParams.toString()}`;
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard
