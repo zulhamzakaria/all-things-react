@@ -2,7 +2,7 @@ import { details } from "@/data";
 
 const defaultUser = {
   name: "Default user",
-  phone: "012-345678",
+  phone: "012-3456789",
   email: "sample.mail@mail.com",
   role: "Web Developer",
   fulllocation: "Kuala Lumpur, MY",
