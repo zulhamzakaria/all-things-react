@@ -1,5 +1,14 @@
 import { details } from "@/data";
 
+const defaultUser = {
+  name: "Default user",
+  phone: "012-345678",
+  email: "sample.mail@mail.com",
+  role: "Web Developer",
+  fulllocation: "Kuala Lumpur, MY",
+  shortlocation: "KL, MY",
+};
+
 export async function GET(
   _req: Request,
   { params }: { params: { id: string } }
@@ -7,7 +16,7 @@ export async function GET(
   let user;
   user = details.find((user) => user.userId === params.id);
   if (!user) {
-    user = {}
+    user = defaultUser;
   }
   return Response.json(user);
 }
