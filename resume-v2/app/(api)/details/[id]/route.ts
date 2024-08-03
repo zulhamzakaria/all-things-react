@@ -4,6 +4,10 @@ export async function GET(
   _req: Request,
   { params }: { params: { id: string } }
 ) {
-  const user = details.find((user) => user.userId === params.id);
+  let user;
+  user = details.find((user) => user.userId === params.id);
+  if (!user) {
+    user = {}
+  }
   return Response.json(user);
 }
