@@ -34,7 +34,7 @@ const DetailsPage = ({ userId }: { userId: string }) => {
     <Card>
       <div>
         <h3 className=" font-sans lg:text-5xl sm:text-xl justify-center flex mb-7 mt-8 ">
-          {data.name}
+          {data.name.toUpperCase()}
         </h3>
         <div className=" justify-center flex pb-5">
           <p className="text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
