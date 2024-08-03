@@ -16,15 +16,15 @@ interface DetailsProps {
 
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const DetailsPage = () => {
+const DetailsPage = ({ userId }: { userId: string }) => {
   const searchParams = useSearchParams();
 
-  // get the userId from query string
-  let userId;
-  const userFromURL = searchParams.get("user");
-  if (userFromURL !== "") userId = userFromURL;
+  // // get the userId from query string
+  // let userId;
+  // const userFromURL = searchParams.get("user");
+  // if (userFromURL !== "") userId = userFromURL;
 
-  const { data, error } = useSWR<DetailsProps>("/details", fetcher);
+  const { data, error } = useSWR<DetailsProps>(`/details/${userId}`, fetcher);
 
   if (error) {
     return <h1>{error}</h1>;
