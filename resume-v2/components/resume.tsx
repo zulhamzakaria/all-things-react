@@ -28,7 +28,7 @@ const ResumePage = () => {
   // const resumeLink = `${
   //   window.location.origin
   // }${pathname}?${searchParams.toString()}`;
-  const resumeLink = `${window.location.origin}`;
+  const resumeLink = ``;
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard
