@@ -1,7 +1,7 @@
 import { details } from "@/data";
 
 const defaultUser = {
-  name: "Default user",
+  name: "no name",
   phone: "012-3456789",
   email: "sample.mail@mail.com",
   role: "Web Developer",
