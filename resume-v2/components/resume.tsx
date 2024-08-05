@@ -7,7 +7,7 @@ import SkillsPage from "./skills";
 import SummaryPage from "./summary";
 import { Button } from "./ui/button";
 import ReactToPrint from "react-to-print";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { UserStore } from "@/lib/use-store";
 import { useUser } from "@clerk/nextjs";
@@ -21,14 +21,18 @@ const ResumePage = () => {
   const router = useRouter();
   // const { user } = useUser();
   // const { setUserId } = UserStore();
+
+  const [resumeLink, setResumeLink] = useState("");
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const user = searchParams.get("user") as string;
-
-  const pathname = usePathname();
-  // const resumeLink = `${
-  //   window.location.origin
-  // }${pathname}?${searchParams.toString()}`;
-  const resumeLink = ``;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const origin = window.location.origin;
+      const currentUrl = `${origin}${pathname}?${searchParams.toString()}`;
+      setResumeLink(currentUrl);
+    }
+  }, [pathname, searchParams]);
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard
@@ -40,10 +44,6 @@ const ResumePage = () => {
         toast.error("Failed to copy link: ", err);
       });
   };
-
-  // useEffect(() => {
-  //   setUserId(user ? user.id : query);
-  // }, [user, query]);
 
   return (
     <>
