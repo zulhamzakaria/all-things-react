@@ -20,12 +20,6 @@ interface DetailsProps {
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const DetailsPage = ({ userId }: { userId: string }) => {
-  const searchParams = useSearchParams();
-
-  // // get the userId from query string
-  // let userId;
-  // const userFromURL = searchParams.get("user");
-  // if (userFromURL !== "") userId = userFromURL;
 
   const { data, error } = useSWR<DetailsProps>(`/details/${userId}`, fetcher);
 
