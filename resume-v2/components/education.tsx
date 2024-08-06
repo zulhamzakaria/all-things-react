@@ -20,7 +20,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
-import EditDialogWrapper from "./edit-dialog-wrapper";
+import EditDialogWrapper from "./wrappers/edit-dialog-wrapper";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface EducationProps {

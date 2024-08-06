@@ -5,7 +5,7 @@ import useSWR from "swr";
 import Card from "./card";
 import LoadingCard from "./loading-card";
 import { SignedIn } from "@clerk/nextjs";
-import EditDialogWrapper from "./edit-dialog-wrapper";
+import EditDialogWrapper from "./wrappers/edit-dialog-wrapper";
 import { editDetailsDialogId } from "@/constants";
 
 interface DetailsProps {

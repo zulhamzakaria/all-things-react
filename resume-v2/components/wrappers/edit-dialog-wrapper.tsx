@@ -1,9 +1,9 @@
 import { EditDialogItemIdStore } from "@/lib/use-dialog";
 import { useUser } from "@clerk/nextjs";
-import DialogContainer from "./dialog-container";
-import EditEducation from "./educations/edit-education";
-import { Button } from "./ui/button";
-import EditDetails from "./details/edit-details";
+import DialogContainer from "../dialog-container";
+import EditEducation from "../educations/edit-education";
+import { Button } from "../ui/button";
+import EditDetails from "../details/edit-details";
 
 interface EditDialogWrapperProps {
   id: string;
