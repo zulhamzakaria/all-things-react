@@ -9,6 +9,7 @@ interface EditDialogWrapperProps {
   dialogId: string;
   dialogTitle: string;
   dialogDescription: string;
+  childComponent: "EditEducation" | "EditDetails";
 }
 
 const EditDialogWrapper = ({
@@ -16,9 +17,19 @@ const EditDialogWrapper = ({
   dialogId,
   dialogTitle,
   dialogDescription,
+  childComponent,
 }: EditDialogWrapperProps) => {
   const { user } = useUser();
   const { setItemId, setUserId } = EditDialogItemIdStore();
+
+  const renderChildcomponent = () => {
+    switch (childComponent) {
+      case "EditDetails":
+        return <EditEducation />;
+      case "EditEducation":
+        return <EditEducation />;
+    }
+  };
 
   return (
     <div className="flex justify-end">
@@ -36,7 +47,8 @@ const EditDialogWrapper = ({
         >
           edit
         </Button>
-        <EditEducation />
+        {/* <EditEducation /> */}
+        {renderChildcomponent()}
       </DialogContainer>
     </div>
   );
