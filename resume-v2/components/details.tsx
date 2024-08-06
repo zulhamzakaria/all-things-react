@@ -34,37 +34,39 @@ const DetailsPage = ({ userId }: { userId: string }) => {
   }
 
   return data ? (
-    <Card>
-      <div>
-        <h3 className=" font-sans lg:text-5xl sm:text-xl justify-center flex mb-7 mt-8 ">
-          {data.name.toUpperCase()}
-        </h3>
-        <div className=" justify-center flex pb-5">
-          <p className="text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
-            {data.phone}
-          </p>
-          <p className=" lg:text-lg lg:font-bold sm:px-1 lg:px-10">|</p>
-          <p className="text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
-            {data.email}
-          </p>
-          <p className=" lg:text-lg lg:font-bold sm:px-1 lg:px-10 ">|</p>
-          <p className=" hidden lg:block text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
-            {data.fulllocation}
-          </p>
-          <p className=" sm:block lg:hidden xl:hidden text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
-            {data.shortlocation}
-          </p>
+    <>
+      <Card>
+        <div>
+          <h3 className=" font-sans lg:text-5xl sm:text-xl justify-center flex mb-7 mt-8 ">
+            {data.name.toUpperCase()}
+          </h3>
+          <div className=" justify-center flex pb-5">
+            <p className="text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
+              {data.phone}
+            </p>
+            <p className=" lg:text-lg lg:font-bold sm:px-1 lg:px-10">|</p>
+            <p className="text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
+              {data.email}
+            </p>
+            <p className=" lg:text-lg lg:font-bold sm:px-1 lg:px-10 ">|</p>
+            <p className=" hidden lg:block text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
+              {data.fulllocation}
+            </p>
+            <p className=" sm:block lg:hidden xl:hidden text-sm xl:text-base lg:text-base xl:font-normal lg:font-normal">
+              {data.shortlocation}
+            </p>
+          </div>
         </div>
-      </div>
+      </Card>
       <SignedIn>
         <EditDialogWrapper
           id={userId}
           dialogId={editDetailsDialogId}
           dialogTitle="edit details"
           dialogDescription="Make changes to the details here. Click save once you're done."
-        ></EditDialogWrapper>
+        />
       </SignedIn>
-    </Card>
+    </>
   ) : (
     <div className=" h-auto">
       <LoadingCard />
