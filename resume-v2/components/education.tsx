@@ -126,6 +126,7 @@ const EducationPage = () => {
                   dialogId={editEducationDialogId}
                   dialogTitle="edit education"
                   dialogDescription="Make changes to the education here. Click save once you're done."
+                  childComponent="EditEducation"
                 />
               </div>
             </SignedIn>
