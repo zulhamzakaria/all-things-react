@@ -6,6 +6,7 @@ import Card from "./card";
 import LoadingCard from "./loading-card";
 import { SignedIn } from "@clerk/nextjs";
 import EditDialogWrapper from "./edit-dialog-wrapper";
+import { editDetailsDialogId } from "@/constants";
 
 interface DetailsProps {
   name: string;
