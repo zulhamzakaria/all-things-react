@@ -9,7 +9,7 @@ import { z } from "zod";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const CreateDetails = ({ userId }: { userId: string }) => {
+const EditDetails = ({ userId }: { userId: string }) => {
   // format: http://localhost:3000/details/user_2gb3uVBwoAB9WzzUB5Ix3FIBc8e
   // data is for mutating it
   const { data } = useSWR(`/details/${userId}`, fetcher);
@@ -25,12 +25,12 @@ const CreateDetails = ({ userId }: { userId: string }) => {
     try {
     } catch (err) {
       toast.error((err as Error).message);
-    }finally{
-      setIsLoading(false)
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return <div>CreateDetails</div>;
 };
 
-export default CreateDetails;
+export default EditDetails;

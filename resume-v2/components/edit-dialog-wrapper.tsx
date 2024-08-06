@@ -3,6 +3,7 @@ import { useUser } from "@clerk/nextjs";
 import DialogContainer from "./dialog-container";
 import EditEducation from "./educations/edit-education";
 import { Button } from "./ui/button";
+import EditDetails from "./details/edit-details";
 
 interface EditDialogWrapperProps {
   id: string;
@@ -25,7 +26,7 @@ const EditDialogWrapper = ({
   const renderChildcomponent = () => {
     switch (childComponent) {
       case "EditDetails":
-        return <EditEducation />;
+        return <EditDetails userId={user!.id} />;
       case "EditEducation":
         return <EditEducation />;
     }
