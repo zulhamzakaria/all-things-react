@@ -5,6 +5,7 @@ import useSWR from "swr";
 import Card from "./card";
 import LoadingCard from "./loading-card";
 import { SignedIn } from "@clerk/nextjs";
+import EditDialogWrapper from "./edit-dialog-wrapper";
 
 interface DetailsProps {
   name: string;
@@ -55,7 +56,12 @@ const DetailsPage = ({ userId }: { userId: string }) => {
         </div>
       </div>
       <SignedIn>
-        
+        <EditDialogWrapper
+          id={userId}
+          dialogId={editDetailsDialogId}
+          dialogTitle="edit details"
+          dialogDescription="Make changes to the details here. Click save once you're done."
+        ></EditDialogWrapper>
       </SignedIn>
     </Card>
   ) : (
