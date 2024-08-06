@@ -20,7 +20,6 @@ interface DetailsProps {
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const DetailsPage = ({ userId }: { userId: string }) => {
-
   const { data, error } = useSWR<DetailsProps>(`/details/${userId}`, fetcher);
 
   if (error) {
@@ -53,7 +52,13 @@ const DetailsPage = ({ userId }: { userId: string }) => {
         </div>
       </Card>
       <SignedIn>
-        
+        <EditDialogWrapper
+          id={userId.toString()}
+          dialogId={editDetailsDialogId}
+          dialogTitle="edit education"
+          dialogDescription="Make changes to the education here. Click save once you're done."
+          childComponent="EditDetails"
+        />
       </SignedIn>
     </>
   ) : (
