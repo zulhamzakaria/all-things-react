@@ -59,12 +59,7 @@ const DetailsPage = ({ userId }: { userId: string }) => {
         </div>
       </Card>
       <SignedIn>
-        <EditDialogWrapper
-          id={userId}
-          dialogId={editDetailsDialogId}
-          dialogTitle="edit details"
-          dialogDescription="Make changes to the details here. Click save once you're done."
-        />
+        
       </SignedIn>
     </>
   ) : (
