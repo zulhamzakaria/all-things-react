@@ -8,6 +8,7 @@ import { z } from "zod";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const CreateDetails = ({ userId }: { userId: string }) => {
+  // format: http://localhost:3000/details/user_2gb3uVBwoAB9WzzUB5Ix3FIBc8e
   const { data, isLoading, error } = useSWR(`/details/${userId}`, fetcher);
   const { onClose } = useDialog();
 
