@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import Card from "./card";
 import LoadingCard from "./loading-card";
+import { SignedIn } from "@clerk/nextjs";
 
 interface DetailsProps {
   name: string;
@@ -53,6 +54,9 @@ const DetailsPage = ({ userId }: { userId: string }) => {
           </p>
         </div>
       </div>
+      <SignedIn>
+        
+      </SignedIn>
     </Card>
   ) : (
     <div className=" h-auto">
