@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const AddDetailsSchema = z.object({
+export const CreateDetailsSchema = z.object({
   name: z.string().min(2, { message: "Name must be longer that 2 chars" }),
   phone: z.string(),
   email: z.string().email(),
