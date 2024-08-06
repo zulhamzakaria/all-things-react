@@ -9,7 +9,7 @@ const NotificationWrapper = ({ children }: { children: React.ReactNode }) => {
   };
 
   return isVisible &&  (
-    <div className="bg-dark-3/75 space-x-2  rounded-md my-2 lg:w-[900px] py-6 w-auto px-2 flex flex-row">
+    <div className="bg-dark-3/75 space-x-2  rounded-md my-2 lg:w-[900px] py-6 w-auto px-5 flex flex-row">
       <p className="text-yellow-100">
         <AlertCircleIcon />
       </p>
