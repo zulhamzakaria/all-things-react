@@ -1,6 +1,7 @@
+import { UserDetails } from "@/constants";
 import { details } from "@/data";
 
-const defaultUser = {
+const defaultUser: UserDetails = {
   name: "no name",
   phone: "012-3456789",
   email: "sample.mail@mail.com",
