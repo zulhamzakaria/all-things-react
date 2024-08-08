@@ -33,7 +33,7 @@ const EditDetails = () => {
   };
 
   return data && !isLoading ? (
-    <div>{userId}</div>
+    <div>{data[0]}</div>
   ) : (
     <div className=" w-full flex justify-center">
       <LoadingCard />
