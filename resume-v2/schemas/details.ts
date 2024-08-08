@@ -10,5 +10,5 @@ export const CreateDetailsSchema = z.object({
     .min(2, { message: "Full Location must be longer than 2 chars" }),
   shortLocation: z
     .string()
-    .min(2, { message: "Full Location must be longer than 2 chars" }),
+    .min(2, { message: "Short Location must be longer than 2 chars" }),
 });
