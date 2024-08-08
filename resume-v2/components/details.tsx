@@ -55,8 +55,8 @@ const DetailsPage = ({ userId }: { userId: string }) => {
         <EditDialogWrapper
           id={userId.toString()}
           dialogId={editDetailsDialogId}
-          dialogTitle="edit education"
-          dialogDescription="Make changes to the education here. Click save once you're done."
+          dialogTitle="edit details"
+          dialogDescription="Make changes to the details here. Click save once you're done."
           childComponent="EditDetails"
         />
       </SignedIn>
