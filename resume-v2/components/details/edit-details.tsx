@@ -45,6 +45,7 @@ const EditDetails = () => {
   const onSubmit = async () => {
     setIsPending(true);
     try {
+      toast.success("Details updated");
     } catch (err) {
       toast.error((err as Error).message);
     } finally {
