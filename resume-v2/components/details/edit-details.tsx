@@ -10,6 +10,7 @@ import LoadingCard from "../loading-card";
 import { UserDetails } from "@/constants";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
+import { Input } from "../ui/input";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -64,20 +65,66 @@ const EditDetails = () => {
       <div className="w-full">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full flex flex-col mb-1">
-            <Label htmlFor="name" className=" font-sans mb-2 w-1/2 mx-1">
+            <Label htmlFor="name" className=" font-sans mb-1 w-1/2 mx-1">
               Name
             </Label>
-            <Label htmlFor="role" className=" font-sans mb-2 w-1/2 mx-1">
+            <Input
+              id="name"
+              {...register("name")}
+              className=" text-slate-900 mb-2"
+              defaultValue={mappedFields.name}
+            />
+            {errors.name && (
+              <p className="text-red-400 text-sm mx-1">{errors.name.message}</p>
+            )}
+            <Label htmlFor="role" className=" font-sans mb-1 w-1/2 mx-1">
               Role
             </Label>
-            <div className="w-full flex justify-between ">
-              <Label htmlFor="email" className=" font-sans mb-2 w-1/2 mx-1">
+            <Input
+              id="role"
+              {...register("role")}
+              defaultValue={mappedFields.role}
+              className="text-slate-900 mb-2"
+            />
+            {errors.role && (
+              <p className="text-red-400 text-sm mx-1">{errors.role.message}</p>
+            )}
+            <div className="w-full flex justify-between mb-1">
+              <Label htmlFor="email" className=" font-sans mb-1 w-1/2 mx-1">
                 Email
               </Label>
-              <Label htmlFor="phone" className=" font-sans mb-2 w-1/2 mx-1">
+              <Label htmlFor="phone" className=" font-sans mb-1 w-1/2 mx-1">
                 Phone
               </Label>
             </div>
+            <div className="w-full flex justify-between mb-2 space-x-1">
+              <Input
+                id="email"
+                {...register("email")}
+                defaultValue={mappedFields.email}
+                className="text-slate-900"
+              />
+
+              <Input
+                id="phone"
+                {...register("phone")}
+                defaultValue={mappedFields.phone}
+                className="text-slate-900"
+              />
+            </div>
+            <div className="w-full flex justify-between mb-2 space-x-1">
+              {errors.email && (
+                <p className="text-red-400 text-sm mx-1">
+                  {errors.email.message}
+                </p>
+              )}
+              {errors.phone && (
+                <p className="text-red-400 text-sm mx-1">
+                  {errors.phone.message}
+                </p>
+              )}
+            </div>
+
             <div className="w-full flex justify-between ">
               <Label
                 htmlFor="fulllocation"
@@ -92,13 +139,7 @@ const EditDetails = () => {
                 Short Location
               </Label>
             </div>
-            <div>
-              {errors.name && (
-                <p className="text-red-400 text-sm mx-1">
-                  {errors.name.message}
-                </p>
-              )}
-            </div>
+            <div></div>
           </div>
 
           <div className="w-full flex justify-end">
