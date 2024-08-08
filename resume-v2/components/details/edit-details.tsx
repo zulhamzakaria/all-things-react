@@ -8,6 +8,8 @@ import useSWR from "swr";
 import { z } from "zod";
 import LoadingCard from "../loading-card";
 import { UserDetails } from "@/constants";
+import { Button } from "../ui/button";
+import { Label } from "../ui/label";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -22,9 +24,22 @@ const EditDetails = () => {
   const [isPending, setIsPending] = useState<boolean>(false);
   const { onClose } = useDialog();
 
-  const {} = useForm<z.infer<typeof CreateDetailsSchema>>({
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<z.infer<typeof CreateDetailsSchema>>({
     resolver: zodResolver(CreateDetailsSchema),
   });
+
+  const mappedFields = {
+    name: data?.name,
+    phone: data?.phone,
+    email: data?.email,
+    role: data?.role,
+    fulllocation: data?.fulllocation,
+    shortlocation: data?.shortlocation,
+  };
 
   const onSubmit = async () => {
     setIsPending(true);
@@ -37,14 +52,60 @@ const EditDetails = () => {
   };
 
   return data && !isLoading ? (
-    <div>
-      {data.name}
-      {data.email}
-      {data.phone}
-      {data.role}
-      {data.fulllocation}
-      {data.shortlocation}
-    </div>
+    <>
+      <div style={{ display: "none" }}>
+        {data.name}
+        {data.email}
+        {data.phone}
+        {data.role}
+        {data.fulllocation}
+        {data.shortlocation}
+      </div>
+      <div className="w-full">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="w-full flex flex-col mb-1">
+            <Label htmlFor="name" className=" font-sans mb-2 w-1/2 mx-1">
+              Name
+            </Label>
+            <Label htmlFor="role" className=" font-sans mb-2 w-1/2 mx-1">
+              Role
+            </Label>
+            <div className="w-full flex justify-between ">
+              <Label htmlFor="email" className=" font-sans mb-2 w-1/2 mx-1">
+                Email
+              </Label>
+              <Label htmlFor="phone" className=" font-sans mb-2 w-1/2 mx-1">
+                Phone
+              </Label>
+            </div>
+            <div className="w-full flex justify-between ">
+              <Label
+                htmlFor="fulllocation"
+                className=" font-sans mb-2 w-1/2 mx-1"
+              >
+                Full Location
+              </Label>
+              <Label
+                htmlFor="shortlocation"
+                className=" font-sans mb-2 w-1/2 mx-1"
+              >
+                Short Location
+              </Label>
+            </div>
+          </div>
+
+          <div className="w-full flex justify-end">
+            <Button
+              type="submit"
+              disabled={isPending}
+              className="px-10 mt-10 mb-2 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
+            >
+              save
+            </Button>
+          </div>
+        </form>
+      </div>
+    </>
   ) : (
     <div className=" w-full flex justify-center">
       <LoadingCard />
