@@ -9,7 +9,7 @@ import { z } from "zod";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const EditDetails = ({ userId }: { userId: string }) => {
+const EditDetails = () => {
   // format: http://localhost:3000/details/user_2gb3uVBwoAB9WzzUB5Ix3FIBc8e
   // data is for mutating it
   const { data } = useSWR(`/details/${userId}`, fetcher);

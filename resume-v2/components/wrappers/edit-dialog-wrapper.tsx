@@ -26,7 +26,7 @@ const EditDialogWrapper = ({
   const renderChildcomponent = () => {
     switch (childComponent) {
       case "EditDetails":
-        return <EditDetails userId={user!.id} />;
+        return <EditDetails />;
       case "EditEducation":
         return <EditEducation />;
     }
