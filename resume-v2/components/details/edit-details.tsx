@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { z } from "zod";
 import LoadingCard from "../loading-card";
+import { UserDetails } from "@/constants";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -14,7 +15,10 @@ const EditDetails = () => {
   const { userId, itemId } = EditDialogItemIdStore();
   // format: http://localhost:3000/details/user_2gb3uVBwoAB9WzzUB5Ix3FIBc8e
   // data is for mutating it
-  const { data, isLoading } = useSWR(`/details/${userId}`, fetcher);
+  const { data, isLoading } = useSWR<UserDetails>(
+    `/details/${userId}`,
+    fetcher
+  );
   const [isPending, setIsPending] = useState<boolean>(false);
   const { onClose } = useDialog();
 
@@ -33,7 +37,14 @@ const EditDetails = () => {
   };
 
   return data && !isLoading ? (
-    <div>{data.name}</div>
+    <div>
+      {data.name}
+      {data.email}
+      {data.phone}
+      {data.role}
+      {data.fulllocation}
+      {data.shortlocation}
+    </div>
   ) : (
     <div className=" w-full flex justify-center">
       <LoadingCard />
