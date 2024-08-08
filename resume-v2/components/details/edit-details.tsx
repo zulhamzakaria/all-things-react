@@ -112,17 +112,21 @@ const EditDetails = () => {
                 className="text-slate-900"
               />
             </div>
-            <div className="w-full flex justify-between mb-2 space-x-1">
-              {errors.email && (
-                <p className="text-red-400 text-sm mx-1">
-                  {errors.email.message}
-                </p>
-              )}
-              {errors.phone && (
-                <p className="text-red-400 text-sm mx-1">
-                  {errors.phone.message}
-                </p>
-              )}
+            <div className="w-full mb-2 flex flex-row">
+              <div className="w-1/2">
+                {errors.email && (
+                  <p className="text-red-400 text-sm mx-1">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+              <div className="w-1/2">
+                {errors.phone && (
+                  <p className="text-red-400 text-sm mx-1">
+                    {errors.phone.message}
+                  </p>
+                )}
+              </div>
             </div>
 
             <div className="w-full flex justify-between ">
@@ -139,7 +143,32 @@ const EditDetails = () => {
                 Short Location
               </Label>
             </div>
-            <div></div>
+            <div className="w-full space-x-1 grid grid-cols-2">
+              <Input
+                id="fulllocation"
+                {...register("fullLocation")}
+                defaultValue={mappedFields.fulllocation}
+                className="text-slate-900"
+              />
+              <Input
+                id="shortlocation"
+                {...register("shortLocation")}
+                defaultValue={mappedFields.shortlocation}
+                className=" text-slate-900"
+              />
+            </div>
+            <div className="space-x-1 grid grid-cols-2">
+              {errors.fullLocation && (
+                <p className="text-red-400 text-sm mx-1">
+                  {errors.fullLocation.message}
+                </p>
+              )}
+              {errors.shortLocation && (
+                <p className="text-red-400 text-sm mx-1">
+                  {errors.shortLocation.message}
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="w-full flex justify-end">
