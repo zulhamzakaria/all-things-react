@@ -92,6 +92,13 @@ const EditDetails = () => {
                 Short Location
               </Label>
             </div>
+            <div>
+              {errors.name && (
+                <p className="text-red-400 text-sm mx-1">
+                  {errors.name.message}
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="w-full flex justify-end">
