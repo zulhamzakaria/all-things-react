@@ -1,7 +1,7 @@
 import { EditDialogItemIdStore, useDialog } from "@/lib/use-dialog";
 import { CreateDetailsSchema } from "@/schemas/details";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import useSWR from "swr";
@@ -33,7 +33,7 @@ const EditDetails = () => {
   };
 
   return data && !isLoading ? (
-    <div>{data[0]}</div>
+    <div>{data.name}</div>
   ) : (
     <div className=" w-full flex justify-center">
       <LoadingCard />
