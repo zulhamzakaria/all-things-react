@@ -29,10 +29,11 @@ export async function POST(
   { params }: { params: { id: string } }
 ) {
   const { details } = await req.json();
+
   const response = await fetch(apiURL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ userId: params.id, details }),
+    body: JSON.stringify({ userId: params.id, ...details }),
   });
 
   return Response.json("");
