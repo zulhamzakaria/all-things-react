@@ -1,10 +1,7 @@
 import { UserDetails } from "@/constants";
 import { details } from "@/data";
 
-const apiURL =
-  process.env.NODE_ENV !== "development"
-    ? `${process.env.API_URL}/details`
-    : `${process.env.DEV_API_URL}/details`;
+const apiURL = `${process.env.API_URL}/details`;
 
 const defaultUser: UserDetails = {
   name: "no name",
@@ -27,6 +24,16 @@ export async function GET(
   return Response.json(user);
 }
 
-export async function POST(req: Request) {
+export async function POST(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
   const { details } = await req.json();
+  const response = await fetch(apiURL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId: params.id, details }),
+  });
+
+  return Response.json("");
 }
