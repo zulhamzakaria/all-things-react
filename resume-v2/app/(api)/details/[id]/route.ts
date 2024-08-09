@@ -1,6 +1,11 @@
 import { UserDetails } from "@/constants";
 import { details } from "@/data";
 
+const apiURL =
+  process.env.NODE_ENV !== "development"
+    ? `${process.env.API_URL}/details`
+    : `${process.env.DEV_API_URL}/details`;
+
 const defaultUser: UserDetails = {
   name: "no name",
   phone: "012-3456789",
@@ -23,6 +28,5 @@ export async function GET(
 }
 
 export async function POST(req: Request) {
-  const {details} = await req.json()
-  
+  const { details } = await req.json();
 }
