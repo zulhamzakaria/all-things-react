@@ -42,9 +42,15 @@ const EditDetails = () => {
     shortlocation: data?.shortlocation,
   };
 
-  const onSubmit = async () => {
+  const onSubmit = async (values: z.infer<typeof CreateDetailsSchema>) => {
     setIsPending(true);
     try {
+      const details = values;
+      var response = await fetch(`details/${userId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ details }),
+      });
       toast.success("Details updated");
     } catch (err) {
       toast.error((err as Error).message);
@@ -55,14 +61,6 @@ const EditDetails = () => {
 
   return data && !isLoading ? (
     <>
-      <div style={{ display: "none" }}>
-        {data.name}
-        {data.email}
-        {data.phone}
-        {data.role}
-        {data.fulllocation}
-        {data.shortlocation}
-      </div>
       <div className="w-full">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full flex flex-col mb-1">
