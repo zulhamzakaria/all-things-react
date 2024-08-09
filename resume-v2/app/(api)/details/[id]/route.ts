@@ -33,8 +33,10 @@ export async function POST(
   const response = await fetch(apiURL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ userId: params.id, ...details }),
+    body: JSON.stringify({ userid: params.id, ...details }),
   });
+
+  // console.log(JSON.stringify({ userid: params.id, ...details }));
 
   return Response.json("");
 }
