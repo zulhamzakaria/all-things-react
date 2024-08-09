@@ -21,3 +21,8 @@ export async function GET(
   }
   return Response.json(user);
 }
+
+export async function POST(req: Request) {
+  const {details} = await req.json()
+  
+}
