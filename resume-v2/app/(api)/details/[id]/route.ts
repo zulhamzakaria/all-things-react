@@ -16,16 +16,21 @@ export async function GET(
   _req: Request,
   { params }: { params: { id: string } }
 ) {
-  let user;
-  // user = details.find((user) => user.userId === params.id);
-  // sample: https://localhost:7287/api/details/user_2gb3uVBwoAB9WzzUB5Ix3FIBc8e
-  user = await fetch(`${apiURL}/${params.id}`);
-  console.log(user);
-  if (!user) {
-    user = defaultUser;
+  try {
+    // sample: https://localhost:7287/api/details/user_2gb3uVBwoAB9WzzUB5Ix3FIBc8e
+    const response = await fetch(`${apiURL}/${params.id}`);
+
+    if (!response) {
+      throw new Error("Error fetching user data");
+    }
+
+    const user = await response.json();
+
+    return Response.json(user);
+  } catch (err) {
+    console.error((err as Error).message);
+    return Response.json(defaultUser);
   }
-  return Response.json("");
-  // return Response.json(user);
 }
 
 export async function POST(
