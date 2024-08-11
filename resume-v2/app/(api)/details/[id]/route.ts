@@ -26,7 +26,13 @@ export async function GET(
 
     const user = await response.json();
 
-    return Response.json(user);
+    const {
+      fullLocation: fulllocation,
+      shortLocation: shortlocation,
+      ...otherprops
+    } = user;
+
+    return Response.json({ ...otherprops, fulllocation, shortlocation });
   } catch (err) {
     console.error((err as Error).message);
     return Response.json(defaultUser);
