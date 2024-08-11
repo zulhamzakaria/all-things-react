@@ -17,7 +17,8 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   let user;
-  user = details.find((user) => user.userId === params.id);
+  // user = details.find((user) => user.userId === params.id);
+  user = await fetch(`${apiURL}/${params.id}`);
   if (!user) {
     user = defaultUser;
   }
