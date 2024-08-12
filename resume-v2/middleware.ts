@@ -18,7 +18,8 @@ export default clerkMiddleware((auth, req) => {
   } else {
     if (req.nextUrl.pathname === "/" && !req.nextUrl.searchParams.has("user")) {
       return NextResponse.redirect(
-        new URL("/?user=user_2gzSBiNggGcNbE28mwhWxtaZyLC", req.url)
+        // new URL("/?user=user_2gzSBiNggGcNbE28mwhWxtaZyLC", req.url)
+        new URL(`/?user=${process.env.DEFAULT_USER}`, req.url)
       );
     }
   }
