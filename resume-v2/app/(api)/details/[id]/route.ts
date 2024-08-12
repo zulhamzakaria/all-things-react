@@ -1,5 +1,4 @@
 import { UserDetails } from "@/constants";
-import { details } from "@/data";
 
 const apiURL = `${process.env.API_URL}/details`;
 
@@ -20,12 +19,11 @@ export async function GET(
     // sample: https://localhost:7287/api/details/user_2gb3uVBwoAB9WzzUB5Ix3FIBc8e
     const response = await fetch(`${apiURL}/${params.id}`);
 
-    if (!response) {
-      throw new Error("Error fetching user data");
+    if (!response.ok) {
+      throw new Error(`Error fetching user data. Error:${response.status}`);
     }
 
     const user = await response.json();
-
     const {
       fullLocation: fulllocation,
       shortLocation: shortlocation,
@@ -51,6 +49,8 @@ export async function POST(
     body: JSON.stringify({ userid: params.id, ...details }),
   });
 
+  const data = await response.json();
+  console.log(data);
   // console.log(JSON.stringify({ userid: params.id, ...details }));
 
   return Response.json("");
