@@ -10,7 +10,7 @@ import ReactToPrint from "react-to-print";
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { UserStore } from "@/lib/use-store";
-import { useUser } from "@clerk/nextjs";
+import { SignedIn, useUser } from "@clerk/nextjs";
 import NotificationWrapper from "./wrappers/notification-wrapper";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
@@ -47,21 +47,23 @@ const ResumePage = () => {
 
   return (
     <>
-      <NotificationWrapper>
-        <div className=" text-slate-100 flex flex-row space-x-2">
-          <p>The link to your resume is </p>
-          <span className="text-white font-semibold">{resumeLink}</span>{" "}
-          <Tooltip id="copy" />
-          <p data-tooltip-id="copy" data-tooltip-content="Copy Link">
-            <Copy
-              className="text-slate-100 size-3 cursor-pointer"
-              onClick={() => {
-                copyToClipboard(resumeLink);
-              }}
-            />
-          </p>
-        </div>
-      </NotificationWrapper>
+      <SignedIn>
+        <NotificationWrapper>
+          <div className=" text-slate-100 flex flex-row space-x-2">
+            <p>The link to your resume is </p>
+            <span className="text-white font-semibold">{resumeLink}</span>{" "}
+            <Tooltip id="copy" />
+            <p data-tooltip-id="copy" data-tooltip-content="Copy Link">
+              <Copy
+                className="text-slate-100 size-3 cursor-pointer"
+                onClick={() => {
+                  copyToClipboard(resumeLink);
+                }}
+              />
+            </p>
+          </div>
+        </NotificationWrapper>
+      </SignedIn>
       <div
         ref={componentRef}
         className=" h-[auto] lg:w-[900px] sm:w-auto bg-gray-50 rounded-t-sm shadow-sm pt-10 pb-10 pl-5 pr-5 flex flex-col"
