@@ -1,6 +1,6 @@
 import { Summary } from "@/constants";
 
-const apiUrl = `${process.env.API_URL}/details`;
+const apiUrl = `${process.env.API_URL}/summaries`;
 
 const defaultSummary: Summary = {
   description: "Not available",
@@ -24,4 +24,21 @@ export async function GET(
     console.error((err as Error).message);
     return Response.json(defaultSummary);
   }
+}
+
+export async function POST(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  const { summary } = await req.json();
+
+  const response = await fetch(apiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userid: params.id, ...summary }),
+  });
+
+  const data = await response.json();
+
+  return Response.json(data);
 }
