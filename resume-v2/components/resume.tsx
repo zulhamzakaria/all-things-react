@@ -68,11 +68,11 @@ const ResumePage = () => {
         ref={componentRef}
         className=" h-[auto] lg:w-[900px] sm:w-auto bg-gray-50 rounded-t-sm shadow-sm pt-10 pb-10 pl-5 pr-5 flex flex-col"
       >
-        <DetailsPage userId={user} />
-        {/* <SummaryPage />
-        <SkillsPage />
-        <ExperiencesPage />
-        <EducationPage /> */}
+        {/* <DetailsPage userId={user} /> */}
+        <SummaryPage />
+        {/* <SkillsPage /> */}
+        {/* <ExperiencesPage /> */}
+        {/* <EducationPage /> */}
         <div className="flex flex-row text-sm font-thin mt-36 justify-end mr-2">
           <span>powered by</span>
           <p className=" ml-1 font-semibold">nextJS</p>
