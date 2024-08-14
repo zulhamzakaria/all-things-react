@@ -11,3 +11,7 @@ export type UserDetails = {
   fulllocation: string;
   shortlocation: string;
 };
+
+export type Summary = {
+  description: string;
+};
