@@ -28,16 +28,29 @@ interface SummaryProps {
 
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const SummaryPage = () => {
+const SummaryPage = (userId: string) => {
   const { data, mutate, error } = useSWR<SummaryProps>("/summary", fetcher);
-
+  const [isPending, setIsPending] = useState(false);
   const [resumeSummary, setResumeSummary] = useState(data?.description || "");
 
-  const handleClick = () => {
-    if (data) {
-      mutate({ ...data, description: resumeSummary }, false);
+  const handleClick = async () => {
+    setIsPending(true);
+    try {
+      var response = await fetch(`summary/${userId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ description: resumeSummary }),
+      });
+      toast.success("Summary updated");
+    } catch (err) {
+      toast.error((err as Error).message);
+    } finally {
+      setIsPending(false);
     }
-    toast.success("Summary updated", { duration: 2000 });
+    // if (data) {
+    //   mutate({ ...data, description: resumeSummary }, false);
+    // }
+    // toast.success("Summary updated", { duration: 2000 });
   };
 
   useEffect(() => {
@@ -95,6 +108,7 @@ const SummaryPage = () => {
               <DialogFooter className="flex flex-rows w-full ">
                 <DialogClose asChild>
                   <Button
+                    disabled={isPending}
                     type="submit"
                     className=" px-10 mt-10 font-mono font-semibold rounded-full  bg-emerald-500  hover:bg-emerald-700 text-white"
                     onClick={handleClick}
