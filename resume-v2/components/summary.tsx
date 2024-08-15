@@ -28,7 +28,7 @@ interface SummaryProps {
 
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const SummaryPage = (userId: string) => {
+const SummaryPage = ({ userId }: { userId: string }) => {
   const { data, mutate, error } = useSWR<SummaryProps>("/summary", fetcher);
   const [isPending, setIsPending] = useState(false);
   const [resumeSummary, setResumeSummary] = useState(data?.description || "");
