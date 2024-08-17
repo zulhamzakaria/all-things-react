@@ -19,7 +19,8 @@ const Messages = ({ messages }: MessagesProps) => {
         ))
       ) : (
         <div className="flex flex-1 flex-col items-center justify-center gap-2">
-          <MessageSquare />
+          <MessageSquare className="size-8 text-blue-500" />
+          <h3 className="font-semibold text-xl">yuore all set</h3>
         </div>
       )}
     </div>
