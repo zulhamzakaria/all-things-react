@@ -33,7 +33,7 @@ const Page = async ({ params }: PageProps) => {
     await redis.sadd("indexed-url", reconstructUrl);
   }
 
-  return <ChatWrapper />;
+  return <ChatWrapper sessionId={sessionId} />;
 };
 
 export default Page;
