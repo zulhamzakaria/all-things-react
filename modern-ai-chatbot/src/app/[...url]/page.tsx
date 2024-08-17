@@ -19,7 +19,7 @@ const Page = async ({ params }: PageProps) => {
   const url = reconstructUrl({ url: params.url as string[] });
 
   //check if the website page has been indexed/added to vector db
-  const isAlreadyIndexed = await redis.sismember("indexed-url", reconstructUrl);
+  const isAlreadyIndexed = redis.sismember("indexed-url", reconstructUrl);
 
   if (!isAlreadyIndexed) {
     await ragChat.context.add({
