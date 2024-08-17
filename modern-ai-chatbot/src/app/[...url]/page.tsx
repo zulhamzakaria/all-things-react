@@ -1,4 +1,5 @@
 import { ragChat } from "@/lib/rag-chat";
+import { redis } from "@/lib/redis";
 
 interface PageProps {
   params: {
@@ -16,11 +17,17 @@ function reconstructUrl({ url }: { url: string[] }) {
 
 const Page = async ({ params }: PageProps) => {
   const url = reconstructUrl({ url: params.url as string[] });
-  await ragChat.context.add({
-    type: "html",
-    source: url,
-    config: { chunkOverlap: 50, chunkSize: 200 },
-  });
+
+  //check if the website page has been indexed/added to vector db
+  const isAlreadyIndexed = await redis.sismember("indexed-url", reconstructUrl);
+
+  if (!isAlreadyIndexed) {
+    await ragChat.context.add({
+      type: "html",
+      source: url,
+      config: { chunkOverlap: 50, chunkSize: 200 },
+    });
+  }
 
   return <p>{params.url}</p>;
 };
