@@ -27,6 +27,7 @@ const Page = async ({ params }: PageProps) => {
       source: url,
       config: { chunkOverlap: 50, chunkSize: 200 },
     });
+    await redis.sadd("indexed-url", reconstructUrl);
   }
 
   return <p>{params.url}</p>;
