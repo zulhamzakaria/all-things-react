@@ -1,5 +1,6 @@
 import { Message as TMessage } from "ai/react";
 import Message from "./Message";
+import { MessageSquare } from "lucide-react";
 
 interface MessagesProps {
   messages: TMessage[];
@@ -17,7 +18,9 @@ const Messages = ({ messages }: MessagesProps) => {
           />
         ))
       ) : (
-        <div></div>
+        <div className="flex flex-1 flex-col items-center justify-center gap-2">
+          <MessageSquare />
+        </div>
       )}
     </div>
   );
