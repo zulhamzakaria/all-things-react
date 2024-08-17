@@ -1,20 +1,22 @@
 "use client";
 
-import { useChat } from "ai/react";
+import { Message, useChat } from "ai/react";
 import Messages from "./Messages";
 import ChatInput from "./ChatInput";
 
 interface ChatWrapperProps {
   sessionId: string;
+  initialMessages: Message[];
 }
 
-const ChatWrapper = ({ sessionId }: ChatWrapperProps) => {
+const ChatWrapper = ({ sessionId, initialMessages }: ChatWrapperProps) => {
   const { messages, handleInputChange, handleSubmit, input, setInput } =
     useChat({
       // data source for ai
       api: "/api/chat-stream",
       // added session for isolation
       body: { sessionId },
+      initialMessages,
     });
   return (
     <div className="relative min-h-full bg-zinc-900 flex divide-y divide-zinc-700 flex-col justify-between gap-2">
