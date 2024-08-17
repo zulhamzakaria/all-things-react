@@ -2,8 +2,25 @@
 
 import { Button, Textarea } from "@nextui-org/react";
 import { Send } from "lucide-react";
+import { type useChat } from "ai/react";
 
-const ChatInput = () => {
+type HandleInputChange = ReturnType<typeof useChat>["handleInputChange"];
+type HandleSubmit = ReturnType<typeof useChat>["handleSubmit"];
+type SetInput = ReturnType<typeof useChat>["setInput"];
+
+interface ChatInputProps {
+  input: string;
+  handleInputChange: HandleInputChange;
+  handleSubmit: HandleSubmit;
+  setInput: SetInput;
+}
+
+const ChatInput = ({
+  input,
+  setInput,
+  handleInputChange,
+  handleSubmit,
+}: ChatInputProps) => {
   return (
     <div className="z-10 bg-zinc-900 absolute left-0 w-full">
       <div
@@ -12,10 +29,19 @@ const ChatInput = () => {
       >
         <div className="relative flex flex-1 h-full items-stretch md:flex-col">
           <div className="relative flex flex-col w-full flex-grow p-4">
-            <form className="relative">
+            <form className="relative" onSubmit={handleSubmit}>
               <Textarea
                 minRows={4}
                 autoFocus
+                onChange={handleInputChange}
+                value={input}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSubmit();
+                    setInput("");
+                  }
+                }}
                 placeholder="Enter your question"
                 className=" resize-none bg-zinc-800 hover:bg-zinc-900 rounded-xl text-base"
               />
