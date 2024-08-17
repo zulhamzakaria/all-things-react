@@ -7,7 +7,7 @@ interface ChatWrapperProps {
 }
 
 const ChatWrapper = ({ sessionId }: ChatWrapperProps) => {
-  const { messages, handleInputChange, input } = useChat({
+  const { messages, handleInputChange, handleSubmit, input } = useChat({
     // data source for ai
     api: "/api/chat-stream",
     // added session for isolation
@@ -18,7 +18,11 @@ const ChatWrapper = ({ sessionId }: ChatWrapperProps) => {
       <div className="flex-1 text-black bg-zinc-800 justify-between flex flex-col">
         {JSON.stringify(messages)}
       </div>
-      <input value={input} onChange={handleInputChange} type="text" />
+
+      <form onSubmit={handleSubmit}>
+        <input value={input} onChange={handleInputChange} type="text" />
+        <button type="submit">send</button>
+      </form>
     </div>
   );
 };
