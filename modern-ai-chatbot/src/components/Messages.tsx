@@ -20,7 +20,10 @@ const Messages = ({ messages }: MessagesProps) => {
       ) : (
         <div className="flex flex-1 flex-col items-center justify-center gap-2">
           <MessageSquare className="size-8 text-blue-500" />
-          <h3 className="font-semibold text-xl">yuore all set</h3>
+          <h3 className="font-semibold text-xl text-white">yuore all set</h3>
+          <p className=" text-zinc-500 text-sm">
+            ask your first question to get started
+          </p>
         </div>
       )}
     </div>
