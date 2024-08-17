@@ -26,6 +26,11 @@ const Page = async ({ params }: PageProps) => {
   //check if the website page has been indexed/added to vector db
   const isAlreadyIndexed = redis.sismember("indexed-url", reconstructUrl);
 
+  const initialMessages = await ragChat.history.getMessages({
+    amount: 10,
+    sessionId,
+  });
+
   if (!isAlreadyIndexed) {
     await ragChat.context.add({
       type: "html",
@@ -35,7 +40,9 @@ const Page = async ({ params }: PageProps) => {
     await redis.sadd("indexed-url", reconstructUrl);
   }
 
-  return <ChatWrapper sessionId={sessionId} />;
+  return (
+    <ChatWrapper sessionId={sessionId} initialMessages={initialMessages} />
+  );
 };
 
 export default Page;
