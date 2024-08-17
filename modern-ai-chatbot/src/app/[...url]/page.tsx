@@ -1,3 +1,4 @@
+import ChatWrapper from "@/components/ChatWrapper";
 import { ragChat } from "@/lib/rag-chat";
 import { redis } from "@/lib/redis";
 
