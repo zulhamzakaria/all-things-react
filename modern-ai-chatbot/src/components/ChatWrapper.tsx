@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 
 const ChatWrapper = () => {
   return <div>ChatWrapper</div>;
