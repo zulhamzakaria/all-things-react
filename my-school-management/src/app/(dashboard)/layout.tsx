@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Menu from "../components/Menu";
 
 export default function DashboardLayout({
   children,
@@ -15,6 +16,7 @@ export default function DashboardLayout({
           <Image src="/logo.png" alt="logo" width={32} height={32} />
           <span className="hidden lg:block">School! School!</span>
         </Link>
+        <Menu />
       </div>
       <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] text-black bg-slate-200">
         RHS
