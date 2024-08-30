@@ -56,13 +56,13 @@ const data = [
 
 const CountChart = () => {
   return (
-    <div>
+    <div className="bg-white rounded-xl w-full g-full">
       <div className="flex justify-between items-center">
         <h1>Students</h1>
         <Image src={"/moreDark.png"} alt="" width={20} height={20} />
       </div>
       <div>
-        <ResponsiveContainer width="100%" height="100%">
+        {/* <ResponsiveContainer width="100%" height="100%">
           <RadialBarChart
             cx="50%"
             cy="50%"
@@ -85,7 +85,7 @@ const CountChart = () => {
               wrapperStyle={style}
             />
           </RadialBarChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer> */}
       </div>
       <div></div>
     </div>
