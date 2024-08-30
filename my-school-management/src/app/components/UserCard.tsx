@@ -5,7 +5,11 @@ interface UserCardProps {
 }
 
 const UserCard = ({ type }: UserCardProps) => {
-  return <div>UserCard</div>;
+  return (
+    <div className="rounded-2xl odd:bg-lamaPurple p-4 even:bg-lamaYellow">
+      UserCard
+    </div>
+  );
 };
 
 export default UserCard;
