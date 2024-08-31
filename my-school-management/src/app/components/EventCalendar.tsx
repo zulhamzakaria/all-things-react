@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -9,7 +10,7 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 const EventCalendar = () => {
   const [value, setValue] = useState<Value>(new Date());
   return (
-    <div>
+    <div className="bg-white p-4 rounded-md">
       <Calendar onChange={setValue} value={value} />
     </div>
   );
