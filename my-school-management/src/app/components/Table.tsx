@@ -1,5 +1,7 @@
-import React from "react";
-
 export const Table = () => {
-  return <div>Table</div>;
+  return <table className="w-full mt-4">
+    <thead>
+        
+    </thead>
+  </table>;
 };
