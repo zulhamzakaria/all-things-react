@@ -3,7 +3,7 @@ import Image from "next/image";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 
 const data = [
-  { name: "Group A", value: 95, fill: "c3ebfa" },
+  { name: "Group A", value: 95, fill: "#c3ebfa" },
   { name: "Group B", value: 5, fill: "#fae27c" },
 ];
 
