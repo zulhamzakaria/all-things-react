@@ -1,7 +1,9 @@
 import Pagination from "@/app/components/Pagination";
 import { Table } from "@/app/components/Table";
 import TableSearch from "@/app/components/TableSearch";
+import { role } from "@/app/lib/data";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type Teacher = {
@@ -12,7 +14,7 @@ type Teacher = {
   photo: string;
   phone: string;
   subjects: string[];
-  classes: string;
+  classes: string[];
   address: string;
 };
 
@@ -62,6 +64,23 @@ const TeacherPage = () => {
           <p className="text-xs text-gray-500">{item?.email}</p>
         </div>
       </td>
+      <td className="hidden md:table-cell">{item.teacherId}</td>
+      <td className="hidden md:table-cell">{item.subjects.join(",")}</td>
+      <td className="hidden md:table-cell">{item.classes.join(",")}</td>
+      <td className="hidden md:table-cell">{item.phone}</td>
+      <td className="hidden md:table-cell">{item.address}</td>
+      <td className="flex items-center gap-2">
+        <Link href={`/list/teachers/${item.id}`}>
+          <button className="w-7 -h-7 flex items-center justify-center rounded-full bg-lamaSky">
+            <Image src={"/view.png"} alt="" width={16} height={16} />
+          </button>
+        </Link>
+        {role === "admin" && (
+          <button className="w-7 -h-7 flex items-center justify-center rounded-full bg-lamaPurple">
+            <Image src={"/delete.png"} alt="" width={16} height={16} />
+          </button>
+        )}
+      </td>
     </tr>;
   };
 
@@ -86,7 +105,7 @@ const TeacherPage = () => {
         </div>
       </div>
       {/* list */}
-      <Table columns={columns} />
+      <Table columns={columns} renderRow={renderRow} />
       {/* pagination */}
       <Pagination />
     </div>
