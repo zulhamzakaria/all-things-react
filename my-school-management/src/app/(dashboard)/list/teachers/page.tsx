@@ -1,7 +1,7 @@
 import Pagination from "@/app/components/Pagination";
 import { Table } from "@/app/components/Table";
 import TableSearch from "@/app/components/TableSearch";
-import { role } from "@/app/lib/data";
+import { role, teachersData } from "@/app/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -105,7 +105,7 @@ const TeacherPage = () => {
         </div>
       </div>
       {/* list */}
-      <Table columns={columns} renderRow={renderRow} />
+      <Table columns={columns} renderRow={renderRow} data={teachersData} />
       {/* pagination */}
       <Pagination />
     </div>
