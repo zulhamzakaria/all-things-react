@@ -4,11 +4,15 @@ interface TableProps {
   className?: string;
 }
 
-export const Table = (
-  { columns }: { columns: TableProps[] },
-  renderRow: (item: any) => React.ReactNode,
-  data: any[]
-) => {
+export const Table = ({
+  columns,
+  renderRow,
+  data,
+}: {
+  columns: TableProps[];
+  renderRow: (item: any) => React.ReactNode;
+  data: any[];
+}) => {
   return (
     <table className="w-full mt-4">
       <thead>
