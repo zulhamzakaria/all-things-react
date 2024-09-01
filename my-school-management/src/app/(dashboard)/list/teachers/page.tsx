@@ -49,8 +49,8 @@ const columns = [
 ];
 
 const TeacherPage = () => {
-  const renderRow = (item: Teacher) => {
-    <tr>
+  const renderRow = (item: Teacher) => (
+    <tr key={item.id}>
       <td>
         <Image
           src={item.photo}
@@ -81,8 +81,8 @@ const TeacherPage = () => {
           </button>
         )}
       </td>
-    </tr>;
-  };
+    </tr>
+  );
 
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0 h-screen">
