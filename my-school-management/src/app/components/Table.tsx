@@ -18,7 +18,11 @@ export const Table = ({
       <thead>
         <tr className="text-left text-gray-500 text-sm">
           {columns.map((col) => {
-            return <th key={col.accessor}>{col.header}</th>;
+            return (
+              <th key={col.accessor} className={col.className}>
+                {col.header}
+              </th>
+            );
           })}
         </tr>
       </thead>
