@@ -10,7 +10,7 @@ type Assignment = {
   subject: string;
   class: string;
   teacher: string;
-  date: string;
+  dueDate: string;
 };
 
 const columns = [
@@ -38,7 +38,7 @@ const AssignmentsListPage = () => {
       <td className="flex items-center gap-4 p-4">{item.subject}</td>
       <td>{item.class}</td>
       <td className="hidden md:table-cell">{item?.teacher}</td>
-      <td className="hidden md:table-cell">{item?.date}</td>
+      <td className="hidden md:table-cell">{item?.dueDate}</td>
       <td className="flex items-center gap-2">
         <Link href={`/list/assignments/${item.id}`}>
           <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
