@@ -1,7 +1,7 @@
 import Pagination from "@/app/components/Pagination";
 import { Table } from "@/app/components/Table";
 import TableSearch from "@/app/components/TableSearch";
-import { parentsData, role } from "@/app/lib/data";
+import { role, subjectsData } from "@/app/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,12 +27,8 @@ const SubjectsListPage = () => {
       key={item.id}
       className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight"
     >
-      <td className="flex items-center gap-4 p-4">
-        <div className="flex flex-col">
-          <h3 className="font-semibold">{item.name}</h3>
-          <p className="text-xs text-gray-500">{item?.teachers.join(",")}</p>
-        </div>
-      </td>
+      <td className="flex items-center gap-4 p-4">{item.name}</td>
+      <td className="hidden md:table-cell">{item?.teachers.join(",")}</td>
       <td className="flex items-center gap-2">
         <Link href={`/list/teachers/${item.id}`}>
           <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
@@ -77,7 +73,7 @@ const SubjectsListPage = () => {
         </div>
       </div>
       {/* list */}
-      <Table columns={columns} renderRow={renderRow} data={parentsData} />
+      <Table columns={columns} renderRow={renderRow} data={subjectsData} />
       {/* pagination */}
       <Pagination />
     </div>
