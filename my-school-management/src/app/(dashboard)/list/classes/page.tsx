@@ -1,3 +1,4 @@
+import FormModal from "@/app/components/FormModal";
 import Pagination from "@/app/components/Pagination";
 import { Table } from "@/app/components/Table";
 import TableSearch from "@/app/components/TableSearch";
@@ -44,7 +45,7 @@ const ClassesListPage = () => {
       <td className="hidden md:table-cell">{item?.capacity}</td>
       <td className="hidden md:table-cell">{item?.supervisor}</td>
       <td className="flex items-center gap-2">
-        <Link href={`/list/teachers/${item.id}`}>
+        {/* <Link href={`/list/teachers/${item.id}`}>
           <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
             <Image
               src={"/edit.png"}
@@ -54,11 +55,15 @@ const ClassesListPage = () => {
               className="object-cover"
             />
           </button>
-        </Link>
+        </Link> */}
         {role === "admin" && (
-          <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
-            <Image src={"/delete.png"} alt="" width={16} height={16} />
-          </button>
+          // <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
+          //   <Image src={"/delete.png"} alt="" width={16} height={16} />
+          // </button>
+          <>
+            <FormModal table="class" data={item} requestType="update" />
+            <FormModal table="class" id={item.id} requestType="delete" />
+          </>
         )}
       </td>
     </tr>
@@ -79,9 +84,10 @@ const ClassesListPage = () => {
               <Image src="/sort.png" alt="" width={14} height={14} />
             </button>
             {role === "admin" && (
-              <button className="w-8 h-8 bg-lamaYellow flex items-center justify-center rounded-full">
-                <Image src="/plus.png" alt="" width={14} height={14} />
-              </button>
+              // <button className="w-8 h-8 bg-lamaYellow flex items-center justify-center rounded-full">
+              //   <Image src="/plus.png" alt="" width={14} height={14} />
+              // </button>
+              <FormModal table="class" requestType="create" />
             )}
           </div>
         </div>
