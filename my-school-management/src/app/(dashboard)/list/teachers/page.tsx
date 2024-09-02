@@ -86,9 +86,10 @@ const TeacherPage = () => {
           </button>
         </Link>
         {role === "admin" && (
-          <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
-            <Image src={"/delete.png"} alt="" width={16} height={16} />
-          </button>
+          // <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
+          //   <Image src={"/delete.png"} alt="" width={16} height={16} />
+          // </button>
+          <FormModal table="teacher" requestType="delete" id={item.id} />
         )}
       </td>
     </tr>
@@ -112,7 +113,7 @@ const TeacherPage = () => {
               // <button className="w-8 h-8 bg-lamaYellow flex items-center justify-center rounded-full">
               //   <Image src="/plus.png" alt="" width={14} height={14} />
               // </button>
-              <FormModal table="teacher" requestType="create"  />
+              <FormModal table="teacher" requestType="create" />
             )}
           </div>
         </div>
