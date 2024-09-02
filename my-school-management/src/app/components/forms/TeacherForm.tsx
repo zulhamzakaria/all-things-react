@@ -18,8 +18,9 @@ const schema = z.object({
   lastName: z.string().min(1, { message: "Last name is required" }),
   phone: z.string().min(1, { message: "Phone is required" }),
   address: z.string().min(1, { message: "Address is required" }),
+  bloodType: z.string().min(1, { message: "Bloodtype is required" }),
   birthDay: z.date({ message: "Birthday is required" }),
-  sex: z.enum(["male", "female", "others"], { message: "Sex is required" }),
+  sex: z.enum(["male", "female", "other"], { message: "Sex is required" }),
   image: z.instanceof(File, { message: "Image is required" }),
 });
 
@@ -48,16 +49,99 @@ const TeacherForm = ({
       <span className="text-xs text-gray-400 font-medium">
         Authentication Information
       </span>
-      <InputField
-        label="Username"
-        name="username"
-        defaultValue={data?.username}
-        register={register}
-        error={errors?.username}
-      />
+      <div className="flex justify-between flex-wrap gap-4">
+        <InputField
+          label="Username"
+          name="username"
+          defaultValue={data?.username}
+          register={register}
+          error={errors?.username}
+        />
+        <InputField
+          label="Email"
+          name="email"
+          type="email"
+          defaultValue={data?.email}
+          register={register}
+          error={errors?.email}
+        />
+        <InputField
+          label="Password"
+          name="password"
+          type="password"
+          defaultValue={data?.password}
+          register={register}
+          error={errors?.password}
+        />
+      </div>
       <span className=" text-xs text-gray-400 font-medium">
         Personal Informartion
       </span>
+
+      <div className=" flex justify-between flex-wrap gap-4">
+        <InputField
+          label="First Name"
+          name="firstname"
+          defaultValue={data?.firstName}
+          register={register}
+          error={errors?.firstName}
+        />
+        <InputField
+          label="Last Name"
+          name="lastname"
+          defaultValue={data?.lastName}
+          register={register}
+          error={errors?.lastName}
+        />
+        <InputField
+          label="Phone"
+          name="phone"
+          defaultValue={data?.phone}
+          register={register}
+          error={errors?.phone}
+        />
+        <InputField
+          label="Address"
+          name="address"
+          defaultValue={data?.address}
+          register={register}
+          error={errors?.address}
+        />
+        <InputField
+          label="Blood Type"
+          name="bloodtype"
+          defaultValue={data?.bloodtype}
+          register={register}
+          error={errors?.bloodType}
+        />
+        <InputField
+          label="Birth Day"
+          name="birthDay"
+          defaultValue={data?.birthDay}
+          register={register}
+          error={errors?.birthDay}
+          type="date"
+        />
+      </div>
+
+      <div className=" flex flex-col gap-2 w-full md:w-1/4">
+        <label className=" text-xs text-gray-500">Sex</label>
+        <select
+          className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
+          {...register("sex")}
+          defaultValue={data?.sex}
+        >
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        {errors.sex?.message && (
+          <p className=" text-xs font-thin text-red-400">
+            {errors.sex?.message.toString()}
+          </p>
+        )}
+      </div>
+
       <button className=" bg-black text-white p-2 rounded-md">
         {requestType === "create" ? "Create" : "Update"}
       </button>
