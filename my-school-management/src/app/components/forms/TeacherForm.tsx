@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { z, ZodSchema } from "zod";
 
 const schema = z.object({
   username: z
@@ -35,18 +35,33 @@ const TeacherForm = ({
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
+
   return (
-    <form className=" flex flex-col gap-8">
+    <form className=" flex flex-col gap-8" onSubmit={onSubmit}>
       <h1 className=" text-xl font-semibold">Create a new teacher</h1>
+      <span className="text-xs text-gray-400 font-medium">
+        Authentication Information
+      </span>
+      <label className=" text-xs text-gray-500">Username</label>
       <input
         type="text"
         {...register("username")}
         className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm"
       />
-      {errors.username?.message && <p>{errors.username?.message.toString()}</p>}
+      {errors.username?.message && (
+        <p className=" text-xs font-thin text-red-400">
+          {errors.username?.message.toString()}
+        </p>
+      )}
       <span className=" text-xs text-gray-400 font-medium">
         Personal Informartion
       </span>
+      <button className=" bg-black text-white p-2 rounded-md">
+        {requestType === "create" ? "Create" : "Update"}
+      </button>
     </form>
   );
 };
