@@ -36,8 +36,17 @@ const TeacherForm = ({
   } = useForm({ resolver: zodResolver(schema) });
 
   return (
-    <form className="">
-      <input />
+    <form className=" flex flex-col gap-8">
+      <h1 className=" text-xl font-semibold">Create a new teacher</h1>
+      <input
+        type="text"
+        {...register("username")}
+        className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm"
+      />
+      {errors.username?.message && <p>{errors.username?.message.toString()}</p>}
+      <span className=" text-xs text-gray-400 font-medium">
+        Personal Informartion
+      </span>
     </form>
   );
 };
