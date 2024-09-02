@@ -1,5 +1,6 @@
 import Announcement from "@/app/components/Announcement";
 import BigCalendar from "@/app/components/BigCalendar";
+import FormModal from "@/app/components/FormModal";
 import PerformanceChart from "@/app/components/PerformanceChart";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +25,10 @@ const SingleTeacherPage = () => {
               />
             </div>
             <div className="w-2/3 flex flex-col justify-between gap-4">
-              <h1 className="text-xl font-semibold">Janna Nick</h1>
+              <div className="flex items-center gap-4">
+                <h1 className="text-xl font-semibold">Janna Nick</h1>
+                <FormModal table="teacher" requestType="update" />
+              </div>
               <p className="text-sm text-gray-400">
                 Janna Nick is a Malaysian actress, singer, host, director and
                 producer.
