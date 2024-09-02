@@ -3,6 +3,14 @@
 import Image from "next/image";
 import { useState } from "react";
 import TeacherForm from "./forms/TeacherForm";
+import StudentForm from "./forms/StudentForm";
+
+const forms: {
+  [key: string]: (type: "create" | "update", data?: any) => JSX.Element;
+} = {
+  teacher: (type, data) => <TeacherForm requestType={type} data={data} />,
+  student: (type, data) => <StudentForm requestType={type} data={data} />,
+};
 
 const FormModal = ({
   table,
@@ -47,8 +55,10 @@ const FormModal = ({
           Delete
         </button>
       </form>
+    ) : requestType === "create" || requestType === "update" ? (
+      forms[table](requestType, data)
     ) : (
-      <TeacherForm requestType="create" />
+      "Undefined form. Contact the Admin"
     );
   };
 
