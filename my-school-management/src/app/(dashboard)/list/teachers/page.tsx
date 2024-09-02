@@ -1,3 +1,4 @@
+import FormModal from "@/app/components/FormModal";
 import Pagination from "@/app/components/Pagination";
 import { Table } from "@/app/components/Table";
 import TableSearch from "@/app/components/TableSearch";
@@ -108,9 +109,10 @@ const TeacherPage = () => {
               <Image src="/sort.png" alt="" width={14} height={14} />
             </button>
             {role === "admin" && (
-              <button className="w-8 h-8 bg-lamaYellow flex items-center justify-center rounded-full">
-                <Image src="/plus.png" alt="" width={14} height={14} />
-              </button>
+              // <button className="w-8 h-8 bg-lamaYellow flex items-center justify-center rounded-full">
+              //   <Image src="/plus.png" alt="" width={14} height={14} />
+              // </button>
+              <FormModal table="teacher" requestType="create"  />
             )}
           </div>
         </div>

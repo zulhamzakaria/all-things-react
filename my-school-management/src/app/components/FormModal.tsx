@@ -23,7 +23,7 @@ const FormModal = ({
     | "announcement";
   requestType: "create" | "update" | "delete";
   data?: any;
-  id: number;
+  id?: number;
 }) => {
   const size = requestType === "create" ? "w-8 h-8" : "w-7 h-7";
   const bgColor =
