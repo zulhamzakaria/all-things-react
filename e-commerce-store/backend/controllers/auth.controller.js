@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 
-export const signup = async (_req, res) => {
+export const signup = async (req, res) => {
   const { email, password, name } = req.body;
 
   try {
