@@ -1,4 +1,5 @@
 export const signup = async (_req, res) => {
+  const { email, password, name } = req.body;
   res.send("sign-up endpoint called");
 };
 export const signin = async (_req, res) => {

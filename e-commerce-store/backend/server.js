@@ -11,6 +11,9 @@ const PORT = process.env.PORT ?? 5000;
 
 app.use("/api/auth", authRoutes);
 
+// for parsing body of request
+app.use(express.json())
+
 app.listen(PORT, () => {
   console.log("server is running on port 5000");
   connectDB();
