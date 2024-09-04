@@ -13,9 +13,9 @@ export const signup = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-export const signin = async (_req, res) => {
+export const signin = async (req, res) => {
   res.send("sign-in endpoint called");
 };
-export const signout = async (_req, res) => {
+export const signout = async (req, res) => {
   res.send("signout endpoint called");
 };
