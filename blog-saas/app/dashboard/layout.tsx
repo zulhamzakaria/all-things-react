@@ -2,8 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { DashboardItems } from "../components/dashboard/DashboardItems";
-import { DollarSign, Globe2, Home } from "lucide-react";
+import { CircleUserIcon, DollarSign, Globe2, Home } from "lucide-react";
 import { ThemeToggle } from "../components/dashboard/ThemeToggle";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 export const navLinks = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
@@ -46,6 +54,22 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
         <header className=" flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
           <div className=" ml-auto flex items-center gap-x-5">
             <ThemeToggle />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant={"secondary"}
+                  size={"icon"}
+                  className=" rounded-full"
+                >
+                  <CircleUserIcon className=" size-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem asChild>
+                  <LogoutLink>Sign out</LogoutLink>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </header>
       </div>
