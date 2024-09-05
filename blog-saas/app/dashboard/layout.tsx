@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { DashboardItems } from "../components/dashboard/DashboardItems";
 import { DollarSign, Globe2, Home } from "lucide-react";
+import { ThemeToggle } from "../components/dashboard/ThemeToggle";
 
 export const navLinks = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
@@ -43,7 +44,9 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
 
       <div className="flex flex-col">
         <header className=" flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
-          <div className=" ml-auto flex items-center gap-x-5"></div>
+          <div className=" ml-auto flex items-center gap-x-5">
+            <ThemeToggle />
+          </div>
         </header>
       </div>
 
