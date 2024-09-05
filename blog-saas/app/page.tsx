@@ -6,8 +6,7 @@ import {
 
 export default function Home() {
   return (
-    <div>
-      <h1>hello, world</h1>
+    <div className="flex gap-2">
       <RegisterLink>
         <Button>Register</Button>
       </RegisterLink>
