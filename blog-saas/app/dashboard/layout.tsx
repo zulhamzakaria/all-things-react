@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { DashboardItems } from "../components/dashboard/DashboardItems";
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   return (
@@ -27,7 +28,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
 
           <div className=" flex-1">
             <nav className=" grid items-start px-2 font-medium lg:px-4">
-                
+              <DashboardItems />
             </nav>
           </div>
         </div>
