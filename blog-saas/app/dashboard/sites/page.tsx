@@ -1,7 +1,15 @@
 import prisma from "@/app/utils/db";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { FileIcon, PlusCircle } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -52,7 +60,29 @@ const SitesPage = async () => {
           </Button>
         </div>
       ) : (
-        <h1>Created site(s)</h1>
+        <div className=" grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+          {data.map((site) => (
+            <Card key={site.id}>
+              <Image
+                src={site.imageUrl ?? "/logo1.png"}
+                alt={site.name}
+                width={400}
+                height={200}
+                className=" rounded-t-lg object-cover w-full h-[200px]"
+              />
+              <CardHeader>
+                <CardTitle className=" capitalize">{site.name}</CardTitle>
+                <CardDescription>{site.description}</CardDescription>
+              </CardHeader>
+              <CardFooter>
+                {/* button contains a child */}
+                <Button asChild className=" w-full">
+                  <Link href={"#"}>View articles</Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
       )}
     </>
   );
