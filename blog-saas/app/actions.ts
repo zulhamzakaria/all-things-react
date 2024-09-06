@@ -2,6 +2,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import { parseWithZod } from "@conform-to/zod";
 import { SiteSchema } from "./utils/zodSchemas";
+import prisma from "./utils/db";
 
 export async function CreateSiteAction(formData: FormData) {
   const { getUser } = getKindeServerSession();
@@ -17,4 +18,12 @@ export async function CreateSiteAction(formData: FormData) {
   if (submission.status !== "success") {
     return submission.reply();
   }
+
+  const response = await prisma.site.create({
+    data: {
+      description: submission.value.description,
+      name: submission.value.name,
+      subdirectory: submission.value.subdirectory,
+    },
+  });
 }
