@@ -24,6 +24,9 @@ export async function CreateSiteAction(formData: FormData) {
       description: submission.value.description,
       name: submission.value.name,
       subdirectory: submission.value.subdirectory,
+      userId: user.id,
     },
   });
+
+  return redirect("/dashboard/sites");
 }
