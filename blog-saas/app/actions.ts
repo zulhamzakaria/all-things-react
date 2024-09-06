@@ -4,7 +4,7 @@ import { parseWithZod } from "@conform-to/zod";
 import { SiteSchema } from "./utils/zodSchemas";
 import prisma from "./utils/db";
 
-export async function CreateSiteAction(formData: FormData) {
+export async function CreateSiteAction(previousState: any, formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   if (!user) {
