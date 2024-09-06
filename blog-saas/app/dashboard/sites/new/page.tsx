@@ -53,11 +53,27 @@ const NewSiteRoute = () => {
               </div>
               <div className=" grid gap-2">
                 <label>Subdirectory</label>
-                <Input placeholder="Subdirectory" />
+                <Input
+                  name={fields.subdirectory.name}
+                  key={fields.subdirectory.key}
+                  defaultValue={fields.subdirectory.initialValue}
+                  placeholder="Subdirectory"
+                />
+                <p className=" text-red-500 text-sm">
+                  {fields.subdirectory.errors}{" "}
+                </p>
               </div>
               <div className=" grid gap-2">
                 <label>Description</label>
-                <Textarea placeholder="Small description of your site" />
+                <Textarea
+                  name={fields.description.name}
+                  key={fields.description.key}
+                  defaultValue={fields.description.initialValue}
+                  placeholder="Small description of your site"
+                />
+                <p className=" text-red-500 text-sm">
+                  {fields.description.errors}
+                </p>
               </div>
             </div>
           </CardContent>
