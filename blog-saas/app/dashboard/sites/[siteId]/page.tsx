@@ -48,7 +48,10 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
           </Link>
         </Button>
         <Button asChild>
-          <Link href={"#"} className=" gap-2">
+          <Link
+            href={`/dashboard/sites/${params.siteId}/create`}
+            className=" gap-2"
+          >
             <PlusCircle className=" size-4" />
             Create Article
           </Link>
