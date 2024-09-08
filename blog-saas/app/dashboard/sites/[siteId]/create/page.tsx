@@ -2,6 +2,7 @@
 
 import { CreatePostAction } from "@/app/actions";
 import TailwindEditor from "@/app/components/dashboard/EditorWrapper";
+import { SubmitButton } from "@/app/components/dashboard/SubmitButton";
 import { UploadDropzone } from "@/app/utils/UploadthingComponents";
 import { ArticleSchema } from "@/app/utils/zodSchemas";
 import { Button } from "@/components/ui/button";
@@ -177,7 +178,7 @@ export default function CreateArticle({
               </p>
             </div>
 
-            <Button className="w-fit flex ml-auto">Submit</Button>
+            <SubmitButton text="Create Article" />
           </form>
         </CardContent>
       </Card>
