@@ -13,13 +13,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import { ArrowLeft, Atom } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function CreateArticle({
   params,
 }: {
   params: { siteId: string };
 }) {
+  const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
+
   return (
     <>
       <div className=" flex items-center">
@@ -66,7 +70,22 @@ export default function CreateArticle({
 
             <div className="grid gap-2">
               <Label>Cover Image</Label>
-              <UploadDropzone endpoint="imageUploader" />
+              {imageUrl ? (
+                <Image
+                  src={imageUrl}
+                  alt="uploaded-image"
+                  className=" object-cover"
+                  height={100}
+                  width={100}
+                />
+              ) : (
+                <UploadDropzone
+                  endpoint="imageUploader"
+                  onClientUploadComplete={(res) => {
+                    setImageUrl(res[0].url);
+                  }}
+                />
+              )}
             </div>
           </form>
         </CardContent>
