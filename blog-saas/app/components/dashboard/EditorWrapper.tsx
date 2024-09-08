@@ -11,6 +11,7 @@ import {
 } from "novel";
 import { defaultExtensions } from "./extensions";
 import { slashCommand, suggestionItems } from "./SlashCommand";
+import { handleCommandNavigation } from "novel/extensions";
 
 interface EditorProps {
   initialValue?: JSONContent;
@@ -23,6 +24,14 @@ const TailwindEditor = ({ initialValue, onChange }: EditorProps) => {
   return (
     <EditorRoot>
       <EditorContent
+        editorProps={{
+          handleDOMEvents: {
+            keydown: (_view, event) => handleCommandNavigation(event),
+          },
+          attributes: {
+            class: `prose prose-lg dark:prose-invert prose-headings:font-title font-default focus:outline-none max-w-full`,
+          },
+        }}
         extensions={extensions}
         initialContent={initialValue}
         onUpdate={({ editor }) => {
