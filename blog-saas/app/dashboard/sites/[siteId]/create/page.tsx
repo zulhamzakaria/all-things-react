@@ -110,6 +110,13 @@ export default function CreateArticle({
 
             <div className="grid gap-2">
               <Label>Cover Image</Label>
+              <Input
+                type="hidden"
+                name={fields.imageUrl.name}
+                key={fields.imageUrl.key}
+                defaultValue={fields.imageUrl.initialValue}
+                value={imageUrl}
+              />
               {imageUrl ? (
                 <Image
                   src={imageUrl}
@@ -129,11 +136,23 @@ export default function CreateArticle({
                   }}
                 />
               )}
+              <p className=" text-red-500 text-sm">{fields.imageUrl.errors}</p>
             </div>
 
             <div className="grid gap-2">
               <Label>Article Content</Label>
+              <Input
+                type="hidden"
+                name={fields.articleContent.name}
+                key={fields.articleContent.key}
+                defaultValue={fields.articleContent.initialValue}
+                // schema accepts string but the content is of type JSONContent
+                value={JSON.stringify(value)}
+              />
               <TailwindEditor onChange={setValue} initialValue={value} />
+              <p className=" text-red-500 text-sm">
+                {fields.articleContent.errors}
+              </p>
             </div>
 
             <Button className="w-fit flex ml-auto">Submit</Button>
