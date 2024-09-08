@@ -1,5 +1,6 @@
 "use client";
 
+import TailwindEditor from "@/app/components/dashboard/EditorWrapper";
 import { UploadDropzone } from "@/app/utils/UploadthingComponents";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +16,7 @@ import { Label } from "@radix-ui/react-dropdown-menu";
 import { ArrowLeft, Atom } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { JSONContent } from "novel";
 import { useState } from "react";
 
 export default function CreateArticle({
@@ -23,7 +25,7 @@ export default function CreateArticle({
   params: { siteId: string };
 }) {
   const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
-
+  const [value, setValue] = useState<JSONContent | undefined>(undefined);
   return (
     <>
       <div className=" flex items-center">
@@ -89,6 +91,11 @@ export default function CreateArticle({
                   }}
                 />
               )}
+            </div>
+
+            <div className="grid gap-2">
+              <Label>Article Content</Label>
+              <TailwindEditor onChange={setValue} initialValue={value} />
             </div>
           </form>
         </CardContent>
