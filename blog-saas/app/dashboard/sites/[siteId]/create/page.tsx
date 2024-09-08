@@ -22,6 +22,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { JSONContent } from "novel";
 import { useActionState, useState } from "react";
+import slugify from "react-slugify";
 
 export default function CreateArticle({
   params,
@@ -31,7 +32,8 @@ export default function CreateArticle({
   const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
   const [value, setValue] = useState<JSONContent | undefined>(undefined);
   const [lastResult, action] = useActionState(CreatePostAction, undefined);
-
+  const [title, setTitle] = useState<string | undefined>(undefined);
+  const [slug, setSlug] = useState<string | undefined>(undefined);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
@@ -40,6 +42,16 @@ export default function CreateArticle({
     shouldValidate: "onBlur",
     shouldRevalidate: "onInput",
   });
+
+  function handleSlugGeneration() {
+    const titleInput = title;
+
+    if (titleInput?.length === 0 || titleInput === undefined) {
+      return;
+    }
+
+    setSlug(slugify(titleInput));
+  }
 
   return (
     <>
@@ -76,6 +88,8 @@ export default function CreateArticle({
                 name={fields.title.name}
                 defaultValue={fields.title.initialValue}
                 placeholder="Blogging app powered by nextJs"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
               />
               <p className=" text-red-500 text-sm">{fields.title.errors}</p>
             </div>
@@ -86,9 +100,16 @@ export default function CreateArticle({
                 key={fields.slug.key}
                 name={fields.slug.name}
                 defaultValue={fields.slug.initialValue}
+                onChange={(e) => setSlug(e.target.value)}
+                value={slug}
               />
               {/* type button so it's not mistaken for a submit button */}
-              <Button className=" w-fit" variant={"secondary"} type="button">
+              <Button
+                onClick={handleSlugGeneration}
+                className=" w-fit"
+                variant={"secondary"}
+                type="button"
+              >
                 <Atom className=" size-4 mr-2" />
                 Generate slug
               </Button>
