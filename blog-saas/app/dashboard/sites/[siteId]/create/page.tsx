@@ -97,6 +97,8 @@ export default function CreateArticle({
               <Label>Article Content</Label>
               <TailwindEditor onChange={setValue} initialValue={value} />
             </div>
+
+            <Button className="w-fit flex ml-auto">Submit</Button>
           </form>
         </CardContent>
       </Card>
