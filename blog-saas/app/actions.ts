@@ -30,7 +30,10 @@ export async function CreateSiteAction(previousState: any, formData: FormData) {
   return redirect("/dashboard/sites");
 }
 
-export async function CreatePostAction(formData: FormData) {
+export async function CreatePostAction(
+  previouseState: any,
+  formData: FormData
+) {
   const user = await requireUser();
   const submission = parseWithZod(formData, {
     schema: ArticleSchema,
