@@ -32,3 +32,4 @@ export async function CreateSiteAction(previousState: any, formData: FormData) {
 
   return redirect("/dashboard/sites");
 }
+
