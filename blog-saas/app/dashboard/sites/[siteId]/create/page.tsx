@@ -74,7 +74,7 @@ export default function CreateArticle({
                 <Image
                   src={imageUrl}
                   alt="uploaded-image"
-                  className=" object-cover"
+                  className=" object-cover w-[200px] h-[200px] rounded-lg"
                   height={100}
                   width={100}
                 />
@@ -83,6 +83,9 @@ export default function CreateArticle({
                   endpoint="imageUploader"
                   onClientUploadComplete={(res) => {
                     setImageUrl(res[0].url);
+                  }}
+                  onUploadError={() => {
+                    throw new Error("Failed to upload file");
                   }}
                 />
               )}
