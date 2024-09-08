@@ -81,6 +81,7 @@ export default function CreateArticle({
             onSubmit={form.onSubmit}
             action={action}
           >
+            <input type="hidden" name="siteId" value={params.siteId} />
             <div className=" grid gap-2">
               <Label>Title</Label>
               <Input
