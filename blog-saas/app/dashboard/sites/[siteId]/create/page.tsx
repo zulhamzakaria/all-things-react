@@ -1,5 +1,6 @@
 "use client";
 
+import { CreatePostAction } from "@/app/actions";
 import TailwindEditor from "@/app/components/dashboard/EditorWrapper";
 import { UploadDropzone } from "@/app/utils/UploadthingComponents";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,7 @@ import { ArrowLeft, Atom } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { JSONContent } from "novel";
-import { useState } from "react";
+import { useActionState, useState } from "react";
 
 export default function CreateArticle({
   params,
@@ -26,6 +27,7 @@ export default function CreateArticle({
 }) {
   const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
   const [value, setValue] = useState<JSONContent | undefined>(undefined);
+  const [lastResult, action] = useActionState(CreatePostAction, undefined);
   return (
     <>
       <div className=" flex items-center">
