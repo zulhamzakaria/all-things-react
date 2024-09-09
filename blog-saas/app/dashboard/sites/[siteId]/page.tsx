@@ -73,7 +73,10 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
           </Link>
         </Button>
         <Button asChild variant={"secondary"}>
-          <Link href={"#"} className=" gap-2">
+          <Link
+            href={`/dashboard/sites/${params.siteId}/settings`}
+            className=" gap-2"
+          >
             <Settings className=" size-4" />
             Settings
           </Link>
