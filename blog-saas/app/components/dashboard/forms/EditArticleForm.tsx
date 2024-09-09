@@ -36,10 +36,14 @@ interface EditArticleFormProps {
 }
 
 export function EditArticleForm({ article }: EditArticleFormProps) {
-  const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
-  const [value, setValue] = useState<JSONContent | undefined>(undefined);
-  const [slug, setSlug] = useState<string | undefined>(undefined);
-  const [title, setTitle] = useState<string | undefined>(undefined);
+  const [imageUrl, setImageUrl] = useState<string | undefined>(
+    article.imageUrl
+  );
+  const [value, setValue] = useState<JSONContent | undefined>(
+    article.articleContent
+  );
+  const [slug, setSlug] = useState<string | undefined>(article.slug);
+  const [title, setTitle] = useState<string | undefined>(article.title);
 
   const [lastResult, action] = useActionState(CreatePostAction, undefined);
   const [form, fields] = useForm({
@@ -113,7 +117,7 @@ export function EditArticleForm({ article }: EditArticleFormProps) {
               className="h-32"
               key={fields.smallDescription.key}
               name={fields.smallDescription.name}
-              defaultValue={fields.smallDescription.initialValue}
+              defaultValue={article.smallDescription}
             />
             <p className="text-red-500 text-sm">
               {fields.smallDescription.errors}
@@ -167,7 +171,7 @@ export function EditArticleForm({ article }: EditArticleFormProps) {
             </p>
           </div>
 
-          <SubmitButton text="Create Article" />
+          <SubmitButton text="Edit Article" />
         </form>
       </CardContent>
     </Card>
