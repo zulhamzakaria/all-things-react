@@ -27,7 +27,7 @@ export default function SettingsPage({
         <h1 className=" font-semibold">Go back</h1>
       </div>
 
-      <UploadImageForm />
+      <UploadImageForm siteId={params.siteId} />
 
       <Card className=" border-red-500  bg-red-500/10">
         <CardHeader>

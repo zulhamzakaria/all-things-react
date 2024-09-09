@@ -11,8 +11,9 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import { SubmitButton } from "../SubmitButton";
+import { UpdateImage } from "@/app/actions";
 
-export function UploadImageForm() {
+export function UploadImageForm({ siteId }: { siteId: string }) {
   const [imageUrl, setImageUrl] = useState<undefined | string>(undefined);
   return (
     <Card>
@@ -40,7 +41,11 @@ export function UploadImageForm() {
         )}
       </CardContent>
       <CardFooter>
-        <SubmitButton text="Change Image" />
+        <form action={UpdateImage}>
+          <input type="hidden" name="siteId" value={siteId} />
+          <input type="hidden" name="imageUrl" value={imageUrl} />
+          <SubmitButton text="Change Image" />
+        </form>
       </CardFooter>
     </Card>
   );
