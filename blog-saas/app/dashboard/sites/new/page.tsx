@@ -16,6 +16,7 @@ import { useActionState } from "react";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { SiteSchema } from "@/app/utils/zodSchemas";
+import { SubmitButton } from "@/app/components/dashboard/SubmitButton";
 
 const NewSiteRoute = () => {
   // for getting state from server action?
@@ -78,7 +79,7 @@ const NewSiteRoute = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className=" ml-auto">Submit</Button>
+            <SubmitButton text="Create Site" />
           </CardFooter>
         </form>
       </Card>
