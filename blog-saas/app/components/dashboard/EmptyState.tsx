@@ -2,7 +2,19 @@ import { Button } from "@/components/ui/button";
 import { FileIcon, PlusCircle } from "lucide-react";
 import Link from "next/link";
 
-export function EmptyState() {
+interface EmptyStateProps {
+  title: string;
+  description: string;
+  buttonText: string;
+  href: string;
+}
+
+export function EmptyState({
+  title,
+  description,
+  buttonText,
+  href,
+}: EmptyStateProps) {
   return (
     <>
       <div className=" flex flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in fade-in-50">
