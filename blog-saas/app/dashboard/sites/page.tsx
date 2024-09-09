@@ -44,7 +44,12 @@ const SitesPage = async () => {
       </div>
 
       {data === undefined || data.length === 0 ? (
-        <EmptyState />
+        <EmptyState
+          title="You do not have any site created."
+          description="Please create some so that you can see them right here"
+          buttonText="Create Site"
+          href="/dashboard/sites/new"
+        />
       ) : (
         <div className=" grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {data.map((site) => (
