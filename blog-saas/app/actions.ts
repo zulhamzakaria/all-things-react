@@ -57,3 +57,28 @@ export async function CreatePostAction(
 
   return redirect(`/dashboard/sites/${formData.get("siteId")}`);
 }
+
+export async function EditPostActions(formData: FormData) {
+  const user = await requireUser();
+  const submission = parseWithZod(formData, {
+    schema: ArticleSchema,
+  });
+
+  if (submission.status !== "success") {
+    return submission.reply();
+  }
+
+  const data = await prisma.post.update({
+    where: {
+      userId: user.id,
+      id: formData.get("articleId") as string,
+    },
+    data: {
+      title: submission.value.title,
+      smallDescription: submission.value.smallDescription,
+      slug: submission.value.slug,
+      articleContent: JSON.parse(submission.value.articleContent),
+      imageUrl: submission.value.imageUrl,
+    },
+  });
+}
