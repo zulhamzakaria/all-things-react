@@ -76,6 +76,7 @@ export function EditArticleForm({ article }: EditArticleFormProps) {
           onSubmit={form.onSubmit}
           action={action}
         >
+          <input type="hidden" name="articleId" value={article.id} />
           <div className=" grid gap-2">
             <Label>Title</Label>
             <Input
