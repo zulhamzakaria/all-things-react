@@ -1,4 +1,5 @@
 import prisma from "@/app/utils/db";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,6 +9,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   Table,
   TableBody,
   TableCell,
@@ -16,7 +25,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { Book, FileIcon, PlusCircle, Settings } from "lucide-react";
+import {
+  Book,
+  FileIcon,
+  MoreHorizontal,
+  PlusCircle,
+  Settings,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -125,7 +140,35 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
                       <TableCell className=" font-medium">
                         {post.title}
                       </TableCell>
-                      <TableCell>Published</TableCell>
+                      <TableCell>
+                        <Badge
+                          variant={"outline"}
+                          className=" bg-green-500/10 text-green-500"
+                        >
+                          Published
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        {new Intl.DateTimeFormat("en-GB", {
+                          dateStyle: "medium",
+                        }).format(post.createdAt)}
+                      </TableCell>
+                      <TableCell className=" text-end">
+                        <DropdownMenu>
+                          {/* asChild cause theres a button */}
+                          <DropdownMenuTrigger asChild>
+                            <Button size={"icon"} variant="ghost">
+                              <MoreHorizontal className=" size-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
