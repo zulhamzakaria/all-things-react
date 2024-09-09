@@ -1,3 +1,4 @@
+import { DeletePostAction } from "@/app/actions";
 import { SubmitButton } from "@/app/components/dashboard/SubmitButton";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,8 +31,9 @@ export default function DeleteArticle({
           <Button variant={"secondary"} asChild>
             <Link href={`/dashboard/sites/${params.siteId}`}>Cancel</Link>
           </Button>
-          <form>
+          <form action={DeletePostAction}>
             <input type="hidden" name="articleId" value={params.articleId} />
+            <input type="hidden" name="siteId" value={params.siteId} />
             <SubmitButton text="Delete Article" variant={"destructive"} />
           </form>
         </CardFooter>

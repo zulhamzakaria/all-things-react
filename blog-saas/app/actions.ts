@@ -93,4 +93,6 @@ export async function DeletePostAction(formData: FormData) {
       id: formData.get("articleId") as string,
     },
   });
+
+  return redirect(`/dashboard/sites/${formData.get("siteId")}`);
 }
