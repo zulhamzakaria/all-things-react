@@ -30,7 +30,13 @@ export function UploadImageForm() {
             className=" size-[200px] object-cover rounded-md"
           />
         ) : (
-          <UploadDropzone endpoint="imageUploader" />
+          <UploadDropzone
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => setImageUrl(res[0].url)}
+            onUploadError={() => {
+              throw new Error("somns wrong");
+            }}
+          />
         )}
       </CardContent>
       <CardFooter>
