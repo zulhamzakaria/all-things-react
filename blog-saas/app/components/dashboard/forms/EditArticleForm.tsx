@@ -1,6 +1,6 @@
 "use client";
 
-import { CreatePostAction } from "@/app/actions";
+import { CreatePostAction, EditPostActions } from "@/app/actions";
 import { UploadDropzone } from "@/app/utils/UploadthingComponents";
 import { ArticleSchema } from "@/app/utils/zodSchemas";
 import { Button } from "@/components/ui/button";
@@ -45,7 +45,7 @@ export function EditArticleForm({ article }: EditArticleFormProps) {
   const [slug, setSlug] = useState<string | undefined>(article.slug);
   const [title, setTitle] = useState<string | undefined>(article.title);
 
-  const [lastResult, action] = useActionState(CreatePostAction, undefined);
+  const [lastResult, action] = useActionState(EditPostActions, undefined);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {

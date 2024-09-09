@@ -58,7 +58,7 @@ export async function CreatePostAction(
   return redirect(`/dashboard/sites/${formData.get("siteId")}`);
 }
 
-export async function EditPostActions(formData: FormData) {
+export async function EditPostActions(previouseState: any, formData: FormData) {
   const user = await requireUser();
   const submission = parseWithZod(formData, {
     schema: ArticleSchema,
@@ -81,4 +81,6 @@ export async function EditPostActions(formData: FormData) {
       imageUrl: submission.value.imageUrl,
     },
   });
+
+  return redirect("/dashboard/sites");
 }
