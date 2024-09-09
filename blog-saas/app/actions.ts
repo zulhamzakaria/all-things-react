@@ -96,3 +96,20 @@ export async function DeletePostAction(formData: FormData) {
 
   return redirect(`/dashboard/sites/${formData.get("siteId")}`);
 }
+
+export async function UpdateImage(formData: FormData) {
+  const user = await requireUser();
+  const siteId = formData.get("siteId") as string;
+
+  const data = await prisma.site.update({
+    where: {
+      userId: user.id,
+      id: siteId,
+    },
+    data: {
+      imageUrl: formData.get("imageUrl") as string,
+    },
+  });
+
+  return redirect(`/dashboard/sites/${siteId}`);
+}
