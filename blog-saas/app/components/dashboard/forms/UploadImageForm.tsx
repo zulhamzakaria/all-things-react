@@ -4,11 +4,13 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
 import { useState } from "react";
+import { SubmitButton } from "../SubmitButton";
 
 export function UploadImageForm() {
   const [imageUrl, setImageUrl] = useState<undefined | string>(undefined);
@@ -31,6 +33,9 @@ export function UploadImageForm() {
           <UploadDropzone endpoint="imageUploader" />
         )}
       </CardContent>
+      <CardFooter>
+        <SubmitButton text="Change Image" />
+      </CardFooter>
     </Card>
   );
 }
