@@ -1,3 +1,4 @@
+import { EmptyState } from "@/app/components/dashboard/EmptyState";
 import prisma from "@/app/utils/db";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -92,22 +93,12 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
         </Button>
       </div>
       {posts === undefined || posts.length === 0 ? (
-        <div className=" flex flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in fade-in-50">
-          <div className=" flex size-20 items-center justify-center rounded-full bg-primary/10">
-            <FileIcon className=" size-10 text-primary " />
-          </div>
-          <h2 className=" mt-6 text-xl font-semibold">
-            You have 0 site created
-          </h2>
-          <p className=" max-w-sm mx-auto mb-8 text-center text-sm leading-tight text-muted-foreground">
-            Please create some so that you can see them right here
-          </p>
-          <Button asChild>
-            <Link href={"/dashboard/sites/new"}>
-              <PlusCircle className=" size-4 mr-2" /> Site
-            </Link>
-          </Button>
-        </div>
+        <EmptyState
+          title="You do not have any Articles created"
+          description="You currently do not have any articles. Please create the by clicking the 'Create Article' button"
+          href={`/dashboard/sites/${params.siteId}/create`}
+          buttonText="Create Article"
+        />
       ) : (
         <div>
           <Card>
