@@ -43,7 +43,7 @@ export default async function EditArticle({
         </Button>
         <h1 className=" text-2xl font-semibold">Edit Article</h1>
       </div>
-      <EditArticleForm article={article} />
+      <EditArticleForm article={article} siteId={params.siteId} />
     </div>
   );
 }

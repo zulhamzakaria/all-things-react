@@ -82,5 +82,5 @@ export async function EditPostActions(previouseState: any, formData: FormData) {
     },
   });
 
-  return redirect("/dashboard/sites");
+  return redirect(`/dashboard/sites/${formData.get("siteId") as string}`);
 }

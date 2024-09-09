@@ -1,6 +1,6 @@
 "use client";
 
-import { CreatePostAction, EditPostActions } from "@/app/actions";
+import { EditPostActions } from "@/app/actions";
 import { UploadDropzone } from "@/app/utils/UploadthingComponents";
 import { ArticleSchema } from "@/app/utils/zodSchemas";
 import { Button } from "@/components/ui/button";
@@ -33,9 +33,10 @@ interface EditArticleFormProps {
     articleContent: any;
     id: string;
   };
+  siteId: string;
 }
 
-export function EditArticleForm({ article }: EditArticleFormProps) {
+export function EditArticleForm({ article, siteId }: EditArticleFormProps) {
   const [imageUrl, setImageUrl] = useState<string | undefined>(
     article.imageUrl
   );
@@ -77,6 +78,7 @@ export function EditArticleForm({ article }: EditArticleFormProps) {
           action={action}
         >
           <input type="hidden" name="articleId" value={article.id} />
+          <input type="hidden" name="siteId" value={siteId} />
           <div className=" grid gap-2">
             <Label>Title</Label>
             <Input
