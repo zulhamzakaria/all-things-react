@@ -1,3 +1,4 @@
+import { UploadImageForm } from "@/app/components/dashboard/forms/UploadImageForm";
 import { SubmitButton } from "@/app/components/dashboard/SubmitButton";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,6 +26,8 @@ export default function SettingsPage({
         </Button>
         <h1 className=" font-semibold">Go back</h1>
       </div>
+
+      <UploadImageForm />
 
       <Card className=" border-red-500  bg-red-500/10">
         <CardHeader>

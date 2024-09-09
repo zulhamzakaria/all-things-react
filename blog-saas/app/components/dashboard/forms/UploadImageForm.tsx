@@ -1,3 +1,4 @@
+"use client";
 import { UploadDropzone } from "@/app/utils/UploadthingComponents";
 import {
   Card,
