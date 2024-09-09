@@ -1,7 +1,23 @@
 import prisma from "@/app/utils/db";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Book, FileIcon, PlusCircle, Settings } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -75,7 +91,48 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
           </Button>
         </div>
       ) : (
-        <h1>data</h1>
+        <div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Articles</CardTitle>
+              <CardDescription>
+                Manage your Articles in a simple and intuitive interface
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Image</TableHead>
+                    <TableHead>Title</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Created At</TableHead>
+                    <TableHead className=" text-right">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {posts.map((post) => (
+                    <TableRow key={post.id}>
+                      <TableCell>
+                        <Image
+                          src={post.imageUrl}
+                          alt="🖼️"
+                          width={69}
+                          height={69}
+                          className=" size-16 rounded-md object-cover"
+                        />
+                      </TableCell>
+                      <TableCell className=" font-medium">
+                        {post.title}
+                      </TableCell>
+                      <TableCell>Published</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </div>
       )}
     </>
   );
