@@ -31,6 +31,7 @@ export default function DeleteArticle({
             <Link href={`/dashboard/sites/${params.siteId}`}>Cancel</Link>
           </Button>
           <form>
+            <input type="hidden" name="articleId" value={params.articleId} />
             <SubmitButton text="Delete Article" variant={"destructive"} />
           </form>
         </CardFooter>
