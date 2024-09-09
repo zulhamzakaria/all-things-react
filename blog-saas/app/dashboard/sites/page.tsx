@@ -62,8 +62,12 @@ const SitesPage = async () => {
                 className=" rounded-t-lg object-cover w-full h-[200px]"
               />
               <CardHeader>
-                <CardTitle className=" capitalize">{site.name}</CardTitle>
-                <CardDescription>{site.description}</CardDescription>
+                <CardTitle className=" capitalize truncate">
+                  {site.name}
+                </CardTitle>
+                <CardDescription className=" line-clamp-2">
+                  {site.description}
+                </CardDescription>
               </CardHeader>
               <CardFooter>
                 {/* button contains a child */}
