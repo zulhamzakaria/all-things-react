@@ -1,6 +1,8 @@
 "use client";
 
+import { CreatePostAction } from "@/app/actions";
 import { UploadDropzone } from "@/app/utils/UploadthingComponents";
+import { ArticleSchema } from "@/app/utils/zodSchemas";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,20 +13,29 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import { Atom } from "lucide-react";
 import Image from "next/image";
+import { JSONContent } from "novel";
+import { useActionState, useState } from "react";
+import slugify from "react-slugify";
 import TailwindEditor from "../EditorWrapper";
 import { SubmitButton } from "../SubmitButton";
-import { useActionState, useState } from "react";
-import { JSONContent } from "novel";
-import { useForm } from "@conform-to/react";
-import { parseWithZod } from "@conform-to/zod";
-import { ArticleSchema } from "@/app/utils/zodSchemas";
-import { CreatePostAction } from "@/app/actions";
-import slugify from "react-slugify";
 
-export function EditArticleForm() {
+interface EditArticleFormProps {
+  article: {
+    title: string;
+    slug: string;
+    imageUrl: string;
+    smallDescription: string;
+    articleContent: any;
+    id: string;
+  };
+}
+
+export function EditArticleForm({ article }: EditArticleFormProps) {
   const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
   const [value, setValue] = useState<JSONContent | undefined>(undefined);
   const [slug, setSlug] = useState<string | undefined>(undefined);
@@ -49,7 +60,7 @@ export function EditArticleForm() {
   }
 
   return (
-    <Card>
+    <Card className="mt-5">
       <CardHeader>
         <CardTitle>Article Details</CardTitle>
         <CardDescription>Article Description</CardDescription>
