@@ -164,7 +164,14 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
                           <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            {/* asChild cause it contains Link component */}
+                            <DropdownMenuItem asChild>
+                              <Link
+                                href={`/dashboard/sites/${params.siteId}/${post.id}`}
+                              >
+                                Edit
+                              </Link>
+                            </DropdownMenuItem>
                             <DropdownMenuItem>Delete</DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
