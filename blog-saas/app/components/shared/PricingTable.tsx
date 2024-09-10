@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { SubmitButton } from "../dashboard/SubmitButton";
+import Link from "next/link";
+import { CreateSubscription } from "@/app/actions";
 
 interface PricingTableProps {
   id: number;
@@ -92,11 +94,14 @@ const PricingTable = () => {
             </CardContent>
             <CardFooter>
               {plan.id === 2 ? (
-                <form className="w-full">
+                <form action={CreateSubscription} className="w-full">
                   <SubmitButton text="Get Plan" className=" mt-5 w-full" />
                 </form>
               ) : (
-                <Button className="w-full mt-6">Try for Free</Button>
+                // asChild since it contains a Link
+                <Button className="w-full mt-6" asChild>
+                  <Link href={"/dashboard"}>Try for Free</Link>
+                </Button>
               )}
             </CardFooter>
           </Card>
