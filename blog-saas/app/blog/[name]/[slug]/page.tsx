@@ -5,6 +5,7 @@ import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JSONContent } from "novel";
 
 async function getPost(slug: string) {
   const data = await prisma.post.findUnique({
@@ -65,7 +66,7 @@ export default async function SlugPage({
         />
       </div>
 
-      <RenderArticle />
+      <RenderArticle json={post.articleContent as JSONContent} />
     </>
   );
 }

@@ -1,6 +1,10 @@
-import React from "react";
+import { type JSONContent } from "novel";
+import React, { useMemo } from "react";
 
-const RenderArticle = () => {
+const RenderArticle = ({ json }: { json: JSONContent }) => {
+    const outPut = useMemo(()=>{
+        
+    })
   return <div>RenderArticle</div>;
 };
 
