@@ -1,3 +1,4 @@
+import RenderArticle from "@/app/components/dashboard/RenderArticle";
 import prisma from "@/app/utils/db";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
@@ -63,6 +64,8 @@ export default async function SlugPage({
           priority
         />
       </div>
+
+      <RenderArticle />
     </>
   );
 }
