@@ -13,28 +13,32 @@ import Code from "@tiptap/extension-code";
 import BlockQuote from "@tiptap/extension-blockquote";
 import TextStyle from "@tiptap/extension-text-style";
 import CodeBlock from "@tiptap/extension-code-block";
+import TaskItem from "@tiptap/extension-task-item";
+import TaskList from "@tiptap/extension-task-list";
 
 const RenderArticle = ({ json }: { json: JSONContent }) => {
-  //   const outPut = useMemo(() => {
-  //     return generateHTML(json, [
-  //       Document,
-  //       Paragraph,
-  //       Text,
-  //       Link,
-  //       Heading,
-  //       Underline,
-  //       ListItem,
-  //       BulletList,
-  //       Code,
-  //       BlockQuote,
-  //       TextStyle,
-  //       CodeBlock,
-  //     ]);
-  //   }, [json]);
+  const outPut = useMemo(() => {
+    return generateHTML(json, [
+      Document,
+      Paragraph,
+      Text,
+      Link,
+      Heading,
+      Underline,
+      ListItem,
+      BulletList,
+      Code,
+      BlockQuote,
+      TextStyle,
+      CodeBlock,
+      TaskItem,
+      TaskList,
+    ]);
+  }, [json]);
   return (
     <div
       className=" prose-li:marker:text-primary prose m-auto sm:w-2/3 w-11/12 sm:prose-lg dark:prose-invert"
-      dangerouslySetInnerHTML={{ __html: "cock" }}
+      dangerouslySetInnerHTML={{ __html: outPut }}
     />
   );
 };
