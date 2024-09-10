@@ -48,6 +48,11 @@ async function getPosts(userId: string, siteId: string) {
       title: true,
       createdAt: true,
       id: true,
+      Site: {
+        select: {
+          subdirectory: true,
+        },
+      },
     },
     orderBy: {
       createdAt: "desc",
@@ -68,7 +73,10 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
       <div className=" flex w-full justify-end gap-x-4">
         {/* asChild cause theres a link component */}
         <Button asChild variant={"secondary"}>
-          <Link href={"#"} className=" gap-2">
+          <Link
+            href={`/blog/${posts[0].Site?.subdirectory}`}
+            className=" gap-2"
+          >
             <Book className=" size-4" />
             View Blog
           </Link>
