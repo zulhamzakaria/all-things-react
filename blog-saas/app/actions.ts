@@ -1,15 +1,10 @@
 "use server";
 
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { redirect } from "next/navigation";
 import { parseWithZod } from "@conform-to/zod";
-import {
-  ArticleSchema,
-  SiteCreationSchema,
-  SiteSchema,
-} from "./utils/zodSchemas";
+import { redirect } from "next/navigation";
 import prisma from "./utils/db";
 import { requireUser } from "./utils/requireUser";
+import { ArticleSchema, SiteCreationSchema } from "./utils/zodSchemas";
 
 export async function CreateSiteAction(previousState: any, formData: FormData) {
   const user = await requireUser();
@@ -137,4 +132,8 @@ export async function DeleteSite(formData: FormData) {
     },
   });
   return redirect("/dashboard/sites");
+}
+
+export async function CreateSubscription() {
+  const user = await requireUser();
 }
