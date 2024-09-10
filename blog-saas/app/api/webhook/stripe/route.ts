@@ -28,12 +28,24 @@ export async function POST(req: Request) {
     );
     const customerId = session.customer as string;
 
-    const user = prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: {
         customerId: customerId,
       },
     });
 
     if (!user) throw new Error("Invalid user");
+
+    await prisma.subscription.create({
+      data: {
+        stripeSubscriptionId: subscription.id,
+        userId: user.id,
+        currentPeriodStart: subscription.current_period_start,
+        currentPeriodEnd: subscription.current_period_end,
+        status: subscription.status,
+        planId: subscription.items.data[0].plan.id,
+        interval: String(subscription.items.data[0].plan.interval),
+      },
+    });
   }
 }
