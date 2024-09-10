@@ -15,6 +15,7 @@ import TextStyle from "@tiptap/extension-text-style";
 import CodeBlock from "@tiptap/extension-code-block";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
+import OrderList from "@tiptap/extension-ordered-list";
 
 const RenderArticle = ({ json }: { json: JSONContent }) => {
   const outPut = useMemo(() => {
@@ -33,6 +34,7 @@ const RenderArticle = ({ json }: { json: JSONContent }) => {
       CodeBlock,
       TaskItem,
       TaskList,
+      OrderList,
     ]);
   }, [json]);
   return (
