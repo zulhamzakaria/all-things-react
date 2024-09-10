@@ -1,7 +1,8 @@
+import PricingTable from "@/app/components/shared/PricingTable";
 import React from "react";
 
 const PricingPage = () => {
-  return <div>PricingPage</div>;
+  return <PricingTable />;
 };
 
 export default PricingPage;
