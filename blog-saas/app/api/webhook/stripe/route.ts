@@ -48,4 +48,25 @@ export async function POST(req: Request) {
       },
     });
   }
+
+  //invoice event after a successful subscription
+  if (event.type === "invoice.payment_succeeded") {
+    const subscription = await stripe.subscriptions.retrieve(
+      session.subscription as string
+    );
+
+    await prisma.subscription.update({
+      where: {
+        stripeSubscriptionId: subscription.id,
+      },
+      data: {
+        planId: subscription.items.data[0].price.id,
+        currentPeriodStart: subscription.current_period_start,
+        currentPeriodEnd: subscription.current_period_end,
+        status: subscription.status,
+      },
+    });
+  }
+
+  return new Response(null, { status: 200 });
 }
