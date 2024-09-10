@@ -17,6 +17,7 @@ async function getPost(slug: string) {
       imageUrl: true,
       smallDescription: true,
       articleContent: true,
+      createdAt: true,
     },
   });
   if (!data) return notFound();
@@ -44,7 +45,9 @@ export default async function SlugPage({
       <div className=" flex flex-col items-center justify-center mb-10 ">
         <div className=" m-auto w-full text-center md:w-7/12">
           <p className=" m-auto my-5 w-10/12 text-sm font-light text-muted-foreground md:text-base">
-            16 Apr 2024
+            {new Intl.DateTimeFormat("en-US", {
+              dateStyle: "medium",
+            }).format(post.createdAt)}
           </p>
           <h1 className=" mb-5 text-3xl font-bold md:text-6xl tracking-tight">
             {post.title}
