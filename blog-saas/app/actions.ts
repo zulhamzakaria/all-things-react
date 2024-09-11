@@ -31,12 +31,12 @@ export async function CreateSiteAction(previousState: any, formData: FormData) {
   // active sub + no of Site created
   if (!subStatus || subStatus.status !== "active") {
     if ((sites.length = 0)) {
-      CreateSite();
+      await CreateSite();
     } else {
       return redirect("/dashboard/pricing");
     }
   } else if (subStatus.status === "active") {
-    CreateSite();
+    await CreateSite();
   }
 
   async function CreateSite() {
