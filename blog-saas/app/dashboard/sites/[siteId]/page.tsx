@@ -38,26 +38,48 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 async function getPosts(userId: string, siteId: string) {
-  const data = await prisma.post.findMany({
+  // let data = await prisma.post.findMany({
+  //   where: {
+  //     userId: userId,
+  //     siteId: siteId,
+  //   },
+  //   select: {
+  //     imageUrl: true,
+  //     title: true,
+  //     createdAt: true,
+  //     id: true,
+  //     Site: {
+  //       select: {
+  //         subdirectory: true,
+  //       },
+  //     },
+  //   },
+  //   orderBy: {
+  //     createdAt: "desc",
+  //   },
+  // });
+
+  const data = await prisma.site.findUnique({
     where: {
+      id: siteId,
       userId: userId,
-      siteId: siteId,
     },
     select: {
-      imageUrl: true,
-      title: true,
-      createdAt: true,
-      id: true,
-      Site: {
+      subdirectory: true,
+      posts: {
         select: {
-          subdirectory: true,
+          imageUrl: true,
+          title: true,
+          createdAt: true,
+          id: true,
+        },
+        orderBy: {
+          createdAt: "desc",
         },
       },
     },
-    orderBy: {
-      createdAt: "desc",
-    },
   });
+
   return data;
 }
 
@@ -66,7 +88,7 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
   const user = await getUser();
   if (!user) return redirect("/api/auth/login");
 
-  const posts = await getPosts(user.id, params.siteId);
+  const data = await getPosts(user.id, params.siteId);
 
   return (
     <>
@@ -74,7 +96,7 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
         {/* asChild cause theres a link component */}
         <Button asChild variant={"secondary"}>
           <Link
-            href={`/blog/${posts[0].Site?.subdirectory}`}
+            href={`/blog/${data?.subdirectory}`}
             className=" gap-2"
           >
             <Book className=" size-4" />
@@ -100,7 +122,7 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
           </Link>
         </Button>
       </div>
-      {posts === undefined || posts.length === 0 ? (
+      {data?.posts === undefined || data.posts.length === 0 ? (
         <EmptyState
           title="You do not have any Articles created"
           description="You currently do not have any articles. Please create the by clicking the 'Create Article' button"
@@ -128,7 +150,7 @@ const Site = async ({ params }: { params: { siteId: string } }) => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {posts.map((post) => (
+                  {data.posts.map((post) => (
                     <TableRow key={post.id}>
                       <TableCell>
                         <Image
