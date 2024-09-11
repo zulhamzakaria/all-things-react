@@ -8,6 +8,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Hero } from "./components/frontend/Hero";
 import Logos from "./components/frontend/Logos";
 import Features from "./components/frontend/Features";
+import { PricingPlans } from "./components/shared/PricingTable";
 
 export default async function Home() {
   const { getUser } = getKindeServerSession();
@@ -17,6 +18,7 @@ export default async function Home() {
       <Hero />
       <Logos />
       <Features />
+      <PricingPlans/>
     </div>
   );
 }
