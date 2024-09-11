@@ -67,6 +67,7 @@ export const Hero = () => {
               height={500}
               width={500}
               className=" relative -mt-24 blur-md -z-10"
+              priority
             />
           </div>
         </div>
