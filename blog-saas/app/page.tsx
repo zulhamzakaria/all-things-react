@@ -1,14 +1,9 @@
-import { Button } from "@/components/ui/button";
-import {
-  RegisterLink,
-  LoginLink,
-  LogoutLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Features from "./components/frontend/Features";
 import { Hero } from "./components/frontend/Hero";
 import Logos from "./components/frontend/Logos";
-import Features from "./components/frontend/Features";
 import { PricingPlans } from "./components/shared/PricingTable";
+import PricingPage from "./dashboard/pricing/page";
 
 export default async function Home() {
   const { getUser } = getKindeServerSession();
@@ -18,7 +13,7 @@ export default async function Home() {
       <Hero />
       <Logos />
       <Features />
-      <PricingPlans/>
+      <PricingPage />
     </div>
   );
 }
