@@ -36,7 +36,7 @@ const NewSiteRoute = () => {
         <CardHeader>
           <CardTitle>Create Site</CardTitle>
           <CardDescription>
-            Create your site here. Click 'save' once you are done
+            Create your site here. Click Save once you are done
           </CardDescription>
         </CardHeader>
         <form id={form.id} onSubmit={form.onSubmit} action={action}>

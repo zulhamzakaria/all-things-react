@@ -42,10 +42,10 @@ export const Hero = () => {
               Ultimate Blogging SaaS for Startups
             </span>
             <h1 className=" font-medium leading-none mt-8 text-4xl sm:text-6xl md:text-7xl lg:text-8xl ">
-              Setup your blog{" "}
+              Setup your blog
               <span className=" block text-primary">in Minutes</span>
             </h1>
-            // mx-auto centers the text
+            {/* // mx-auto centers the text */}
             <p className=" max-w-xl tracking-tighter text-muted-foreground mx-auto mt-4 text-base font-light lg:text-lg">
               Save ypur <span className=" text-primary">✨precious✨</span> time
               by setting up your blogs in minutes
