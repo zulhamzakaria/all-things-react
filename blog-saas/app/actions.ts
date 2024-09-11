@@ -66,9 +66,8 @@ export async function CreateSiteAction(previousState: any, formData: FormData) {
         userId: user.id,
       },
     });
-
-    return redirect("/dashboard/sites");
   }
+  return redirect("/dashboard/sites");
 }
 
 export async function CreatePostAction(
