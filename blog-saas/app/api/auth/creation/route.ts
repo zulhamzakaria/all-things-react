@@ -27,5 +27,10 @@ export async function GET() {
     });
   }
 
-  return NextResponse.redirect("http://localhost:3000/dashboard");
+  const redirectUrl =
+    process.env.NODE_ENV === "production"
+      ? "some_url/dashboard"
+      : "http://localhost:3000/dashboard";
+
+  return NextResponse.redirect(redirectUrl);
 }

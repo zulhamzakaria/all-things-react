@@ -206,8 +206,14 @@ export async function CreateSubscription() {
       address: "auto",
       name: "auto",
     },
-    success_url: "http://localhost:3000/dashboard/payment/success",
-    cancel_url: "http://localhost:3000/dashboard/payment/cancelled",
+    success_url:
+      process.env.NODE_ENV === "production"
+        ? "some_url/dashboard/payment/success"
+        : "http://localhost:3000/dashboard/payment/success",
+    cancel_url:
+      process.env.NODE_ENV === "production"
+        ? "some_url/dashboard/payment/cancelled"
+        : "http://localhost:3000/dashboard/payment/cancelled",
     line_items: [{ price: process.env.STRIPE_PRICE_ID, quantity: 1 }],
   });
 

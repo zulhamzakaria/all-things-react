@@ -39,7 +39,10 @@ const PricingPage = async () => {
 
     const session = await stripe.billingPortal.sessions.create({
       customer: data?.User?.customerId as string,
-      return_url: "http://localhost:3000/dashboard",
+      return_url:
+        process.env.NODE_ENV === "production"
+          ? "some_url/dashboard"
+          : "http://localhost:3000/dashboard",
     });
 
     return redirect(session.url);
