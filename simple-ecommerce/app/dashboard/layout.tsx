@@ -2,8 +2,9 @@ import { ReactNode } from "react";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
-    <div>
-      this is the DashboardLayout
+    <div className=" flex-col flex w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+      <div className=" sticky top-0 flex h-16 items-center justify-between gap-4 border-b bg-white"></div>
+
       {children}
     </div>
   );
