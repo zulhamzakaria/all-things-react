@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import DashboardNavigation from "../components/dashboard/DashboardNavigation";
-import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { MenuIcon } from "lucide-react";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
@@ -11,7 +13,20 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         </nav>
 
         <Sheet>
-          <SheetTrigger asChild></SheetTrigger>
+          <SheetTrigger asChild>
+            <Button
+              className=" shrink-0 md:hidden"
+              variant={"outline"}
+              size={"icon"}
+            >
+              <MenuIcon />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side={"left"}>
+            <nav className=" flex flex-col gap-6 text-lg font-medium">
+              <DashboardNavigation />
+            </nav>
+          </SheetContent>
         </Sheet>
       </header>
       {/* {children} */}
