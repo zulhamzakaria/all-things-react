@@ -22,9 +22,9 @@ export default async function DashboardLayout({
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-if(!user){
-  return redirect('/')
-}
+  if (!user) {
+    return redirect("/");
+  }
 
   return (
     <div className=" flex-col flex w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
