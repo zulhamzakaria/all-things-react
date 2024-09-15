@@ -22,7 +22,8 @@ export default async function DashboardLayout({
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user) {
+  // simple admin checker
+  if (!user || user.email === 'stlucifer.thefallen@gmail.com') {
     return redirect("/");
   }
 
