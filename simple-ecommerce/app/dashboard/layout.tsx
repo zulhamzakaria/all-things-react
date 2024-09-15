@@ -11,7 +11,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import {
+  getKindeServerSession,
+  LogoutLink,
+} from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
@@ -23,7 +26,7 @@ export default async function DashboardLayout({
   const user = await getUser();
 
   // simple admin checker
-  if (!user || user.email !== 'stlucifer.thefallen@gmail.com') {
+  if (!user || user.email !== "stlucifer.thefallen@gmail.com") {
     return redirect("/");
   }
 
@@ -64,7 +67,9 @@ export default async function DashboardLayout({
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Sign out</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <LogoutLink>Sign out</LogoutLink>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </header>
