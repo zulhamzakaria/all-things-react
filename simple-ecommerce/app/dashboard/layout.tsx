@@ -23,7 +23,7 @@ export default async function DashboardLayout({
   const user = await getUser();
 
   // simple admin checker
-  if (!user || user.email === 'stlucifer.thefallen@gmail.com') {
+  if (!user || user.email !== 'stlucifer.thefallen@gmail.com') {
     return redirect("/");
   }
 
