@@ -30,5 +30,5 @@ export async function GET() {
     });
   }
 
-  NextResponse.redirect(process.env.INDEX_PAGE ?? "https://google.com");
+  return NextResponse.redirect(process.env.INDEX_PAGE ?? "https://google.com");
 }
