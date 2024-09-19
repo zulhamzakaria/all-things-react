@@ -8,6 +8,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
@@ -49,6 +57,23 @@ const CreateProductPage = () => {
             <div className=" flex flex-col gap-3">
               <Label>Price</Label>
               <Input type="number" placeholder="1200" />
+            </div>
+            <div className=" flex flex-col gap-3">
+              <Label>Featured Product</Label>
+              <Switch />
+            </div>
+            <div className=" flex flex-col gap-3">
+              <Label>Status</Label>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="draft">Draft</SelectItem>
+                  <SelectItem value="published">Published</SelectItem>
+                  <SelectItem value="archived">Archived</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </CardContent>
