@@ -1,4 +1,5 @@
 "use client";
+import { createProduct } from "@/app/actions";
 import { UploadDropzone } from "@/app/lib/uploadthing";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,10 +24,23 @@ import { Textarea } from "@/components/ui/textarea";
 import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { useFormState } from "react-dom";
+import { useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
+import { ProductSchema } from "@/app/lib/zodSchemas";
 
 const CreateProductPage = () => {
+  const [lastResult, action] = useFormState(createProduct, undefined);
+  const [form, fields] = useForm({
+    lastResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: ProductSchema });
+    },
+    shouldValidate: "onBlur",
+    shouldRevalidate: "onInput",
+  });
   return (
-    <form action="">
+    <form id={form.id} onSubmit={form.onSubmit} action={action}>
       <div className=" flex items-center gap-4">
         <Button variant={"outline"} size={"icon"} asChild>
           <Link href={"/dashboard/products"}>
@@ -48,7 +62,11 @@ const CreateProductPage = () => {
                 type="text"
                 className=" w-full"
                 placeholder="Product Name"
+                key={fields.name.key}
+                name={fields.name.name}
+                defaultValue={fields.name.initialValue}
               />
+              <p className=" text-red-500">{fields.name.errors}</p>
             </div>
             <div className=" flex flex-col gap-3">
               <Label>Description</Label>
