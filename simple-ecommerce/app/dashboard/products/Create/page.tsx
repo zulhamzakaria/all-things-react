@@ -23,13 +23,15 @@ import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { useFormState } from "react-dom";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { ProductSchema } from "@/app/lib/zodSchemas";
+import Image from "next/image";
 
 const CreateProductPage = () => {
+  const [images, setImages] = useState<string[]>([]); //type is required
   const [lastResult, action] = useFormState(createProduct, undefined);
   const [form, fields] = useForm({
     lastResult,
@@ -92,11 +94,20 @@ const CreateProductPage = () => {
             </div>
             <div className=" flex flex-col gap-3">
               <Label>Featured Product</Label>
-              <Switch />
+              <Switch
+                key={fields.isFeatured.key}
+                name={fields.isFeatured.name}
+                defaultValue={fields.isFeatured.initialValue}
+              />
+              <p className=" text-red-500">{fields.isFeatured.errors}</p>
             </div>
             <div className=" flex flex-col gap-3">
               <Label>Status</Label>
-              <Select>
+              <Select
+                key={fields.status.key}
+                name={fields.status.name}
+                defaultValue={fields.status.initialValue}
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="Select Status" />
                 </SelectTrigger>
@@ -106,19 +117,36 @@ const CreateProductPage = () => {
                   <SelectItem value="archived">Archived</SelectItem>
                 </SelectContent>
               </Select>
+              <p className=" text-red-500">{fields.status.errors}</p>
             </div>
 
             <div className=" flex flex-col gap-3">
               <Label>Images</Label>
-              <UploadDropzone
-                endpoint="imageUploader"
-                onClientUploadComplete={(res) => {
-                  alert("Finished uploading");
-                }}
-                onUploadError={() => {
-                  alert("somn wrong");
-                }}
-              />
+              {images.length > 0 ? (
+                <div className=" flex gap-5">
+                  {images.map((image, idx) => (
+                    <div key={idx} className=" relative h-[100px] w-[100px]">
+                      <Image
+                        className=" h-full w-full object-cover rounded-lg border "
+                        src={image}
+                        alt="🖼️"
+                        width={100}
+                        height={100}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <UploadDropzone
+                  endpoint="imageUploader"
+                  onClientUploadComplete={(res) => {
+                    setImages(res.map((r) => r.url));
+                  }}
+                  onUploadError={() => {
+                    alert("somn wrong");
+                  }}
+                />
+              )}
             </div>
           </div>
         </CardContent>
