@@ -7,4 +7,5 @@ export const ProductSchema = z.object({
   price: z.number(),
   images: z.array(z.string().min(1, "At least one image is required")),
   category: z.enum(["man", "woman", "kid"]),
+  isFeatured: z.boolean(),
 });
