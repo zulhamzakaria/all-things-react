@@ -31,7 +31,7 @@ const ProductsPage = () => {
       <div className=" flex flex-col gap-y-2">
         <div className=" flex items-center justify-end">
           <Button className=" gap-x-2 bg-blue-950" asChild>
-            <Link href="dashboard/products/create">
+            <Link href="/dashboard/products/create">
               <PlusCircle />
               <p>Add product</p>
             </Link>
