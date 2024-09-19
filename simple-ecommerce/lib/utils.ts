@@ -6,7 +6,3 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export async function getUser() {
-  const { getUser } = getKindeServerSession();
-  return await getUser();
-}

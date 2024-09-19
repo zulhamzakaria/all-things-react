@@ -1,8 +1,10 @@
 import prisma from "@/app/lib/db";
-import { getUser } from "@/lib/utils";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextResponse } from "next/server";
 
 export async function GET() {
+  const { getUser } = getKindeServerSession();
+
   const user = await getUser();
   if (!user || user === null) {
     throw new Error("User not found");
