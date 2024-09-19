@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { ChevronLeftIcon } from "lucide-react";
+import { ChevronLeftIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useFormState } from "react-dom";
@@ -41,6 +41,11 @@ const CreateProductPage = () => {
     shouldValidate: "onBlur",
     shouldRevalidate: "onInput",
   });
+
+  const handleDeleteImage = (index: number) => {
+    setImages(images.filter((_, idx) => idx != index));
+  };
+
   return (
     <form id={form.id} onSubmit={form.onSubmit} action={action}>
       <div className=" flex items-center gap-4">
@@ -133,6 +138,13 @@ const CreateProductPage = () => {
                         width={100}
                         height={100}
                       />
+                      <button
+                        onClick={() => handleDeleteImage(idx)}
+                        type="button"
+                        className=" absolute -top-3 -right-3 p-2 text-white rounded-lg bg-red-500 "
+                      >
+                        <XIcon className=" w-3 h-3" />
+                      </button>
                     </div>
                   ))}
                 </div>
