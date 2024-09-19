@@ -1,3 +1,4 @@
+"use client";
 import { UploadDropzone } from "@/app/lib/uploadthing";
 import { Button } from "@/components/ui/button";
 import {
