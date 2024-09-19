@@ -1,3 +1,4 @@
+import { UploadDropzone } from "@/app/lib/uploadthing";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -74,6 +75,11 @@ const CreateProductPage = () => {
                   <SelectItem value="archived">Archived</SelectItem>
                 </SelectContent>
               </Select>
+            </div>
+
+            <div className=" flex flex-col gap-3">
+              <Label>Images</Label>
+              <UploadDropzone endpoint='imageUploader' />
             </div>
           </div>
         </CardContent>
