@@ -6,6 +6,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -28,7 +31,25 @@ const CreateProductPage = () => {
         </CardHeader>
         <CardContent>
           <div className=" flex flex-col gap-6">
-            <div className=" flex flex-col gap-3"></div>
+            <div className=" flex flex-col gap-3">
+              <Label>Name</Label>
+              <Input
+                type="text"
+                className=" w-full"
+                placeholder="Product Name"
+              />
+            </div>
+            <div className=" flex flex-col gap-3">
+              <Label>Description</Label>
+              <Textarea
+                className=" w-full"
+                placeholder="Write product description here"
+              />
+            </div>
+            <div className=" flex flex-col gap-3">
+              <Label>Price</Label>
+              <Input type="number" placeholder="1200" />
+            </div>
           </div>
         </CardContent>
       </Card>
