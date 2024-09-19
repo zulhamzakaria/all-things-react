@@ -73,11 +73,22 @@ const CreateProductPage = () => {
               <Textarea
                 className=" w-full"
                 placeholder="Write product description here"
+                key={fields.description.key}
+                name={fields.description.name}
+                defaultValue={fields.description.initialValue}
               />
+              <p className=" text-red-500">{fields.description.errors}</p>
             </div>
             <div className=" flex flex-col gap-3">
               <Label>Price</Label>
-              <Input type="number" placeholder="1200" />
+              <Input
+                type="number"
+                placeholder="1200"
+                key={fields.price.key}
+                name={fields.price.name}
+                defaultValue={fields.price.initialValue}
+              />
+              <p className=" text-red-500">{fields.price.errors}</p>
             </div>
             <div className=" flex flex-col gap-3">
               <Label>Featured Product</Label>
