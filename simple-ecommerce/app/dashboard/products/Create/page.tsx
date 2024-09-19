@@ -79,7 +79,15 @@ const CreateProductPage = () => {
 
             <div className=" flex flex-col gap-3">
               <Label>Images</Label>
-              <UploadDropzone endpoint='imageUploader' />
+              <UploadDropzone
+                endpoint="imageUploader"
+                onClientUploadComplete={(res) => {
+                  alert("Finished uploading");
+                }}
+                onUploadError={() => {
+                  alert("somn wrong");
+                }}
+              />
             </div>
           </div>
         </CardContent>
