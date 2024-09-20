@@ -1,3 +1,4 @@
+import { deleteProduct } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,7 +23,8 @@ export default function DeleteProduct({ params }: { params: { id: string } }) {
           <Button variant={"secondary"} asChild>
             <Link href={"/dashboard/products"}>Cancel</Link>
           </Button>
-          <form action="">
+          <form action={deleteProduct}>
+            <input name="productId" value={params.id} type="hidden" />
             <Button variant={"destructive"}>Delete</Button>
           </form>
         </CardFooter>
