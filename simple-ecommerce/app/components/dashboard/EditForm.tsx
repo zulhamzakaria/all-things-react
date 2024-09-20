@@ -47,7 +47,7 @@ interface EditFormProps {
 }
 
 export function EditProductForm({ data }: EditFormProps) {
-  const [images, setImages] = useState<string[]>([]); //type is required
+  const [images, setImages] = useState<string[]>(data.images); //type is required
   const [lastResult, action] = useFormState(createProduct, undefined);
   const [form, fields] = useForm({
     lastResult,
@@ -86,7 +86,7 @@ export function EditProductForm({ data }: EditFormProps) {
                 placeholder="Product Name"
                 key={fields.name.key}
                 name={fields.name.name}
-                defaultValue={fields.name.initialValue}
+                defaultValue={data.name}
               />
               <p className=" text-red-500">{fields.name.errors}</p>
             </div>
@@ -97,7 +97,7 @@ export function EditProductForm({ data }: EditFormProps) {
                 placeholder="Write product description here"
                 key={fields.description.key}
                 name={fields.description.name}
-                defaultValue={fields.description.initialValue}
+                defaultValue={data.description}
               />
               <p className=" text-red-500">{fields.description.errors}</p>
             </div>
@@ -108,7 +108,7 @@ export function EditProductForm({ data }: EditFormProps) {
                 placeholder="1200"
                 key={fields.price.key}
                 name={fields.price.name}
-                defaultValue={fields.price.initialValue}
+                defaultValue={data.price}
               />
               <p className=" text-red-500">{fields.price.errors}</p>
             </div>
@@ -117,7 +117,7 @@ export function EditProductForm({ data }: EditFormProps) {
               <Switch
                 key={fields.isFeatured.key}
                 name={fields.isFeatured.name}
-                defaultValue={fields.isFeatured.initialValue}
+                checked={data.isFeatured}
               />
               <p className=" text-red-500">{fields.isFeatured.errors}</p>
             </div>
@@ -126,7 +126,7 @@ export function EditProductForm({ data }: EditFormProps) {
               <Select
                 key={fields.status.key}
                 name={fields.status.name}
-                defaultValue={fields.status.initialValue}
+                defaultValue={data.status}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Select Status" />
@@ -145,7 +145,7 @@ export function EditProductForm({ data }: EditFormProps) {
               <Select
                 key={fields.category.key}
                 name={fields.category.name}
-                defaultValue={fields.category.initialValue}
+                defaultValue={data.category}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Select Category" />
