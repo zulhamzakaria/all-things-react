@@ -78,3 +78,20 @@ export async function editProduct(currentState: any, formData: FormData) {
   });
   redirect("/dashboard/products");
 }
+
+export async function deleteProduct(formData: FormData) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user || user.email !== "leonn.sameonn@gmail.com") {
+    return redirect("/");
+  }
+  const productId = formData.get("productId") as string;
+  await prisma.product.delete({
+    where: {
+      id: productId,
+    },
+  });
+
+  redirect("/dashboard/products");
+}
