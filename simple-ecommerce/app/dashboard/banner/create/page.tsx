@@ -1,5 +1,5 @@
 "use client";
-import { createProduct } from "@/app/actions";
+import { CreateBanner } from "@/app/actions";
 import SubmitButton from "@/app/components/SubmitButton";
 import { UploadDropzone } from "@/app/lib/uploadthing";
 import { BannerSchema } from "@/app/lib/zodSchemas";
@@ -20,11 +20,11 @@ import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { createPortal, useFormState } from "react-dom";
+import { useFormState } from "react-dom";
 
 export default function CreateBannerPage() {
   const [image, setImage] = useState<string | undefined>(undefined);
-  const [lastResult, action] = useFormState(createProduct, undefined);
+  const [lastResult, action] = useFormState(CreateBanner, undefined);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
