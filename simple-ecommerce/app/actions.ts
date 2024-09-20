@@ -119,3 +119,5 @@ export async function CreateBanner(currentState: any, formData: FormData) {
 
   redirect("/dashboard/banner");
 }
+
+export async function DeleteBanner()
