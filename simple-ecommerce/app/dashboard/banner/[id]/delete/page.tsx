@@ -1,3 +1,4 @@
+import { DeleteBanner } from "@/app/actions";
 import SubmitButton from "@/app/components/SubmitButton";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,7 +29,7 @@ export default function DeleteBannerPage({
             <Link href={"/dashboard/products"}>Cancel</Link>
           </Button>
           <form action={DeleteBanner}>
-            <input name="productId" value={params.id} type="hidden" />
+            <input name="bannerId" value={params.id} type="hidden" />
             <SubmitButton text="Delete Product" variant={"destructive"} />
           </form>
         </CardFooter>

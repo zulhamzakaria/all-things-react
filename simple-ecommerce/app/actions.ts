@@ -120,4 +120,19 @@ export async function CreateBanner(currentState: any, formData: FormData) {
   redirect("/dashboard/banner");
 }
 
-export async function DeleteBanner()
+export async function DeleteBanner(formData: FormData) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user || user.email !== "leonn.sameonn@gmail.com") {
+    return redirect("/");
+  }
+  const bannerId = formData.get("bannerId") as string;
+  await prisma.banner.delete({
+    where: {
+      id: bannerId,
+    },
+  });
+
+  redirect("/dashboard/banner");
+}
