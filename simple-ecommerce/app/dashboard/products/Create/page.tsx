@@ -29,6 +29,7 @@ import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { ProductSchema } from "@/app/lib/zodSchemas";
 import Image from "next/image";
+import { categories } from "@/app/lib/categories";
 
 const CreateProductPage = () => {
   const [images, setImages] = useState<string[]>([]); //type is required
@@ -123,6 +124,26 @@ const CreateProductPage = () => {
                 </SelectContent>
               </Select>
               <p className=" text-red-500">{fields.status.errors}</p>
+            </div>
+
+            <div className=" flex flex-col gap-3">
+              <Label>Category</Label>
+              <Select
+                key={fields.category.key}
+                name={fields.category.name}
+                defaultValue={fields.category.initialValue}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select Category" />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories.map((category) => (
+                    <SelectItem value={category.name} key={category.id}>
+                      {category.title}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className=" flex flex-col gap-3">
