@@ -71,12 +71,12 @@ export function EditProductForm({ data }: EditFormProps) {
             <ChevronLeftIcon className=" w-4 h-4" />
           </Link>
         </Button>
-        <h1 className=" text-xl font-semibold tracking-tight">New Product</h1>
+        <h1 className=" text-xl font-semibold tracking-tight">Edit Product</h1>
       </div>
       <Card className=" mt-5">
         <CardHeader>
           <CardTitle>Product Details</CardTitle>
-          <CardDescription>Add a new product here</CardDescription>
+          <CardDescription>Edit the selected product here</CardDescription>
         </CardHeader>
         <CardContent>
           <div className=" flex flex-col gap-6">
