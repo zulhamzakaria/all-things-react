@@ -126,6 +126,13 @@ const CreateProductPage = () => {
             </div>
 
             <div className=" flex flex-col gap-3">
+              <input
+                type="hidden"
+                value={images}
+                key={fields.images.key}
+                name={fields.images.name}
+                defaultValue={fields.images.initialValue as string[]}
+              />
               <Label>Images</Label>
               {images.length > 0 ? (
                 <div className=" flex gap-5">
@@ -159,6 +166,7 @@ const CreateProductPage = () => {
                   }}
                 />
               )}
+              <p className=" bg-red-500">{fields.images.errors}</p>
             </div>
           </div>
         </CardContent>
