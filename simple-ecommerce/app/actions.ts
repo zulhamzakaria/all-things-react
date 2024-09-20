@@ -34,7 +34,7 @@ export async function createProduct(currentState: any, formData: FormData) {
       price: submission.value.price,
       images: flattenUrls,
       category: submission.value.category,
-      isFeatured: submission.value.isFeatured,
+      isFeatured: submission.value.isFeatured === true ? true : false,
     },
   });
 
@@ -73,7 +73,7 @@ export async function editProduct(currentState: any, formData: FormData) {
       price: submission.value.price,
       images: flattenUrls,
       category: submission.value.category,
-      isFeatured: submission.value.isFeatured,
+      isFeatured: submission.value.isFeatured === true ? true : false,
     },
   });
   redirect("/dashboard/products");
