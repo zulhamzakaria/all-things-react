@@ -194,7 +194,7 @@ const CreateProductPage = () => {
           </div>
         </CardContent>
         <CardFooter>
-          <SubmitButton />
+          <SubmitButton text="Create Product" />
         </CardFooter>
       </Card>
     </form>

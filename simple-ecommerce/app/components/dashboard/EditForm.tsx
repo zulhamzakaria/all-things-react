@@ -209,7 +209,7 @@ export function EditProductForm({ data }: EditFormProps) {
           </div>
         </CardContent>
         <CardFooter>
-          <SubmitButton />
+          <SubmitButton text="Update Product" />
         </CardFooter>
       </Card>
     </form>
