@@ -39,7 +39,7 @@ export default function CreateBannerPage() {
               </div>
               <div className=" flex flex-col gap-3">
                 <Label>Images</Label>
-                <UploadDropzone endpoint="imageUploader" />
+                <UploadDropzone endpoint="bannerImageUploader" />
               </div>
             </div>
           </CardContent>
