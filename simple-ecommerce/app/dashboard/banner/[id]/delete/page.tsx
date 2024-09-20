@@ -21,12 +21,12 @@ export default function DeleteBannerPage({
         <CardHeader>
           <CardTitle>Are you sure?</CardTitle>
           <CardDescription>
-            This action will delete the product and irrecoverable
+            This action is irrecoverable and will delete the banner
           </CardDescription>
         </CardHeader>
         <CardFooter className=" w-full flex justify-between">
           <Button variant={"secondary"} asChild>
-            <Link href={"/dashboard/products"}>Cancel</Link>
+            <Link href={"/dashboard/banner"}>Cancel</Link>
           </Button>
           <form action={DeleteBanner}>
             <input name="bannerId" value={params.id} type="hidden" />
