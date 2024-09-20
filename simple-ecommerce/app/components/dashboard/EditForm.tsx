@@ -32,6 +32,7 @@ import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { ProductSchema } from "@/app/lib/zodSchemas";
 import { type $Enums } from "@prisma/client";
+import { editProduct } from "@/app/actions";
 
 interface EditFormProps {
   data: {
@@ -48,7 +49,7 @@ interface EditFormProps {
 
 export function EditProductForm({ data }: EditFormProps) {
   const [images, setImages] = useState<string[]>(data.images); //type is required
-  const [lastResult, action] = useFormState(createProduct, undefined);
+  const [lastResult, action] = useFormState(editProduct, undefined);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
@@ -63,6 +64,7 @@ export function EditProductForm({ data }: EditFormProps) {
   };
   return (
     <form id={form.id} onSubmit={form.onSubmit} action={action}>
+      <input hidden name="productId" value={data.id} />
       <div className=" flex items-center gap-4">
         <Button variant={"outline"} size={"icon"} asChild>
           <Link href={"/dashboard/products"}>
