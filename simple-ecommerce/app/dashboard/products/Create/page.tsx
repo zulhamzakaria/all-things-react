@@ -30,6 +30,7 @@ import { parseWithZod } from "@conform-to/zod";
 import { ProductSchema } from "@/app/lib/zodSchemas";
 import Image from "next/image";
 import { categories } from "@/app/lib/categories";
+import SubmitButton from "@/app/components/SubmitButton";
 
 const CreateProductPage = () => {
   const [images, setImages] = useState<string[]>([]); //type is required
@@ -193,7 +194,7 @@ const CreateProductPage = () => {
           </div>
         </CardContent>
         <CardFooter>
-          <Button>Create Product</Button>
+          <SubmitButton />
         </CardFooter>
       </Card>
     </form>
