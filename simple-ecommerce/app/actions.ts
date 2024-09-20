@@ -24,7 +24,6 @@ export async function createProduct(currentState: any, formData: FormData) {
 
   await prisma.product.create({
     data: {
-      id: submission.value.name + (await prisma.product.findMany()).length,
       name: submission.value.name,
       description: submission.value.description,
       status: submission.value.status,
