@@ -1,3 +1,4 @@
+import { EditProductForm } from "@/app/components/dashboard/EditForm";
 import prisma from "@/app/lib/db";
 import { notFound } from "next/navigation";
 
@@ -14,7 +15,7 @@ async function getProduct(productId: string) {
 
 const EditProductPage = async ({ params }: { params: { id: string } }) => {
   const product = await getProduct(params.id);
-  return <div>ProductEditPage</div>;
+  return <EditProductForm />;
 };
 
 export default EditProductPage;
