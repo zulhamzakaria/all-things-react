@@ -15,7 +15,7 @@ async function getProduct(productId: string) {
 
 const EditProductPage = async ({ params }: { params: { id: string } }) => {
   const product = await getProduct(params.id);
-  return <EditProductForm />;
+  return <EditProductForm data={product} />;
 };
 
 export default EditProductPage;
