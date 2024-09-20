@@ -144,6 +144,7 @@ const CreateProductPage = () => {
                   ))}
                 </SelectContent>
               </Select>
+              <p className=" bg-red-500">{fields.category.errors}</p>
             </div>
 
             <div className=" flex flex-col gap-3">
