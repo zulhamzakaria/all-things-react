@@ -101,9 +101,17 @@ const ProductsPage = async () => {
                           <DropdownMenuLabel>Actions</DropdownMenuLabel>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem asChild>
-                            <Link href={`/dashboard/products/${product.id}/`}>Edit</Link>
+                            <Link href={`/dashboard/products/${product.id}/`}>
+                              Edit
+                            </Link>
                           </DropdownMenuItem>
-                          <DropdownMenuItem>Delete</DropdownMenuItem>
+                          <DropdownMenuItem asChild>
+                            <Link
+                              href={`/dashboard/products/${product.id}/delete`}
+                            >
+                              Edit
+                            </Link>
+                          </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </TableCell>
