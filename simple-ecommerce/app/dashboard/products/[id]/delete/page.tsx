@@ -1,4 +1,5 @@
 import { deleteProduct } from "@/app/actions";
+import SubmitButton from "@/app/components/SubmitButton";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -25,7 +26,7 @@ export default function DeleteProduct({ params }: { params: { id: string } }) {
           </Button>
           <form action={deleteProduct}>
             <input name="productId" value={params.id} type="hidden" />
-            <Button variant={"destructive"}>Delete</Button>
+            <SubmitButton text="Delete Product" variant={"destructive"} />
           </form>
         </CardFooter>
       </Card>
