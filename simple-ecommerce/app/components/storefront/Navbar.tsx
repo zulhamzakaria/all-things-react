@@ -46,7 +46,7 @@ export async function Navbar() {
               <LoginLink>Sign in</LoginLink>
             </Button>
             <span className=" size-6 bg-gray-200"></span>
-            <Button asChild>
+            <Button asChild variant={"secondary"}>
               <RegisterLink>Sign up</RegisterLink>
             </Button>
           </div>
