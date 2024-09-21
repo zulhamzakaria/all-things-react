@@ -9,6 +9,7 @@ export default function StorefrontLayout({
   return (
     <>
       <Navbar />
+      {children}
     </>
   );
 }
