@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export function NavbarLinks() {
   return (
-    <div className="hidden md:flex justify-center ml-5 items-center gap-x-2">
+    <div className="hidden md:flex justify-center ml-5 items-center gap-x-4">
       {navbarLinks.map((link) => (
-        <Link key={link.id} href={link.href}>
+        <Link key={link.id} href={link.href} className=" font-medium">
           {link.name}
         </Link>
       ))}
