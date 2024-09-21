@@ -30,7 +30,7 @@ export async function Navbar() {
             <UserDropdown
               email={user.email as string}
               name={user.given_name!}
-              userImage={user.picture ?? undefined}
+              userImage={user.picture ?? `https://avatar.vercel.sh/${user.given_name}`}
             />
           </>
         ) : (
