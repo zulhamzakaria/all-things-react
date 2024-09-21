@@ -3,6 +3,7 @@ import { NavbarLinks } from "./NavbarLinks";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { ShoppingBagIcon } from "lucide-react";
 import { UserDropdown } from "./UserDropdown";
+import { useReducer } from "react";
 
 export async function Navbar() {
   const { getUser } = getKindeServerSession();
@@ -26,7 +27,11 @@ export async function Navbar() {
                 5
               </span>
             </Link>
-            <UserDropdown />
+            <UserDropdown
+              email={user.email as string}
+              name={user.given_name!}
+              userImage={user.picture ?? undefined}
+            />
           </>
         ) : (
           <div>please login</div>

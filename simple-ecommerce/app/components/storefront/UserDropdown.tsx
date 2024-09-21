@@ -11,14 +11,12 @@ import {
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 interface UserDropdownProps {
-  user: {
-    email: string;
-    name: string;
-    userImage: string | undefined;
-  };
+  email: string;
+  name: string;
+  userImage: string | undefined;
 }
 
-export function UserDropdown({ user }: UserDropdownProps) {
+export function UserDropdown({ email, name, userImage }: UserDropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
