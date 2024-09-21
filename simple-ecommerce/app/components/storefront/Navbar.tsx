@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { NavbarLinks } from "./NavbarLinks";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import {
+  getKindeServerSession,
+  LoginLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs/server";
 import { ShoppingBagIcon } from "lucide-react";
 import { UserDropdown } from "./UserDropdown";
 import { useReducer } from "react";
+import { Button } from "@/components/ui/button";
 
 export async function Navbar() {
   const { getUser } = getKindeServerSession();
@@ -30,11 +35,21 @@ export async function Navbar() {
             <UserDropdown
               email={user.email as string}
               name={user.given_name!}
-              userImage={user.picture ?? `https://avatar.vercel.sh/${user.given_name}`}
+              userImage={
+                user.picture ?? `https://avatar.vercel.sh/${user.given_name}`
+              }
             />
           </>
         ) : (
-          <div>please login</div>
+          <div className="hidden md:flex md:flex-1  md:space-x-2 md:items-center md:justify-end ">
+            <Button asChild>
+              <LoginLink>Sign in</LoginLink>
+            </Button>
+            <span className=" size-6 bg-gray-200"></span>
+            <Button asChild>
+              <RegisterLink>Sign up</RegisterLink>
+            </Button>
+          </div>
         )}
       </div>
     </nav>
