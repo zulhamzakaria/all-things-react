@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -6,6 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductCardProps {
   product: {
@@ -44,6 +46,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
           RM{product.price}
         </h3>
       </div>
+      <p className="text-gray-600 text-sm mt-2 line-clamp-2">
+        {product.description}
+      </p>
+      <Button className=" w-full mt-5" asChild>
+        <Link href={`/product/${product.id}`}>Learn more</Link>
+      </Button>
     </div>
   );
 };
