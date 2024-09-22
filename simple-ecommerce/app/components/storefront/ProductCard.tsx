@@ -2,6 +2,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
 
@@ -23,12 +25,25 @@ const ProductCard = ({ product }: ProductCardProps) => {
           {product.images.map((image, index) => (
             <CarouselItem key={index}>
               <div className=" relative h-[330px]">
-                <Image src={image} alt='product-image' fill  />
+                <Image
+                  src={image}
+                  alt="product-image"
+                  fill
+                  className=" object-cover object-center w-full h-full"
+                />
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
+        <CarouselPrevious className=" ml-16" />
+        <CarouselNext className=" mr-16 " />
       </Carousel>
+      <div className=" flex justify-between items-center mt-2 ">
+        <h1 className=" font-semibold text-xl ">{product.name}</h1>
+        <h3 className=" inline-flex items-center rounded-md ring-1 ring-inset ring-primary/10  px2 font-medium py-1 text-xs bg-primary/10">
+          RM{product.price}
+        </h3>
+      </div>
     </div>
   );
 };
