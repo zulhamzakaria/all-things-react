@@ -1,3 +1,4 @@
+import { ImageSlider } from "@/app/components/storefront/ImageSlider";
 import prisma from "@/app/lib/db";
 import { notFound } from "next/navigation";
 
@@ -26,7 +27,7 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
   return (
     <>
       <div className=" grid grid-cols-1 md:grid-cols-2 py-6 lg:gap-x-24 gap-6 items-start">
-        
+        <ImageSlider images={product.images} />
       </div>
     </>
   );
