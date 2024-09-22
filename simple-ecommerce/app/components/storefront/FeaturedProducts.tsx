@@ -1,4 +1,5 @@
 import prisma from "@/app/lib/db";
+import ProductCard from "./ProductCard";
 
 async function GetProducts() {
   const results = await prisma.product.findMany({
@@ -26,7 +27,7 @@ export async function FeaturedProducts() {
       <h2 className=" text-2xl font-extrabold tracking-tight">
         <div className=" mt-5 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {products.map((product) => (
-            <p>{product.name}</p>
+            <ProductCard key={product.id} />
           ))}
         </div>
       </h2>
