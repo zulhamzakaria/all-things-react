@@ -1,10 +1,11 @@
 "use server";
 
+import { parseWithZod } from "@conform-to/zod";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
-import { parseWithZod } from "@conform-to/zod";
-import { BannerSchema, ProductSchema } from "./lib/zodSchemas";
 import prisma from "./lib/db";
+import { redis } from "./lib/redis";
+import { BannerSchema, ProductSchema } from "./lib/zodSchemas";
 
 export async function createProduct(currentState: any, formData: FormData) {
   const { getUser } = getKindeServerSession();
@@ -135,4 +136,13 @@ export async function DeleteBanner(formData: FormData) {
   });
 
   redirect("/dashboard/banner");
+}
+
+export async function AddItem() {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user) return redirect("/");
+
+  let cart = await redis.get(`cart-${user.id}`)
 }
