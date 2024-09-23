@@ -53,3 +53,21 @@ export function ShoppingBagButton() {
     </>
   );
 }
+
+export function DeleteItemButton() {
+  const { pending } = useFormStatus();
+  return (
+    <>
+      {pending ? (
+        <Button disabled className="  font-medium text-primary">
+          <Loader2 className=" mr-4 h-5 w-5 animate-spin" />
+          Removing item
+        </Button>
+      ) : (
+        <Button className=" font-medium text-primary" type="submit">
+          Delete
+        </Button>
+      )}
+    </>
+  );
+}
