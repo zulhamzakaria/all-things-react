@@ -1,6 +1,6 @@
 export type Cart = {
   userId: string;
-  item: Array<{
+  items: Array<{
     id: String;
     name: string;
     price: number;

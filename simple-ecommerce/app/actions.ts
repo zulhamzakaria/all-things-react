@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import prisma from "./lib/db";
 import { redis } from "./lib/redis";
 import { BannerSchema, ProductSchema } from "./lib/zodSchemas";
+import { Cart } from "./lib/interfaces";
 
 export async function createProduct(currentState: any, formData: FormData) {
   const { getUser } = getKindeServerSession();
@@ -138,11 +139,67 @@ export async function DeleteBanner(formData: FormData) {
   redirect("/dashboard/banner");
 }
 
-export async function AddItem() {
+export async function AddItem(productId: string) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
   if (!user) return redirect("/");
 
-  let cart = await redis.get(`cart-${user.id}`)
+  let cart: Cart | null = await redis.get(`cart-${user.id}`);
+
+  const selectedProduct = await prisma.product.findUnique({
+    where: {
+      id: productId,
+    },
+    select: {
+      id: true,
+      name: true,
+      price: true,
+      images: true,
+    },
+  });
+
+  if (!selectedProduct) {
+    throw new Error("Invalid product id");
+  }
+
+  let myCart = {} as Cart;
+
+  if (!cart || !cart.items) {
+    myCart = {
+      userId: user.id,
+      items: [
+        {
+          id: selectedProduct.id,
+          price: selectedProduct.price,
+          image: selectedProduct.images[0],
+          name: selectedProduct.name,
+          quantity: 1,
+        },
+      ],
+    };
+  } else {
+    // existing cart
+    let itemFound = false;
+
+    // return item cause it's basically an arrow function
+    myCart.items = cart.items.map((item) => {
+      if (item.id === productId) {
+        itemFound = true;
+        item.quantity += 1;
+      }
+      return item;
+    });
+
+    // create new item if no item found
+    if (!itemFound) {
+      myCart.items.push({
+        id: selectedProduct.id,
+        image: selectedProduct.images[0],
+        name: selectedProduct.name,
+        price: selectedProduct.price,
+        quantity: 1
+      });
+    }
+  }
 }
