@@ -1,7 +1,7 @@
 export type Cart = {
   userId: string;
   items: Array<{
-    id: String;
+    id: string;
     name: string;
     price: number;
     quantity: number;

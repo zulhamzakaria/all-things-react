@@ -1,3 +1,4 @@
+import { DeleteItem } from "@/app/actions";
 import { Cart } from "@/app/lib/interfaces";
 import { redis } from "@/app/lib/redis";
 import { Button } from "@/components/ui/button";
@@ -27,7 +28,7 @@ const ShoppingBagPage = async () => {
       ) : (
         <div className=" flex flex-col gap-y-10">
           {cart?.items.map((item, idx) => (
-            <div key={idx} className="flex">
+            <div key={item.id} className="flex">
               <div className=" w-24 h-24 sm:w-32 sm:h-32 relative">
                 <Image
                   className=" rounded-md object-cover"
@@ -43,7 +44,12 @@ const ShoppingBagPage = async () => {
                     <p>{item.quantity}x</p>
                     <p>RM{item.price}</p>
                   </div>
-                  <p className=" font-medium text-primary text-end">Delete</p>
+                  <form action={DeleteItem}>
+                    <input type="hidden" name="productId" value={item.id} />
+                    <button className=" font-medium text-primary text-end">
+                      Delete
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>

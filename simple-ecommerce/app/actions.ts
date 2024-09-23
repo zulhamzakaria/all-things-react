@@ -211,7 +211,7 @@ export async function AddItem(productId: string) {
   revalidatePath("/", "layout");
 }
 
-export async function DeleteIte(formData: FormData) {
+export async function DeleteItem(formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   if (!user) {
