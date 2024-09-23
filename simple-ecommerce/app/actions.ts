@@ -210,3 +210,21 @@ export async function AddItem(productId: string) {
   //revalidate the whole site
   revalidatePath("/", "layout");
 }
+
+export async function DeleteIte(formData: FormData) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  if (!user) {
+    return redirect("/");
+  }
+  const productId = formData.get("productId");
+  let cart: Cart | null = await redis.get(`cart-${user.id}`);
+
+  // update the cart not to include the deleted product based on productId
+  if (cart && cart.items) {
+    const updateCart: Cart = {
+      userId: user.id,
+      items: cart.items.filter((item) => item.id !== productId),
+    };
+  }
+}
