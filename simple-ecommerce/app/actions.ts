@@ -198,8 +198,10 @@ export async function AddItem(productId: string) {
         image: selectedProduct.images[0],
         name: selectedProduct.name,
         price: selectedProduct.price,
-        quantity: 1
+        quantity: 1,
       });
     }
   }
+
+  await redis.set(`cart-${user.id}`, myCart);
 }
