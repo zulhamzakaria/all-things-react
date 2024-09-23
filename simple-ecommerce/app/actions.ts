@@ -8,6 +8,8 @@ import { redis } from "./lib/redis";
 import { BannerSchema, ProductSchema } from "./lib/zodSchemas";
 import { Cart } from "./lib/interfaces";
 import { revalidatePath } from "next/cache";
+import { stripe } from "./lib/stripe";
+import Stripe from "stripe";
 
 export async function createProduct(currentState: any, formData: FormData) {
   const { getUser } = getKindeServerSession();
@@ -229,4 +231,37 @@ export async function DeleteItem(formData: FormData) {
     redis.set(`cart-${user.id}`, updateCart);
   }
   revalidatePath("/bag");
+}
+
+export async function CheckOut() {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user) return redirect("/");
+
+  let cart: Cart | null = await redis.get(`cart-${user.id}`);
+
+  //cart with items
+  if (cart && cart.items) {
+    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] =
+      cart.items.map((item) => ({
+        price_data: {
+          currency: "myr",
+          unit_amount: item.price * 100,
+          product_data: {
+            name: item.name,
+            images: [item.image],
+          },
+        },
+        quantity: item.quantity,
+      }));
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      line_items: lineItems,
+      success_url: process.env.STRIPE_SUCCESS_URL,
+      cancel_url: process.env.STRIPE_CANCEL_URL,
+    });
+    return redirect(session.url!);
+  }
 }
