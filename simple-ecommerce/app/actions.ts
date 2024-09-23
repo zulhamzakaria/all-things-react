@@ -226,5 +226,7 @@ export async function DeleteIte(formData: FormData) {
       userId: user.id,
       items: cart.items.filter((item) => item.id !== productId),
     };
+    redis.set(`cart-${user.id}`, updateCart);
   }
+  revalidatePath("/bag");
 }
