@@ -1,3 +1,4 @@
+import prisma from "@/app/lib/db";
 import { stripe } from "@/app/lib/stripe";
 import { headers } from "next/headers";
 
@@ -19,6 +20,13 @@ export async function POST(req: Request) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object;
+      await prisma.order.create({
+        data: {
+          amount: session.amount_total!,
+          status: session.status!,
+          userId: 
+        },
+      });
     }
   }
 }
