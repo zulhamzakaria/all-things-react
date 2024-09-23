@@ -1,3 +1,4 @@
+import { AddItem } from "@/app/actions";
 import { FeaturedProducts } from "@/app/components/storefront/FeaturedProducts";
 import { ImageSlider } from "@/app/components/storefront/ImageSlider";
 import prisma from "@/app/lib/db";
@@ -26,6 +27,7 @@ async function GetProduct(productId: string) {
 
 const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
   const product = await GetProduct(params.id);
+  const addProductToCart = AddItem.bind(null, product.id);
 
   return (
     <>
@@ -44,10 +46,12 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
             <StarIcon className=" h-4 w-4 text-yellow-400 fill-yellow-500" />
           </div>
           <p className=" text-base text-gray-700 mt-6">{product.description}</p>
-          <Button size={"lg"} className=" w-full mt-5">
-            <ShoppingBag className=" mr-4 h-5 w-5" />
-            Add to cart
-          </Button>
+          <form action={addProductToCart}>
+            <Button size={"lg"} className=" w-full mt-5">
+              <ShoppingBag className=" mr-4 h-5 w-5" />
+              Add to cart
+            </Button>
+          </form>
         </div>
       </div>
       <div className=" mt-16">
