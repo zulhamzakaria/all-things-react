@@ -1,4 +1,4 @@
-import { DeleteItem } from "@/app/actions";
+import { CheckOut, DeleteItem } from "@/app/actions";
 import { DeleteItemButton } from "@/app/components/SubmitButton";
 import { Cart } from "@/app/lib/interfaces";
 import { redis } from "@/app/lib/redis";
@@ -68,7 +68,9 @@ const ShoppingBagPage = async () => {
               <p>Subtotal:</p>
               <p>${new Intl.NumberFormat("en-MY").format(totalPrice)}</p>
             </div>
-            <Button>Checkout</Button>
+            <form action={CheckOut}>
+              <Button>Checkout</Button>
+            </form>
           </div>
         </div>
       )}
