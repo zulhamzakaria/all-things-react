@@ -27,7 +27,7 @@ const ShoppingBagPage = async () => {
   });
   return (
     <div className=" max-w-2xl mx-auto mt-10 max-h-[55vh]">
-      {cart?.items.length === 0 ? (
+      {!cart || cart?.items ? (
         <div className=" flex min-h-[400px] rounded-lg border mt-20 text-center  p-8 border-dashed  flex-col items-center justify-center">
           <div className=" flex size-20 items-center rounded-full bg-primary/10  justify-center">
             <ShoppingBag className=" size-10 text-primary" />
