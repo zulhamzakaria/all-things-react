@@ -1,9 +1,12 @@
 import { DeleteItem } from "@/app/actions";
+import { DeleteItemButton } from "@/app/components/SubmitButton";
 import { Cart } from "@/app/lib/interfaces";
 import { redis } from "@/app/lib/redis";
 import { Button } from "@/components/ui/button";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const ShoppingBagPage = async () => {
@@ -22,8 +25,16 @@ const ShoppingBagPage = async () => {
   return (
     <div className=" max-w-2xl mx-auto mt-10 max-h-[55vh]">
       {cart?.items.length === 0 ? (
-        <div>
-          <h1>Shopping bag is empty</h1>
+        <div className=" flex min-h-[400px] rounded-lg border mt-20 text-center  p-8 border-dashed  flex-col items-center justify-center">
+          <div className=" flex size-20 items-center rounded-full bg-primary/10  justify-center">
+            <ShoppingBag className=" size-10 text-primary" />
+          </div>
+          <h1 className=" mt-6 text-xl font-semibold ">
+            You 0 item in your Bag
+          </h1>
+          <Button asChild>
+            <Link href="/">Shop now!</Link>
+          </Button>
         </div>
       ) : (
         <div className=" flex flex-col gap-y-10">
@@ -46,9 +57,7 @@ const ShoppingBagPage = async () => {
                   </div>
                   <form action={DeleteItem}>
                     <input type="hidden" name="productId" value={item.id} />
-                    <button className=" font-medium text-primary text-end">
-                      Delete
-                    </button>
+                    <DeleteItemButton />
                   </form>
                 </div>
               </div>
