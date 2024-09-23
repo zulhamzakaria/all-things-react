@@ -7,6 +7,7 @@ import prisma from "./lib/db";
 import { redis } from "./lib/redis";
 import { BannerSchema, ProductSchema } from "./lib/zodSchemas";
 import { Cart } from "./lib/interfaces";
+import { revalidatePath } from "next/cache";
 
 export async function createProduct(currentState: any, formData: FormData) {
   const { getUser } = getKindeServerSession();
@@ -204,4 +205,8 @@ export async function AddItem(productId: string) {
   }
 
   await redis.set(`cart-${user.id}`, myCart);
+
+  //cache revalidation
+  //revalidate the whole site
+  revalidatePath("/", "layout");
 }
