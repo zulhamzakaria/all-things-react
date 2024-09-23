@@ -1,6 +1,7 @@
 import { AddItem } from "@/app/actions";
 import { FeaturedProducts } from "@/app/components/storefront/FeaturedProducts";
 import { ImageSlider } from "@/app/components/storefront/ImageSlider";
+import { ShoppingBagButton } from "@/app/components/SubmitButton";
 import prisma from "@/app/lib/db";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, StarIcon } from "lucide-react";
@@ -47,10 +48,7 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
           </div>
           <p className=" text-base text-gray-700 mt-6">{product.description}</p>
           <form action={addProductToCart}>
-            <Button size={"lg"} className=" w-full mt-5">
-              <ShoppingBag className=" mr-4 h-5 w-5" />
-              Add to cart
-            </Button>
+            <ShoppingBagButton />
           </form>
         </div>
       </div>
