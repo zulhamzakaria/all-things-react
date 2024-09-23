@@ -1,4 +1,5 @@
 import prisma from "@/app/lib/db";
+import { redis } from "@/app/lib/redis";
 import { stripe } from "@/app/lib/stripe";
 import { headers } from "next/headers";
 
@@ -24,9 +25,17 @@ export async function POST(req: Request) {
         data: {
           amount: session.amount_total!,
           status: session.status!,
-          userId: 
+          userId: session.metadata?.userId,
         },
       });
+
+      await redis.del(`cart-${session.metadata?.userId}`);
+      break;
+    }
+    default: {
+      console.log("Unhandled event");
     }
   }
+
+  return new Response(null, { status: 200 });
 }
