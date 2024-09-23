@@ -261,6 +261,9 @@ export async function CheckOut() {
       line_items: lineItems,
       success_url: process.env.STRIPE_SUCCESS_URL,
       cancel_url: process.env.STRIPE_CANCEL_URL,
+      metadata: {
+        userId: user.id,
+      },
     });
     return redirect(session.url!);
   }
