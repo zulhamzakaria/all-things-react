@@ -17,10 +17,27 @@ interface ChartProps {
   }[];
 }
 
+const aggregatedData = (data: any) => {
+  const aggregated = data.reduce((acc: any, current: any) => {
+    if (acc[current.date]) {
+      acc[current.date] += current.revenue;
+    } else {
+      acc[current.date] = current.revenue;
+    }
+    return acc;
+  }, {});
+
+  return Object.keys(aggregated).map((date) => ({
+    date,
+    revenue: aggregated[date],
+  }));
+};
+
 const Chart = ({ data }: ChartProps) => {
+  const processedData = aggregatedData(data);
   return (
     <ResponsiveContainer height={400} width="100%">
-      <LineChart data={data}>
+      <LineChart data={processedData}>
         <CartesianGrid strokeDasharray={"3 3"} />
         <XAxis dataKey={"date"} />
         <YAxis />
