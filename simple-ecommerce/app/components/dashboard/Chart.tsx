@@ -9,7 +9,14 @@ import {
   YAxis,
 } from "recharts";
 
-const Chart = () => {
+interface ChartProps {
+  data: {
+    date: string;
+    revenue: number;
+  }[];
+}
+
+const Chart = ({ data }: ChartProps) => {
   return (
     <ResponsiveContainer height={400} width="100%">
       <LineChart>

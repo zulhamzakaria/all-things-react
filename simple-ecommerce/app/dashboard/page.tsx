@@ -30,15 +30,15 @@ async function GetOrders() {
     },
   });
 
-  const result = orders.map((order) => {
-    date: new Intl.DateTimeFormat("en-MY").format(order.createAt);
-    revenue: order.amount / 100;
-  });
+  const result = orders.map((order) => ({
+    date: new Intl.DateTimeFormat("en-MY").format(order.createAt),
+    revenue: order.amount / 100,
+  }));
   return result;
 }
 
 const DashboardPage = async () => {
-  const orders = GetOrders();
+  const orders = await GetOrders();
   return (
     <>
       <DashboardStats />
@@ -51,7 +51,7 @@ const DashboardPage = async () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart />
+            <Chart data={orders} />
           </CardContent>
         </Card>
         <RecentSales />
