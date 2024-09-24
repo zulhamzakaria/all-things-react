@@ -1,3 +1,4 @@
+import prisma from "@/app/lib/db";
 import {
   Card,
   CardContent,
@@ -14,7 +15,30 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export default function OrdersPage() {
+async function GetOrders() {
+  const result = await prisma.order.findMany({
+    select: {
+      amount: true,
+      createAt: true,
+      status: true,
+      id: true,
+      User: {
+        select: {
+          firstName: true,
+          email: true,
+          profileImage: true,
+        },
+      },
+    },
+    orderBy: {
+      createAt: "desc",
+    },
+  });
+  return result;
+}
+
+export default async function OrdersPage() {
+  const orders = await GetOrders();
   return (
     <Card>
       <CardHeader className=" px-7">
@@ -33,30 +57,22 @@ export default function OrdersPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>
-                <p className=" font-medium">Cust 1</p>
-                <p className=" hidden md:flex text-sm text-muted-foreground">
-                  cust1@customer.com
-                </p>
-              </TableCell>
-              <TableCell>Sale</TableCell>
-              <TableCell>Successful</TableCell>
-              <TableCell>{new Date().toLocaleDateString()}</TableCell>
-              <TableCell className=" text-right">RM 250.00</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>
-                <p className=" font-medium">Cust 2</p>
-                <p className=" hidden md:flex text-sm text-muted-foreground">
-                  cust2@customer.com
-                </p>
-              </TableCell>
-              <TableCell>Sale</TableCell>
-              <TableCell>Pending</TableCell>
-              <TableCell>{new Date().toLocaleDateString()}</TableCell>
-              <TableCell className=" text-right">RM 2500.00</TableCell>
-            </TableRow>
+            {orders.map((order) => (
+              <TableRow key={order.id}>
+                <TableCell>
+                  <p className=" font-medium">{order.User?.firstName}</p>
+                  <p className=" hidden md:flex text-sm text-muted-foreground">
+                    {order.User?.email}
+                  </p>
+                </TableCell>
+                <TableCell>Order</TableCell>
+                <TableCell>{order.status}</TableCell>
+                <TableCell>{order.createAt.toLocaleDateString()}</TableCell>
+                <TableCell className=" text-right">
+                  RM {new Intl.NumberFormat("en-MY").format(order.amount / 100)}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </CardContent>
