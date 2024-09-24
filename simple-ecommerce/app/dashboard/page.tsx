@@ -9,8 +9,36 @@ import {
 import DashboardStats from "../components/dashboard/DashboardStats";
 import RecentSales from "../components/dashboard/RecentSales";
 import Chart from "../components/dashboard/Chart";
+import prisma from "../lib/db";
 
-const DashboardPage = () => {
+async function GetOrders() {
+  const now = new Date();
+  const lastSevenDays = new Date();
+  lastSevenDays.setDate(now.getDate() - 7);
+  const orders = await prisma.order.findMany({
+    where: {
+      createAt: {
+        gte: lastSevenDays,
+      },
+    },
+    select: {
+      amount: true,
+      createAt: true,
+    },
+    orderBy: {
+      createAt: "asc",
+    },
+  });
+
+  const result = orders.map((order) => {
+    date: new Intl.DateTimeFormat("en-MY").format(order.createAt);
+    revenue: order.amount / 100;
+  });
+  return result;
+}
+
+const DashboardPage = async () => {
+  const orders = GetOrders();
   return (
     <>
       <DashboardStats />
