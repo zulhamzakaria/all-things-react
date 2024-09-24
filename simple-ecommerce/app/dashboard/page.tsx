@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import DashboardStats from "../components/dashboard/DashboardStats";
 import RecentSales from "../components/dashboard/RecentSales";
+import Chart from "../components/dashboard/Chart";
 
 const DashboardPage = () => {
   return (
@@ -21,6 +22,9 @@ const DashboardPage = () => {
               Recent transactions for your store
             </CardDescription>
           </CardHeader>
+          <CardContent>
+            <Chart />
+          </CardContent>
         </Card>
         <RecentSales />
       </div>
