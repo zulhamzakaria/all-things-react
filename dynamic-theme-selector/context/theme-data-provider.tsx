@@ -46,6 +46,6 @@ export default function ThemeDataProvider({ children }: ThemeProviderProps) {
   );
 }
 
-export function useThemeContext(){
-    return useContext(ThemeContext)
+export function useThemeContext() {
+  return useContext(ThemeContext);
 }
