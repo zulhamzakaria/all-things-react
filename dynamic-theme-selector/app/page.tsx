@@ -1,5 +1,6 @@
 import { ThemeColourToggle } from "@/components/theme-color-toggle";
 import { ThemeModeToggle } from "@/components/theme-mode-toggle";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <ThemeModeToggle />
         <ThemeColourToggle />
-
+        <Button className="bg-primary">Colour: Primary</Button>
         <Image
           className="dark:invert"
           src="https://nextjs.org/icons/next.svg"
