@@ -34,7 +34,7 @@ export function ThemeColourToggle() {
               "rounded-full",
               "w-[20px]",
               "h-[20px]",
-              theme === "light" ? "light" : "dark",
+              theme === "light" ? light : dark,
             )}
           ></div>
           <div className="text-sm">{name}</div>
