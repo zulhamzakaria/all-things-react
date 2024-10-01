@@ -233,6 +233,6 @@ export default function setGlobalColourTheme(
   const theme = themes[color][themeMode] as { [key: string]: string };
 
   for (const key in theme) {
-    document.documentElement.style.setProperty(`--key${key}`, theme[key]);
+    document.documentElement.style.setProperty(`--${key}`, theme[key]);
   }
 }
