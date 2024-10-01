@@ -14,7 +14,6 @@ export default function ThemeDataProvider({ children }: ThemeProviderProps) {
   // selected color store
   const getSavedThemeColor = () => {
     try {
-      console.log(1);
       return (localStorage.getItem("themeColor") as ThemeColors) || "Zinc";
     } catch (error) {
       "Zinc" as ThemeColors;
@@ -28,7 +27,7 @@ export default function ThemeDataProvider({ children }: ThemeProviderProps) {
   const [isMounted, setIsMounted] = useState(false);
   const { theme } = useTheme();
   useEffect(() => {
-    console.log(2);
+    console.log(themeColor);
     localStorage.setItem("themeColor", themeColor);
     setGlobalColourTheme(theme as "light" | "dark", themeColor);
     if (!isMounted) {
