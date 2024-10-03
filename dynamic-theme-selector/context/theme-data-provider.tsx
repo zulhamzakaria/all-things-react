@@ -25,7 +25,7 @@ export default function ThemeDataProvider({ children }: ThemeProviderProps) {
     getSavedThemeColor() as ThemeColors,
   );
   const [isMounted, setIsMounted] = useState(false);
-  const { theme } = useTheme();
+  const  theme  = 'light'//useTheme();
   useEffect(() => {
     localStorage.setItem("themeColor", themeColor);
     setGlobalColourTheme(theme as "light" | "dark", themeColor);
