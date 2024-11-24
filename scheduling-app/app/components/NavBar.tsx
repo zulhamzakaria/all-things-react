@@ -14,7 +14,8 @@ const Navbar = () => {
           className=" object-contain rounded-md shadow-md"
         />
         <h4 className=" text-3xl font-semibold">
-          schedule_yo_<span className=" text-primary">SHITS!</span>
+          schedule_yo_
+          <span className=" text-primary">SHITS!</span>
         </h4>
       </Link>
       <AuthModal />

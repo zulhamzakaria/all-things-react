@@ -26,7 +26,7 @@ export function AuthModal() {
               className=" rounded-md object-cover"
             />
             <DialogTitle>
-              <div className=" text-3xl font-semibold font-mono">
+              <div className=" text-3xl font-semibold font-mono text-primary">
                 authentication
               </div>
             </DialogTitle>
