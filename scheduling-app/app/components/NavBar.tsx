@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AuthModal } from "./AuthModal";
 
 const Navbar = () => {
   return (
@@ -16,7 +17,7 @@ const Navbar = () => {
           schedule_yo_<span className=" text-primary">SHITS!</span>
         </h4>
       </Link>
-      <button>Get scheduling!</button>
+      <AuthModal />
     </div>
   );
 };
