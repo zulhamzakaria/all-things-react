@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import Image from "next/image";
 import { signIn } from "../lib/auth";
+import { GoogleAuthButton } from "./SubmitButtons";
 
 export function AuthModal() {
   return (
@@ -40,12 +41,7 @@ export function AuthModal() {
               }}
               className=" w-full"
             >
-              <Button
-                disabled
-                className=" disabled:opacity-70 w-full text-md py-2  hover:border hover:border-gray-950 dark:hover:border-gray-200"
-              >
-                sign in with Google
-              </Button>
+              <GoogleAuthButton />
             </form>
 
             <Button className=" text-md py-2  hover:border hover:border-gray-950  dark:hover:border-gray-200">
