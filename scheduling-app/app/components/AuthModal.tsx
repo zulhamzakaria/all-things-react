@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import Image from "next/image";
 import { signIn } from "../lib/auth";
-import { GoogleAuthButton } from "./SubmitButtons";
+import { GithubAuthButton, GoogleAuthButton } from "./SubmitButtons";
 
 export function AuthModal() {
   return (
@@ -44,9 +44,15 @@ export function AuthModal() {
               <GoogleAuthButton />
             </form>
 
-            <Button className=" text-md py-2  hover:border hover:border-gray-950  dark:hover:border-gray-200">
-              sign in with GitHub
-            </Button>
+            <form
+              action={async () => {
+                "use server";
+                await signIn("github");
+              }}
+              className=" w-full"
+            >
+              <GithubAuthButton />
+            </form>
           </div>
         </DialogContent>
       </Dialog>
