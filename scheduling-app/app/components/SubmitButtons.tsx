@@ -31,7 +31,7 @@ export function GithubAuthButton() {
           signing-in...
         </Button>
       ) : (
-        <Button disabled variant={"outline"} className=" w-full">
+        <Button variant={"outline"} className=" w-full">
           Sign in with GitHub
         </Button>
       )}
