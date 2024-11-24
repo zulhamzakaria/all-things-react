@@ -5,8 +5,8 @@ export function AuthModal() {
   return (
     <div>
       <Dialog>
-        <DialogTrigger>
-            <Button>Click me!</Button>
+        <DialogTrigger asChild>
+          <Button>Click me!</Button>
         </DialogTrigger>
       </Dialog>
     </div>
