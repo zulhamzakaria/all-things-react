@@ -14,10 +14,11 @@ export function AuthModal() {
         <DialogTrigger asChild>
           <Button>Click me!</Button>
         </DialogTrigger>
-        <DialogHeader>
-          <DialogTitle>Test!</DialogTitle>
-        </DialogHeader>
+
         <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Test!</DialogTitle>
+          </DialogHeader>
           <div>cock!</div>
         </DialogContent>
       </Dialog>
