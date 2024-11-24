@@ -7,6 +7,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Image from "next/image";
+import { signIn } from "../lib/auth";
 
 export function AuthModal() {
   return (
@@ -31,7 +32,26 @@ export function AuthModal() {
               </div>
             </DialogTitle>
           </DialogHeader>
-          <div>cock!</div>
+          <div className=" flex flex-col mt-10 gap-y-3">
+            <form
+              action={async () => {
+                "use server";
+                await signIn("google");
+              }}
+              className=" w-full"
+            >
+              <Button
+                disabled
+                className=" disabled:opacity-70 w-full text-md py-2  hover:border hover:border-gray-950 dark:hover:border-gray-200"
+              >
+                sign in with Google
+              </Button>
+            </form>
+
+            <Button className=" text-md py-2  hover:border hover:border-gray-950  dark:hover:border-gray-200">
+              sign in with GitHub
+            </Button>
+          </div>
         </DialogContent>
       </Dialog>
     </div>
