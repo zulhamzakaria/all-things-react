@@ -21,3 +21,20 @@ export function GoogleAuthButton() {
     </>
   );
 }
+export function GithubAuthButton() {
+  const { pending } = useFormStatus();
+  return (
+    <>
+      {pending ? (
+        <Button disabled variant={"outline"} className=" w-full">
+          <Loader2 className=" size-4 mr-2 animate-spin" />
+          signing-in...
+        </Button>
+      ) : (
+        <Button disabled variant={"outline"} className=" w-full">
+          Sign in with GitHub
+        </Button>
+      )}
+    </>
+  );
+}
