@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { MenuIcon } from "lucide-react";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
@@ -60,7 +61,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               </SheetContent>
             </Sheet>
 
-            <div className=" flex ml-auto items-center gap-x-4"></div>
+            <div className=" flex ml-auto items-center gap-x-4">
+              <ThemeToggle />
+            </div>
           </header>
         </div>
       </div>
