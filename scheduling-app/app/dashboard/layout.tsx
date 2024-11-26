@@ -2,7 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { DashboardLinks } from "../components/DashboardLinks";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { MenuIcon } from "lucide-react";
 
@@ -47,8 +52,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                   <MenuIcon className=" size-5" />
                 </Button>
               </SheetTrigger>
+              <SheetTitle></SheetTitle>
               <SheetContent side={"left"} className=" flex flex-col">
-                <nav className=" gap-2 grid">
+                <nav className=" gap-2 grid mt-5">
                   <DashboardLinks />
                 </nav>
               </SheetContent>
