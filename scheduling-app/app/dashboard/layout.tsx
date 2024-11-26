@@ -59,6 +59,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 </nav>
               </SheetContent>
             </Sheet>
+
+            <div className=" flex ml-auto items-center gap-x-4"></div>
           </header>
         </div>
       </div>
