@@ -1,3 +1,6 @@
+"use client";
+
+import { cn } from "@/lib/utils";
 import {
   CalendarCheck,
   HomeIcon,
@@ -6,6 +9,7 @@ import {
   Users2,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 interface DashboardLinksProps {
@@ -35,10 +39,20 @@ export const dashboardLinks: Array<DashboardLinksProps> = [
 ];
 
 export function DashboardLinks() {
+  const pathname = usePathname();
+
   return (
     <>
       {dashboardLinks.map((link) => (
-        <Link key={link.id} href={link.href}>
+        <Link
+          className={cn(
+            pathname === link.href
+              ? "text-primary bg-primary/10"
+              : "text-muted-foreground hover:text-muted-foreground"
+          )}
+          key={link.id}
+          href={link.href}
+        >
           <link.icon className="size-4" />
           {link.name}
         </Link>
