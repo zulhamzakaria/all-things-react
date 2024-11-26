@@ -20,6 +20,7 @@ import { ReactNode } from "react";
 import { DashboardLinks } from "../components/DashboardLinks";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { requireUser } from "../lib/hooks";
+import { signOut } from "../lib/auth";
 
 export default async function DashboardLayout({
   children,
@@ -100,7 +101,18 @@ export default async function DashboardLayout({
                   <DropdownMenuItem asChild>
                     <Link href={"/dashboard/settings"}>Settings</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>Sign out</DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <form
+                      action={async () => {
+                        "use server";
+                        await signOut();
+                      }}
+                    >
+                      <Button className=" w-full bg-red-600 hover:bg-red-600 text-white">
+                        Sign out
+                      </Button>
+                    </form>
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
