@@ -1,18 +1,33 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ReactNode } from "react";
-import { DashboardLinks } from "../components/DashboardLinks";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Sheet,
   SheetContent,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
 import { MenuIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { ReactNode } from "react";
+import { DashboardLinks } from "../components/DashboardLinks";
 import { ThemeToggle } from "../components/ThemeToggle";
+import { requireUser } from "../lib/hooks";
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default async function DashboardLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const session = await requireUser();
+
   return (
     <>
       <div className=" min-h-screen w-full grid md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -63,6 +78,31 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
             <div className=" flex ml-auto items-center gap-x-4">
               <ThemeToggle />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant={"secondary"}
+                    size={"icon"}
+                    className=" rounded-full"
+                  >
+                    <img
+                      src={session.user?.image ?? "/jn7.png"}
+                      alt="/jn7.png"
+                      width={20}
+                      height={20}
+                      className=" h-full w-full rounded-full"
+                    />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link href={"/dashboard/settings"}>Settings</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>Sign out</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </header>
         </div>
