@@ -49,7 +49,7 @@ export function DashboardLinks() {
             pathname === link.href
               ? "text-blue-900 bg-primary/10"
               : "text-muted-foreground hover:text-muted-foreground",
-            " flex items-center gap-3 rounded-lg p-3 transition-all text-gray-900"
+            " flex items-center gap-3 rounded-lg p-3 transition-all text-gray-900 dark:text-gray-50"
           )}
           key={link.id}
           href={link.href}
