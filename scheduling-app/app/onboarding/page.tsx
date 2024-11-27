@@ -23,24 +23,26 @@ const Onboarding = () => {
             Fill in the details to set up your profile
           </CardDescription>
         </CardHeader>
-        <CardContent className=" grid gap-y-5">
-          <div className=" grid gap-y-2">
-            <Label>Full Name</Label>
-            <Input placeholder="John Doe" />
-          </div>
-          <div className=" grid gap-y-2">
-            <Label>Username</Label>
-            <div className=" flex rounded-md">
-              <span className=" inline-flex items-center px-3 rounded-l-md border border-r-0 bg-muted text-small text-muted-foreground border-muted">
-                scheduler.com/
-              </span>
-              <Input placeholder="john-doe" className=" rounded-l-none" />
+        <form action="">
+          <CardContent className=" grid gap-y-5">
+            <div className=" grid gap-y-2">
+              <Label>Full Name</Label>
+              <Input placeholder="John Doe" />
             </div>
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button className=" w-full">Submit</Button>
-        </CardFooter>
+            <div className=" grid gap-y-2">
+              <Label>Username</Label>
+              <div className=" flex rounded-md">
+                <span className=" inline-flex items-center px-3 rounded-l-md border border-r-0 bg-muted text-small text-muted-foreground border-muted">
+                  scheduler.com/
+                </span>
+                <Input placeholder="john-doe" className=" rounded-l-none" />
+              </div>
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button className=" w-full">Submit</Button>
+          </CardFooter>
+        </form>
       </Card>
     </div>
   );
