@@ -9,9 +9,13 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React from "react";
+import React, { useActionState } from "react";
+import { OnboardingAction } from "../actions";
 
 const Onboarding = () => {
+
+  const [lastResult, action] = useActionState(OnboardingAction,undefined)
+
   return (
     <div className=" min-h-screen w-screen flex items-center justify-center">
       <Card>
