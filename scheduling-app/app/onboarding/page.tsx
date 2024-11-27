@@ -16,6 +16,7 @@ import { OnboardingAction } from "../actions";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { OnboardingSchema } from "../lib/zod-schemas";
+import { SubmitButton } from "../components/SubmitButtons";
 
 const Onboarding = () => {
   const [lastResult, action] = useActionState(OnboardingAction, undefined);
@@ -72,7 +73,7 @@ const Onboarding = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className=" w-full">Submit</Button>
+            <SubmitButton text="Submit" className=" w-full" />
           </CardFooter>
         </form>
       </Card>
