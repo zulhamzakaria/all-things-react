@@ -5,7 +5,7 @@ import { requireUser } from "./lib/hooks";
 import { parseWithZod } from "@conform-to/zod";
 import { OnboardingSchema } from "./lib/zod-schemas";
 
-export async function OnboardingAction(formData: FormData) {
+export async function OnboardingAction(prevState: any, formData: FormData) {
   const session = await requireUser();
 
   const submission = parseWithZod(formData, {
