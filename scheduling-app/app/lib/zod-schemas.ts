@@ -39,11 +39,11 @@ export function OnboardingSchemaValidation(options?: {
               ctx.addIssue({
                 code: "custom",
                 message: "Username is already taken",
-                
               });
             }
           });
         })
       ),
+    fullName: z.string().min(3).max(100),
   });
 }
