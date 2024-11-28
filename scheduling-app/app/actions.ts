@@ -20,6 +20,7 @@ export async function OnboardingAction(prevState: any, formData: FormData) {
         return !existingUsername;
       },
     }),
+    async: true,
   });
 
   if (submission.status !== "success") return submission.reply();
