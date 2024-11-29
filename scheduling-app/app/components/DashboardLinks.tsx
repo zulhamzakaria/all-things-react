@@ -47,9 +47,9 @@ export function DashboardLinks() {
         <Link
           className={cn(
             pathname === link.href
-              ? "text-blue-900 bg-primary/70 "
+              ? "bg-primary dark:text-gray-900 "
               : "text-muted-foreground hover:text-muted-foreground",
-            " flex items-center gap-3 rounded-lg p-3 transition-all text-gray-900 dark:text-gray-50"
+            " flex items-center gap-3 rounded-lg p-3 transition-all"
           )}
           key={link.id}
           href={link.href}
