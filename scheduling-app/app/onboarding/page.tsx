@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -11,12 +10,12 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React, { useActionState } from "react";
-import { OnboardingAction } from "../actions";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { OnboardingSchema } from "../lib/zod-schemas";
+import { useActionState } from "react";
+import { OnboardingAction } from "../actions";
 import { SubmitButton } from "../components/SubmitButtons";
+import { OnboardingSchema } from "../lib/zod-schemas";
 
 const Onboarding = () => {
   const [lastResult, action] = useActionState(OnboardingAction, undefined);
