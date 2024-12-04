@@ -13,3 +13,27 @@ datasource db {
   url      = env("POSTGRES_PRISMA_URL")
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
+
+model Resume{
+  id String @id @default(cuid())
+  userId String
+
+  title String?
+  descriptioon String?
+  photoUrl String?
+  colorHex String @default("#000000")
+  border  String @default("squircle")
+  summary String?
+  firstName String?
+  lastName String?
+  jobTitle String?
+  city String?
+  country String?
+  phone String?
+  email String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("resumes")
+}
