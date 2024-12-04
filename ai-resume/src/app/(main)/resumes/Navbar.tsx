@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import jn6 from "@/assets/jn6.png";
 import { UserButton } from "@clerk/nextjs";
+import { CreditCard } from "lucide-react";
 
 export default function Navbar() {
   return (
@@ -19,13 +20,24 @@ export default function Navbar() {
             AI Resume Builder
           </span>
         </Link>
-        <UserButton appearance={{
-          elements:{
-            avatarBox:{
-              width: 35,height:35
-            }
-          }
-        }}/>
+        <UserButton
+          appearance={{
+            elements: {
+              avatarBox: {
+                width: 35,
+                height: 35,
+              },
+            },
+          }}
+        >
+          <UserButton.MenuItems>
+            <UserButton.Link
+              label="Billing"
+              labelIcon={<CreditCard className="size-4" />}
+              href="/billing"
+            />
+          </UserButton.MenuItems>
+        </UserButton>
       </div>
     </header>
   );
