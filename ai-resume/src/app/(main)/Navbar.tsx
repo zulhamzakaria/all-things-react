@@ -23,25 +23,27 @@ export default function Navbar() {
             AI Resume Builder
           </span>
         </Link>
-        <ModeToggle />
-        <UserButton
-          appearance={{
-            elements: {
-              avatarBox: {
-                width: 35,
-                height: 35,
+        <div className="flex items-center gap-3">
+          <ModeToggle />
+          <UserButton
+            appearance={{
+              elements: {
+                avatarBox: {
+                  width: 35,
+                  height: 35,
+                },
               },
-            },
-          }}
-        >
-          <UserButton.MenuItems>
-            <UserButton.Link
-              label="Billing"
-              labelIcon={<CreditCard className="size-4" />}
-              href="/billing"
-            />
-          </UserButton.MenuItems>
-        </UserButton>
+            }}
+          >
+            <UserButton.MenuItems>
+              <UserButton.Link
+                label="Billing"
+                labelIcon={<CreditCard className="size-4" />}
+                href="/billing"
+              />
+            </UserButton.MenuItems>
+          </UserButton>
+        </div>
       </div>
     </header>
   );
