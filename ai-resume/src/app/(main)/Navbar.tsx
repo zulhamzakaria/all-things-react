@@ -1,10 +1,11 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import jn6 from "@/assets/jn6.png";
 import { UserButton } from "@clerk/nextjs";
 import { CreditCard } from "lucide-react";
+import { ModeToggle } from "@/components/ModeToggle";
 
 export default function Navbar() {
   return (
@@ -22,6 +23,7 @@ export default function Navbar() {
             AI Resume Builder
           </span>
         </Link>
+        <ModeToggle />
         <UserButton
           appearance={{
             elements: {
