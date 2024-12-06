@@ -37,7 +37,12 @@ const ResumeEditor = () => {
         <div className="bottom-0 top-0 flex w-full">
           <div className="w-full overflow-y-auto p-3 md:w-1/2">
             <Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />
-            {FormComponent && <FormComponent />}
+            {FormComponent && (
+              <FormComponent
+                resumeData={resumeData}
+                setResumeData={setResumeData}
+              />
+            )}
           </div>
           <div className="grow md:border-r" />
           <div className="hidden w-1/2 md:flex">right</div>
