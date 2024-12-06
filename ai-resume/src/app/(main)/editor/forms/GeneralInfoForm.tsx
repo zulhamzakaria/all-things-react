@@ -17,7 +17,7 @@ export default function GeneralInfoForm() {
     resolver: zodResolver(generalInfoSchema),
     defaultValues: {
       title: "",
-      description: "",
+      descriptioon: "",
     },
   });
   return (
