@@ -15,8 +15,8 @@ const ResumeEditor = () => {
         </p>
       </header>
       <main className="relative grow">
-        <div className="absolute bottom-0 top-0 flex w-full">
-          <div className="w-full md:w-1/2">
+        <div className=" bottom-0 top-0 flex w-full">
+          <div className="w-full p-3 md:w-1/2">
             <GeneralInfoForm />
           </div>
           <div className="grow md:border-r" />
