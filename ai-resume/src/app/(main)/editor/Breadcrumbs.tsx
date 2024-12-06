@@ -39,7 +39,7 @@ export default function Breadcrumbs({
                   </div>
                 )}
               </BreadcrumbItem>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className="last:hidden" />
             </React.Fragment>
           ))}
         </BreadcrumbList>
