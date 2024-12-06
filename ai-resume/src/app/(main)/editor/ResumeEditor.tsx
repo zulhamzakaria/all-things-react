@@ -4,9 +4,12 @@ import { useSearchParams } from "next/navigation";
 import Breadcrumbs from "./Breadcrumbs";
 import { steps } from "./steps";
 import { Footer } from "./Footer";
+import { useState } from "react";
 
 const ResumeEditor = () => {
   const searchParams = useSearchParams();
+
+const[resumeData, setResumeData] = useState()
 
   const currentStep = searchParams.get("step") || steps[0].key;
   function setStep(key: string) {
