@@ -30,4 +30,14 @@ export const personalInfoSchema = z.object({
   email: optionalString,
 });
 
-export type PersonalInfoValue = z.infer<typeof personalInfoSchema>
+export type PersonalInfoValue = z.infer<typeof personalInfoSchema>;
+
+export const resumeSchema = z.object({
+  ...generalInfoSchema.shape,
+  ...personalInfoSchema.shape,
+});
+
+export type ResumeValues = Omit<z.infer<typeof resumeSchema>, "photo"> & {
+  id?: string;
+  photo?: File | string | undefined;
+};
