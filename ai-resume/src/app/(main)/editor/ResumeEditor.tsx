@@ -1,10 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Breadcrumbs from "./Breadcrumbs";
 import { steps } from "./steps";
+import { Footer } from "./Footer";
 
 const ResumeEditor = () => {
   const searchParams = useSearchParams();
@@ -40,7 +39,7 @@ const ResumeEditor = () => {
           <div className="hidden w-1/2 md:flex">right</div>
         </div>
       </main>
-      
+      <Footer currentStep={currentStep} setCurrentStep={setStep} />
     </div>
   );
 };
