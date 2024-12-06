@@ -45,7 +45,7 @@ export default function GeneralInfoForm() {
           />
           <FormField
             control={form.control}
-            name="description"
+            name="descriptioon"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>description</FormLabel>
@@ -53,7 +53,7 @@ export default function GeneralInfoForm() {
                   <Input {...field} placeholder="what ive doneeeeeee" />
                 </FormControl>
                 <FormDescription>
-                    describe what this resume is for
+                  describe what this resume is for
                 </FormDescription>
                 <FormMessage />
               </FormItem>
