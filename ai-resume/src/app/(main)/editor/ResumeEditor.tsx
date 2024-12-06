@@ -2,11 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import PersonalInfoForm from "./forms/PersonalInfoForm";
 import { useSearchParams } from "next/navigation";
-import { steps } from "./steps";
-import { Breadcrumb } from "@/components/ui/breadcrumb";
 import Breadcrumbs from "./Breadcrumbs";
+import { steps } from "./steps";
 
 const ResumeEditor = () => {
   const searchParams = useSearchParams();
