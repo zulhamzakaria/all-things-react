@@ -5,11 +5,12 @@ import Breadcrumbs from "./Breadcrumbs";
 import { steps } from "./steps";
 import { Footer } from "./Footer";
 import { useState } from "react";
+import { ResumeValues } from "@/lib/validation";
 
 const ResumeEditor = () => {
   const searchParams = useSearchParams();
 
-const[resumeData, setResumeData] = useState()
+  const [resumeData, setResumeData] = useState<ResumeValues>({});
 
   const currentStep = searchParams.get("step") || steps[0].key;
   function setStep(key: string) {
