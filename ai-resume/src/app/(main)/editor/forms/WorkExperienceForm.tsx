@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { EditorFormProps } from "@/lib/types";
 import { workExperienceSchema, WorkExperienceValues } from "@/lib/validation";
@@ -50,6 +51,20 @@ export default function WorkExperienceForm({
           {fields.map((field) => (
             <WorkExperienceItem key={field.id} />
           ))}
+          <div className="flex justify-center">
+            <Button
+              type="button"
+              onClick={() =>
+                append({
+                  position: "",
+                  company: "",
+                  startdate: "",
+                  enddata: "",
+                  description: "",
+                })
+              }
+            ></Button>
+          </div>
         </form>
       </Form>
     </div>
