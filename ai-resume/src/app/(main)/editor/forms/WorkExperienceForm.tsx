@@ -58,8 +58,8 @@ export default function WorkExperienceForm({
                 append({
                   position: "",
                   company: "",
-                  startdate: "",
-                  enddata: "",
+                  startDate: "",
+                  endData: "",
                   description: "",
                 })
               }
