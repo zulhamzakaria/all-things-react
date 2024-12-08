@@ -74,7 +74,7 @@ export default function WorkExperienceForm({
                   position: "",
                   company: "",
                   startDate: "",
-                  endData: "",
+                  endDate: "",
                   description: "",
                 })
               }
@@ -144,7 +144,7 @@ function WorkExperienceItem({ form, index, remove }: WorkExperienceItemProps) {
         />
         <FormField
           control={form.control}
-          name={`workExperiences.${index}.endData`}
+          name={`workExperiences.${index}.endDate`}
           render={({ field }) => (
             <FormItem>
               <FormLabel>end date</FormLabel>

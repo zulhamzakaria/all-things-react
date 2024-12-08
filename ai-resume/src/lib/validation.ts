@@ -37,7 +37,7 @@ export const workExperienceSchema = z.object({
         position: optionalString,
         company: optionalString,
         startDate: optionalString,
-        endData: optionalString,
+        endDate: optionalString,
         description: optionalString,
       }),
     )
