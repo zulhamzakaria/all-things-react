@@ -76,7 +76,7 @@ export default function EducationForm({
                   })
                 }
               >
-                add work experience
+                add education
               </Button>
             </div>
           </form>
