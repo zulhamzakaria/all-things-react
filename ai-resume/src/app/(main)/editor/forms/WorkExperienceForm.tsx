@@ -1,18 +1,18 @@
 import { Button } from "@/components/ui/button";
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { EditorFormProps } from "@/lib/types";
 import { workExperienceSchema, WorkExperienceValues } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { GripHorizontal, XIcon } from "lucide-react";
+import { GripHorizontal } from "lucide-react";
 import { useEffect } from "react";
 import { useFieldArray, useForm, UseFormReturn } from "react-hook-form";
 
