@@ -49,7 +49,7 @@ export default function SummaryForm({
           <FormField
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Professional Summary</FormLabel>
+                <FormLabel className="sr-only">Professional Summary</FormLabel>
                 <FormControl>
                   <Textarea
                     {...field}
