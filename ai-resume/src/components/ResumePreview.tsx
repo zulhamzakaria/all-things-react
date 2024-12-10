@@ -14,6 +14,7 @@ export default function ResumePreview({
 }: ResumePreviewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { width } = useDimensions(containerRef);
+
   return (
     <div
       className={cn(
@@ -22,7 +23,10 @@ export default function ResumePreview({
       )}
       ref={containerRef}
     >
-      <div style={{ zoom: (1 / 794) * width }} className={cn('space-y-6 p-6', !width && 'invisible')}>
+      <div
+        style={{ zoom: (1 / 794) * width }}
+        className={cn("space-y-6 p-6", !width && "invisible")}
+      >
         <h1 className="p-6 text-3xl font-bold">
           this text should change with the size of the container div
         </h1>
