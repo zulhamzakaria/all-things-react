@@ -1,7 +1,7 @@
 import useDimensions from "@/hooks/useDimensions";
 import { cn } from "@/lib/utils";
 import { ResumeValues } from "@/lib/validation";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface ResumePreviewProps {
   resumeData: ResumeValues;
@@ -33,4 +33,21 @@ export default function ResumePreview({
       </div>
     </div>
   );
+}
+
+interface ResumeSectionProps {
+  resumeData: ResumeValues;
+}
+
+function PersonalInfoHeader({ resumeData }: ResumeSectionProps) {
+  const { photo, firstName, lastName, jobTitle, city, country, phone, email } =
+    resumeData;
+  const [photoSrc, setPhotoSrc] = useState(photo instanceof File ? "" : photo);
+  useEffect(() => {
+    const objectUrl = photo instanceof File ? URL.createObjectURL(photo) : "";
+    // photo is a File
+    if (objectUrl) setPhotoSrc(objectUrl);
+    if (photo === null) setPhotoSrc("");
+    return () => URL.revokeObjectURL(objectUrl)
+  }, [photo]);
 }
