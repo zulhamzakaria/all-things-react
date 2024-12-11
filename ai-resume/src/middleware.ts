@@ -10,7 +10,7 @@ const publicRoutes = createRouteMatcher(["/", "sign-in(.*)", "sign-up(.*)"]);
 export default clerkMiddleware(
   async (auth: ClerkMiddlewareAuth, request: NextRequest) => {
     if (!publicRoutes(request)) {
-      await auth.protect();
+      //await auth.protect();
     }
   },
 );
