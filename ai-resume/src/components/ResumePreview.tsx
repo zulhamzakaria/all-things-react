@@ -93,7 +93,7 @@ function SummarySection({ resumeData }: ResumeSectionProps) {
       <hr className="border-2" />
       <div className="space-y-3">
         <p className="text-lg font-semibold">Professional profile</p>
-        <div className="whitespace-pre-line text-sm italic text-muted-foreground">
+        <div className="whitespace-pre-line text-sm italic text-gray-500">
           {summary}
         </div>
       </div>
