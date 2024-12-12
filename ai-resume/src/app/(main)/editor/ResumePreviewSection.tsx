@@ -8,7 +8,6 @@ interface ResumePreviewSectionProps {
 
 export default function ResumePreviewSection({
   resumeData,
-  setResumeData,
 }: ResumePreviewSectionProps) {
   return (
     <div className="hidden w-1/2 md:flex">
