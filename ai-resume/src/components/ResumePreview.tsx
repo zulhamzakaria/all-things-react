@@ -29,6 +29,7 @@ export default function ResumePreview({
         className={cn("space-y-6 p-6", !width && "invisible")}
       >
         <PersonalInfoHeader resumeData={resumeData} />
+        <SummarySection resumeData={resumeData} />
       </div>
     </div>
   );
@@ -81,5 +82,21 @@ function PersonalInfoHeader({ resumeData }: ResumeSectionProps) {
         </p>
       </div>
     </div>
+  );
+}
+
+function SummarySection({ resumeData }: ResumeSectionProps) {
+  const { summary } = resumeData;
+  if (!summary) return null;
+  return (
+    <>
+      <hr className="border-2" />
+      <div className="space-y-3">
+        <p className="text-lg font-semibold">Professional profile</p>
+        <div className="whitespace-pre-line text-sm italic text-muted-foreground">
+          {summary}
+        </div>
+      </div>
+    </>
   );
 }
