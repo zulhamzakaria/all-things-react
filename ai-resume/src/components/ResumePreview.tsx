@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { ResumeValues } from "@/lib/validation";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-
+import { formatDate } from "date-fns";
 interface ResumePreviewProps {
   resumeData: ResumeValues;
   className?: string;
@@ -30,6 +30,7 @@ export default function ResumePreview({
       >
         <PersonalInfoHeader resumeData={resumeData} />
         <SummarySection resumeData={resumeData} />
+        <WorkExperienceSection resumeData={resumeData} />
       </div>
     </div>
   );
@@ -96,6 +97,42 @@ function SummarySection({ resumeData }: ResumeSectionProps) {
         <div className="whitespace-pre-line text-sm italic text-gray-500">
           {summary}
         </div>
+      </div>
+    </>
+  );
+}
+
+function WorkExperienceSection({ resumeData }: ResumeSectionProps) {
+  const { workExperiences } = resumeData;
+
+  const existingWorkExperences = workExperiences?.filter(
+    (wExp) => Object.values(wExp).filter(Boolean).length > 0,
+  );
+
+  if (!existingWorkExperences) return null;
+
+  return (
+    <>
+      <hr className="border-2" />
+      <div className="space-y-3">
+        <p className="text-lg font-semibold">Work experience(s)</p>
+        {existingWorkExperences.map((exp, index) => (
+          <div key={index} className="break-inside-avoid space-y-1">
+            <div className="flex items-center justify-between text-sm font-semibold">
+              <span className="capitalize">{exp.position}</span>
+              {exp.startDate && (
+                <span>
+                  {formatDate(exp.startDate, "MMM/yyyy")} -{" "}
+                  {exp.endDate && exp.endDate > exp.startDate
+                    ? formatDate(exp.endDate, "MMM/yyyy")
+                    : "Current"}
+                </span>
+              )}
+            </div>
+            <p className="text-xs font-semibold capitalize">{exp.company}</p>
+            <div className="whitespace-pre-line text-xs">{exp.description}</div>
+          </div>
+        ))}
       </div>
     </>
   );
