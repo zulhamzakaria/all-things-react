@@ -1,6 +1,7 @@
 import ResumePreview from "@/components/ResumePreview";
 import { ResumeValues } from "@/lib/validation";
 import { ColorPicker } from "./ColorPicker";
+import BorderStyle from "./BorderStyle";
 
 interface ResumePreviewSectionProps {
   resumeData: ResumeValues;
@@ -18,6 +19,12 @@ export default function ResumePreviewSection({
           color={resumeData.colorHex}
           onChange={(color) =>
             setResumeData({ ...resumeData, colorHex: color.hex })
+          }
+        />
+        <BorderStyle
+          borderStyle={resumeData.borderStyle}
+          onChange={(borderStyle) =>
+            setResumeData({ ...resumeData, borderStyle })
           }
         />
       </div>
