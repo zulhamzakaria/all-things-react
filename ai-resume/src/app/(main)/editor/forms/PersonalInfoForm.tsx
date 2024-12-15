@@ -82,9 +82,8 @@ export default function PersonalInfoForm({
                         photoInputRef.current.value = "";
                       }
                     }}
-                    className="bg-red-500 hover:bg-red-500"
                   >
-                    <XIcon className="size-10 bg-red-500" />
+                    <XIcon className="size-10" />
                   </Button>
                 </div>
                 <FormMessage />
