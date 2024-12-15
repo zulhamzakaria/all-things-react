@@ -13,7 +13,7 @@ export default function ResumePreviewSection({
 }: ResumePreviewSectionProps) {
   return (
     <div className="relative hidden w-1/2 md:flex">
-      <div>
+      <div className="absolute left-1 top-1 flex flex-none flex-col gap-3 lg:left-3 lg:top-3">
         <ColorPicker
           color={resumeData.colorHex}
           onChange={(color) =>
