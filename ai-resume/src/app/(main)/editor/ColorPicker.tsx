@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Popover } from "@/components/ui/popover";
-import { PopoverTrigger } from "@radix-ui/react-popover";
+import { PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
 import { PaletteIcon } from "lucide-react";
 import { useState } from "react";
-import { Color, ColorChangeHandler } from "react-color";
+import { Color, ColorChangeHandler, TwitterPicker } from "react-color";
 
 interface ColorPickerProps {
   color: Color | undefined;
@@ -15,10 +15,18 @@ export function ColorPicker({ color, onChange }: ColorPickerProps) {
   return (
     <Popover open={showPopover} onOpenChange={setShowPopover}>
       <PopoverTrigger asChild>
-        <Button>
+        <Button
+          variant={"outline"}
+          size={"icon"}
+          title="Change resume color template"
+          onClick={() => setShowPopover(true)}
+        >
           <PaletteIcon className="size-5" />
         </Button>
       </PopoverTrigger>
+      <PopoverContent>
+        <TwitterPicker color={color} onChange={onChange} />
+      </PopoverContent>
     </Popover>
   );
 }
