@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { formatDate } from "date-fns";
 import { Badge } from "./ui/badge";
+import { BorderStyles } from "@/app/(main)/editor/BorderStyle";
 interface ResumePreviewProps {
   resumeData: ResumeValues;
   className?: string;
@@ -76,6 +77,14 @@ function PersonalInfoHeader({ resumeData }: ResumeSectionProps) {
           height={100}
           alt="author-photo"
           className="aspect-square object-cover"
+          style={{
+            borderRadius:
+              borderStyle === BorderStyles.SQUARE
+                ? "0px"
+                : borderStyle === BorderStyles.CIRCLE
+                  ? "9999px"
+                  : "10%",
+          }}
         />
       )}
       <div className="space-y-2.5">
