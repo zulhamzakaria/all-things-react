@@ -29,7 +29,7 @@ const ResumeEditor = () => {
     (step) => step.key === currentStep,
   )?.component;
 
-  useUnloadWarning();
+  // useUnloadWarning();
 
   return (
     <div className="flex grow flex-col">
