@@ -8,6 +8,7 @@ import { useState } from "react";
 import { ResumeValues } from "@/lib/validation";
 import ResumePreviewSection from "./ResumePreviewSection";
 import { cn } from "@/lib/utils";
+import useUnloadWarning from "@/hooks/useUnloadWarning";
 
 const ResumeEditor = () => {
   const searchParams = useSearchParams();
@@ -27,6 +28,8 @@ const ResumeEditor = () => {
   const FormComponent = steps.find(
     (step) => step.key === currentStep,
   )?.component;
+
+  useUnloadWarning();
 
   return (
     <div className="flex grow flex-col">
