@@ -10,14 +10,16 @@ import ResumePreviewSection from "./ResumePreviewSection";
 import { cn } from "@/lib/utils";
 import useAutoSaveResume from "./useAutoSaveResume";
 import useUnloadWarning from "@/hooks/useUnloadWarning";
+import { ResumeServerData } from "@/lib/types";
 
-const ResumeEditor = () => {
+interface ResumeEditorProps {
+  resumeToEdit: ResumeServerData | null;
+}
+
+const ResumeEditor = ({ resumeToEdit }: ResumeEditorProps) => {
   const searchParams = useSearchParams();
-
-  const [resumeData, setResumeData] = useState<ResumeValues>({});
-
+  const [resumeData, setResumeData] = useState<ResumeValues>(resumeToEdit);
   const [showSmResumePreview, setShowSmResumePreview] = useState(false);
-
   const { isSaving, hasUnsavedChanges } = useAutoSaveResume(resumeData);
 
   useUnloadWarning(hasUnsavedChanges);
