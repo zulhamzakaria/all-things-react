@@ -72,12 +72,6 @@ export default function useAutoSaveResume(resumeData: ResumeValues) {
       } finally {
         setIsSaving(false);
       }
-
-      setIsSaving(true);
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      // update data with debouncedResumeData
-      setLastSavedData(structuredClone(debouncedResumeData));
-      setIsSaving(false);
     }
     const hasUnsavedChanges =
       JSON.stringify(debouncedResumeData) !== JSON.stringify(lastSavedData);
