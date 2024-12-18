@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { saveResume } from "./actions";
 import { Button } from "@/components/ui/button";
+import { fileReplacer } from "@/lib/utils";
 
 export default function useAutoSaveResume(resumeData: ResumeValues) {
   const searchParams = useSearchParams();
@@ -74,7 +75,8 @@ export default function useAutoSaveResume(resumeData: ResumeValues) {
       }
     }
     const hasUnsavedChanges =
-      JSON.stringify(debouncedResumeData) !== JSON.stringify(lastSavedData);
+      JSON.stringify(debouncedResumeData, fileReplacer) !==
+      JSON.stringify(lastSavedData, fileReplacer);
 
     //will run if theres debouncedResumeData and theres unsaved data and saving data action is not happening
     if (hasUnsavedChanges && debouncedResumeData && !isSaving && !isError) {
