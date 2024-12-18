@@ -4,6 +4,7 @@ import { ResumeValues } from "@/lib/validation";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { saveResume } from "./actions";
+import { Button } from "@/components/ui/button";
 
 export default function useAutoSaveResume(resumeData: ResumeValues) {
   const searchParams = useSearchParams();
@@ -51,12 +52,25 @@ export default function useAutoSaveResume(resumeData: ResumeValues) {
       } catch (e) {
         setIsError(true);
         console.log(e as Error);
-        const {} = toast({
+        const { dismiss } = toast({
           variant: "destructive",
-          description:(
-            
-          )
+          description: (
+            <div className="space-y-3">
+              <p>Could not save changes.</p>
+              <Button
+                variant={"secondary"}
+                onClick={() => {
+                  dismiss();
+                  save();
+                }}
+              >
+                Retry
+              </Button>
+            </div>
+          ),
         });
+      } finally {
+        setIsSaving(false);
       }
 
       setIsSaving(true);
@@ -69,10 +83,18 @@ export default function useAutoSaveResume(resumeData: ResumeValues) {
       JSON.stringify(debouncedResumeData) !== JSON.stringify(lastSavedData);
 
     //will run if theres debouncedResumeData and theres unsaved data and saving data action is not happening
-    if (hasUnsavedChanges && debouncedResumeData && !isSaving) {
+    if (hasUnsavedChanges && debouncedResumeData && !isSaving && !isError) {
       save();
     }
-  }, [debouncedResumeData, isSaving, lastSavedData]);
+  }, [
+    debouncedResumeData,
+    isSaving,
+    lastSavedData,
+    isError,
+    resumeId,
+    searchParams,
+    toast,
+  ]);
 
   return {
     isSaving,
