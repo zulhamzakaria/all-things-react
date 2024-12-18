@@ -33,7 +33,8 @@ export default function useAutoSaveResume(resumeData: ResumeValues) {
         // spreaded so that photo can be bealt with differently
         const updatedResume = await saveResume({
           ...newData,
-          ...(lastSavedData.photo?.toString() === newData.photo?.toString() && {
+          ...(JSON.stringify(lastSavedData.photo, fileReplacer) ===
+            JSON.stringify(newData.photo, fileReplacer) && {
             photo: undefined,
           }),
           id: resumeId,
