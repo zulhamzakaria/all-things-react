@@ -1,18 +1,64 @@
+import { useToast } from "@/hooks/use-toast";
 import useDebounce from "@/hooks/useDebounce";
 import { ResumeValues } from "@/lib/validation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { saveResume } from "./actions";
 
 export default function useAutoSaveResume(resumeData: ResumeValues) {
+  const searchParams = useSearchParams();
+  const { toast } = useToast();
   const debouncedResumeData = useDebounce(resumeData, 1500);
+  const [resumeId, setResumeId] = useState(resumeData.id);
   const [lastSavedData, setLastSavedData] = useState(
     structuredClone(resumeData),
   );
 
   const [isSaving, setIsSaving] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    setIsError(false);
+  }, [debouncedResumeData]);
 
   // runs everytime theres a change
   useEffect(() => {
     async function save() {
+      try {
+        setIsSaving(true);
+        setIsError(false);
+        const newData = structuredClone(debouncedResumeData);
+        // spreaded so that photo can be bealt with differently
+        const updatedResume = await saveResume({
+          ...newData,
+          ...(lastSavedData.photo?.toString() === newData.photo?.toString() && {
+            photo: undefined,
+          }),
+          id: resumeId,
+        });
+        setResumeId(updatedResume.id);
+        setLastSavedData(newData);
+
+        if (searchParams.get("resumeId") !== updatedResume.id) {
+          const newSearchParams = new URLSearchParams(searchParams);
+          newSearchParams.set("resumeId", updatedResume.id);
+          window.history.replaceState(
+            null,
+            "",
+            `?${newSearchParams.toString()}`,
+          );
+        }
+      } catch (e) {
+        setIsError(true);
+        console.log(e as Error);
+        const {} = toast({
+          variant: "destructive",
+          description:(
+            
+          )
+        });
+      }
+
       setIsSaving(true);
       await new Promise((resolve) => setTimeout(resolve, 1500));
       // update data with debouncedResumeData
