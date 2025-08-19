@@ -20,6 +20,12 @@ export default function LoginPage() {
           <GithubIcon className="size-4" />
           Sign in with Github
         </Button>
+
+        <div className="relative text-center text-sm after:absolute after:border-t after:border-border after:inset-0 after:z-0 after:items-center after:flex after:top-1/2 ">
+          <span className="relative z-10 bg-card px-2 text-muted-foreground">
+            Or continue with
+          </span>
+        </div>
       </CardContent>
     </Card>
   );
