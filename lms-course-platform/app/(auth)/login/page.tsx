@@ -1,7 +1,17 @@
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
 export default function LoginPage() {
   return (
-    <div>
-      <h1>login page...</h1>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-xl">Welcome back!</CardTitle>
+        <CardDescription>Login with your Github Email Account</CardDescription>
+      </CardHeader>
+    </Card>
   );
 }
