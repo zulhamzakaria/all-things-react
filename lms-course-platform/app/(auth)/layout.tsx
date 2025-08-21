@@ -27,6 +27,18 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           FemCo.
         </Link>
         {children}
+
+        <div className="text-balance text-center text-xs text-muted-foreground">
+          By clicking Continue, you agree to our{" "}
+          <span className="hover:text-primary hover:underline">
+            Terms of Service
+          </span>{" "}
+          and{" "}
+          <span className="hover:text-primary hover:underline">
+            Privacy Policy
+          </span>
+          .
+        </div>
       </div>
     </div>
   );
