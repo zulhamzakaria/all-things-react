@@ -8,9 +8,26 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { authClient } from "@/lib/auth-client";
 import { GithubIcon } from "lucide-react";
+import { toast } from "sonner";
 
 export default function LoginPage() {
+  async function LoginWithGithub() {
+    await authClient.signIn.social({
+      provider: "github",
+      callbackURL: "/",
+      fetchOptions: {
+        onSuccess: () => {
+          toast.success("Login successfull. You will be redirected...");
+        },
+        onError: (error) => {
+          toast.error(error.error.message);
+        },
+      },
+    });
+  }
+
   return (
     <Card>
       <CardHeader>
