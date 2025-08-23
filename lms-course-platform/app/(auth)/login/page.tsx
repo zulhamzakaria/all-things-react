@@ -9,22 +9,27 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
-import { GithubIcon } from "lucide-react";
+import { GithubIcon, Loader } from "lucide-react";
+import { useTransition } from "react";
 import { toast } from "sonner";
 
 export default function LoginPage() {
-  async function LoginWithGithub() {
-    await authClient.signIn.social({
-      provider: "github",
-      callbackURL: "/",
-      fetchOptions: {
-        onSuccess: () => {
-          toast.success("Login successfull. You will be redirected...");
+  const [githubPending, startGithubTransition] = useTransition();
+
+  async function signInWithGithub() {
+    startGithubTransition(async () => {
+      await authClient.signIn.social({
+        provider: "github",
+        callbackURL: "/",
+        fetchOptions: {
+          onSuccess: () => {
+            toast.success("Login successfull. You will be redirected...");
+          },
+          onError: (error) => {
+            toast.error(error.error.message);
+          },
         },
-        onError: (error) => {
-          toast.error(error.error.message);
-        },
-      },
+      });
     });
   }
 
@@ -35,9 +40,23 @@ export default function LoginPage() {
         <CardDescription>Login with your Github Email Account</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        <Button className="w-full" variant={"outline"}>
-          <GithubIcon className="size-4" />
-          Sign in with Github
+        <Button
+          disabled={githubPending}
+          onClick={signInWithGithub}
+          className="w-full"
+          variant={"outline"}
+        >
+          {githubPending ? (
+            <>
+              <Loader className="animate-spin size-4" />
+              <span>Loading...</span>
+            </>
+          ) : (
+            <>
+              <GithubIcon className="size-4" />
+              Sign in with Github
+            </>
+          )}
         </Button>
 
         <div className="relative text-center text-sm after:absolute after:border-t after:border-border after:inset-0 after:z-0 after:items-center after:flex after:top-1/2 ">
