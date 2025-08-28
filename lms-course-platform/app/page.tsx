@@ -1,12 +1,12 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/theme-toggle";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { authClient } from "@/lib/auth-client";
 
-export default async function Home() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+export default function Home() {
+  const { data: session } = authClient.useSession();
+
   return (
     <div>
       <h1>Hello, World</h1>
