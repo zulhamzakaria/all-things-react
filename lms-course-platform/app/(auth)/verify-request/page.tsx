@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -12,10 +13,21 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { useState } from "react";
+import { authClient } from "@/lib/auth-client";
+import { startTransition, useState, useTransition } from "react";
 
 export default function VerifyRequest() {
   const [otp, setOtp] = useState("");
+  const [emailPending, setEmailTransition] = useTransition()
+
+  function verifyOtp(){
+startTransition(async ()=>{
+    await authClient.signIn.emailOtp({
+        email
+    })
+})
+  }
+
   return (
     <Card className="w-full mx-auto">
       <CardHeader className="text-center">
@@ -25,8 +37,8 @@ export default function VerifyRequest() {
           address. Please paste the code below
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <div>
+      <CardContent className="space-y-6">
+        <div className="flex flex-col items-center space-y-2">
           <InputOTP
             maxLength={6}
             value={otp}
@@ -44,7 +56,11 @@ export default function VerifyRequest() {
               <InputOTPSlot index={5} />
             </InputOTPGroup>
           </InputOTP>
+          <p className="text-sm text-muted-foreground">
+            Enter the 6 digit code sent to your email
+          </p>
         </div>
+        <Button className="w-full">Verify Account</Button>
       </CardContent>
     </Card>
   );
