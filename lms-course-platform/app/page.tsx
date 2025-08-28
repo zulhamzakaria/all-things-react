@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/theme-toggle";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function Home() {
   const { data: session } = authClient.useSession();
@@ -15,6 +16,7 @@ export default function Home() {
       fetchOptions: {
         onSuccess: () => {
           router.push("/");
+          toast.success("Signed out successfully");
         },
       },
     });
