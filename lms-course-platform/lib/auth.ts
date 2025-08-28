@@ -3,6 +3,7 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "./db";
 import { env } from "./env";
 import { emailOTP } from "better-auth/plugins";
+import { resend } from "./resend";
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
@@ -17,7 +18,12 @@ export const auth = betterAuth({
   plugins: [
     emailOTP({
       async sendVerificationOTP({ email, otp }) {
-        // mail otp to user
+        await resend.emails.send({
+          from: "admin <onboarding@resend.dev>",
+          to: [email],
+          subject: "LMS App - Verify yoour email",
+          html: `<p>Your OTP is <strong>${otp}</strong></p>`,
+        });
       },
     }),
   ],
