@@ -34,7 +34,7 @@ export default function Navbar() {
               </Link>
             ))}
           </div>
-          <div>
+          <div className="space-x-4 flex items-center">
             <ModeToggle />
             {isPending ? null : session ? (
               <p>signed in</p>
