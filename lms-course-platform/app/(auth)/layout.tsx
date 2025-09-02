@@ -24,7 +24,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           className="flex items-center gap-2 self-center font-medium"
         >
           <Image alt="logo" src={Logo} width={32} height={32} />
-          FemCo.
+          FamCo.
         </Link>
         {children}
 
