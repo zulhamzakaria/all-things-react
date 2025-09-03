@@ -62,10 +62,10 @@ export default function UserDropdown({ name, email, image }: iAppProps) {
       <DropdownMenuContent align="end" className="max-w-64">
         <DropdownMenuLabel className="flex min-w-0 flex-col">
           <span className="text-foreground truncate text-sm font-medium">
-            Keith Kennedy
+            {name}
           </span>
           <span className="text-muted-foreground truncate text-xs font-normal">
-            k.kennedy@originui.com
+            {email}
           </span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
