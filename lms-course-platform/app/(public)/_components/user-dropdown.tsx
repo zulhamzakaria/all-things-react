@@ -22,7 +22,13 @@ import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
-export default function UserDropdown() {
+interface iAppProps {
+  name: string;
+  email: string;
+  image: string;
+}
+
+export default function UserDropdown({ name, email, image }: iAppProps) {
   const router = useRouter();
 
   async function signOut() {
@@ -43,8 +49,8 @@ export default function UserDropdown() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="h-auto p-0 hover:bg-transparent">
           <Avatar>
-            <AvatarImage src="./avatar.jpg" alt="Profile image" />
-            <AvatarFallback>KK</AvatarFallback>
+            <AvatarImage src={image} alt="Profile image" />
+            <AvatarFallback>{name[0].toUpperCase()}</AvatarFallback>
           </Avatar>
           <ChevronDownIcon
             size={16}
