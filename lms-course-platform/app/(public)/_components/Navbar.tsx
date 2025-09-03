@@ -38,7 +38,11 @@ export default function Navbar() {
           <div className="space-x-4 flex items-center">
             <ModeToggle />
             {isPending ? null : session ? (
-              <UserDropdown />
+              <UserDropdown
+                name={session.user.name}
+                image={session.user.image || ""}
+                email={session.user.email}
+              />
             ) : (
               <>
                 <Link href={"/login"} className={buttonVariants({})}>
