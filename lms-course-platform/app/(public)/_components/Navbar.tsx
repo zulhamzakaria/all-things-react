@@ -6,6 +6,7 @@ import Logo from "@/public/vercel.svg";
 import { ModeToggle } from "@/components/ui/theme-toggle";
 import { authClient } from "@/lib/auth-client";
 import { buttonVariants } from "@/components/ui/button";
+import UserDropdown from "./user-dropdown";
 
 const navigationItems = [
   { name: "Home", href: "/" },
@@ -37,7 +38,7 @@ export default function Navbar() {
           <div className="space-x-4 flex items-center">
             <ModeToggle />
             {isPending ? null : session ? (
-              <p>signed in</p>
+              <UserDropdown />
             ) : (
               <>
                 <Link href={"/login"} className={buttonVariants({})}>
