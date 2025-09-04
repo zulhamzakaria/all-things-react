@@ -47,7 +47,7 @@ const data = {
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
+      title: "Courses",
       url: "/admin/courses",
       icon: IconListDetails,
     },
