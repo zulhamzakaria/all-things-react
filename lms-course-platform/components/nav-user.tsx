@@ -28,6 +28,7 @@ import {
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { HomeIcon, Tv2 } from "lucide-react";
+import { useSignOut } from "@/hooks/use-signout";
 
 export function NavUser() {
   const { isMobile } = useSidebar();
@@ -130,7 +131,7 @@ export function NavUser() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={}>
+            <DropdownMenuItem onClick={useSignOut}>
               <IconLogout />
               Log out
             </DropdownMenuItem>
