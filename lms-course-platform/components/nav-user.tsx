@@ -1,12 +1,9 @@
 "use client";
 
 import {
-  IconCreditCard,
   IconDashboard,
   IconDotsVertical,
   IconLogout,
-  IconNotification,
-  IconUserCircle,
 } from "@tabler/icons-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -33,7 +30,7 @@ import { useSignOut } from "@/hooks/use-signout";
 export function NavUser() {
   const { isMobile } = useSidebar();
   const { data: session, isPending } = authClient.useSession();
-
+  const handleSignout = useSignOut();
   if (isPending) {
     return null;
   }
@@ -131,7 +128,7 @@ export function NavUser() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={useSignOut}>
+            <DropdownMenuItem onClick={handleSignout}>
               <IconLogout />
               Log out
             </DropdownMenuItem>
