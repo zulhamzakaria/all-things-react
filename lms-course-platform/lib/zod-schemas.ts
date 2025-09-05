@@ -1,4 +1,3 @@
-import { Resolver } from "react-hook-form";
 import { z } from "zod";
 
 export const courseLevel = ["Beginner", "Advanced", "Expert"] as const;
