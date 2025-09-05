@@ -8,15 +8,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CourseSchema } from "@/lib/zod-schemas";
+import { courseSchema, CourseSchemaType } from "@/lib/zod-schemas";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function CreateCoursePage() {
-  const form = useForm < z.infer<typeof CourseSchema>({
-    resolver: zodReso
+  const form = useForm<CourseSchemaType>({
+    resolver: zodResolver(courseSchema),
+    defaultValues:{
+      
+    }
   });
 
   return (
