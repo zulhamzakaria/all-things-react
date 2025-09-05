@@ -1,3 +1,5 @@
+"use client";
+
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -6,10 +8,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { CourseSchema } from "@/lib/zod-schemas";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import z from "zod";
 
 export default function CreateCoursePage() {
+  const form = useForm < z.infer<typeof CourseSchema>({
+    resolver: zodReso
+  });
+
   return (
     <>
       <div className="flex items-center gap-4">

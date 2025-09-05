@@ -3,7 +3,7 @@ import { z } from "zod";
 export const courseLevel = ["Beginner", "Advanced", "Expert"] as const;
 export const courseStatus = ["Draft", "Published", "Archived"] as const;
 
-export const courseSchema = z.object({
+export const CourseSchema = z.object({
   title: z
     .string()
     .min(3, { message: "Title must be 3 chars long at minimum" })
