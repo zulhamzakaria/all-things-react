@@ -1,6 +1,6 @@
 "use client";
 
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -80,7 +80,31 @@ export default function CreateCoursePage() {
                     <FormMessage />
                   </FormItem>
                 )}
-              ></FormField>
+              />
+              <div className="flex gap-4 items-end">
+                <FormField
+                  control={form.control}
+                  name="slug"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>Slug</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Slug" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button
+                  type="button"
+                  className="w-fit"
+                  onClick={() => {
+                    const titleValue = form.getValues("title");
+                  }}
+                >
+                  Generate Slug{" "}
+                </Button>
+              </div>
             </form>
           </Form>
         </CardContent>
