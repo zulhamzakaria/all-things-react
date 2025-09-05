@@ -17,9 +17,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 export default function CreateCoursePage() {
   const form = useForm<CourseSchemaType>({
     resolver: zodResolver(courseSchema),
-    defaultValues:{
-      
-    }
+    defaultValues: {
+      title: "",
+      description: "",
+      fileKey: "",
+      price: 0,
+      duration: 0,
+      level: "Beginner",
+      category: "",
+      smallDesc: "",
+      slug: "",
+      status: "Draft",
+    },
   });
 
   return (
