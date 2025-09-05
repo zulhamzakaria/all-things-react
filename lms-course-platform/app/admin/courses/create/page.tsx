@@ -13,6 +13,15 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 export default function CreateCoursePage() {
   const form = useForm<CourseSchemaType>({
@@ -30,6 +39,10 @@ export default function CreateCoursePage() {
       status: "Draft",
     },
   });
+
+  function onSubmit(values: CourseSchemaType) {
+    console.log(values);
+  }
 
   return (
     <>
@@ -52,7 +65,25 @@ export default function CreateCoursePage() {
             Provide basic information about the course
           </CardDescription>
         </CardHeader>
-        <CardContent></CardContent>
+        <CardContent>
+          <Form {...form}>
+            <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Title</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Title" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              ></FormField>
+            </form>
+          </Form>
+        </CardContent>
       </Card>
     </>
   );
