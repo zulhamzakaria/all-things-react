@@ -4,14 +4,32 @@ export const courseLevel = ["Beginner", "Advanced", "Expert"] as const;
 export const courseStatus = ["Draft", "Published", "Archived"] as const;
 
 export const courseSchema = z.object({
-  title: z.string().min(3).max(100),
-  description: z.string().min(3).max(2500),
-  fileKey: z.string().min(3).max(1),
-  price: z.coerce.number().min(1),
-  duration: z.coerce.number().min(1).max(500),
+  title: z
+    .string()
+    .min(3, { message: "Title must be 3 chars long at minimum" })
+    .max(100, { message: "Title must be 100 chars long at maximum" }),
+  description: z
+    .string()
+    .min(3, { message: "Description must be 3 chars long at minimum" })
+    .max(2500, { message: "Description must be 2500 chars long at maximum" }),
+  fileKey: z
+    .string()
+    .min(1, { message: "FileKey must be 3 chars long at minimum" }),
+  price: z.coerce
+    .number()
+    .min(1, { message: "Price must be 1 char at minimum" }),
+  duration: z.coerce
+    .number()
+    .min(1, { message: "Duration must be 1 char at minimum" })
+    .max(500, { message: "Duration must be 500 chars long at maximum" }),
   level: z.enum(courseLevel),
-  category: z.string().min(1),
-  smallDesc: z.string().min(3).max(200),
-  slug: z.string().min(3),
+  category: z
+    .string()
+    .min(1, { message: "category must be 1 char at minimum" }),
+  smallDesc: z
+    .string()
+    .min(3, { message: "Small Description must be 3 chars long at minimum" })
+    .max(200, { message: "Title must be 200 chars long at maximum" }),
+  slug: z.string().min(3, { message: "Slug must be 3 chars long at minimum" }),
   status: z.enum(courseStatus),
 });
