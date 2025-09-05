@@ -22,6 +22,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import slugify from "slugify";
 
 export default function CreateCoursePage() {
   const form = useForm<CourseSchemaType>({
@@ -100,6 +101,8 @@ export default function CreateCoursePage() {
                   className="w-fit"
                   onClick={() => {
                     const titleValue = form.getValues("title");
+                    const slugged = slugify(titleValue);
+                    form.setValue("slug", slugged, { shouldValidate: true });
                   }}
                 >
                   Generate Slug{" "}
