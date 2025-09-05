@@ -12,7 +12,7 @@ export default function CoursesPage() {
         </Link>
       </div>
       <div>
-        <h1></h1>
+        <h1>Here you can see all the courses</h1>
       </div>
     </>
   );
