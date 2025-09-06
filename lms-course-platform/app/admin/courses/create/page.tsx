@@ -58,6 +58,18 @@ export default function CreateCoursePage() {
     console.log(values);
   }
 
+  function parseNumberInput(value: string): number | undefined {
+    if (value.trim() === "") {
+      return undefined; // treat empty input as undefined (no value)
+    }
+    const parsed = Number(value);
+    if (Number.isNaN(parsed)) {
+      return undefined; // invalid number input
+    }
+    alert(typeof parsed);
+    return parsed;
+  }
+
   return (
     <>
       <div className="flex items-center gap-4">
@@ -237,7 +249,11 @@ export default function CreateCoursePage() {
                         <Input
                           placeholder="Duration"
                           {...field}
-                          value={field.value ?? ''}
+                          value={field.value ?? ""}
+                          onChange={(e) => {
+                            const parsed = parseNumberInput(e.target.value);
+                            field.onChange(parsed);
+                          }}
                         />
                       </FormControl>
                       <FormMessage />
