@@ -13,6 +13,7 @@ import {
   courseLevel,
   courseSchema,
   CourseSchemaType,
+  courseStatus,
 } from "@/lib/zod-schemas";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -282,6 +283,33 @@ export default function CreateCoursePage() {
                   )}
                 />
               </div>
+              <FormField
+                control={form.control}
+                name="status"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormLabel>Status</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Select status" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {courseStatus.map((status) => (
+                          <SelectItem key={status} value={status}>
+                            {status}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </form>
           </Form>
         </CardContent>
