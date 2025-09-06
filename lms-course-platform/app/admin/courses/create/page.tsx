@@ -310,6 +310,7 @@ export default function CreateCoursePage() {
                   </FormItem>
                 )}
               />
+              <Button>Create Course</Button>
             </form>
           </Form>
         </CardContent>
