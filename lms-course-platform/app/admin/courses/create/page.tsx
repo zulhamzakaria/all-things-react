@@ -8,7 +8,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { courseSchema, CourseSchemaType } from "@/lib/zod-schemas";
+import {
+  courseCategories,
+  courseSchema,
+  CourseSchemaType,
+} from "@/lib/zod-schemas";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -24,6 +28,13 @@ import {
 import { Input } from "@/components/ui/input";
 import slugify from "slugify";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function CreateCoursePage() {
   const form = useForm<CourseSchemaType>({
@@ -35,7 +46,7 @@ export default function CreateCoursePage() {
       price: 0,
       duration: 0,
       level: "Beginner",
-      category: "",
+      category: "IT and Software",
       smallDesc: "",
       slug: "",
       status: "Draft",
@@ -167,9 +178,23 @@ export default function CreateCoursePage() {
                   render={({ field }) => (
                     <FormItem className="w-full">
                       <FormLabel>Category</FormLabel>
-                      <FormControl>
-                        <Input placeholder="thumbnail url" {...field} />
-                      </FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select category" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {courseCategories.map((category) => (
+                            <SelectItem key={category} value={category}>
+                              {category}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
