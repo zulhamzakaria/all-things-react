@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import slugify from "slugify";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function CreateCoursePage() {
   const form = useForm<CourseSchemaType>({
@@ -107,6 +108,72 @@ export default function CreateCoursePage() {
                 >
                   Generate Slug{" "}
                 </Button>
+              </div>
+
+              <FormField
+                control={form.control}
+                name="smallDesc"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormLabel>Small Description</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Put the summarised description here"
+                        className="min-h-[120px]"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormLabel>Description</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Put the full description here"
+                        className="min-h-[120px]"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="fileKey"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormLabel>Thumbnail Image</FormLabel>
+                    <FormControl>
+                      <Input placeholder="thumbnail url" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="category"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>Category</FormLabel>
+                      <FormControl>
+                        <Input placeholder="thumbnail url" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
             </form>
           </Form>
