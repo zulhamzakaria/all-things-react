@@ -66,7 +66,7 @@ export default function CreateCoursePage() {
     if (Number.isNaN(parsed)) {
       return undefined; // invalid number input
     }
-    alert(typeof parsed);
+
     return parsed;
   }
 
@@ -248,6 +248,27 @@ export default function CreateCoursePage() {
                       <FormControl>
                         <Input
                           placeholder="Duration"
+                          {...field}
+                          value={field.value ?? ""}
+                          onChange={(e) => {
+                            const parsed = parseNumberInput(e.target.value);
+                            field.onChange(parsed);
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="price"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>Price</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Price"
                           {...field}
                           value={field.value ?? ""}
                           onChange={(e) => {
