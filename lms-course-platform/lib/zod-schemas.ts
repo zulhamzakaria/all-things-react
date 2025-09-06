@@ -32,7 +32,7 @@ export const courseSchema = z.object({
     .min(1, { message: "Duration must be 1 hr at minimum" })
     .max(500, {
       message: "Duration must be 500 hrs long at maximum",
-    }) as unknown as number,
+    }),
   level: z.enum(courseLevel, { message: "Level is required" }),
   category: z.enum(courseCategories, { message: "Category is required" }),
   smallDesc: z
