@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import {
   courseCategories,
+  courseLevel,
   courseSchema,
   CourseSchemaType,
 } from "@/lib/zod-schemas";
@@ -191,6 +192,33 @@ export default function CreateCoursePage() {
                           {courseCategories.map((category) => (
                             <SelectItem key={category} value={category}>
                               {category}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="level"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>Level</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select level" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {courseLevel.map((level) => (
+                            <SelectItem key={level} value={level}>
+                              {level}
                             </SelectItem>
                           ))}
                         </SelectContent>
