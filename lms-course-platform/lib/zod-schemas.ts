@@ -2,6 +2,19 @@ import { z } from "zod";
 
 export const courseLevel = ["Beginner", "Advanced", "Expert"] as const;
 export const courseStatus = ["Draft", "Published", "Archived"] as const;
+export const courseCategories = [
+  "Development",
+  "Business",
+  "Finance",
+  "IT and Software",
+  "Productivity",
+  "Personal Betterment",
+  "Design",
+  "Marketing",
+  "Health and Fitness",
+  "Music",
+  "Teachings & Academics",
+];
 
 export const courseSchema = z.object({
   title: z
