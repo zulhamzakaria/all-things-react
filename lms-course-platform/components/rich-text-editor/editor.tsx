@@ -7,6 +7,7 @@ import { Menubar } from "./menubar";
 export function RichTextEditor() {
   const editor = useEditor({
     extensions: [StarterKit],
+    immediatelyRender: false,
   });
   return (
     <div>
