@@ -11,7 +11,7 @@ export function RichTextEditor() {
   });
   return (
     <div>
-      <Menubar />
+      <Menubar editor={editor} />
     </div>
   );
 }
