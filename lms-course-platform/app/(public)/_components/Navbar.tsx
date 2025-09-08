@@ -44,7 +44,10 @@ export default function Navbar() {
                     ? session.user.name
                     : session?.user.email.split("@")[0]
                 }
-                image={session.user.image || ""}
+                image={
+                  session?.user.image ??
+                  `https://avatar.vercel.sh/${session?.user.email}`
+                }
                 email={session.user.email}
               />
             ) : (
