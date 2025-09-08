@@ -14,7 +14,7 @@ export function Uploader() {
         rejection.errors[0].code === "too-many-files";
       });
       if (tooManyFiles) {
-        toast.error("Too many file being uploaded");
+        toast.error("Too many files selected");
       }
       const largeSizeFiles = fileRejection.find(
         (rejection) => rejection.errors[0].code === "file-too-large"
