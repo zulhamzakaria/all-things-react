@@ -166,7 +166,7 @@ export default function CreateCoursePage() {
                         className="min-h-[120px]"
                         {...field}
                       /> */}
-                      <RichTextEditor />
+                      <RichTextEditor field={field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
