@@ -25,9 +25,9 @@ interface MenubarProps {
 export function Menubar({ editor }: MenubarProps) {
   if (!editor) return null;
   return (
-    <div>
+    <div className="border border-input rounded-t-lg p-2 bg-card flex flex-wrap gap-1 items-center">
       <TooltipProvider>
-        <div>
+        <div className="flex flex-wrap gap-1">
           <Tooltip>
             <TooltipTrigger asChild>
               <Toggle
@@ -168,6 +168,27 @@ export function Menubar({ editor }: MenubarProps) {
               </Toggle>
             </TooltipTrigger>
             <TooltipContent>Ordered List</TooltipContent>
+          </Tooltip>
+        </div>
+        <div className="w-px h-6 bg-border mx-2"></div>
+        <div className="flex flex-wrap gap-1">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Toggle
+                size={"sm"}
+                pressed={editor.isActive({ textAlign: "left" })}
+                onPressedChange={() =>
+                  editor.chain().focus().settextal().run()
+                }
+                className={cn(
+                  editor.isActive("bulletList") &&
+                    "bg-muted text-muted-foreground"
+                )}
+              >
+                <ListIcon />
+              </Toggle>
+            </TooltipTrigger>
+            <TooltipContent>Heading Bulletlist</TooltipContent>
           </Tooltip>
         </div>
       </TooltipProvider>
