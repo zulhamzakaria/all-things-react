@@ -12,6 +12,9 @@ export function RenderEmptyState({ isDragActive }: { isDragActive: boolean }) {
           )}
         />
       </div>
+      <p className="text-base font-semibold text-foreground">
+        Drop your file here or <span className="text-primary font-bold cursor-pointer">Click to upload</span>
+      </p>
     </div>
   );
 }
