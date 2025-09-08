@@ -24,7 +24,7 @@ export function Uploader() {
       <CardContent className="flex items-center justify-center h-full w-full p-4">
         <input {...getInputProps()} />
         <RenderEmptyState isDragActive={isDragActive} />
-        <RenderErrorState />
+        {/* <RenderErrorState /> */}
       </CardContent>
     </Card>
   );
