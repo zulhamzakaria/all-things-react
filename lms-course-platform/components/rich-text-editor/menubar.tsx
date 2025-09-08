@@ -9,6 +9,7 @@ import { Toggle } from "../ui/toggle";
 import {
   AlignCenter,
   AlignLeftIcon,
+  AlignRight,
   Bold,
   Heading1Icon,
   Heading2Icon,
@@ -209,6 +210,24 @@ export function Menubar({ editor }: MenubarProps) {
               </Toggle>
             </TooltipTrigger>
             <TooltipContent>Align Center</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Toggle
+                size={"sm"}
+                pressed={editor.isActive({ textAlign: "right" })}
+                onPressedChange={() =>
+                  editor.chain().focus().setTextAlign("right").run()
+                }
+                className={cn(
+                  editor.isActive({ textAlign: "right" }) &&
+                    "bg-muted text-muted-foreground"
+                )}
+              >
+                <AlignRight />
+              </Toggle>
+            </TooltipTrigger>
+            <TooltipContent>Align Right</TooltipContent>
           </Tooltip>
         </div>
       </TooltipProvider>
