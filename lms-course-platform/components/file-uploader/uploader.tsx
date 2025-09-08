@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { Card, CardContent } from "../ui/card";
 import { cn } from "@/lib/utils";
+import { RenderEmptyState } from "./render-state";
 
 export function Uploader() {
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -22,7 +23,7 @@ export function Uploader() {
     >
       <CardContent className="flex items-center justify-center h-full w-full p-4">
         <input {...getInputProps()} />
-        <p></p>
+        <RenderEmptyState isDragActive={isDragActive} />
       </CardContent>
     </Card>
   );
