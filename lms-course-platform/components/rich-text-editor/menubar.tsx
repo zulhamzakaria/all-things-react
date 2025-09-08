@@ -7,6 +7,8 @@ import {
 } from "../ui/tooltip";
 import { Toggle } from "../ui/toggle";
 import {
+  AlignCenter,
+  AlignLeftIcon,
   Bold,
   Heading1Icon,
   Heading2Icon,
@@ -178,17 +180,35 @@ export function Menubar({ editor }: MenubarProps) {
                 size={"sm"}
                 pressed={editor.isActive({ textAlign: "left" })}
                 onPressedChange={() =>
-                  editor.chain().focus().settextal().run()
+                  editor.chain().focus().setTextAlign("left").run()
                 }
                 className={cn(
-                  editor.isActive("bulletList") &&
+                  editor.isActive({ textAlign: "left" }) &&
                     "bg-muted text-muted-foreground"
                 )}
               >
-                <ListIcon />
+                <AlignLeftIcon />
               </Toggle>
             </TooltipTrigger>
-            <TooltipContent>Heading Bulletlist</TooltipContent>
+            <TooltipContent>Align Left</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Toggle
+                size={"sm"}
+                pressed={editor.isActive({ textAlign: "center" })}
+                onPressedChange={() =>
+                  editor.chain().focus().setTextAlign("center").run()
+                }
+                className={cn(
+                  editor.isActive({ textAlign: "center" }) &&
+                    "bg-muted text-muted-foreground"
+                )}
+              >
+                <AlignCenter />
+              </Toggle>
+            </TooltipTrigger>
+            <TooltipContent>Align Center</TooltipContent>
           </Tooltip>
         </div>
       </TooltipProvider>
