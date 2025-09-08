@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { CloudUploadIcon } from "lucide-react";
+import { CloudUploadIcon, Image, ImageIcon } from "lucide-react";
 import { Button } from "../ui/button";
 
 export function RenderEmptyState({ isDragActive }: { isDragActive: boolean }) {
@@ -24,6 +24,14 @@ export function RenderEmptyState({ isDragActive }: { isDragActive: boolean }) {
           Select File
         </Button>
       </p>
+    </div>
+  );
+}
+
+export function RenderErrorState() {
+  return (
+    <div className="text-destructive text-center ">
+      <ImageIcon size={"10"} className="mx-auto mb-3" />
     </div>
   );
 }
