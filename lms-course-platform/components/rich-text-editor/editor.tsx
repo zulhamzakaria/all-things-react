@@ -21,7 +21,9 @@ export function RichTextEditor({ field }: { field: any }) {
     onUpdate: ({ editor }) => {
       field.onChange(JSON.stringify(editor.getJSON()));
     },
-    content: field.value ? JSON.parse(field.value) : "<p>Hello</p>",
+    content: field.value
+      ? JSON.parse(field.value)
+      : "<p>Start typing the description here</p>",
   });
   return (
     <div className="border w-full border-input rounded-lg overflow-hidden dark:bg-input/30">
