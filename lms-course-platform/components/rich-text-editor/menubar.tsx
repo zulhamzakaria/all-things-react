@@ -17,6 +17,7 @@ import {
   Italic,
   ListIcon,
   ListOrdered,
+  Redo,
   Strikethrough,
   Undo,
 } from "lucide-react";
@@ -247,6 +248,20 @@ export function Menubar({ editor }: MenubarProps) {
               </Button>
             </TooltipTrigger>
             <TooltipContent>Undo</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                size={"sm"}
+                variant={"ghost"}
+                type="button"
+                onClick={() => editor.chain().focus().redo().run()}
+                disabled={!editor.can().redo()}
+              >
+                <Redo />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Redo</TooltipContent>
           </Tooltip>
         </div>
       </TooltipProvider>
