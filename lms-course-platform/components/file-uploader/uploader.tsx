@@ -6,6 +6,7 @@ import { Card, CardContent } from "../ui/card";
 import { cn } from "@/lib/utils";
 import { RenderEmptyState, RenderErrorState } from "./render-state";
 import { toast } from "sonner";
+import { v4 as uuidv4 } from "uuid";
 
 interface UploaderStateProps {
   id: string | null;
@@ -47,6 +48,19 @@ export function Uploader() {
     }
   }
 
+  function uploadFile(file: File) {
+    setFileState((prev) => ({
+      ...prev,
+      uploading: true,
+      progress: 0,
+    }));
+    try {
+        
+    } catch (error) {
+        
+    }
+  }
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
       const file = acceptedFiles[0];
@@ -56,7 +70,9 @@ export function Uploader() {
         progress: 0,
         objectUrl: URL.createObjectURL(file),
         error: false,
-        id: 
+        id: uuidv4(),
+        isDeleting: false,
+        fileType: "image",
       });
     }
   }, []);
