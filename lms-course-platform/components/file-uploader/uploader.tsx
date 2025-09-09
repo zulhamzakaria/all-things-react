@@ -1,13 +1,35 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
 import { Card, CardContent } from "../ui/card";
 import { cn } from "@/lib/utils";
 import { RenderEmptyState, RenderErrorState } from "./render-state";
 import { toast } from "sonner";
 
+interface UploaderStateProps {
+  id: string | null;
+  file: File | null;
+  uploading: boolean;
+  progress: number;
+  key?: string;
+  isDeleting: boolean;
+  error: boolean;
+  objectUrl?: string;
+  fileType: "image" | "video";
+}
+
 export function Uploader() {
+  const [fileState, setFileState] = useState<UploaderStateProps>({
+    id: null,
+    file: null,
+    uploading: false,
+    progress: 0,
+    isDeleting: false,
+    error: false,
+    fileType: "image",
+  });
+
   function rejectedFiles(fileRejection: FileRejection[]) {
     if (fileRejection.length) {
       const tooManyFiles = fileRejection.find((rejection) => {
@@ -26,7 +48,17 @@ export function Uploader() {
   }
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    // Do something with the files
+    if (acceptedFiles.length > 0) {
+      const file = acceptedFiles[0];
+      setFileState({
+        file,
+        uploading: false,
+        progress: 0,
+        objectUrl: URL.createObjectURL(file),
+        error: false,
+        id: 
+      });
+    }
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
