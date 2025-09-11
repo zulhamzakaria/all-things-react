@@ -1,3 +1,4 @@
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { NextResponse } from "next/server";
 import z from "zod";
 
@@ -19,5 +20,10 @@ export async function POST(req: Request) {
       );
     }
     const { fileName, contentType, size } = validation.data;
+
+    const command = new PutObjectCommand({
+      Bucket: 
+    })
+
   } catch (error) {}
 }
