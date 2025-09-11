@@ -16,6 +16,11 @@ export const env = createEnv({
     AWS_ENDPOINT_URL_IAM: z.string().min(1),
     AWS_REGION: z.string().min(1),
   },
+  client: {
+    NEXT_PUBLIC_S3_BUCKET: z.string().min(1),
+  },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
-  experimental__runtimeEnv: {},
+  experimental__runtimeEnv: {
+    NEXT_PUBLIC_S3_BUCKET: process.env.NEXT_PUBLIC_S3_BUCKET,
+  },
 });
