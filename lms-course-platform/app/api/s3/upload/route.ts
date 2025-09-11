@@ -1,6 +1,10 @@
+import { env } from "@/lib/env";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { NextResponse } from "next/server";
 import z from "zod";
+import { v4 as uuidv4 } from "uuid";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { S3 } from "@/lib/s3-client";
 
 export const fileUploadSchema = z.object({
   fileName: z.string().min(1, { message: "Filename is required" }),
@@ -21,9 +25,17 @@ export async function POST(req: Request) {
     }
     const { fileName, contentType, size } = validation.data;
 
-    const command = new PutObjectCommand({
-      Bucket: 
-    })
+    const uniqueKey = `${uuidv4()}-${fileName}`;
 
+    const putCommand = new PutObjectCommand({
+      Bucket: env.NEXT_PUBLIC_S3_BUCKET,
+      ContentType: contentType,
+      ContentLength: size,
+      Key: uniqueKey,
+    });
+
+    const preSigneUrl = await getSignedUrl(S3, putCommand, {
+      expiresIn: 360, //in seconds or 6 mins
+    });
   } catch (error) {}
 }
