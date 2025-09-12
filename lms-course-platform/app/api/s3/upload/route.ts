@@ -34,8 +34,23 @@ export async function POST(req: Request) {
       Key: uniqueKey,
     });
 
-    const preSigneUrl = await getSignedUrl(S3, putCommand, {
+    const preSignedUrl = await getSignedUrl(S3, putCommand, {
       expiresIn: 360, //in seconds or 6 mins
     });
-  } catch (error) {}
+
+    const response = {
+      preSignedUrl,
+      key: uniqueKey,
+    };
+
+    return NextResponse.json(response);
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return NextResponse.json(
+      {
+        error: "Failed to generate presigned Url",
+      },
+      { status: 500 }
+    );
+  }
 }
