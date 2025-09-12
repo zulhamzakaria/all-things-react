@@ -48,17 +48,35 @@ export function Uploader() {
     }
   }
 
-  function uploadFile(file: File) {
+  async function uploadFile(file: File) {
     setFileState((prev) => ({
       ...prev,
       uploading: true,
       progress: 0,
     }));
     try {
-        
-    } catch (error) {
-        
-    }
+      const presignedResponse = await fetch("/api/s3/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fileName: file.name,
+          contentType: file.type,
+          size: file.size,
+          isImage: true,
+        }),
+      });
+      if (!presignedResponse) {
+        toast.error("Failed to get presigned response");
+        setFileState((prev) => ({
+          ...prev,
+          uploading: false,
+          progress: 0,
+          error: true,
+        }));
+        return;
+      }
+      const { preSignedUrl, key } = await presignedResponse.json();
+    } catch (error) {}
   }
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
