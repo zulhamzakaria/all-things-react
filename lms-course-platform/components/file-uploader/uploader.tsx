@@ -76,6 +76,30 @@ export function Uploader() {
         return;
       }
       const { preSignedUrl, key } = await presignedResponse.json();
+      await new Promise<void>((resolve) => {
+        const xhr = new XMLHttpRequest();
+        xhr.upload.onprogress = (event) => {
+          if (event.lengthComputable) {
+            const percentageCompleted = (event.loaded / event.total) * 100;
+            setFileState((prev) => ({
+              ...prev,
+              progress: Math.round(percentageCompleted),
+            }));
+          }
+          xhr.onload = () => {
+            if (xhr.status === 200 || xhr.status === 204) {
+              setFileState((prev) => ({
+                ...prev,
+                progress: 100,
+                uploading: false,
+                key,
+              }));
+              toast.success("File uploaded successfully");
+              resolve();
+            }
+          };
+        };
+      });
     } catch (error) {}
   }
 
