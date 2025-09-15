@@ -99,12 +99,25 @@ export function Uploader() {
             } else {
               reject(new Error("Upload failed"));
             }
+            xhr.onerror = () => {
+              reject(new Error("Upload failed"));
+            };
+
+            xhr.open("PUT", preSignedUrl);
+            xhr.setRequestHeader("Content-Type", file.type);
+            xhr.send(file);
           };
         };
       });
     } catch (error) {
       console.log((error as Error).message);
       toast.error("Something went wrong");
+      setFileState((prev) => ({
+        ...prev,
+        progress: 0,
+        error: true,
+        uploading: false,
+      }));
     }
   }
 
