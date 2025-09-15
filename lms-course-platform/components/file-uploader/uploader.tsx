@@ -76,7 +76,7 @@ export function Uploader() {
         return;
       }
       const { preSignedUrl, key } = await presignedResponse.json();
-      await new Promise<void>((resolve) => {
+      await new Promise<void>((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.upload.onprogress = (event) => {
           if (event.lengthComputable) {
@@ -96,11 +96,16 @@ export function Uploader() {
               }));
               toast.success("File uploaded successfully");
               resolve();
+            } else {
+              reject(new Error("Upload failed"));
             }
           };
         };
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log((error as Error).message);
+      toast.error("Something went wrong");
+    }
   }
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
