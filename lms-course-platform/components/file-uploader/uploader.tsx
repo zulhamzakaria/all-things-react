@@ -137,6 +137,20 @@ export function Uploader() {
       uploadFile(file);
     }
   }, []);
+
+  function renderContent() {
+    if (fileState.uploading) {
+      return <h1>Uploading...</h1>;
+    }
+    if (fileState.error) {
+      return <RenderErrorState />;
+    }
+    if (fileState.objectUrl) {
+      return <h1>File uploaded</h1>;
+    }
+    return <RenderEmptyState isDragActive={isDragActive} />;
+  }
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: { "image/*": [] },
@@ -157,8 +171,7 @@ export function Uploader() {
     >
       <CardContent className="flex items-center justify-center h-full w-full p-4">
         <input {...getInputProps()} />
-        <RenderEmptyState isDragActive={isDragActive} />
-        {/* <RenderErrorState /> */}
+        {renderContent()}
       </CardContent>
     </Card>
   );
