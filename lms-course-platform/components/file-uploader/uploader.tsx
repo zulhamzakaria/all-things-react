@@ -134,6 +134,7 @@ export function Uploader() {
         isDeleting: false,
         fileType: "image",
       });
+      uploadFile(file);
     }
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
