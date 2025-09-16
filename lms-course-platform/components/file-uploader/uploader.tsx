@@ -70,6 +70,12 @@ export function Uploader() {
         }),
       });
       if (!presignedResponse.ok) {
+        const text = await presignedResponse.text(); // raw error
+        console.error(
+          "Presigned URL fetch failed:",
+          presignedResponse.status,
+          text
+        );
         toast.error("Failed to get presigned response");
         setFileState((prev) => ({
           ...prev,
