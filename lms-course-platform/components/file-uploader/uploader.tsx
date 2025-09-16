@@ -90,28 +90,27 @@ export function Uploader() {
               progress: Math.round(percentageCompleted),
             }));
           }
-          xhr.onload = () => {
-            if (xhr.status === 200 || xhr.status === 204) {
-              setFileState((prev) => ({
-                ...prev,
-                progress: 100,
-                uploading: false,
-                key,
-              }));
-              toast.success("File uploaded successfully");
-              resolve();
-            } else {
-              reject(new Error("Upload failed"));
-            }
-          };
-          xhr.onerror = () => {
-            reject(new Error("Upload failed"));
-          };
-
-          xhr.open("PUT", preSignedUrl);
-          xhr.setRequestHeader("Content-Type", file.type);
-          xhr.send(file);
         };
+        xhr.onload = () => {
+          if (xhr.status === 200 || xhr.status === 204) {
+            setFileState((prev) => ({
+              ...prev,
+              progress: 100,
+              uploading: false,
+              key,
+            }));
+            toast.success("File uploaded successfully");
+            resolve();
+          } else {
+            reject(new Error("Upload failed"));
+          }
+        };
+        xhr.onerror = () => {
+          reject(new Error("Upload failed"));
+        };
+        xhr.open("PUT", preSignedUrl);
+        xhr.setRequestHeader("Content-Type", file.type);
+        xhr.send(file);
       });
     } catch (error) {
       console.log((error as Error).message);
