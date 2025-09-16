@@ -99,14 +99,14 @@ export function Uploader() {
             } else {
               reject(new Error("Upload failed"));
             }
-            xhr.onerror = () => {
-              reject(new Error("Upload failed"));
-            };
-
-            xhr.open("PUT", preSignedUrl);
-            xhr.setRequestHeader("Content-Type", file.type);
-            xhr.send(file);
           };
+          xhr.onerror = () => {
+            reject(new Error("Upload failed"));
+          };
+
+          xhr.open("PUT", preSignedUrl);
+          xhr.setRequestHeader("Content-Type", file.type);
+          xhr.send(file);
         };
       });
     } catch (error) {
