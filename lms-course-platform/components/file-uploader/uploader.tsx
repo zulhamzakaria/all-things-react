@@ -148,6 +148,7 @@ export function Uploader() {
   }, []);
 
   function renderContent() {
+    console.log("cock");
     if (fileState.uploading) {
       return <h1>Uploading...</h1>;
     }
@@ -155,7 +156,8 @@ export function Uploader() {
       return <RenderErrorState />;
     }
     if (fileState.objectUrl) {
-      return <RenderUploadedState previewUrl={fileState.objectUrl} />;
+      // return <RenderUploadedState previewUrl={fileState.objectUrl} />;
+      return <h1>file uploaded</h1>;
     }
     return <RenderEmptyState isDragActive={isDragActive} />;
   }
