@@ -154,9 +154,9 @@ export function Uploader() {
     if (fileState.error) {
       return <RenderErrorState />;
     }
+    console.log(fileState.objectUrl);
     if (fileState.objectUrl) {
-      // return <RenderUploadedState previewUrl={fileState.objectUrl} />;
-      return <h1>file uploaded</h1>;
+      return <RenderUploadedState previewUrl={fileState.objectUrl} />;
     }
     return <RenderEmptyState isDragActive={isDragActive} />;
   }
