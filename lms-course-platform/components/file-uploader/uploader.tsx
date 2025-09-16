@@ -140,7 +140,7 @@ export function Uploader() {
     if (acceptedFiles.length > 0) {
       const file = acceptedFiles[0];
       setFileState({
-        file,
+        file: file,
         uploading: false,
         progress: 0,
         objectUrl: URL.createObjectURL(file),
