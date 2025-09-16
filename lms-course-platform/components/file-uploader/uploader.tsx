@@ -119,6 +119,7 @@ export function Uploader() {
         };
         xhr.open("PUT", preSignedUrl);
         // xhr.setRequestHeader("Content-Type", file.type);
+        console.log("sending file...", file);
         xhr.send(file);
       });
     } catch (error) {
