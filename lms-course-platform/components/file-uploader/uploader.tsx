@@ -116,6 +116,7 @@ export function Uploader() {
           }
         };
         xhr.onerror = () => {
+          console.error("XHR error", xhr.status, xhr.responseText);
           reject(new Error("Upload failed"));
         };
         xhr.open("PUT", preSignedUrl);
