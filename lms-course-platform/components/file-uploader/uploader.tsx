@@ -69,7 +69,7 @@ export function Uploader() {
           isImage: true,
         }),
       });
-      if (!presignedResponse) {
+      if (!presignedResponse.ok) {
         toast.error("Failed to get presigned response");
         setFileState((prev) => ({
           ...prev,
