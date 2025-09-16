@@ -6,7 +6,7 @@ import { env } from "./env";
 export const S3 = new S3Client({
   region: "auto",
   endpoint: env.AWS_ENDPOINT_URL_S3,
-  forcePathStyle: false,
+  forcePathStyle: true,
   credentials: {
     accessKeyId: env.AWS_ACCESS_KEY_ID,
     secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
