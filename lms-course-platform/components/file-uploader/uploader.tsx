@@ -8,6 +8,7 @@ import {
   RenderEmptyState,
   RenderErrorState,
   RenderUploadedState,
+  RenderUploadingState,
 } from "./render-state";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
@@ -154,7 +155,12 @@ export function Uploader() {
 
   function renderContent() {
     if (fileState.uploading) {
-      return <h1>Uploading...</h1>;
+      return (
+        <RenderUploadingState
+          progress={fileState.progress}
+          file={fileState.file!}
+        />
+      );
     }
     if (fileState.error) {
       return <RenderErrorState />;
