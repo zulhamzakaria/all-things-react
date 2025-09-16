@@ -33,6 +33,7 @@ export function Uploader() {
     isDeleting: false,
     error: false,
     fileType: "image",
+    objectUrl: "",
   });
 
   function rejectedFiles(fileRejection: FileRejection[]) {
@@ -98,12 +99,14 @@ export function Uploader() {
           }
         };
         xhr.onload = () => {
+          const objectUrl = `https://lms-app-bucket.t3.storage.dev/${key}`;
           if (xhr.status === 200 || xhr.status === 204) {
             setFileState((prev) => ({
               ...prev,
               progress: 100,
               uploading: false,
               key,
+              objectUrl,
             }));
             toast.success("File uploaded successfully");
             resolve();
@@ -154,7 +157,6 @@ export function Uploader() {
     if (fileState.error) {
       return <RenderErrorState />;
     }
-    console.log(fileState.objectUrl);
     if (fileState.objectUrl) {
       return <RenderUploadedState previewUrl={fileState.objectUrl} />;
     }
