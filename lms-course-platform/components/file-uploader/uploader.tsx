@@ -100,14 +100,12 @@ export function Uploader() {
           }
         };
         xhr.onload = () => {
-          const objectUrl = `https://lms-app-bucket.t3.storage.dev/${key}`;
           if (xhr.status === 200 || xhr.status === 204) {
             setFileState((prev) => ({
               ...prev,
               progress: 100,
               uploading: false,
               key,
-              objectUrl,
             }));
             toast.success("File uploaded successfully");
             resolve();
@@ -120,8 +118,9 @@ export function Uploader() {
           console.error("XHR error", xhr.status, xhr.responseText);
           reject(new Error("Upload failed"));
         };
-        xhr.open("PUT", preSignedUrl);
-        xhr.setRequestHeader("Content-Type", file.type);
+
+        xhr.open("PUT", preSignedUrl, true);
+        // xhr.setRequestHeader("Content-Type", file.type);
         xhr.send(file);
       });
     } catch (error) {
@@ -149,7 +148,6 @@ export function Uploader() {
         isDeleting: false,
         fileType: "image",
       });
-      console.log(fileState.objectUrl);
       uploadFile(file);
     }
   }, []);

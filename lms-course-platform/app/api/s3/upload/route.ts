@@ -29,8 +29,8 @@ export async function POST(req: Request) {
 
     const putCommand = new PutObjectCommand({
       Bucket: env.NEXT_PUBLIC_S3_BUCKET,
-      ContentType: contentType,
-      ContentLength: size,
+      // ContentType: contentType,
+      // ContentLength: size,
       Key: uniqueKey,
     });
 
