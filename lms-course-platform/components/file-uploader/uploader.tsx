@@ -149,6 +149,7 @@ export function Uploader() {
         isDeleting: false,
         fileType: "image",
       });
+      console.log(fileState.objectUrl);
       uploadFile(file);
     }
   }, []);
