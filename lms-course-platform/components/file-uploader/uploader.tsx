@@ -111,6 +111,7 @@ export function Uploader() {
             toast.success("File uploaded successfully");
             resolve();
           } else {
+            console.log("xhr loaded with status", xhr.status, xhr.responseText);
             reject(new Error("Upload failed"));
           }
         };
