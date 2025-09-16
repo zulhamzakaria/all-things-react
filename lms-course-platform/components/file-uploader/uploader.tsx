@@ -120,8 +120,7 @@ export function Uploader() {
           reject(new Error("Upload failed"));
         };
         xhr.open("PUT", preSignedUrl);
-        // xhr.setRequestHeader("Content-Type", file.type);
-        console.log("sending file...", file);
+        xhr.setRequestHeader("Content-Type", file.type);
         xhr.send(file);
       });
     } catch (error) {
