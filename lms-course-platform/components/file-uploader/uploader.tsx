@@ -148,7 +148,6 @@ export function Uploader() {
   }, []);
 
   function renderContent() {
-    console.log("cock");
     if (fileState.uploading) {
       return <h1>Uploading...</h1>;
     }
