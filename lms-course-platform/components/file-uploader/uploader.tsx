@@ -226,7 +226,13 @@ export function Uploader() {
       return <RenderErrorState />;
     }
     if (fileState.objectUrl) {
-      return <RenderUploadedState previewUrl={fileState.objectUrl} />;
+      return (
+        <RenderUploadedState
+          previewUrl={fileState.objectUrl}
+          handleRemoveFile={handleRemoveFile}
+          isDeleting={fileState.isDeleting}
+        />
+      );
     }
     return <RenderEmptyState isDragActive={isDragActive} />;
   }
