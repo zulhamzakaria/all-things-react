@@ -159,6 +159,19 @@ export function Uploader() {
     [fileState.objectUrl]
   );
 
+  async function handleRemoveFile() {
+    if (fileState.isDeleting || !fileState.objectUrl) {
+      return;
+    }
+    try {
+      setFileState((prev) => ({
+        ...prev,
+        isDeleting: true,
+      }));
+      
+    } catch (error) {}
+  }
+
   function renderContent() {
     if (fileState.uploading) {
       return (
