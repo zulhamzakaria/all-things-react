@@ -44,7 +44,17 @@ export function RenderErrorState() {
   );
 }
 
-export function RenderUploadedState({ previewUrl }: { previewUrl: string }) {
+interface RenderUploadedStateProps {
+  previewUrl: string;
+  isDeleting: boolean;
+  handleRemoveFile: () => void;
+}
+
+export function RenderUploadedState({
+  previewUrl,
+  isDeleting,
+  handleRemoveFile,
+}: RenderUploadedStateProps) {
   return (
     <div>
       <Image
@@ -57,6 +67,8 @@ export function RenderUploadedState({ previewUrl }: { previewUrl: string }) {
         variant={"destructive"}
         size={"icon"}
         className={cn("absolute top-4 right-4")}
+        onClick={handleRemoveFile}
+        disabled={isDeleting}
       >
         <XIcon className="size-4" />
       </Button>
